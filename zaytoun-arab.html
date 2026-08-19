@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaytoun — Levantine Table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Mulish:wght@400;500;600;700&family=Space+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#EFE3C8;
+    --sand-2:#E4D3AC;
+    --ink:#241A12;
+    --pomegranate:#7C2430;
+    --pomegranate-dark:#5E1B24;
+    --teal:#1B4A48;
+    --gold:#C89A3C;
+    --line: rgba(36,26,18,0.15);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--sand);color:var(--ink);font-family:'Mulish',sans-serif;line-height:1.65;}
+  h1,h2,h3{font-family:'Prata',serif;margin:0;font-weight:400;}
+  .mono{font-family:'Space Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 30px;}
+
+  /* lattice pattern used as divider - signature */
+  .lattice{
+    height:22px;width:100%;
+    background-image: radial-gradient(circle at 0 50%, transparent 9px, var(--gold) 9.5px, var(--gold) 10.5px, transparent 11px),
+                       radial-gradient(circle at 20px 50%, transparent 9px, var(--gold) 9.5px, var(--gold) 10.5px, transparent 11px);
+    background-size: 20px 22px;
+    background-color: var(--pomegranate);
+    opacity:0.95;
+  }
+
+  header{padding:26px 0;border-bottom:1px solid var(--line);}
+  header .bar{display:flex;justify-content:space-between;align-items:center;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:40px;height:40px;position:relative;flex-shrink:0;}
+  .brand-name{font-family:'Prata',serif;font-size:23px;}
+  .brand-sub{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--pomegranate-dark);}
+  nav{display:flex;gap:30px;font-size:14px;}
+  nav a{opacity:0.75;transition:opacity .2s;}
+  nav a:hover{opacity:1;}
+  .btn{display:inline-block;background:var(--pomegranate);color:var(--sand) !important;padding:12px 24px;border-radius:2px;font-size:13.5px;letter-spacing:0.03em;transition:background .2s,transform .15s;}
+  .btn:hover{background:var(--pomegranate-dark);transform:translateY(-1px);}
+  .btn.ghost{background:transparent;border:1.3px solid var(--ink);color:var(--ink) !important;}
+  .btn.ghost:hover{background:var(--ink);color:var(--sand) !important;}
+
+  /* hero */
+  .hero{padding:80px 0 0;}
+  .hero .grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;padding-bottom:64px;}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--pomegranate-dark);margin-bottom:20px;}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);line-height:1.08;}
+  .hero h1 em{font-style:italic;color:var(--pomegranate);}
+  .hero p.lede{margin-top:20px;font-size:17px;max-width:42ch;color:#4a382a;}
+  .hero-ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* hero art: illustrated tagine/plate via css */
+  .hero-art{position:relative;aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:linear-gradient(165deg,var(--teal) 0%, #10302e 100%);box-shadow:0 30px 60px -22px rgba(36,26,18,0.5);}
+  .hero-art .plate{position:absolute;left:50%;top:50%;width:64%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);
+    background: radial-gradient(circle at 42% 38%, #F4E6C4 0%, #E4D3AC 55%, #C89A3C 100%);
+    box-shadow: inset 0 0 0 8px rgba(124,36,48,0.15);
+  }
+  .hero-art .rim{position:absolute;left:50%;top:50%;width:80%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);border:1px dashed rgba(239,227,200,0.3);}
+  .hero-art figcaption{position:absolute;bottom:18px;left:18px;right:18px;color:var(--sand);font-family:'Prata',serif;font-style:normal;font-size:15px;opacity:0.9;}
+
+  /* menu */
+  .section{padding:90px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:44px;border-bottom:1px solid var(--line);padding-bottom:22px;}
+  .section-head .tag{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--pomegranate-dark);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:8px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,40px);}
+
+  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:56px;}
+  .menu-item{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px dotted var(--line);}
+  .menu-item .name{font-family:'Prata',serif;font-size:18px;}
+  .menu-item .desc{font-size:13px;opacity:0.65;margin-top:5px;max-width:34ch;}
+  .menu-item .price{font-family:'Space Mono',monospace;font-size:15px;color:var(--pomegranate-dark);white-space:nowrap;}
+
+  /* spice jars — signature visual instead of gallery photos */
+  .spices{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:20px;}
+  .jar{text-align:center;}
+  .jar .swatch{aspect-ratio:1;border-radius:50%;margin-bottom:10px;box-shadow:inset 0 -6px 10px rgba(0,0,0,0.15), 0 6px 14px -8px rgba(36,26,18,0.4);}
+  .jar .label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;opacity:0.7;}
+  .jar:nth-child(1) .swatch{background:radial-gradient(circle at 35% 30%,#E5A94A,#B9781F);}
+  .jar:nth-child(2) .swatch{background:radial-gradient(circle at 35% 30%,#C0342B,#7C2430);}
+  .jar:nth-child(3) .swatch{background:radial-gradient(circle at 35% 30%,#7A8C3E,#4F5C25);}
+  .jar:nth-child(4) .swatch{background:radial-gradient(circle at 35% 30%,#D9C05A,#A88924);}
+  .jar:nth-child(5) .swatch{background:radial-gradient(circle at 35% 30%,#8C4A2E,#5A2C19);}
+  .jar:nth-child(6) .swatch{background:radial-gradient(circle at 35% 30%,#1B4A48,#0F2E2C);}
+
+  /* story */
+  .story{background:var(--teal);color:var(--sand);}
+  .story .grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
+  .story h2{font-size:clamp(30px,3.6vw,44px);}
+  .story .quote{font-family:'Prata',serif;font-size:22px;line-height:1.5;border-left:2px solid var(--gold);padding-left:24px;max-width:38ch;}
+  .story .sign{margin-top:20px;font-size:13px;letter-spacing:0.04em;opacity:0.8;}
+  .years{font-family:'Prata',serif;font-size:clamp(90px,11vw,150px);line-height:0.8;color:var(--gold);opacity:0.92;}
+  .years-lbl{font-size:12px;text-transform:uppercase;letter-spacing:0.12em;opacity:0.7;margin-top:10px;}
+
+  /* visit */
+  .visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .visit h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:28px;}
+  .row{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);}
+  .row:last-of-type{border-bottom:1px solid var(--line);}
+  .row .k{width:110px;flex-shrink:0;font-size:11.5px;text-transform:uppercase;letter-spacing:0.06em;opacity:0.6;padding-top:2px;}
+  .row .v{font-size:15px;}
+  .map{background:var(--ink);border-radius:4px;min-height:280px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .map::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle, rgba(239,227,200,0.12) 1px, transparent 1px);background-size:18px 18px;}
+  .map-pin{position:relative;text-align:center;color:var(--sand);}
+  .map-pin .dot{width:14px;height:14px;border-radius:50%;background:var(--pomegranate);margin:0 auto 12px;box-shadow:0 0 0 8px rgba(124,36,48,0.25);}
+
+  footer{background:var(--ink);color:var(--sand);padding:44px 0 26px;}
+  footer .bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .fname{font-family:'Prata',serif;font-size:19px;}
+  footer .fine{font-size:12px;opacity:0.55;margin-top:6px;}
+  .socials{display:flex;gap:16px;font-size:13.5px;}
+
+  @media(max-width:880px){
+    .hero .grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:320px;margin:0 auto;}
+    .menu-grid{grid-template-columns:1fr;}
+    .spices{grid-template-columns:repeat(3,1fr);}
+    .story .grid{grid-template-columns:1fr;}
+    .visit .grid{grid-template-columns:1fr;}
+    nav{display:none;}
+  }
+  :focus-visible{outline:2px solid var(--pomegranate);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="lattice"></div>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#7C2430" stroke-width="1.4"/>
+        <path d="M20 9c-5 4-7 9-7 13a7 7 0 0014 0c0-4-2-9-7-13z" fill="#7A8C3E"/>
+        <circle cx="20" cy="24" r="2.4" fill="#EFE3C8"/>
+      </svg>
+      <div>
+        <div class="brand-name">Zaytoun</div>
+        <div class="brand-sub">Levantine table · est. 2019</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#historia">Our story</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a href="#visit" class="btn">Reserve a table</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Open Tuesday – Sunday</div>
+      <h1>Recipes carried<br>from <em>Damascus</em><br>to this table</h1>
+      <p class="lede">Slow-cooked, hand-rolled, and seasoned the way our grandmother did it — nothing here comes from a packet.</p>
+      <div class="hero-ctas">
+        <a href="#visit" class="btn">See address &amp; hours</a>
+        <a href="#menu" class="btn ghost">View the menu</a>
+      </div>
+    </div>
+    <figure class="hero-art">
+      <div class="rim"></div>
+      <div class="plate"></div>
+      <figcaption>Mixed mezze board — the way we'd serve family, on a Friday.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="tag">The kitchen</span><h2>From the mezze table</h2></div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="name">Muhammara</div><div class="desc">Roasted red pepper, walnut, pomegranate molasses</div></div><div class="price">6€</div></div>
+      <div class="menu-item"><div><div class="name">Fattoush</div><div class="desc">Sumac, crisp pita, seasonal herbs</div></div><div class="price">7€</div></div>
+      <div class="menu-item"><div><div class="name">Lamb kofta, tahini</div><div class="desc">Charcoal grill, pickled turnip</div></div><div class="price">15€</div></div>
+      <div class="menu-item"><div><div class="name">Musakhan</div><div class="desc">Sumac chicken, caramelised onion, taboon bread</div></div><div class="price">16€</div></div>
+      <div class="menu-item"><div><div class="name">Freekeh pilaf</div><div class="desc">Smoked green wheat, almond, herbs</div></div><div class="price">9€</div></div>
+      <div class="menu-item"><div><div class="name">Knafeh</div><div class="desc">Sweet cheese, crisp semolina, orange blossom syrup</div></div><div class="price">7€</div></div>
+    </div>
+    <div style="margin-top:44px;">
+      <span class="tag" style="display:block;margin-bottom:16px;">From the spice shelf</span>
+      <div class="spices">
+        <div class="jar"><div class="swatch"></div><div class="label">Turmeric</div></div>
+        <div class="jar"><div class="swatch"></div><div class="label">Sumac</div></div>
+        <div class="jar"><div class="swatch"></div><div class="label">Za'atar</div></div>
+        <div class="jar"><div class="swatch"></div><div class="label">Saffron</div></div>
+        <div class="jar"><div class="swatch"></div><div class="label">Cinnamon</div></div>
+        <div class="jar"><div class="swatch"></div><div class="label">Cardamom</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="historia">
+  <div class="wrap grid">
+    <div>
+      <div class="years">6</div>
+      <div class="years-lbl">Years, same street corner</div>
+    </div>
+    <div>
+      <h2 style="margin-bottom:26px;">A family recipe box, still in use</h2>
+      <div class="quote">"My mother wrote every recipe on the back of an envelope. I still cook from the same box — the paper's just softer now."</div>
+      <div class="sign">— Layla, chef &amp; owner</div>
+    </div>
+  </div>
+</section>
+
+<section class="section visit" id="visit">
+  <div class="wrap grid">
+    <div>
+      <h2>Visit us</h2>
+      <div class="row"><div class="k">Address</div><div class="v">22 Kingsland High St, London</div></div>
+      <div class="row"><div class="k">Hours</div><div class="v">Tue–Sun, 12:00–15:00 · 18:00–22:30</div></div>
+      <div class="row"><div class="k">Phone</div><div class="v mono">020 0000 0000</div></div>
+      <div class="row"><div class="k">Bookings</div><div class="v">By phone or WhatsApp — recommended for Friday and Saturday</div></div>
+      <div style="margin-top:28px;"><a href="#" class="btn">Reserve a table</a></div>
+    </div>
+    <div class="map">
+      <div class="map-pin"><div class="dot"></div>22 Kingsland High St, London</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap bar">
+    <div>
+      <div class="fname">Zaytoun</div>
+      <div class="fine">Portfolio mockup — fictional name and content, built for demonstration purposes.</div>
+    </div>
+    <div class="socials">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

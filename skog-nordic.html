@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKOG — New Nordic Table</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Karla:wght@400;500&family=Space+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fog:#F1F0EA;
+    --fog-2:#E7E4D9;
+    --ink:#1C1E1B;
+    --moss:#5C6B57;
+    --moss-dark:#414C3D;
+    --birch:#C9BBA0;
+    --line: rgba(28,30,27,0.13);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--fog);color:var(--ink);font-family:'Karla',sans-serif;line-height:1.65;font-size:16px;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0;font-weight:500;letter-spacing:-0.01em;}
+  .mono{font-family:'Space Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  .small-caps{text-transform:uppercase;letter-spacing:0.14em;font-size:11.5px;}
+
+  header{padding:30px 0;border-bottom:1px solid var(--line);}
+  header .bar{display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;letter-spacing:0.06em;}
+  nav{display:flex;gap:34px;}
+  nav a{font-size:13px;letter-spacing:0.06em;text-transform:uppercase;opacity:0.65;transition:opacity .2s;}
+  nav a:hover{opacity:1;}
+  .btn{
+    display:inline-block;border:1px solid var(--ink);padding:11px 24px;
+    font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;
+    transition:background .2s,color .2s;
+  }
+  .btn:hover{background:var(--ink);color:var(--fog) !important;}
+  .btn.solid{background:var(--ink);color:var(--fog) !important;}
+  .btn.solid:hover{background:var(--moss-dark);}
+
+  /* hero */
+  .hero{padding:110px 0 90px;}
+  .hero .eyebrow{color:var(--moss-dark);margin-bottom:26px;display:flex;align-items:center;gap:12px;}
+  .hero .eyebrow::before{content:'';width:30px;height:1px;background:var(--moss-dark);}
+  .hero h1{
+    font-size:clamp(46px,7vw,92px);
+    line-height:0.98;
+    max-width:14ch;
+    font-weight:500;
+  }
+  .hero-sub{
+    display:grid;grid-template-columns:1.3fr 0.7fr;gap:60px;
+    margin-top:46px;align-items:end;
+  }
+  .hero-sub p{font-size:17px;max-width:38ch;color:#3d3f39;}
+  .hero-meta{text-align:right;}
+  .hero-meta .row{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-top:1px solid var(--line);font-size:13.5px;}
+  .hero-ctas{margin-top:40px;display:flex;gap:14px;}
+
+  /* moodboard swatches - signature */
+  .moodboard{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;height:110px;}
+  .moodboard div{height:100%;}
+  .moodboard div:nth-child(1){background:#3E4A38;}
+  .moodboard div:nth-child(2){background:#C9BBA0;}
+  .moodboard div:nth-child(3){background:#8A9285;}
+  .moodboard div:nth-child(4){background:#1C1E1B;}
+  .moodboard div:nth-child(5){background:#E7E4D9;}
+  .moodboard div:nth-child(6){background:#5C6B57;}
+
+  /* philosophy */
+  .section{padding:96px 0;}
+  .philosophy .grid{display:grid;grid-template-columns:0.5fr 1fr;gap:60px;}
+  .philosophy .idx{font-family:'Space Mono',monospace;font-size:13px;color:var(--moss-dark);}
+  .philosophy h2{font-size:clamp(28px,3.4vw,40px);margin:14px 0 22px;max-width:16ch;}
+  .philosophy p{font-size:16px;color:#3d3f39;max-width:52ch;}
+  .principle-list{margin-top:28px;}
+  .principle{display:flex;gap:20px;padding:20px 0;border-top:1px solid var(--line);}
+  .principle:last-child{border-bottom:1px solid var(--line);}
+  .principle .n{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--moss-dark);padding-top:3px;}
+  .principle .t{font-family:'Space Grotesk',sans-serif;font-size:17px;margin-bottom:4px;}
+  .principle .d{font-size:13.5px;color:#5c5f57;max-width:44ch;}
+
+  /* seasonal menu — vertical timeline signature */
+  .menu-head{margin-bottom:50px;}
+  .menu-head .small-caps{color:var(--moss-dark);display:block;margin-bottom:10px;}
+  .menu-head h2{font-size:clamp(28px,3.4vw,40px);}
+  .season-tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:36px;}
+  .s-tab{padding:12px 22px;font-size:13px;letter-spacing:0.05em;text-transform:uppercase;opacity:0.5;border-bottom:2px solid transparent;margin-bottom:-1px;}
+  .s-tab.active{opacity:1;border-color:var(--ink);}
+  .course{display:grid;grid-template-columns:90px 1fr auto;gap:22px;padding:24px 0;border-top:1px solid var(--line);align-items:baseline;}
+  .course:last-child{border-bottom:1px solid var(--line);}
+  .course .stage{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--moss-dark);text-transform:uppercase;letter-spacing:0.06em;}
+  .course .name{font-family:'Space Grotesk',sans-serif;font-size:19px;}
+  .course .ing{font-size:13px;color:#5c5f57;margin-top:5px;}
+  .course .price{font-family:'Space Mono',monospace;font-size:14px;}
+
+  /* space */
+  .space{background:var(--ink);color:var(--fog);}
+  .space .grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+  .space-tile{aspect-ratio:5/6;}
+  .space-tile:nth-child(1){background:linear-gradient(160deg,#414C3D,#1C1E1B);}
+  .space-tile:nth-child(2){background:linear-gradient(160deg,#C9BBA0,#8A9285);}
+  .space-copy{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .space-copy h2{font-size:clamp(26px,3vw,34px);margin-bottom:18px;}
+  .space-copy p{color:#c8c6bd;font-size:15px;max-width:38ch;}
+
+  /* visit */
+  .visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .visit h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:30px;}
+  .info{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);}
+  .info:last-of-type{border-bottom:1px solid var(--line);}
+  .info .k{width:110px;flex-shrink:0;font-size:11.5px;text-transform:uppercase;letter-spacing:0.06em;opacity:0.55;padding-top:2px;}
+  .info .v{font-size:15px;}
+  .map{background:var(--fog-2);border:1px solid var(--line);min-height:280px;position:relative;display:flex;align-items:center;justify-content:center;}
+  .map::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:26px 26px;}
+  .map-pin{position:relative;text-align:center;}
+  .map-pin .dot{width:12px;height:12px;border-radius:50%;background:var(--ink);margin:0 auto 10px;}
+
+  footer{border-top:1px solid var(--line);padding:40px 0 26px;}
+  footer .bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  footer .fine{font-size:12px;opacity:0.5;}
+
+  @media(max-width:860px){
+    .hero-sub{grid-template-columns:1fr;}
+    .hero-meta{text-align:left;}
+    .philosophy .grid{grid-template-columns:1fr;}
+    .course{grid-template-columns:1fr;gap:6px;}
+    .space .grid{grid-template-columns:1fr;}
+    .space-copy{padding:50px 32px;}
+    .visit .grid{grid-template-columns:1fr;}
+    nav{display:none;}
+    .moodboard{grid-template-columns:repeat(3,1fr);height:auto;}
+    .moodboard div{aspect-ratio:1;}
+  }
+  :focus-visible{outline:2px solid var(--moss-dark);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">SKOG</div>
+    <nav>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a href="#visit" class="btn">Reserve</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow small-caps">Reykjavík — seasonal, foraged, unhurried</div>
+    <h1>Cooking with what the forest gives us this week</h1>
+    <div class="hero-sub">
+      <p>No menu printed more than seven days in advance. What we serve depends on what came off the boat, out of the ground, or down from the hills that morning.</p>
+      <div class="hero-meta">
+        <div class="row"><span>Seats</span><span class="mono">24</span></div>
+        <div class="row"><span>Courses</span><span class="mono">7 or 12</span></div>
+        <div class="row"><span>Service</span><span class="mono">Wed–Sun</span></div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn solid">View this week's menu</a>
+      <a href="#visit" class="btn">Reserve a table</a>
+    </div>
+  </div>
+</section>
+
+<div class="moodboard">
+  <div></div><div></div><div></div><div></div><div></div><div></div>
+</div>
+
+<section class="section philosophy" id="philosophy">
+  <div class="wrap grid">
+    <div>
+      <div class="idx">01 — Philosophy</div>
+      <h2>Nothing from further than the coastline can see</h2>
+    </div>
+    <div>
+      <p>We built the kitchen around a single rule: if it didn't grow, swim, or graze within reach of the fjord, it doesn't reach the table. That means a shorter menu, and a longer relationship with the seven foragers, two fishermen, and one dairy we work with.</p>
+      <div class="principle-list">
+        <div class="principle"><div class="n">01</div><div><div class="t">Foraged, not flown in</div><div class="d">Herbs and mushrooms picked the same morning by our forager, Ingrid.</div></div></div>
+        <div class="principle"><div class="n">02</div><div><div class="t">Preserved, not wasted</div><div class="d">Summer's surplus becomes winter's pickle, ferment, and cure.</div></div></div>
+        <div class="principle"><div class="n">03</div><div><div class="t">Open kitchen, open book</div><div class="d">Ask where anything came from — we'll usually know the farmer's name.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <span class="small-caps">This week's tasting</span>
+      <h2>Seven courses, early autumn</h2>
+    </div>
+    <div class="season-tabs">
+      <div class="s-tab active">Tasting menu</div>
+      <div class="s-tab">Wine pairing</div>
+      <div class="s-tab">To share, Sunday</div>
+    </div>
+    <div class="course">
+      <div class="stage">Course 01</div>
+      <div><div class="name">Raw langoustine, sea buckthorn, dill oil</div><div class="ing">Langoustine · sea buckthorn · dill · brown butter crumb</div></div>
+      <div class="price mono">—</div>
+    </div>
+    <div class="course">
+      <div class="stage">Course 02</div>
+      <div><div class="name">Charred leek, smoked butter, ash</div><div class="ing">Leek · cultured butter · birch ash · chive oil</div></div>
+      <div class="price mono">—</div>
+    </div>
+    <div class="course">
+      <div class="stage">Course 03</div>
+      <div><div class="name">Cod, brown butter, chanterelle</div><div class="ing">Line-caught cod · chanterelle · beurre noisette</div></div>
+      <div class="price mono">—</div>
+    </div>
+    <div class="course">
+      <div class="stage">Course 04</div>
+      <div><div class="name">Aged lamb, juniper, root vegetables</div><div class="ing">Highland lamb · juniper jus · roasted roots</div></div>
+      <div class="price mono">—</div>
+    </div>
+    <div class="course">
+      <div class="stage">Course 05</div>
+      <div><div class="name">Skyr, cloudberry, oat crumble</div><div class="ing">House skyr · cloudberry · toasted oat</div></div>
+      <div class="price mono">—</div>
+    </div>
+    <div style="margin-top:34px;"><span class="mono" style="font-size:14px;">Seven courses — 89€ · Wine pairing +45€</span></div>
+  </div>
+</section>
+
+<section class="space">
+  <div class="wrap" style="padding:0;max-width:none;">
+    <div class="grid">
+      <div class="space-tile"></div>
+      <div class="space-copy">
+        <span class="small-caps" style="color:var(--birch);display:block;margin-bottom:14px;">The room</span>
+        <h2>Twenty-four seats, one long table by the window</h2>
+        <p>Spruce floors, linen the colour of birch bark, and a pass you can watch from every seat in the room. We kept it small on purpose — everyone gets the same view of the kitchen.</p>
+      </div>
+      <div class="space-tile" style="order:3;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section visit" id="visit">
+  <div class="wrap grid">
+    <div>
+      <h2>Reserve a table</h2>
+      <div class="info"><div class="k">Address</div><div class="v">Tryggvagata 14, Reykjavík</div></div>
+      <div class="info"><div class="k">Service</div><div class="v">Wed–Sun, one seating, 19:00</div></div>
+      <div class="info"><div class="k">Phone</div><div class="v mono">+354 000 0000</div></div>
+      <div class="info"><div class="k">Booking</div><div class="v">By phone or Facebook message — tables release 30 days ahead</div></div>
+      <div style="margin-top:28px;"><a href="#" class="btn solid">Reserve a table</a></div>
+    </div>
+    <div class="map">
+      <div class="map-pin"><div class="dot"></div><span class="mono" style="font-size:13px;">Tryggvagata 14, Reykjavík</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap bar">
+    <div class="brand" style="font-size:16px;">SKOG</div>
+    <div class="fine">Portfolio mockup — fictional name and content, built for demonstration purposes.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taberna do Vale — Cozinha regional desde 1978</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#7A3626;
+    --clay-dark:#5A2418;
+    --bottle:#2E4234;
+    --parchment:#EFE4D0;
+    --parchment-light:#F6EFE1;
+    --ink:#231A14;
+    --gold:#C39A54;
+    --line: rgba(35,26,20,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'Space Mono', monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* tile divider */
+  .tiles{
+    height:14px;
+    width:100%;
+    background-image: repeating-linear-gradient(45deg, var(--bottle) 0 2px, transparent 2px 16px),
+                       repeating-linear-gradient(-45deg, var(--bottle) 0 2px, transparent 2px 16px);
+    background-size:16px 16px;
+    background-color:var(--gold);
+    opacity:0.9;
+  }
+
+  /* header */
+  header{
+    padding:26px 0 18px;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--clay);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--parchment-light);font-family:'Fraunces',serif;font-size:18px;
+    flex-shrink:0;
+  }
+  .brand-name{font-family:'Fraunces',serif;font-size:20px;letter-spacing:0.01em;}
+  .brand-sub{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--clay-dark);opacity:0.75;}
+  nav{display:flex;gap:28px;font-size:14px;}
+  nav a{opacity:0.8;transition:opacity .2s;}
+  nav a:hover{opacity:1;}
+  .btn{
+    display:inline-block;
+    background:var(--clay);
+    color:var(--parchment-light) !important;
+    padding:12px 22px;
+    border-radius:2px;
+    font-size:14px;
+    letter-spacing:0.02em;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn:hover{background:var(--clay-dark);transform:translateY(-1px);}
+  .btn.ghost{
+    background:transparent;
+    border:1.4px solid var(--ink);
+    color:var(--ink) !important;
+  }
+  .btn.ghost:hover{background:var(--ink);color:var(--parchment) !important;}
+
+  /* hero */
+  .hero{
+    padding:76px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;}
+  .eyebrow{
+    font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--clay);margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:26px;height:1.5px;background:var(--clay);display:inline-block;}
+  .hero h1{
+    font-size:clamp(40px,5.4vw,64px);
+    line-height:1.03;
+    max-width:11ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--clay);}
+  .hero p.lede{
+    margin-top:22px;
+    font-size:18px;
+    max-width:42ch;
+    color:#3a2c22;
+  }
+  .hero-ctas{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;}
+  .est{
+    margin-top:40px;display:flex;gap:34px;
+  }
+  .est div{border-left:1.5px solid var(--line);padding-left:14px;}
+  .est .num{font-family:'Fraunces',serif;font-size:26px;color:var(--clay-dark);}
+  .est .lbl{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.65;}
+
+  /* hero visual: illustrated plate/table, css-only */
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1.05;
+    border-radius:4px;
+    background:
+      radial-gradient(circle at 50% 42%, #fffaf0 0 30%, #e9d9b8 31% 33%, #fffaf0 34% 58%, transparent 60%),
+      linear-gradient(180deg, var(--bottle) 0%, #24352a 100%);
+    box-shadow: 0 30px 60px -20px rgba(35,26,20,0.45);
+  }
+  .hero-art::before{
+    content:'';
+    position:absolute;inset:18px;
+    border:1px dashed rgba(239,228,208,0.35);
+    border-radius:4px;
+  }
+  .hero-art .steam{
+    position:absolute;left:50%;top:14%;width:3px;height:70px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.55), transparent);
+    filter:blur(1.5px);
+    transform:translateX(-40px) rotate(4deg);
+    animation:rise 3.2s ease-in-out infinite;
+  }
+  .hero-art .steam:nth-child(2){transform:translateX(0px) rotate(-3deg);animation-delay:.5s;}
+  .hero-art .steam:nth-child(3){transform:translateX(40px) rotate(6deg);animation-delay:1s;}
+  @keyframes rise{
+    0%{opacity:0;transform-origin:bottom;}
+    30%{opacity:.7;}
+    100%{opacity:0;transform:translateY(-30px) translateX(var(--x,0)) rotate(4deg);}
+  }
+  .hero-art figcaption{
+    position:absolute;bottom:16px;left:16px;right:16px;
+    color:var(--parchment-light);
+    font-family:'Fraunces',serif;font-style:italic;font-size:15px;
+    opacity:0.85;
+  }
+
+  /* menu section */
+  .section{padding:88px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:44px;gap:24px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:22px;
+  }
+  .section-head h2{font-size:clamp(28px,3.4vw,40px);}
+  .section-head p{max-width:34ch;font-size:15px;opacity:0.75;}
+
+  .menu-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    column-gap:56px;row-gap:0;
+  }
+  .menu-item{
+    display:flex;justify-content:space-between;gap:16px;
+    padding:18px 0;
+    border-bottom:1px dotted var(--line);
+  }
+  .menu-item .name{font-family:'Fraunces',serif;font-size:18px;}
+  .menu-item .desc{font-size:13.5px;opacity:0.68;margin-top:5px;max-width:34ch;}
+  .menu-item .price{font-family:'Space Mono',monospace;font-size:15px;color:var(--clay-dark);white-space:nowrap;}
+
+  /* story */
+  .story{
+    background:var(--bottle);
+    color:var(--parchment-light);
+  }
+  .story .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;}
+  .story h2{font-size:clamp(30px,3.6vw,44px);}
+  .story .quote{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:22px;line-height:1.5;
+    border-left:2px solid var(--gold);
+    padding-left:24px;
+    max-width:38ch;
+  }
+  .story .sign{margin-top:20px;font-size:13px;letter-spacing:0.05em;opacity:0.8;}
+  .years{
+    font-family:'Fraunces',serif;
+    font-size:clamp(90px,11vw,150px);
+    line-height:0.8;
+    color:var(--gold);
+    opacity:0.9;
+  }
+  .years-lbl{font-size:12px;text-transform:uppercase;letter-spacing:0.14em;opacity:0.7;margin-top:10px;}
+
+  /* gallery strip - css blocks standing in for photos */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+  .strip div{
+    aspect-ratio:1;
+  }
+  .strip div:nth-child(1){background:linear-gradient(160deg,#8a4530,#5a2418);}
+  .strip div:nth-child(2){background:linear-gradient(160deg,#3a5142,#233127);}
+  .strip div:nth-child(3){background:linear-gradient(160deg,#c39a54,#8a6d33);}
+  .strip div:nth-child(4){background:linear-gradient(160deg,#5a2418,#231a14);}
+
+  /* visit / footer */
+  .visit{padding:88px 0;}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  .visit h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:26px;}
+  .info-row{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);}
+  .info-row:last-child{border-bottom:1px solid var(--line);}
+  .info-row .k{width:110px;flex-shrink:0;font-size:12px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.6;padding-top:2px;}
+  .info-row .v{font-size:15.5px;}
+  .map-block{
+    background:var(--ink);
+    border-radius:4px;
+    min-height:280px;
+    position:relative;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .map-block::before{
+    content:'';position:absolute;inset:0;
+    background-image: radial-gradient(circle, rgba(239,228,208,0.12) 1px, transparent 1px);
+    background-size:18px 18px;
+  }
+  .map-pin{
+    position:relative;z-index:1;text-align:center;color:var(--parchment);
+  }
+  .map-pin .dot{
+    width:14px;height:14px;border-radius:50%;background:var(--clay);
+    margin:0 auto 12px;box-shadow:0 0 0 8px rgba(122,54,38,0.25);
+  }
+  footer{
+    background:var(--ink);color:var(--parchment);
+    padding:48px 0 28px;
+  }
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .fname{font-family:'Fraunces',serif;font-size:20px;}
+  footer .fine{font-size:12px;opacity:0.55;margin-top:6px;}
+  .socials{display:flex;gap:16px;font-size:14px;}
+
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:340px;margin:0 auto;}
+    .menu-grid{grid-template-columns:1fr;}
+    .story .wrap{grid-template-columns:1fr;}
+    .visit .wrap{grid-template-columns:1fr;}
+    nav{display:none;}
+    .strip{grid-template-columns:repeat(2,1fr);}
+  }
+  :focus-visible{outline:2px solid var(--clay);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    .steam{animation:none;display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="tiles"></div>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark">V</div>
+      <div>
+        <div class="brand-name">Taberna do Vale</div>
+        <div class="brand-sub">Cozinha regional · desde 1978</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#ementa">Ementa</a>
+      <a href="#historia">A casa</a>
+      <a href="#visitar">Visitar</a>
+    </nav>
+    <a href="#visitar" class="btn">Reservar mesa</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Aberto de terça a domingo</div>
+      <h1>A mesa que a<br>família mantém<br><em>há três gerações</em></h1>
+      <p class="lede">Comida de tacho, pão da padaria ao lado e vinho da adega do meu avô. Sem menu plastificado — só o que está bom hoje.</p>
+      <div class="hero-ctas">
+        <a href="#visitar" class="btn">Ver morada e horário</a>
+        <a href="#ementa" class="btn ghost">Ver a ementa</a>
+      </div>
+      <div class="est">
+        <div><div class="num">1978</div><div class="lbl">Fundado</div></div>
+        <div><div class="num">3ª</div><div class="lbl">Geração à frente</div></div>
+        <div><div class="num">45</div><div class="lbl">Lugares</div></div>
+      </div>
+    </div>
+    <figure class="hero-art">
+      <div class="steam"></div><div class="steam"></div><div class="steam"></div>
+      <figcaption>Cabrito no forno, à moda da casa — só aos fins de semana.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="ementa">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ementa desta semana</h2>
+      <p>Muda com o mercado. Isto é o que está a sair da cozinha agora.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div><div class="name">Rojões à moda do Minho</div><div class="desc">Batata a murro, grelos salteados, laranja</div></div>
+        <div class="price">12€</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="name">Bacalhau à lagareiro</div><div class="desc">Azeite da região, batata a murro</div></div>
+        <div class="price">14€</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="name">Cabrito assado no forno</div><div class="desc">Só sábado e domingo, arroz de forno</div></div>
+        <div class="price">15€</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="name">Posta à Vale</div><div class="desc">Vitela maronesa, batata frita na hora</div></div>
+        <div class="price">16€</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="name">Caldo verde</div><div class="desc">Como entrada, feito todos os dias</div></div>
+        <div class="price">3,5€</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="name">Doce da casa</div><div class="desc">Pergunte qual é hoje</div></div>
+        <div class="price">3€</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="historia">
+  <div class="wrap">
+    <div>
+      <div class="years">47</div>
+      <div class="years-lbl">Anos na mesma rua</div>
+    </div>
+    <div>
+      <h2 style="margin-bottom:26px;">Três gerações, uma cozinha</h2>
+      <div class="quote">"Meu avô abriu isto com quatro mesas. O meu pai pôs o forno a lenha. Eu só mudei o suficiente para continuar igual."</div>
+      <div class="sign">— Manuel, à frente da casa desde 2009</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div></div><div></div><div></div><div></div>
+</div>
+
+<section class="visit" id="visitar">
+  <div class="wrap">
+    <div>
+      <h2>Venha visitar</h2>
+      <div class="info-row"><div class="k">Morada</div><div class="v">Rua do Vale 24, Amares</div></div>
+      <div class="info-row"><div class="k">Horário</div><div class="v">Ter–Dom, 12h–15h · 19h–22h</div></div>
+      <div class="info-row"><div class="k">Telefone</div><div class="v mono">253 000 000</div></div>
+      <div class="info-row"><div class="k">Reservas</div><div class="v">Por telefone ou WhatsApp — recomendado ao fim de semana</div></div>
+      <div style="margin-top:28px;"><a href="#" class="btn">Chamar agora</a></div>
+    </div>
+    <div class="map-block">
+      <div class="map-pin">
+        <div class="dot"></div>
+        Rua do Vale 24, Amares
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="fname">Taberna do Vale</div>
+      <div class="fine">Mockup de portfólio — nomes e conteúdo fictícios, criado para fins de demonstração.</div>
+    </div>
+    <div class="socials">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

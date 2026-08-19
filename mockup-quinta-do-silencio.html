@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quinta do Silêncio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood:#4a3423; --wood-dark:#2c2013; --stone:#8a8272; --moss:#5c6b4a;
+    --clay:#a3623f; --cream:#f5efe1; --ink:#241c14; --line:rgba(36,28,20,0.15);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--ink); font-family:'Work Sans',sans-serif; line-height:1.6;}
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:700; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  .eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--clay);}
+  .btn{display:inline-block; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;
+    background:var(--wood-dark); color:var(--cream); padding:13px 24px; border-radius:2px; border:1px solid var(--wood-dark);}
+  .btn:hover{background:var(--clay); border-color:var(--clay);}
+  .btn-ghost{background:transparent; color:var(--wood-dark); border:1px solid var(--wood-dark);}
+  .btn-ghost:hover{background:var(--wood-dark); color:var(--cream);}
+  section{padding:86px 0;}
+  .section-head{max-width:560px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3.6vw,38px); margin-top:10px;}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(245,239,225,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  header nav{display:flex; align-items:center; justify-content:space-between; max-width:1080px; margin:0 auto; padding:16px 28px;}
+  .logo{font-family:'Fraunces',serif; font-size:20px; font-weight:700;}
+  .logo span{color:var(--clay);}
+  nav ul{list-style:none; display:flex; gap:26px;}
+  nav ul a{font-size:13.5px; opacity:0.75;}
+  nav ul a:hover{opacity:1;}
+  @media(max-width:700px){ nav ul{display:none;} }
+
+  .hero{background:linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%); color:var(--cream); padding:110px 0 90px; text-align:center;}
+  .hero .eyebrow{color:#d8b978;}
+  .hero h1{color:var(--cream); font-size:clamp(36px,6vw,64px); margin:18px 0 20px; line-height:1.08;}
+  .hero p{max-width:480px; margin:0 auto 34px; opacity:0.8;}
+  .hero-cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+  .stats{display:flex; justify-content:center; gap:50px; padding:40px 0; border-bottom:1px solid var(--line); flex-wrap:wrap;}
+  .stats div{text-align:center; font-size:13px; opacity:0.7;}
+  .stats b{display:block; font-family:'Fraunces',serif; font-size:24px; font-weight:700; color:var(--wood-dark); opacity:1;}
+
+  .sobre-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  @media(max-width:760px){ .sobre-grid{grid-template-columns:1fr; gap:32px;} }
+  .swatch{aspect-ratio:4/3; border-radius:6px; background:linear-gradient(150deg,var(--stone),var(--moss) 60%, var(--wood-dark));}
+  .sobre-grid p{opacity:0.75; font-size:14.5px; margin-top:14px; max-width:440px;}
+
+  .menu-section{background:var(--wood-dark); color:var(--cream);}
+  .menu-section .eyebrow{color:#d8b978;}
+  .menu-section h2{color:var(--cream);}
+  .tabs{display:flex; gap:10px; margin:32px 0 36px; flex-wrap:wrap;}
+  .tab-btn{font-family:'Space Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; background:transparent; border:1px solid rgba(245,239,225,0.3); color:var(--cream); padding:9px 16px; border-radius:20px; cursor:pointer;}
+  .tab-btn.active{background:var(--clay); border-color:var(--clay);}
+  .tab-panel{display:none;} .tab-panel.active{display:block;}
+  .menu-row{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(245,239,225,0.14); font-size:14.5px;}
+  .menu-row .desc{display:block; font-size:12px; opacity:0.55; margin-top:4px;}
+  .menu-row .price{font-family:'Space Mono',monospace; color:#d8b978; white-space:nowrap;}
+
+  .galeria .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:10px;}
+  @media(max-width:700px){ .galeria .grid{grid-template-columns:1fr 1fr;} }
+  .gimg{aspect-ratio:1; border-radius:6px;}
+  .gimg:nth-child(1){background:linear-gradient(135deg,var(--clay),var(--wood));}
+  .gimg:nth-child(2){background:linear-gradient(135deg,var(--moss),var(--stone));}
+  .gimg:nth-child(3){background:linear-gradient(135deg,var(--wood-dark),var(--clay));}
+  .gimg:nth-child(4){background:linear-gradient(135deg,var(--stone),var(--moss));}
+
+  .eventos{background:linear-gradient(120deg, var(--clay), var(--wood-dark)); color:#fff; text-align:center;}
+  .eventos h2{color:#fff;}
+  .eventos p{max-width:520px; margin:16px auto 30px; opacity:0.9;}
+
+  .reservas{max-width:600px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:8px; padding:36px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; opacity:0.6; margin-bottom:6px;}
+  .field input, .field select{width:100%; border:1px solid var(--line); border-radius:3px; padding:11px 12px; font-family:'Work Sans',sans-serif; font-size:14px; background:var(--cream);}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media(max-width:480px){ .row2{grid-template-columns:1fr;} }
+  .reservas .btn{width:100%; margin-top:6px;}
+
+  footer{padding:36px 0; text-align:center; font-family:'Space Mono',monospace; font-size:11.5px; opacity:0.55; background:var(--wood-dark); color:var(--cream);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Quinta do <span>Silêncio</span></div>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#reservas">Reservas</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <span class="eyebrow">Restaurante de quinta · Serra da Lousã</span>
+    <h1>Comida da horta,<br>mesa debaixo das oliveiras.</h1>
+    <p>Produto próprio, forno a lenha, e uma vista que não cabe em foto — venha ver com os próprios olhos.</p>
+    <div class="hero-cta">
+      <a href="#reservas" class="btn">Reservar mesa</a>
+      <a href="#menu" class="btn btn-ghost">Ver o menu</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div><b>2009</b>ano de abertura</div>
+  <div><b>4 hectares</b>horta e pomar próprios</div>
+  <div><b>60 lugares</b>salão + esplanada</div>
+</section>
+
+<section id="sobre">
+  <div class="wrap sobre-grid">
+    <div class="swatch"></div>
+    <div>
+      <span class="eyebrow">A nossa história</span>
+      <h2>Da terra pra mesa, sem atalho</h2>
+      <p>Começou como horta de família, virou restaurante quando os vizinhos pediram pra ficar pra almoçar. Hoje plantamos o que servimos, e servimos só o que está na época.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <span class="eyebrow">O menu</span>
+    <h2>Sazonal, sempre</h2>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="entradas">Entradas</button>
+      <button class="tab-btn" data-tab="principais">Principais</button>
+      <button class="tab-btn" data-tab="sobremesas">Sobremesas</button>
+    </div>
+    <div class="tab-panel active" id="entradas">
+      <div class="menu-row"><div>Queijo de cabra da quinta<span class="desc">Mel próprio, nozes torradas</span></div><span class="price">€ 8,50</span></div>
+      <div class="menu-row"><div>Sopa de courgette da horta<span class="desc">Hortelã, azeite novo</span></div><span class="price">€ 5,50</span></div>
+      <div class="menu-row"><div>Pão da quinta e manteiga de ervas<span class="desc">Feito no forno a lenha</span></div><span class="price">€ 4,00</span></div>
+    </div>
+    <div class="tab-panel" id="principais">
+      <div class="menu-row"><div>Cabrito no forno a lenha<span class="desc">Batata a murro, legumes da horta</span></div><span class="price">€ 19,00</span></div>
+      <div class="menu-row"><div>Truta do rio grelhada<span class="desc">Amêndoa, limão da quinta</span></div><span class="price">€ 16,50</span></div>
+      <div class="menu-row"><div>Risoto de cogumelos silvestres<span class="desc">Colhidos na mata em outubro</span></div><span class="price">€ 15,00</span></div>
+    </div>
+    <div class="tab-panel" id="sobremesas">
+      <div class="menu-row"><div>Tarte de maçã da quinta<span class="desc">Canela, gelado de baunilha</span></div><span class="price">€ 6,00</span></div>
+      <div class="menu-row"><div>Doce de abóbora da horta<span class="desc">Receita da avó</span></div><span class="price">€ 5,00</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Ambiente</span><h2>A quinta, por dentro</h2></div>
+    <div class="grid">
+      <div class="gimg"></div><div class="gimg"></div><div class="gimg"></div><div class="gimg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="eventos" id="eventos">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#fff;">Eventos</span>
+    <h2>Casamentos e celebrações ao ar livre</h2>
+    <p>O jardim e o salão comportam eventos de até 80 pessoas — menu combinado com antecedência, do aperitivo à sobremesa.</p>
+    <a href="#reservas" class="btn" style="background:#fff; color:var(--wood-dark); border-color:#fff;">Pedir proposta</a>
+  </div>
+</section>
+
+<section id="reservas">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center; margin:0 auto 36px;"><span class="eyebrow">Reservas</span><h2>Marque a sua mesa</h2></div>
+    <div class="reservas">
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Pedido de reserva enviado (mockup de demonstração).');">
+        <div class="row2">
+          <div class="field"><label>Nome</label><input type="text" required></div>
+          <div class="field"><label>Telefone ou e-mail</label><input type="text" required></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Data</label><input type="date" required></div>
+          <div class="field"><label>Pessoas</label><select><option>2</option><option>3</option><option>4</option><option>6+</option></select></div>
+        </div>
+        <button type="submit" class="btn">Confirmar reserva</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>Quinta do Silêncio — Serra da Lousã, Portugal</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

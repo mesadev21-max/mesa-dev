@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasca do Rossio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood:#3c2a1e; --wood-dark:#241811; --cream:#f4ead9; --brick:#a8481f; --gold:#c99b3f;
+    --line: rgba(244,234,217,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--wood-dark); font-family:'Work Sans',sans-serif;}
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:600;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 26px;}
+  .eyebrow{font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color:var(--brick);}
+
+  header{background:var(--wood-dark); color:var(--cream); padding:18px 0; position:sticky; top:0; z-index:20;}
+  header nav{display:flex; justify-content:space-between; align-items:center; max-width:1000px; margin:0 auto; padding:0 26px;}
+  header .logo{font-family:'Fraunces',serif; font-size:20px; font-weight:600; letter-spacing:0.02em;}
+  header .links{display:flex; gap:26px; font-size:13.5px;}
+  header .links a{color:var(--cream); text-decoration:none; opacity:0.8;}
+  header .links a:hover{opacity:1;}
+  .btn{background:var(--brick); color:#fff; padding:10px 18px; border-radius:2px; text-decoration:none; font-size:13px; font-weight:600;}
+  @media(max-width:680px){ header .links{display:none;} }
+
+  .hero{background:linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%); color:var(--cream); padding:90px 0 70px; text-align:center;}
+  .hero .eyebrow{color:var(--gold);}
+  .hero h1{font-size:clamp(34px,6vw,58px); margin:16px 0 18px; line-height:1.08;}
+  .hero p{max-width:480px; margin:0 auto; opacity:0.8; font-size:16px;}
+  .hero .btn{display:inline-block; margin-top:30px;}
+
+  .sobre{padding:80px 0; text-align:center;}
+  .sobre p{max-width:600px; margin:18px auto 0; opacity:0.8; font-size:16px; line-height:1.7;}
+
+  .prato-do-dia{background:var(--wood-dark); color:var(--cream); padding:64px 0; text-align:center;}
+  .prato-do-dia .eyebrow{color:var(--gold);}
+  .prato-card{
+    max-width:420px; margin:26px auto 0; border:1px solid var(--line); padding:26px; border-radius:3px;
+  }
+  .prato-card h3{font-size:24px; margin-bottom:8px;}
+  .prato-card .preco{font-family:'Space Mono',monospace; color:var(--gold); font-size:20px; margin-top:12px;}
+
+  .menu{padding:80px 0;}
+  .menu-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 60px; margin-top:40px;}
+  @media(max-width:680px){ .menu-grid{grid-template-columns:1fr;} }
+  .menu-item{display:flex; justify-content:space-between; gap:14px; padding:16px 0; border-bottom:1px dotted rgba(36,24,17,0.25);}
+  .menu-item .nome{font-weight:600;}
+  .menu-item .desc{font-size:12.5px; opacity:0.65; display:block; margin-top:2px;}
+  .menu-item .preco{font-family:'Space Mono',monospace; white-space:nowrap;}
+
+  .info{background:var(--brick); color:#fff; padding:60px 0; text-align:center;}
+  .info-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:30px;}
+  @media(max-width:680px){ .info-grid{grid-template-columns:1fr;} }
+  .info-grid h4{font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.1em; opacity:0.75; margin-bottom:8px;}
+  .info-grid p{font-size:15px;}
+
+  footer{padding:36px 0; text-align:center; background:var(--wood-dark); color:var(--cream); font-size:13px; opacity:0.7;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Tasca do Rossio</div>
+    <div class="links">
+      <a href="#sobre">Sobre</a>
+      <a href="#menu">Cardápio</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a href="#contato" class="btn">Reservar mesa</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Desde 1987 · Lisboa</span>
+    <h1>Comida de casa,<br>no coração de Lisboa.</h1>
+    <p>Tasca de bairro com receitas de família, vinho da casa e mesa sempre posta pra quem chega com fome de verdade.</p>
+    <a href="#contato" class="btn">Reservar mesa</a>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <span class="eyebrow">A nossa história</span>
+    <h2>Três gerações na cozinha</h2>
+    <p>Começou com a avó Fernanda, numa cozinha pequena perto do Rossio. Hoje seguimos com as mesmas receitas, o mesmo tempero e a mesma vontade de receber bem — só a sala ficou um pouco maior.</p>
+  </div>
+</section>
+
+<section class="prato-do-dia">
+  <div class="wrap">
+    <span class="eyebrow">Hoje na tasca</span>
+    <div class="prato-card">
+      <h3>Bacalhau à Brás</h3>
+      <p style="opacity:.75; font-size:14px;">Com azeitonas, salsa fresca e um copo de vinho verde da casa.</p>
+      <div class="preco">€ 12,50</div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <span class="eyebrow">Cardápio</span>
+    <h2>O que servimos</h2>
+    <div class="menu-grid">
+      <div>
+        <div class="menu-item"><div><span class="nome">Bacalhau à Brás</span><span class="desc">Bacalhau, batata palha, ovo</span></div><span class="preco">€ 12,50</span></div>
+        <div class="menu-item"><div><span class="nome">Feijoada à transmontana</span><span class="desc">Feijão, entrecosto, chouriço</span></div><span class="preco">€ 11,00</span></div>
+        <div class="menu-item"><div><span class="nome">Polvo à lagareiro</span><span class="desc">Polvo assado, batata a murro</span></div><span class="preco">€ 15,00</span></div>
+        <div class="menu-item"><div><span class="nome">Sopa da avó</span><span class="desc">Legumes da horta, pão caseiro</span></div><span class="preco">€ 4,50</span></div>
+      </div>
+      <div>
+        <div class="menu-item"><div><span class="nome">Bifana no pão</span><span class="desc">Porco marinado, mostarda</span></div><span class="preco">€ 5,00</span></div>
+        <div class="menu-item"><div><span class="nome">Arroz de marisco</span><span class="desc">Camarão, amêijoa, tomate</span></div><span class="preco">€ 16,00</span></div>
+        <div class="menu-item"><div><span class="nome">Pastel de nata</span><span class="desc">Feito na casa, todos os dias</span></div><span class="preco">€ 1,50</span></div>
+        <div class="menu-item"><div><span class="nome">Vinho da casa (copo)</span><span class="desc">Tinto ou verde</span></div><span class="preco">€ 3,00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="contato">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#fff; opacity:.8;">Visite-nos</span>
+    <h2>Onde e quando</h2>
+    <div class="info-grid">
+      <div><h4>Endereço</h4><p>Rua das Portas de Santo Antão 34, Lisboa</p></div>
+      <div><h4>Horário</h4><p>Terça a domingo<br>12h–15h · 19h–23h</p></div>
+      <div><h4>Reservas</h4><p>+351 91 234 5678<br>(WhatsApp)</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>Tasca do Rossio — feito com carinho, sem pretensão.</footer>
+
+</body>
+</html>

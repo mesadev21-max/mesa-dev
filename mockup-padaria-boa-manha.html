@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padaria Boa Manhã</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --pink:#f7d9d9; --mint:#d7ece2; --sun:#f9e2b3; --ink:#3a2e28; --gold:#c9a24d; --cream:#fffdf9; --line:rgba(58,46,40,0.12); }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--cream); color:var(--ink); font-family:'Work Sans',sans-serif; font-weight:300; line-height:1.65;}
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:500; letter-spacing:-0.005em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 30px;}
+  .eyebrow{font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold);}
+  .btn{display:inline-block; background:var(--ink); color:var(--cream); padding:13px 28px; border-radius:30px; font-size:13px;}
+  .btn:hover{background:var(--gold);}
+
+  header{padding:26px 0;}
+  header .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .logo{font-family:'Fraunces',serif; font-style:italic; font-size:21px;}
+  nav a{margin-left:24px; font-size:13.5px; opacity:0.7;}
+  @media(max-width:600px){ nav{display:none;} }
+
+  .hero{padding:80px 0 70px; text-align:center;}
+  .hero h1{font-size:clamp(32px,5.4vw,54px); line-height:1.15; max-width:560px; margin:16px auto 18px; font-style:italic;}
+  .hero p{max-width:400px; margin:0 auto 28px; opacity:0.65;}
+
+  .swatches{display:flex; justify-content:center; gap:14px; margin-bottom:50px;}
+  .swatches span{width:46px; height:46px; border-radius:50%;}
+
+  .products{padding:20px 0 80px;}
+  .prod-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:700px){ .prod-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:460px){ .prod-grid{grid-template-columns:1fr;} }
+  .prod{border-radius:18px; padding:26px 20px; text-align:center;}
+  .prod h3{font-size:16px; margin:4px 0 4px;}
+  .prod .price{font-family:'Space Mono',monospace; font-size:12.5px; opacity:0.7;}
+
+  .about{padding:70px 0; text-align:center; background:var(--mint);}
+  .about h2{font-size:26px; margin-bottom:14px; font-style:italic;}
+  .about p{max-width:440px; margin:0 auto; opacity:0.75; font-size:14px;}
+
+  footer{padding:34px 0; text-align:center; font-family:'Space Mono',monospace; font-size:11px; opacity:0.5;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Padaria Boa Manhã</div>
+    <nav><a href="#produtos">Produtos</a><a href="#sobre">Sobre</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Pão de fermentação natural · Cascais</span>
+    <h1>Pão quente todo dia, desde as 7h.</h1>
+    <p>Fermentação lenta, farinha portuguesa, e o cheiro que acorda o bairro inteiro.</p>
+    <a href="#produtos" class="btn">Ver o cardápio</a>
+  </div>
+</section>
+
+<div class="swatches">
+  <span style="background:var(--pink);"></span>
+  <span style="background:var(--sun);"></span>
+  <span style="background:var(--mint);"></span>
+</div>
+
+<section class="products" id="produtos">
+  <div class="wrap">
+    <div class="prod-grid">
+      <div class="prod" style="background:var(--pink);"><h3>Pão de fermentação natural</h3><p class="price">€ 4,50</p></div>
+      <div class="prod" style="background:var(--sun);"><h3>Croissant amanteigado</h3><p class="price">€ 2,20</p></div>
+      <div class="prod" style="background:var(--mint);"><h3>Pão de queijo</h3><p class="price">€ 1,80 (6 un.)</p></div>
+      <div class="prod" style="background:var(--sun);"><h3>Bolo de cenoura</h3><p class="price">€ 3,50</p></div>
+      <div class="prod" style="background:var(--pink);"><h3>Focaccia de ervas</h3><p class="price">€ 5,00</p></div>
+      <div class="prod" style="background:var(--mint);"><h3>Café coado</h3><p class="price">€ 2,00</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <span class="eyebrow">A nossa manhã</span>
+    <h2>Começamos a amassar às 4h da madrugada</h2>
+    <p>Pra quando você chegar, o pão já esteja quentinho. Aberto todos os dias, das 7h às 14h.</p>
+  </div>
+</section>
+
+<footer>Padaria Boa Manhã — Cascais, Portugal</footer>
+
+</body>
+</html>
