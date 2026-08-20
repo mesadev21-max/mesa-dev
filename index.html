@@ -1773,24 +1773,47 @@ async function refreshTicketNumber(){
 }
 refreshTicketNumber();
 
+// Envia a comanda pro Google Forms (sem backend próprio).
+// IDs dos campos vêm do formulário: https://docs.google.com/forms/d/e/1FAIpQLSeeG1xaIjYqE6D8DkddLEy2SdWxh7OnCRYn4_DGiOBEirZinQ
+const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeeG1xaIjYqE6D8DkddLEy2SdWxh7OnCRYn4_DGiOBEirZinQ/formResponse';
+const GOOGLE_FORM_ENTRIES = {
+  restName: 'entry.1531078943',
+  ownerName: 'entry.1069272711',
+  country: 'entry.1390675063',
+  city: 'entry.1121343959',
+  style: 'entry.1882051024',            // campo "outro" no Google Forms
+  styleOther: 'entry.1882051024.other_option_response',
+  siteStatus: 'entry.994170936',
+  contact: 'entry.1007031644'           // combina forma de contato + valor num só campo
+};
+
 document.getElementById('orderForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
   const styleEl = document.querySelector('input[name="style"]:checked');
-  const order = {
-    restaurant: document.getElementById('restName').value,
-    owner: document.getElementById('ownerName').value,
-    country: document.getElementById('country').value,
-    city: document.getElementById('city').value,
-    siteStatus: document.getElementById('siteStatus').value,
-    style: styleEl ? styleEl.value : '',
-    contactPref: document.getElementById('contactPref').value,
-    contactValue: document.getElementById('contactValue').value,
-    notes: document.getElementById('notes').value,
-    lang: currentLang,
-    submittedAt: new Date().toISOString()
-  };
-  const key = 'order:' + Date.now() + '-' + Math.random().toString(36).slice(2,7);
-  try{ await window.storage.set(key, JSON.stringify(order), true); }catch(err){ console.error('Erro ao salvar pedido', err); }
+  const restName = document.getElementById('restName').value;
+  const ownerName = document.getElementById('ownerName').value;
+  const country = document.getElementById('country').value;
+  const city = document.getElementById('city').value;
+  const siteStatus = document.getElementById('siteStatus').value;
+  const style = styleEl ? styleEl.value : '';
+  const contactPref = document.getElementById('contactPref').value;
+  const contactValue = document.getElementById('contactValue').value;
+  const notes = document.getElementById('notes').value; // ainda não tem campo correspondente no Google Forms
+
+  const fd = new FormData();
+  fd.append(GOOGLE_FORM_ENTRIES.restName, restName);
+  fd.append(GOOGLE_FORM_ENTRIES.ownerName, ownerName);
+  fd.append(GOOGLE_FORM_ENTRIES.country, country);
+  fd.append(GOOGLE_FORM_ENTRIES.city, city);
+  fd.append(GOOGLE_FORM_ENTRIES.style, '__other_option__');
+  fd.append(GOOGLE_FORM_ENTRIES.styleOther, style + (notes ? ' | Notas: ' + notes : ''));
+  fd.append(GOOGLE_FORM_ENTRIES.siteStatus, siteStatus);
+  fd.append(GOOGLE_FORM_ENTRIES.contact, contactPref + ': ' + contactValue);
+
+  try{
+    await fetch(GOOGLE_FORM_ACTION, { method:'POST', mode:'no-cors', body: fd });
+  }catch(err){ console.error('Erro ao enviar comanda pro Google Forms', err); }
+
   document.getElementById('formView').style.display='none';
   document.getElementById('confirmView').classList.add('show');
 });
