@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio — Mesa.dev</title>
+<meta name="description" content="Veja exemplos reais de sites feitos pelo Mesa.dev, filtrados por estilo, formato, tipografia e paleta de cores.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --gold:#c9a227; --gold-light:#e4c563; --black:#0b0b09; --charcoal:#17140f;
+    --cream:#fbf8f2; --cream-2:#f1e9d8; --line: rgba(11,11,9,0.14); --line-dark: rgba(251,248,242,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--black); font-family:'Work Sans', sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:700; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+  .stamp{font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);}
+  .btn{display:inline-block; font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--black); color:var(--cream); padding:13px 22px; border-radius:2px; border:1px solid var(--black); cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
+  .btn:hover{background:var(--gold); border-color:var(--gold); color:var(--black); transform:translateY(-3px); box-shadow:0 10px 22px rgba(201,162,39,0.35);}
+
+  /* header */
+  .top-strip{background:var(--black); color:var(--cream); font-family:'Space Mono',monospace; font-size:11.5px;}
+  .top-strip .wrap{display:flex; justify-content:space-between; align-items:center; padding:8px 28px;}
+  .top-strip a:hover{color:var(--gold-light);}
+  header{position:sticky; top:0; z-index:100; background:rgba(251,248,242,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  header nav{display:flex; align-items:center; justify-content:space-between; max-width:1160px; margin:0 auto; padding:14px 28px;}
+  .brand-block{display:flex; align-items:center; gap:8px; position:relative;}
+  .brand-name{font-family:'Fraunces',serif; font-weight:800; font-size:22px; color:var(--black); position:relative; z-index:1;}
+  .brand-name .dot{color:var(--gold);}
+  .brand-watermark{position:absolute; left:-26px; top:50%; transform:translateY(-50%); width:100px; height:100px; color:var(--gold); opacity:0.07; z-index:0; pointer-events:none;}
+  .brand-watermark svg{width:100%; height:100%;}
+  .brand-mark{width:24px; height:24px; color:var(--gold); flex-shrink:0;}
+  .brand-mark svg{width:100%; height:100%;}
+  .back-link{font-size:13.5px; opacity:0.7;}
+  .back-link:hover{opacity:1; color:var(--gold);}
+
+  /* intro */
+  .intro{padding:70px 0 30px; text-align:center;}
+  .intro h1{font-size:clamp(30px,5vw,50px); max-width:680px; margin:14px auto 16px;}
+  .intro p{max-width:560px; margin:0 auto; opacity:0.75; font-size:16px;}
+
+  /* ===== FILTERS ===== */
+  .filters{padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--cream-2); position:sticky; top:65px; z-index:50; transition:padding .3s ease;}
+  .filters.collapsed{padding:14px 0;}
+  .filters-toggle{
+    display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none;
+    padding-bottom:0; transition:padding-bottom .3s ease;
+  }
+  .filters.collapsed .filters-toggle{padding-bottom:0;}
+  .filters-toggle-left{display:flex; align-items:center; gap:10px;}
+  .filters-toggle h3{font-size:15px; font-family:'Fraunces',serif; font-weight:600;}
+  .filters-active-badge{
+    display:none; font-family:'Space Mono',monospace; font-size:10.5px; background:var(--gold); color:var(--black);
+    padding:2px 9px; border-radius:20px; font-weight:700;
+  }
+  .filters-active-badge.show{display:inline-block;}
+  .filters-arrow{width:30px; height:30px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; background:#fff; transition:transform .35s ease, background .2s ease;}
+  .filters-arrow:hover{background:var(--gold-light);}
+  .filters-arrow svg{width:14px; height:14px; transition:transform .35s ease;}
+  .filters.collapsed .filters-arrow svg{transform:rotate(-90deg);}
+  .filters-content{
+    max-height:600px; opacity:1; overflow:hidden; transition:max-height .4s ease, opacity .3s ease, margin-top .4s ease;
+    margin-top:22px;
+  }
+  .filters.collapsed .filters-content{max-height:0; opacity:0; margin-top:0;}
+
+  .filter-groups{display:flex; flex-wrap:wrap; gap:26px;}
+  .filter-group{display:flex; flex-direction:column; gap:8px;}
+  .filter-group h4{font-family:'Space Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; opacity:0.55;}
+  .filter-pills{display:flex; flex-wrap:wrap; gap:7px; max-width:340px;}
+  .pill{
+    font-family:'Space Mono',monospace; font-size:11.5px; padding:6px 13px; border-radius:20px; border:1px solid var(--line);
+    background:#fff; cursor:pointer; transition:all .18s ease; user-select:none;
+  }
+  .pill:hover{border-color:var(--gold);}
+  .pill.active{background:var(--gold); border-color:var(--gold); color:var(--black); font-weight:700;}
+  .filters-bottom{display:flex; justify-content:space-between; align-items:center; margin-top:18px; flex-wrap:wrap; gap:10px;}
+  .clear-filters{font-family:'Space Mono',monospace; font-size:11.5px; text-decoration:underline; opacity:0.6; background:none; border:none; cursor:pointer;}
+  .clear-filters:hover{opacity:1;}
+  .result-count{font-family:'Space Mono',monospace; font-size:11.5px; opacity:0.6;}
+
+  /* ===== GRID / CARDS ===== */
+  .port-section{padding:56px 0 100px;}
+  .cards-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:28px 26px;}
+  @media(max-width:980px){ .cards-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:640px){ .cards-grid{grid-template-columns:1fr;} }
+
+  .p-card{
+    position:relative; border-radius:12px; overflow:hidden; background:var(--charcoal); cursor:pointer;
+    height:240px; transition:transform .35s cubic-bezier(.22,.68,.35,1), box-shadow .35s ease, z-index 0s;
+    transform-origin:center;
+  }
+  .p-card:hover{transform:scale(1.18) translateY(-6px); z-index:20; box-shadow:0 34px 60px rgba(11,11,9,0.45);}
+  .p-card.hidden-by-filter{display:none;}
+
+  .p-frame-wrap{position:absolute; inset:0; overflow:hidden; background:var(--charcoal);}
+  .p-frame{
+    width:1280px; height:2600px; border:0; position:absolute; top:0; left:0;
+    transform:scale(0.223); transform-origin:top left; pointer-events:none;
+  }
+  .p-gradient-fallback{position:absolute; inset:0;}
+
+  .p-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,11,9,0) 30%, rgba(11,11,9,0.88) 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:18px;}
+  .p-card:hover .p-overlay{background:linear-gradient(180deg, rgba(11,11,9,0.15) 0%, rgba(11,11,9,0.94) 78%);}
+  .p-title{font-family:'Fraunces',serif; color:#fff; font-size:19px; font-weight:600;}
+  .p-sub{font-family:'Space Mono',monospace; color:var(--gold-light); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;}
+  .p-desc{font-size:12px; color:rgba(255,255,255,0.82); margin-top:6px; line-height:1.5;}
+  .p-tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; max-height:0; opacity:0; overflow:hidden; transition:max-height .3s ease, opacity .3s ease;}
+  .p-card:hover .p-tags{max-height:80px; opacity:1;}
+  .p-tags span{font-family:'Space Mono',monospace; font-size:9.5px; background:rgba(255,255,255,0.14); color:#fff; padding:3px 8px; border-radius:10px;}
+  .p-hint{font-size:11px; color:rgba(255,255,255,0.6); margin-top:10px; max-height:0; opacity:0; overflow:hidden; transition:max-height .3s ease .05s, opacity .3s ease .05s;}
+  .p-card:hover .p-hint{max-height:20px; opacity:1;}
+
+  .p-card.placeholder{border:1px dashed var(--line-dark); background:var(--cream-2); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; cursor:default;}
+  .p-card.placeholder:hover{transform:none; box-shadow:none;}
+  .p-card.placeholder p{font-size:13px; opacity:0.6; color:var(--black); max-width:200px;}
+
+  .no-results{text-align:center; padding:60px 0; opacity:0.6; font-size:14px; display:none;}
+  .no-results.show{display:block;}
+
+  footer{background:var(--black); color:var(--cream); padding:40px 0; text-align:center;}
+  footer p{font-size:12.5px; opacity:0.55; margin-top:8px;}
+  footer a{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<div class="top-strip">
+  <div class="wrap">
+    <a href="https://wa.me/5554996336129" target="_blank" rel="noopener">WhatsApp +55 54 99633-6129</a>
+    <a href="mailto:mesadev21@gmail.com">mesadev21@gmail.com</a>
+  </div>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="brand-block">
+      <span class="brand-watermark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+          <line x1="42" y1="10" x2="42" y2="26"/><line x1="50" y1="10" x2="50" y2="26"/><line x1="58" y1="10" x2="58" y2="26"/>
+          <path d="M42 26 Q42 34 50 34 Q58 34 58 26"/><line x1="50" y1="34" x2="50" y2="82"/><circle cx="50" cy="58" r="26"/>
+        </svg>
+      </span>
+      <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
+    </a>
+    <a href="index.html" class="back-link">← Voltar ao site</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="stamp">Portfólio</span>
+    <h1>Exemplos reais, não maquetes soltas</h1>
+    <p>Passe o mouse pra ampliar e ver o site de verdade rodando em miniatura. Clique pra abrir em tamanho normal.</p>
+  </div>
+</section>
+
+<section class="filters" id="filtersSection">
+  <div class="wrap">
+    <div class="filters-toggle" id="filtersToggle">
+      <div class="filters-toggle-left">
+        <h3>Filtros</h3>
+        <span class="filters-active-badge" id="activeBadge">0 ativos</span>
+      </div>
+      <div class="filters-arrow" aria-label="Minimizar filtros">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="filters-content" id="filtersContent">
+    <div class="filter-groups">
+      <div class="filter-group">
+        <h4>Estilo</h4>
+        <div class="filter-pills" data-group="estilo">
+          <button class="pill" data-value="elegante">Elegante</button>
+          <button class="pill" data-value="sobrio">Sóbrio</button>
+          <button class="pill" data-value="moderno">Moderno</button>
+          <button class="pill" data-value="sofisticado">Sofisticado</button>
+          <button class="pill" data-value="rustico">Rústico</button>
+          <button class="pill" data-value="colorido">Colorido</button>
+          <button class="pill" data-value="minimalista">Minimalista</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h4>Formato</h4>
+        <div class="filter-pills" data-group="formato">
+          <button class="pill" data-value="landing">Landing page</button>
+          <button class="pill" data-value="completo">Site completo</button>
+          <button class="pill" data-value="ecommerce">E-commerce</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h4>Tipografia</h4>
+        <div class="filter-pills" data-group="tipografia">
+          <button class="pill" data-value="encorpada">Encorpada &amp; rústica</button>
+          <button class="pill" data-value="fina">Fina &amp; elegante</button>
+          <button class="pill" data-value="moderna">Moderna &amp; marcante</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h4>Paleta de cores</h4>
+        <div class="filter-pills" data-group="cores">
+          <button class="pill" data-value="terrosos">Tons terrosos</button>
+          <button class="pill" data-value="escuro">Monocromático escuro</button>
+          <button class="pill" data-value="vibrante">Vibrante multicolor</button>
+          <button class="pill" data-value="dourado">Dourado &amp; neutro</button>
+        </div>
+      </div>
+    </div>
+    <div class="filters-bottom">
+      <button class="clear-filters" id="clearFilters">Limpar filtros</button>
+      <span class="result-count" id="resultCount">4 projetos</span>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="port-section">
+  <div class="wrap">
+    <div class="cards-grid" id="cardsGrid">
+
+      <article class="p-card" data-estilo="rustico" data-formato="landing" data-tipografia="encorpada" data-cores="terrosos" onclick="window.open('mockup-tasca-do-rossio.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-tasca-do-rossio.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo rústico</span>
+          <span class="p-title">Tasca do Rossio</span>
+          <p class="p-desc">Cardápio do dia com preços, história do restaurante, horário e reserva direto por WhatsApp.</p>
+          <div class="p-tags"><span>Rústico</span><span>Landing page</span><span>Tons terrosos</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="elegante sobrio sofisticado" data-formato="completo" data-tipografia="fina" data-cores="escuro" onclick="window.open('mockup-marisqueira-atlantico.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-marisqueira-atlantico.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo elegante</span>
+          <span class="p-title">Marisqueira Atlântico</span>
+          <p class="p-desc">Menu de degustação com preços, filosofia da casa, mesa com vista pro mar e reservas por telefone/e-mail.</p>
+          <div class="p-tags"><span>Elegante</span><span>Sóbrio</span><span>Site completo</span><span>Monocromático escuro</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="moderno colorido" data-formato="completo" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-jardim-e-sal.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-jardim-e-sal.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo moderno</span>
+          <span class="p-title">Jardim &amp; Sal</span>
+          <p class="p-desc">Cardápio em abas com preços, eventos privados, depoimentos de clientes, formulário de reserva e chat.</p>
+          <div class="p-tags"><span>Moderno</span><span>Colorido</span><span>Site completo</span><span>Vibrante</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="minimalista sofisticado" data-formato="landing" data-tipografia="fina" data-cores="dourado" onclick="window.open('mockup-cafe-nomade.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-cafe-nomade.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo minimalista</span>
+          <span class="p-title">Café Nômade</span>
+          <p class="p-desc">Menu enxuto com preços, horário de funcionamento e localização — uma página só, direto ao ponto.</p>
+          <div class="p-tags"><span>Minimalista</span><span>Landing page</span><span>Dourado &amp; neutro</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="colorido moderno" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-brasa-e-rua.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-brasa-e-rua.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo colorido</span>
+          <span class="p-title">Brasa &amp; Rua</span>
+          <p class="p-desc">Cardápio com preços, localização do food truck e horário de funcionamento — visual jovem e informal.</p>
+          <div class="p-tags"><span>Colorido</span><span>Landing page</span><span>Vibrante</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="sofisticado elegante" data-formato="ecommerce" data-tipografia="fina" data-cores="terrosos" onclick="window.open('mockup-adega-vinha-alta.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-adega-vinha-alta.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">E-commerce</span>
+          <span class="p-title">Adega Vinha Alta</span>
+          <p class="p-desc">Loja com carrinho, categorias de produto, preços e checkout — vende vinho, azeite e cestas presente direto ao cliente.</p>
+          <div class="p-tags"><span>Sofisticado</span><span>E-commerce</span><span>Tons terrosos</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="sobrio elegante" data-formato="landing" data-tipografia="fina" data-cores="terrosos" onclick="window.open('mockup-trattoria-vale-verde.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-trattoria-vale-verde.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo sóbrio</span>
+          <span class="p-title">Trattoria Vale Verde</span>
+          <p class="p-desc">Menu com preços, horário de funcionamento, telefone e e-mail para reserva — clima de trattoria de família.</p>
+          <div class="p-tags"><span>Sóbrio</span><span>Landing page</span><span>Tons terrosos</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="moderno colorido" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-verde-tigela.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-verde-tigela.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo moderno</span>
+          <span class="p-title">Verde Tigela</span>
+          <p class="p-desc">Cardápio de bowls com preços, promessa da casa e horário — paleta vibrante em tom pastel-saturado.</p>
+          <div class="p-tags"><span>Moderno</span><span>Colorido</span><span>Landing page</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="sofisticado elegante" data-formato="landing" data-tipografia="encorpada" data-cores="escuro" onclick="window.open('mockup-talho-e-brasa.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-talho-e-brasa.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo sofisticado</span>
+          <span class="p-title">Talho &amp; Brasa</span>
+          <p class="p-desc">Cortes com preços, tempo de maturação, horário e botão de reserva — clima escuro de churrascaria de autor.</p>
+          <div class="p-tags"><span>Sofisticado</span><span>Landing page</span><span>Monocromático escuro</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="minimalista colorido" data-formato="landing" data-tipografia="fina" data-cores="dourado" onclick="window.open('mockup-padaria-boa-manha.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-padaria-boa-manha.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo minimalista</span>
+          <span class="p-title">Padaria Boa Manhã</span>
+          <p class="p-desc">Produtos com preços, horário de funcionamento e história da casa — visual limpo em tons pastel.</p>
+          <div class="p-tags"><span>Minimalista</span><span>Colorido</span><span>Landing page</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="colorido moderno" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-liberty-diner.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-liberty-diner.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estados Unidos · em inglês</span>
+          <span class="p-title">Liberty Diner</span>
+          <p class="p-desc">Menu com preços em dólar, horário de funcionamento, endereço e telefone — clima clássico de diner americano.</p>
+          <div class="p-tags"><span>Colorido</span><span>Landing page</span><span>Vibrante</span><span>EUA</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="colorido rustico" data-formato="landing" data-tipografia="encorpada" data-cores="vibrante" onclick="window.open('mockup-boteco-da-esquina.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-boteco-da-esquina.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Brasil · em português-BR</span>
+          <span class="p-title">Boteco da Esquina</span>
+          <p class="p-desc">Cardápio com preços em real, horário de funcionamento, endereço e reserva por WhatsApp — clima de boteco de bairro.</p>
+          <div class="p-tags"><span>Colorido</span><span>Rústico</span><span>Landing page</span><span>Brasil</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="rustico sofisticado" data-formato="completo" data-tipografia="encorpada" data-cores="terrosos" onclick="window.open('mockup-quinta-do-silencio.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-quinta-do-silencio.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub">Estilo rústico</span>
+          <span class="p-title">Quinta do Silêncio</span>
+          <p class="p-desc">Menu sazonal com preços em abas, galeria, seção de eventos para casamentos e formulário de reserva completo.</p>
+          <div class="p-tags"><span>Rústico</span><span>Sofisticado</span><span>Site completo</span><span>Tons terrosos</span></div>
+          <span class="p-hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card placeholder" data-estilo="" data-formato="" data-tipografia="" data-cores="">
+        <p>Tem um projeto seu pra mostrar aqui? Me manda o link ou o print.</p>
+      </article>
+
+    </div>
+    <p class="no-results" id="noResults">Nenhum projeto combina com esses filtros ainda — tente remover algum.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand-name" style="color:var(--cream);">Mesa<span class="dot">.</span>dev</span>
+    <p>© Mesa.dev · <a href="index.html">Voltar ao site</a></p>
+  </div>
+</footer>
+
+<script>
+  const activeFilters = { estilo: new Set(), formato: new Set(), tipografia: new Set(), cores: new Set() };
+  const cards = Array.from(document.querySelectorAll('.p-card:not(.placeholder)'));
+  const allCardsCount = cards.length;
+
+  document.querySelectorAll('.pill').forEach(pill=>{
+    pill.addEventListener('click', ()=>{
+      const group = pill.parentElement.dataset.group;
+      const value = pill.dataset.value;
+      pill.classList.toggle('active');
+      if(pill.classList.contains('active')) activeFilters[group].add(value);
+      else activeFilters[group].delete(value);
+      applyFilters();
+    });
+  });
+
+  document.getElementById('clearFilters').addEventListener('click', ()=>{
+    document.querySelectorAll('.pill.active').forEach(p=>p.classList.remove('active'));
+    Object.keys(activeFilters).forEach(g=> activeFilters[g].clear());
+    applyFilters();
+  });
+
+  function applyFilters(){
+    let visible = 0;
+    cards.forEach(card=>{
+      let matches = true;
+      for(const group of Object.keys(activeFilters)){
+        if(activeFilters[group].size === 0) continue;
+        const cardValues = (card.dataset[group] || '').split(' ');
+        const hasMatch = [...activeFilters[group]].some(v => cardValues.includes(v));
+        if(!hasMatch){ matches = false; break; }
+      }
+      card.classList.toggle('hidden-by-filter', !matches);
+      if(matches) visible++;
+    });
+    document.getElementById('resultCount').textContent = visible + (visible === 1 ? ' projeto' : ' projetos');
+    document.getElementById('noResults').classList.toggle('show', visible === 0);
+
+    const totalActive = Object.values(activeFilters).reduce((sum, set) => sum + set.size, 0);
+    const badge = document.getElementById('activeBadge');
+    badge.textContent = totalActive + (totalActive === 1 ? ' ativo' : ' ativos');
+    badge.classList.toggle('show', totalActive > 0);
+  }
+
+  // minimizar/expandir filtros
+  const filtersSection = document.getElementById('filtersSection');
+  document.getElementById('filtersToggle').addEventListener('click', ()=>{
+    filtersSection.classList.toggle('collapsed');
+  });
+
+  applyFilters();
+</script>
+
+</body>
+</html>
