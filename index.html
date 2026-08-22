@@ -757,6 +757,19 @@
   </div>
 </section>
 
+<section class="sec-light reveal" style="padding:56px 0;">
+  <div class="wrap">
+    <div style="background:linear-gradient(120deg, var(--black) 0%, var(--charcoal) 100%); border-radius:12px; padding:40px 36px; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;">
+      <div style="max-width:520px;">
+        <span class="stamp" style="display:block; margin-bottom:10px;">Novidade</span>
+        <h2 style="color:var(--cream); font-size:clamp(22px,3vw,30px); margin-bottom:10px;">Mesa Try — experimente sem compromisso</h2>
+        <p style="color:var(--cream-2); opacity:0.85; font-size:14.5px;">Não sabe se é a hora de investir num site completo? Comece pelo cardápio digital com QR Code — €100, sem site, sem burocracia. Se gostar, é só evoluir pra um dos planos completos depois.</p>
+      </div>
+      <a href="configurador.html?modo=try" class="btn" style="background:var(--gold); border-color:var(--gold); color:var(--black); flex-shrink:0;">Experimentar o Mesa Try</a>
+    </div>
+  </div>
+</section>
+
 <section class="sec-dark reveal" id="precos">
   <div class="wrap">
     <div class="section-head" style="text-align:center; margin:0 auto 0; max-width:100%;">
@@ -770,7 +783,7 @@
       <div class="carousel-track" id="carTrack">
         <div class="plan-card active" data-i="0">
           <div class="plan-name" data-i18n="plan1_name">Aperitivo</div>
-          <div class="plan-now">€ 400+</div>
+          <div class="plan-now" data-price="p1" data-price-suffix="+">€ 600+</div>
           <ul class="plan-list">
             <li data-i18n="plan1_f1">Landing page — 1 página</li>
             <li data-i18n="plan1_f2">Cardápio digital integrado</li>
@@ -782,7 +795,7 @@
         <div class="plan-card glass" data-i="1">
           <span class="plan-badge" data-i18n="plan_badge">Mais escolhido</span>
           <div class="plan-name" data-i18n="plan2_name">Prato Principal</div>
-          <div class="plan-now">€ 800+</div>
+          <div class="plan-now" data-price="p2" data-price-suffix="+">€ 1.000+</div>
           <ul class="plan-list">
             <li data-i18n="plan2_f1">Site completo, várias seções</li>
             <li data-i18n="plan2_f2">Cardápio completo por categoria</li>
@@ -793,7 +806,7 @@
         </div>
         <div class="plan-card glass" data-i="2">
           <div class="plan-name" data-i18n="plan3_name">Banquete</div>
-          <div class="plan-now">€ 1.500+</div>
+          <div class="plan-now" data-price="p3" data-price-suffix="+">€ 2.500+</div>
           <ul class="plan-list">
             <li data-i18n="plan3_f1">Loja online / e-commerce</li>
             <li data-i18n="plan3_f2">Carrinho e checkout próprios</li>
@@ -969,6 +982,7 @@
 </a>
 <div class="wa-tooltip">Fale comigo no WhatsApp</div>
 
+<script src="currency.js"></script>
 <script>
 /* ===================== TRADUÇÕES ===================== */
 const I18N = {
@@ -1618,9 +1632,10 @@ const LANG_META = {
   'ar':    { htmlLang:'ar',    label:'AR', dir:'rtl' }
 };
 
-function applyLang(lang){
+function applyLang(lang, manual){
   if(!I18N[lang]) return;
   currentLang = lang;
+  window.currentLang = lang;
   const meta = LANG_META[lang];
   document.documentElement.lang = meta.htmlLang;
   document.documentElement.dir = meta.dir;
@@ -1636,15 +1651,20 @@ function applyLang(lang){
   document.querySelectorAll('.lang-btn').forEach(b=> b.classList.toggle('active', b.dataset.lang === lang));
   document.getElementById('langCurrentLabel').textContent = meta.label;
   document.getElementById('langSwitch').classList.remove('open');
-  try{ localStorage.setItem('mesaDevLang', lang); }catch(e){}
+  try{
+    localStorage.setItem('mesaDevLang', lang);
+    if(manual) localStorage.setItem('mesaDevLangManual', '1');
+  }catch(e){}
 }
+window.applyLang = applyLang;
 document.querySelectorAll('.lang-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang, true));
 });
 
-// Idioma inicial: inglês por padrão (idioma global), com português de Portugal
-// como segunda prioridade — só entra em PT se o navegador do visitante estiver
-// claramente em português E ainda não temos um idioma salvo de visita anterior.
+// Idioma inicial: usa o último idioma salvo (manual ou detectado por país em visita
+// anterior); senão, tenta o idioma do navegador; senão, inglês. A detecção por país
+// (currency.js) roda em seguida e pode ajustar — exceto se o visitante já escolheu
+// manualmente antes.
 (function setInitialLang(){
   let initial = 'en';
   const saved = localStorage.getItem('mesaDevLang');

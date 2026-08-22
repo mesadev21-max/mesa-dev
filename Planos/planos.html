@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planos — Mesa.dev</title>
+<meta name="description" content="Landing page, site completo, loja online ou um projeto sob encomenda — veja qual plano faz sentido pro seu restaurante.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --gold:#c9a227; --gold-light:#e4c563; --black:#0b0b09; --charcoal:#17140f;
+    --cream:#fbf8f2; --cream-2:#f1e9d8; --line: rgba(11,11,9,0.14); --line-dark: rgba(251,248,242,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--black); font-family:'Work Sans', sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:700; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 28px;}
+  .stamp{font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);}
+  .btn{display:inline-block; font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--black); color:var(--cream); padding:13px 22px; border-radius:2px; border:1px solid var(--black); cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
+  .btn:hover{background:var(--gold); border-color:var(--gold); color:var(--black); transform:translateY(-3px); box-shadow:0 10px 22px rgba(201,162,39,0.35);}
+  .btn-light{background:var(--cream); color:var(--black); border-color:var(--cream);}
+  .btn-light:hover{background:var(--gold-light); border-color:var(--gold-light);}
+
+  /* header simples */
+  .top-strip{background:var(--black); color:var(--cream); font-family:'Space Mono',monospace; font-size:11.5px;}
+  .top-strip .wrap{display:flex; justify-content:space-between; align-items:center; padding:8px 28px;}
+  .top-strip a:hover{color:var(--gold-light);}
+  header{position:sticky; top:0; z-index:100; background:rgba(251,248,242,0.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  header nav{display:flex; align-items:center; justify-content:space-between; max-width:1160px; margin:0 auto; padding:14px 28px;}
+  .brand-block{display:flex; align-items:center; gap:8px; position:relative;}
+  .brand-name{font-family:'Fraunces',serif; font-weight:800; font-size:22px; color:var(--black); position:relative; z-index:1;}
+  .brand-name .dot{color:var(--gold);}
+  .brand-mark{width:24px; height:24px; color:var(--gold); flex-shrink:0;}
+  .brand-mark svg{width:100%; height:100%;}
+  .brand-watermark{position:absolute; left:-26px; top:50%; transform:translateY(-50%); width:100px; height:100px; color:var(--gold); opacity:0.07; z-index:0; pointer-events:none;}
+  .brand-watermark svg{width:100%; height:100%;}
+  .back-link{font-size:13.5px; opacity:0.7; display:flex; align-items:center; gap:6px;}
+  .back-link:hover{opacity:1; color:var(--gold);}
+
+  /* intro */
+  .intro{padding:80px 0 40px; text-align:center;}
+  .intro h1{font-size:clamp(30px,5vw,50px); max-width:760px; margin:14px auto 16px;}
+  .intro p{max-width:560px; margin:0 auto; opacity:0.75; font-size:16px;}
+  .fx-note{margin-top:18px; font-size:12.5px; opacity:0.55; font-family:'Space Mono',monospace;}
+
+  /* ===== EXPANDING PLAN PANELS ===== */
+  .plans-section{padding:20px 0 100px;}
+  .plans-row{display:flex; gap:12px; height:74vh; min-height:520px; align-items:stretch;}
+  .plan-panel{
+    position:relative; flex:1; border-radius:16px; overflow:hidden; cursor:pointer;
+    transition:flex 0.6s cubic-bezier(.22,.68,.35,1);
+    background-size:cover; background-position:center;
+  }
+  .plan-panel.expanded{flex:6;}
+  .plan-panel.shrink{flex:0.7;}
+  .p-bg{position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .8s ease;}
+  .plan-panel.expanded .p-bg{transform:scale(1.06);}
+  .p-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.88) 100%); transition:background .5s ease;}
+  .plan-panel.expanded .p-overlay{background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.68) 45%, rgba(0,0,0,0.94) 100%);}
+  .p-inner{position:absolute; inset:0; padding:28px; display:flex; flex-direction:column; justify-content:flex-end; color:#fff;}
+
+  .p-icon{position:absolute; top:26px; left:26px; width:30px; height:30px; color:var(--gold-light); opacity:0.9;}
+  .p-price-tag{position:absolute; top:26px; right:26px; font-family:'Space Mono',monospace; font-size:11px; color:var(--gold-light); border:1px solid rgba(228,197,99,0.5); padding:4px 10px; border-radius:20px; white-space:nowrap; opacity:0; transition:opacity .3s ease .15s;}
+  .plan-panel.expanded .p-price-tag{opacity:1;}
+
+  .p-collapsed-label{writing-mode:vertical-rl; transform:rotate(180deg); font-family:'Fraunces',serif; font-size:22px; font-weight:700; align-self:flex-start; transition:opacity .25s ease; white-space:nowrap;}
+  .plan-panel.expanded .p-collapsed-label{opacity:0; position:absolute;}
+
+  .p-expanded-content{opacity:0; transform:translateY(16px); transition:opacity .45s ease .12s, transform .45s ease .12s; max-width:600px;}
+  .plan-panel.expanded .p-expanded-content{opacity:1; transform:translateY(0);}
+  .p-expanded-content .stamp{color:var(--gold-light);}
+  .p-expanded-content h2{font-size:clamp(24px,2.6vw,34px); color:#fff; margin:10px 0 4px;}
+  .p-price-big{font-family:'Fraunces',serif; font-size:22px; color:var(--gold-light); margin-bottom:14px;}
+  .p-expanded-content p{font-size:14px; opacity:0.92; line-height:1.65; margin-bottom:12px;}
+  .p-fit{font-size:13px; opacity:0.8; font-style:italic; margin-bottom:14px;}
+  .p-features{list-style:none; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+  .p-features li{font-family:'Space Mono',monospace; font-size:11px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); padding:5px 11px; border-radius:20px;}
+
+  @media(max-width:860px){
+    .plans-row{flex-direction:column; height:auto;}
+    .plan-panel{height:90px; flex:none !important;}
+    .plan-panel.expanded{height:78vh;}
+    .p-collapsed-label{writing-mode:horizontal-tb; transform:none; font-size:18px;}
+    .p-inner{padding:20px;}
+  }
+
+  /* payment / equivalência note */
+  .note-strip{background:var(--cream-2); padding:36px 0; text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .note-strip p{font-size:13.5px; opacity:0.75; max-width:520px; margin:0 auto;}
+
+  footer{background:var(--black); color:var(--cream); padding:40px 0; text-align:center;}
+  footer p{font-size:12.5px; opacity:0.55; margin-top:8px;}
+  footer a{color:var(--gold-light);}
+
+  /* ===== AJUSTES MOBILE ===== */
+  @media(max-width:640px){
+    .wrap{ padding:0 18px; }
+    header nav{ padding:12px 18px; }
+    .brand-name{ font-size:19px; }
+
+    .top-strip .wrap{
+      flex-direction:column; align-items:flex-start; gap:8px; padding:10px 18px;
+    }
+    .top-strip .wrap > div{ width:100%; justify-content:space-between; }
+    #langSelect{ padding:7px 10px; font-size:12px; }
+
+    .intro{ padding:44px 0 28px; }
+    .intro h1{ font-size:clamp(26px,7vw,36px); }
+    .intro p{ font-size:14.5px; }
+
+    .plans-section{ padding:12px 0 60px; }
+    .p-expanded-content h2{ font-size:22px; }
+    .p-price-big{ font-size:19px; }
+    .p-expanded-content p{ font-size:13.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-strip">
+  <div class="wrap">
+    <a href="https://wa.me/5554996336129" target="_blank" rel="noopener">WhatsApp +55 54 99633-6129</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <a href="mailto:mesadev21@gmail.com">mesadev21@gmail.com</a>
+      <select id="langSelect" style="background:transparent; color:var(--cream); border:1px solid rgba(251,248,242,0.3); border-radius:3px; font-family:'Space Mono',monospace; font-size:11px; padding:4px 8px; cursor:pointer;">
+        <option value="en">EN</option>
+        <option value="en-us">US</option>
+        <option value="pt">PT</option>
+        <option value="pt-br">BR</option>
+        <option value="es">ES</option>
+        <option value="de">DE</option>
+        <option value="it">IT</option>
+        <option value="sv">SV</option>
+        <option value="ar">AR</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav>
+    <a href="index.html" class="brand-block">
+      <span class="brand-watermark" aria-hidden="true">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+          <line x1="42" y1="10" x2="42" y2="26"/><line x1="50" y1="10" x2="50" y2="26"/><line x1="58" y1="10" x2="58" y2="26"/>
+          <path d="M42 26 Q42 34 50 34 Q58 34 58 26"/>
+          <line x1="50" y1="34" x2="50" y2="82"/>
+          <circle cx="50" cy="58" r="26"/>
+        </svg>
+      </span>
+      <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
+    </a>
+    <a href="index.html" class="back-link" data-i18n="back_link">← Voltar ao site</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="stamp" data-i18n="intro_stamp">Planos</span>
+    <h1 data-i18n="intro_h1">Qual desses é o seu restaurante?</h1>
+    <p data-i18n="intro_p">Passe o mouse (ou toque, no celular) em cada plano pra ver os detalhes — o que entra, pra quem é indicado, e o que muda de um pro outro.</p>
+    <p class="fx-note" data-i18n="fx_note">Preços em euro (€). Para clientes fora da zona euro, o valor equivalente é calculado pela cotação do dia.</p>
+  </div>
+</section>
+
+<section class="plans-section">
+  <div class="wrap">
+    <div class="plans-row" id="plansRow">
+
+      <!-- APERITIVO -->
+      <article class="plan-panel" data-plan="aperitivo">
+        <div class="p-bg" style="background-image:linear-gradient(160deg, rgba(202,162,39,0.35), rgba(11,11,9,0.55)), url('plan-aperitivo.jpg');"></div>
+        <div class="p-overlay"></div>
+        <div class="p-inner">
+          <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+          <span class="p-price-tag" data-i18n="p1_price_tag">a partir de € 600</span>
+          <span class="p-collapsed-label" data-i18n="p1_name">Aperitivo</span>
+          <div class="p-expanded-content">
+            <span class="stamp" data-i18n="p1_stamp">Landing page</span>
+            <h2 data-i18n="p1_name">Aperitivo</h2>
+            <div class="p-price-big" data-i18n="p1_price_big">a partir de € 600</div>
+            <p data-i18n="p1_desc">Uma landing page é uma única página que reúne tudo o que o cliente precisa saber pra decidir ir ao seu restaurante: cardápio em destaque, fotos, endereço, horário e um botão claro pra reservar ou chamar no WhatsApp. Sem menus complicados, sem páginas separadas — carrega rápido e é fácil de manter.</p>
+            <p class="p-fit" data-i18n="p1_fit">Ideal pra quem está começando a ter presença online, quer testar antes de investir mais, ou só precisa de um link bonito pro Instagram e pro Google Maps.</p>
+            <ul class="p-features">
+              <li data-i18n="p1_f1">1 página com rolagem única</li>
+              <li data-i18n="p1_f2">Cardápio digital integrado</li>
+              <li data-i18n="p1_f3">Botão direto de WhatsApp</li>
+              <li data-i18n="p1_f4">Otimizado pra celular</li>
+              <li data-i18n="p1_f5">1 rodada de revisão</li>
+            </ul>
+            <a href="configurador.html?plano=aperitivo" class="btn btn-light" data-i18n="p1_cta">Pedir este plano</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PRATO PRINCIPAL -->
+      <article class="plan-panel" data-plan="principal">
+        <div class="p-bg" style="background-image:linear-gradient(160deg, rgba(107,44,85,0.35), rgba(11,11,9,0.55)), url('plan-principal.jpg');"></div>
+        <div class="p-overlay"></div>
+        <div class="p-inner">
+          <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span class="p-price-tag" data-i18n="p2_price_tag">a partir de € 1.000</span>
+          <span class="p-collapsed-label" data-i18n="p2_name">Prato Principal</span>
+          <div class="p-expanded-content">
+            <span class="stamp" data-i18n="p2_stamp">Site completo</span>
+            <h2 data-i18n="p2_name">Prato Principal</h2>
+            <div class="p-price-big" data-i18n="p2_price_big">a partir de € 1.000 · inclui 1 mês de revisão</div>
+            <p data-i18n="p2_desc">Um site completo tem várias seções ou páginas mais profundas — cardápio detalhado por categoria, galeria de fotos, uma página só sobre a história do restaurante, e às vezes até uma área de eventos. Isso ajuda o Google a te encontrar em mais buscas diferentes, não só uma.</p>
+            <p class="p-fit" data-i18n="p2_fit">Ideal pra quem já tem uma base de clientes e quer parecer mais estabelecido, aparecer melhor nas buscas locais, ou tem informação demais pra caber numa página só.</p>
+            <ul class="p-features">
+              <li data-i18n="p2_f1">Várias seções/páginas</li>
+              <li data-i18n="p2_f2">Cardápio completo por categoria</li>
+              <li data-i18n="p2_f3">Galeria de fotos</li>
+              <li data-i18n="p2_f4">Formulário de reserva</li>
+              <li data-i18n="p2_f5">SEO local mais robusto</li>
+              <li data-i18n="p2_f6">1 mês de ajustes após a entrega</li>
+            </ul>
+            <a href="configurador.html?plano=principal" class="btn btn-light" data-i18n="p2_cta">Pedir este plano</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- BANQUETE -->
+      <article class="plan-panel" data-plan="banquete">
+        <div class="p-bg" style="background-image:linear-gradient(160deg, rgba(14,42,32,0.35), rgba(11,11,9,0.55)), url('plan-banquete.jpg');"></div>
+        <div class="p-overlay"></div>
+        <div class="p-inner">
+          <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h9.2a2 2 0 002-1.6L21 7H6"/></svg>
+          <span class="p-price-tag" data-i18n="p3_price_tag">a partir de € 2.500</span>
+          <span class="p-collapsed-label" data-i18n="p3_name">Banquete</span>
+          <div class="p-expanded-content">
+            <span class="stamp" data-i18n="p3_stamp">Loja online · e-commerce</span>
+            <h2 data-i18n="p3_name">Banquete</h2>
+            <div class="p-price-big" data-i18n="p3_price_big">a partir de € 2.500</div>
+            <p data-i18n="p3_desc">Um e-commerce vai além de mostrar informação — ele vende. O cliente escolhe os itens, paga direto no site (cartão ou PayPal) e você recebe o pedido pronto, sem depender de aplicativos de entrega que cobram até 30% de comissão. Também serve pra vender produtos próprios, como vinhos, molhos ou kits.</p>
+            <p class="p-fit" data-i18n="p3_fit">Ideal pra quem quer vender delivery ou retirada direto, sem intermediário, ou tem produtos próprios pra vender além da comida no salão.</p>
+            <ul class="p-features">
+              <li data-i18n="p3_f1">Carrinho e checkout próprios</li>
+              <li data-i18n="p3_f2">Pagamento integrado (cartão/PayPal)</li>
+              <li data-i18n="p3_f3">Painel pra atualizar cardápio e preços</li>
+              <li data-i18n="p3_f4">Menos dependência de apps de entrega</li>
+              <li data-i18n="p3_f5">Estrutura pronta pra crescer</li>
+            </ul>
+            <a href="configurador.html?plano=banquete" class="btn btn-light" data-i18n="p3_cta">Pedir este plano</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SOB ENCOMENDA -->
+      <article class="plan-panel" data-plan="custom">
+        <div class="p-bg" style="background-image:linear-gradient(160deg, rgba(11,11,9,0.4), rgba(11,11,9,0.6)), url('plan-encomenda.jpg');"></div>
+        <div class="p-overlay"></div>
+        <div class="p-inner">
+          <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
+          <span class="p-price-tag" data-i18n="p4_price_tag">a combinar</span>
+          <span class="p-collapsed-label" data-i18n="p4_name">Sob Encomenda</span>
+          <div class="p-expanded-content">
+            <span class="stamp" data-i18n="p4_stamp">Personalizado</span>
+            <h2 data-i18n="p4_name">Sob Encomenda</h2>
+            <div class="p-price-big" data-i18n="p4_price_big">Sem preço fixo — a discutir</div>
+            <p data-i18n="p4_desc">Prefere algo diferente? Já tem a sua própria ideia de como quer o site, ou precisa de algo que não se encaixa nos planos acima — mais de uma unidade, um sistema específico, uma funcionalidade fora do padrão? Deixe-nos saber aqui, sem compromisso, e conversamos sobre o que faz sentido pro seu caso.</p>
+            <ul class="p-features">
+              <li data-i18n="p4_f1">Múltiplas unidades/franquias</li>
+              <li data-i18n="p4_f2">Integrações específicas</li>
+              <li data-i18n="p4_f3">Escopo sob medida</li>
+            </ul>
+            <a href="configurador.html?plano=encomenda" class="btn btn-light" data-i18n="p4_cta">Vamos conversar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="note-strip">
+  <div class="wrap">
+    <p data-i18n="note_p">Não sabe qual escolher? Fale no chat da página inicial ou preencha o formulário — eu te ajudo a decidir sem compromisso.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand-name" style="color:var(--cream);">Mesa<span class="dot">.</span>dev</span>
+    <p>© Mesa.dev · <a href="index.html" data-i18n="back_link">Voltar ao site</a></p>
+  </div>
+</footer>
+
+<script src="currency.js"></script>
+<script>
+  // ===== SISTEMA DE IDIOMAS =====
+  const I18N = {
+    en: {
+      page_title:'Plans — Mesa.dev', page_desc:"Landing page, full website, online shop, or a bespoke project — see which plan fits your restaurant.",
+      back_link:'← Back to site', intro_stamp:'Plans', intro_h1:'Which one of these is your restaurant?',
+      intro_p:"Hover (or tap, on mobile) over each plan to see the details — what's included, who it's for, and what changes from one to the next.",
+      fx_note:'Prices shown in euros (€) by default, or in pounds (£) automatically for visitors in the UK.',
+      p1_stamp:'Landing page', p1_name:'Starter', p1_price_tag:'from {P}', p1_price_big:'from {P}',
+      p1_desc:"A landing page is a single page that brings together everything a customer needs to decide to visit your restaurant: featured menu, photos, address, hours, and a clear button to book or message on WhatsApp. No complicated menus, no separate pages — loads fast and is easy to maintain.",
+      p1_fit:"Ideal if you're just starting to build an online presence, want to test the waters before investing more, or just need a good-looking link for Instagram and Google Maps.",
+      p1_f1:'1 single-scroll page', p1_f2:'Integrated digital menu', p1_f3:'Direct WhatsApp button', p1_f4:'Mobile-optimised', p1_f5:'1 round of revisions', p1_cta:'Order this plan',
+      p2_stamp:'Full website', p2_name:'Main Course', p2_price_tag:'from {P}', p2_price_big:'from {P} · includes 1 month of revisions',
+      p2_desc:"A full website has several deeper sections or pages — a detailed menu by category, a photo gallery, a dedicated page about your restaurant's story, and sometimes even an events section. This helps Google find you across more different searches, not just one.",
+      p2_fit:'Ideal if you already have a customer base and want to look more established, rank better in local search, or have too much information to fit on a single page.',
+      p2_f1:'Multiple sections/pages', p2_f2:'Full menu by category', p2_f3:'Photo gallery', p2_f4:'Booking form', p2_f5:'Stronger local SEO', p2_f6:'1 month of adjustments after delivery', p2_cta:'Order this plan',
+      p3_stamp:'Online shop · e-commerce', p3_name:'Banquet', p3_price_tag:'from {P}', p3_price_big:'from {P}',
+      p3_desc:'An e-commerce site goes beyond showing information — it sells. Customers choose their items, pay directly on the site (card or PayPal), and you receive the order ready to go, without relying on delivery apps that charge up to 30% commission. It also works for selling your own products, like wines, sauces, or kits.',
+      p3_fit:'Ideal if you want to sell delivery or pickup directly, without a middleman, or have your own products to sell beyond dine-in food.',
+      p3_f1:'Own cart and checkout', p3_f2:'Integrated payment (card/PayPal)', p3_f3:'Panel to update menu and prices', p3_f4:'Less reliance on delivery apps', p3_f5:'Structure built to grow', p3_cta:'Order this plan',
+      p4_stamp:'Custom', p4_name:'Bespoke', p4_price_tag:'quote on request', p4_price_big:'No fixed price — to be discussed',
+      p4_desc:"Want something different? Already have your own idea of how you want the site, or need something that doesn't fit the plans above — more than one location, a specific system, an out-of-the-ordinary feature? Let us know here, no strings attached, and we'll talk about what makes sense for your case.",
+      p4_f1:'Multiple locations/franchises', p4_f2:'Specific integrations', p4_f3:'Custom-fit scope', p4_cta:"Let's talk",
+      note_p:"Not sure which to choose? Chat on the homepage or fill out the form — I'll help you decide, no strings attached."
+    },
+    pt: {
+      page_title:'Planos — Mesa.dev', page_desc:'Landing page, site completo, loja online ou um projeto sob encomenda — veja qual plano faz sentido pro seu restaurante.',
+      back_link:'← Voltar ao site', intro_stamp:'Planos', intro_h1:'Qual desses é o seu restaurante?',
+      intro_p:'Passe o mouse (ou toque, no celular) em cada plano pra ver os detalhes — o que entra, pra quem é indicado, e o que muda de um pro outro.',
+      fx_note:'Preços em euro (€) por padrão, ou em libras (£) automaticamente para visitantes no Reino Unido.',
+      p1_stamp:'Landing page', p1_name:'Aperitivo', p1_price_tag:'a partir de {P}', p1_price_big:'a partir de {P}',
+      p1_desc:'Uma landing page é uma única página que reúne tudo o que o cliente precisa saber pra decidir ir ao seu restaurante: cardápio em destaque, fotos, endereço, horário e um botão claro pra reservar ou chamar no WhatsApp. Sem menus complicados, sem páginas separadas — carrega rápido e é fácil de manter.',
+      p1_fit:'Ideal pra quem está começando a ter presença online, quer testar antes de investir mais, ou só precisa de um link bonito pro Instagram e pro Google Maps.',
+      p1_f1:'1 página com rolagem única', p1_f2:'Cardápio digital integrado', p1_f3:'Botão direto de WhatsApp', p1_f4:'Otimizado pra celular', p1_f5:'1 rodada de revisão', p1_cta:'Pedir este plano',
+      p2_stamp:'Site completo', p2_name:'Prato Principal', p2_price_tag:'a partir de {P}', p2_price_big:'a partir de {P} · inclui 1 mês de revisão',
+      p2_desc:'Um site completo tem várias seções ou páginas mais profundas — cardápio detalhado por categoria, galeria de fotos, uma página só sobre a história do restaurante, e às vezes até uma área de eventos. Isso ajuda o Google a te encontrar em mais buscas diferentes, não só uma.',
+      p2_fit:'Ideal pra quem já tem uma base de clientes e quer parecer mais estabelecido, aparecer melhor nas buscas locais, ou tem informação demais pra caber numa página só.',
+      p2_f1:'Várias seções/páginas', p2_f2:'Cardápio completo por categoria', p2_f3:'Galeria de fotos', p2_f4:'Formulário de reserva', p2_f5:'SEO local mais robusto', p2_f6:'1 mês de ajustes após a entrega', p2_cta:'Pedir este plano',
+      p3_stamp:'Loja online · e-commerce', p3_name:'Banquete', p3_price_tag:'a partir de {P}', p3_price_big:'a partir de {P}',
+      p3_desc:'Um e-commerce vai além de mostrar informação — ele vende. O cliente escolhe os itens, paga direto no site (cartão ou PayPal) e você recebe o pedido pronto, sem depender de aplicativos de entrega que cobram até 30% de comissão. Também serve pra vender produtos próprios, como vinhos, molhos ou kits.',
+      p3_fit:'Ideal pra quem quer vender delivery ou retirada direto, sem intermediário, ou tem produtos próprios pra vender além da comida no salão.',
+      p3_f1:'Carrinho e checkout próprios', p3_f2:'Pagamento integrado (cartão/PayPal)', p3_f3:'Painel pra atualizar cardápio e preços', p3_f4:'Menos dependência de apps de entrega', p3_f5:'Estrutura pronta pra crescer', p3_cta:'Pedir este plano',
+      p4_stamp:'Personalizado', p4_name:'Sob Encomenda', p4_price_tag:'a combinar', p4_price_big:'Sem preço fixo — a discutir',
+      p4_desc:'Prefere algo diferente? Já tem a sua própria ideia de como quer o site, ou precisa de algo que não se encaixa nos planos acima — mais de uma unidade, um sistema específico, uma funcionalidade fora do padrão? Deixe-nos saber aqui, sem compromisso, e conversamos sobre o que faz sentido pro seu caso.',
+      p4_f1:'Múltiplas unidades/franquias', p4_f2:'Integrações específicas', p4_f3:'Escopo sob medida', p4_cta:'Vamos conversar',
+      note_p:'Não sabe qual escolher? Fale no chat da página inicial ou preencha o formulário — eu te ajudo a decidir sem compromisso.'
+    },
+    es: {
+      page_title:'Planes — Mesa.dev', page_desc:'Landing page, web completa, tienda online o un proyecto a medida — vea qué plan tiene sentido para su restaurante.',
+      back_link:'← Volver al sitio', intro_stamp:'Planes', intro_h1:'¿Cuál de estos es su restaurante?',
+      intro_p:'Pase el ratón (o toque, en el móvil) sobre cada plan para ver los detalles — qué incluye, para quién es ideal, y qué cambia de uno a otro.',
+      fx_note:'Precios en euros (€) por defecto, o en libras (£) automáticamente para visitantes en el Reino Unido.',
+      p1_stamp:'Landing page', p1_name:'Aperitivo', p1_price_tag:'desde {P}', p1_price_big:'desde {P}',
+      p1_desc:'Una landing page es una única página que reúne todo lo que el cliente necesita saber para decidir ir a su restaurante: carta destacada, fotos, dirección, horario y un botón claro para reservar o escribir por WhatsApp. Sin menús complicados, sin páginas separadas — carga rápido y es fácil de mantener.',
+      p1_fit:'Ideal para quien está empezando a tener presencia online, quiere probar antes de invertir más, o solo necesita un enlace bonito para Instagram y Google Maps.',
+      p1_f1:'1 página con desplazamiento único', p1_f2:'Carta digital integrada', p1_f3:'Botón directo a WhatsApp', p1_f4:'Optimizada para móvil', p1_f5:'1 ronda de revisión', p1_cta:'Pedir este plan',
+      p2_stamp:'Web completa', p2_name:'Plato Principal', p2_price_tag:'desde {P}', p2_price_big:'desde {P} · incluye 1 mes de revisión',
+      p2_desc:'Una web completa tiene varias secciones o páginas más profundas — carta detallada por categoría, galería de fotos, una página dedicada a la historia del restaurante, y a veces hasta una sección de eventos. Esto ayuda a que Google le encuentre en más búsquedas distintas, no solo una.',
+      p2_fit:'Ideal para quien ya tiene una base de clientes y quiere parecer más establecido, aparecer mejor en las búsquedas locales, o tiene demasiada información para caber en una sola página.',
+      p2_f1:'Varias secciones/páginas', p2_f2:'Carta completa por categoría', p2_f3:'Galería de fotos', p2_f4:'Formulario de reserva', p2_f5:'SEO local más robusto', p2_f6:'1 mes de ajustes tras la entrega', p2_cta:'Pedir este plan',
+      p3_stamp:'Tienda online · e-commerce', p3_name:'Banquete', p3_price_tag:'desde {P}', p3_price_big:'desde {P}',
+      p3_desc:'Un e-commerce va más allá de mostrar información — vende. El cliente elige los productos, paga directamente en el sitio (tarjeta o PayPal) y usted recibe el pedido listo, sin depender de apps de reparto que cobran hasta un 30% de comisión. También sirve para vender productos propios, como vinos, salsas o kits.',
+      p3_fit:'Ideal para quien quiere vender delivery o recogida directamente, sin intermediarios, o tiene productos propios que vender además de la comida en el salón.',
+      p3_f1:'Carrito y checkout propios', p3_f2:'Pago integrado (tarjeta/PayPal)', p3_f3:'Panel para actualizar carta y precios', p3_f4:'Menos dependencia de apps de reparto', p3_f5:'Estructura lista para crecer', p3_cta:'Pedir este plan',
+      p4_stamp:'Personalizado', p4_name:'A Medida', p4_price_tag:'a consultar', p4_price_big:'Sin precio fijo — a discutir',
+      p4_desc:'¿Prefiere algo diferente? ¿Ya tiene su propia idea de cómo quiere el sitio, o necesita algo que no encaja en los planes anteriores — más de un local, un sistema específico, una funcionalidad fuera de lo común? Cuéntenoslo aquí, sin compromiso, y hablamos sobre qué tiene sentido para su caso.',
+      p4_f1:'Varios locales/franquicias', p4_f2:'Integraciones específicas', p4_f3:'Alcance a medida', p4_cta:'Hablemos',
+      note_p:'¿No sabe cuál elegir? Escriba en el chat de la página principal o rellene el formulario — le ayudo a decidir sin compromiso.'
+    },
+    de: {
+      page_title:'Pakete — Mesa.dev', page_desc:'Landingpage, vollständige Website, Online-Shop oder ein maßgeschneidertes Projekt — finden Sie heraus, welches Paket zu Ihrem Restaurant passt.',
+      back_link:'← Zurück zur Website', intro_stamp:'Pakete', intro_h1:'Welches davon ist Ihr Restaurant?',
+      intro_p:'Fahren Sie mit der Maus über jedes Paket (oder tippen Sie mobil darauf), um die Details zu sehen — was enthalten ist, für wen es geeignet ist, und was sich von einem zum anderen ändert.',
+      fx_note:'Preise standardmäßig in Euro (€), oder automatisch in Pfund (£) für Besucher aus dem Vereinigten Königreich.',
+      p1_stamp:'Landingpage', p1_name:'Vorspeise', p1_price_tag:'ab {P}', p1_price_big:'ab {P}',
+      p1_desc:'Eine Landingpage ist eine einzige Seite, die alles vereint, was ein Kunde wissen muss, um sich für Ihr Restaurant zu entscheiden: hervorgehobene Speisekarte, Fotos, Adresse, Öffnungszeiten und einen klaren Button zum Reservieren oder Schreiben per WhatsApp. Keine komplizierten Menüs, keine separaten Seiten — lädt schnell und ist einfach zu pflegen.',
+      p1_fit:'Ideal für alle, die gerade erst eine Online-Präsenz aufbauen, es zunächst testen möchten, bevor sie mehr investieren, oder einfach einen schönen Link für Instagram und Google Maps brauchen.',
+      p1_f1:'1 Seite mit durchgehendem Scroll', p1_f2:'Integrierte digitale Speisekarte', p1_f3:'Direkter WhatsApp-Button', p1_f4:'Mobil optimiert', p1_f5:'1 Überarbeitungsrunde', p1_cta:'Dieses Paket bestellen',
+      p2_stamp:'Vollständige Website', p2_name:'Hauptgang', p2_price_tag:'ab {P}', p2_price_big:'ab {P} · inkl. 1 Monat Anpassungen',
+      p2_desc:'Eine vollständige Website hat mehrere tiefere Bereiche oder Seiten — eine detaillierte Speisekarte nach Kategorie, eine Fotogalerie, eine eigene Seite über die Geschichte Ihres Restaurants und manchmal sogar einen Veranstaltungsbereich. Das hilft Google, Sie bei mehr unterschiedlichen Suchanfragen zu finden, nicht nur bei einer.',
+      p2_fit:'Ideal, wenn Sie bereits einen Kundenstamm haben und etablierter wirken möchten, in der lokalen Suche besser abschneiden wollen, oder zu viele Informationen für eine einzige Seite haben.',
+      p2_f1:'Mehrere Bereiche/Seiten', p2_f2:'Vollständige Speisekarte nach Kategorie', p2_f3:'Fotogalerie', p2_f4:'Buchungsformular', p2_f5:'Stärkere lokale SEO', p2_f6:'1 Monat Anpassungen nach Lieferung', p2_cta:'Dieses Paket bestellen',
+      p3_stamp:'Online-Shop · E-Commerce', p3_name:'Bankett', p3_price_tag:'ab {P}', p3_price_big:'ab {P}',
+      p3_desc:'Ein E-Commerce-Shop zeigt nicht nur Informationen — er verkauft. Der Kunde wählt seine Artikel aus, bezahlt direkt auf der Website (Karte oder PayPal), und Sie erhalten die fertige Bestellung, ohne auf Lieferdienste angewiesen zu sein, die bis zu 30 % Provision verlangen. Eignet sich auch für den Verkauf eigener Produkte wie Weine, Saucen oder Sets.',
+      p3_fit:'Ideal, wenn Sie Lieferung oder Abholung direkt und ohne Zwischenhändler verkaufen möchten, oder eigene Produkte über das Essen im Restaurant hinaus anbieten.',
+      p3_f1:'Eigener Warenkorb und Checkout', p3_f2:'Integrierte Zahlung (Karte/PayPal)', p3_f3:'Panel zur eigenen Aktualisierung von Speisekarte und Preisen', p3_f4:'Weniger Abhängigkeit von Lieferdiensten', p3_f5:'Struktur, die mit Ihnen wächst', p3_cta:'Dieses Paket bestellen',
+      p4_stamp:'Individuell', p4_name:'Maßgeschneidert', p4_price_tag:'auf Anfrage', p4_price_big:'Kein Festpreis — auf Anfrage',
+      p4_desc:'Möchten Sie etwas Individuelles? Haben Sie bereits eine eigene Vorstellung von Ihrer Website, oder brauchen Sie etwas, das nicht in die obigen Pakete passt — mehrere Standorte, ein spezifisches System, eine ungewöhnliche Funktion? Lassen Sie es uns hier wissen, unverbindlich, und wir besprechen, was für Ihren Fall sinnvoll ist.',
+      p4_f1:'Mehrere Standorte/Franchises', p4_f2:'Spezifische Integrationen', p4_f3:'Maßgeschneiderter Umfang', p4_cta:'Lassen Sie uns sprechen',
+      note_p:'Nicht sicher, welches Paket passt? Schreiben Sie im Chat auf der Startseite oder füllen Sie das Formular aus — ich helfe Ihnen unverbindlich bei der Entscheidung.'
+    },
+    it: {
+      page_title:'Piani — Mesa.dev', page_desc:'Landing page, sito completo, negozio online o un progetto su misura — scopri quale piano è adatto al tuo ristorante.',
+      back_link:'← Torna al sito', intro_stamp:'Piani', intro_h1:'Quale di questi è il tuo ristorante?',
+      intro_p:"Passa il mouse (o tocca, da cellulare) su ogni piano per vedere i dettagli — cosa include, per chi è pensato, e cosa cambia da uno all'altro.",
+      fx_note:'Prezzi in euro (€) di default, o automaticamente in sterline (£) per i visitatori dal Regno Unito.',
+      p1_stamp:'Landing page', p1_name:'Antipasto', p1_price_tag:'da {P}', p1_price_big:'da {P}',
+      p1_desc:"Una landing page è un'unica pagina che riunisce tutto ciò che il cliente deve sapere per decidere di venire nel tuo ristorante: menu in evidenza, foto, indirizzo, orari e un pulsante chiaro per prenotare o scrivere su WhatsApp. Niente menu complicati, niente pagine separate — si carica velocemente ed è facile da mantenere.",
+      p1_fit:"Ideale per chi sta iniziando a costruire una presenza online, vuole testare prima di investire di più, o ha solo bisogno di un link curato per Instagram e Google Maps.",
+      p1_f1:'1 pagina a scorrimento unico', p1_f2:'Menu digitale integrato', p1_f3:'Pulsante WhatsApp diretto', p1_f4:'Ottimizzato per il cellulare', p1_f5:'1 round di revisione', p1_cta:'Richiedi questo piano',
+      p2_stamp:'Sito completo', p2_name:'Primo', p2_price_tag:'da {P}', p2_price_big:'da {P} · include 1 mese di revisioni',
+      p2_desc:'Un sito completo ha più sezioni o pagine più approfondite — menu dettagliato per categoria, galleria fotografica, una pagina dedicata alla storia del ristorante, e a volte anche una sezione eventi. Questo aiuta Google a trovarti in più ricerche diverse, non solo una.',
+      p2_fit:'Ideale per chi ha già una base di clienti e vuole apparire più affermato, farsi trovare meglio nelle ricerche locali, o ha troppe informazioni per una sola pagina.',
+      p2_f1:'Più sezioni/pagine', p2_f2:'Menu completo per categoria', p2_f3:'Galleria fotografica', p2_f4:'Modulo di prenotazione', p2_f5:'SEO locale più solido', p2_f6:'1 mese di modifiche dopo la consegna', p2_cta:'Richiedi questo piano',
+      p3_stamp:'Negozio online · e-commerce', p3_name:'Banchetto', p3_price_tag:'da {P}', p3_price_big:'da {P}',
+      p3_desc:"Un e-commerce va oltre il mostrare informazioni — vende. Il cliente sceglie i prodotti, paga direttamente sul sito (carta o PayPal) e tu ricevi l'ordine pronto, senza dipendere da app di consegna che trattengono fino al 30% di commissione. Serve anche per vendere prodotti propri, come vini, salse o kit.",
+      p3_fit:'Ideale per chi vuole vendere consegna o ritiro direttamente, senza intermediari, o ha prodotti propri da vendere oltre al cibo in sala.',
+      p3_f1:'Carrello e checkout propri', p3_f2:'Pagamento integrato (carta/PayPal)', p3_f3:'Pannello per aggiornare menu e prezzi', p3_f4:'Minore dipendenza dalle app di consegna', p3_f5:'Struttura pronta a crescere', p3_cta:'Richiedi questo piano',
+      p4_stamp:'Personalizzato', p4_name:'Su misura', p4_price_tag:'su richiesta', p4_price_big:'Nessun prezzo fisso — da concordare',
+      p4_desc:'Preferisci qualcosa di diverso? Hai già una tua idea di come vuoi il sito, o hai bisogno di qualcosa che non rientra nei piani sopra — più sedi, un sistema specifico, una funzionalità fuori dagli schemi? Faccelo sapere qui, senza impegno, e ne parliamo insieme.',
+      p4_f1:'Più sedi/franchising', p4_f2:'Integrazioni specifiche', p4_f3:'Ambito su misura', p4_cta:'Parliamone',
+      note_p:'Non sai quale scegliere? Scrivi nella chat della homepage o compila il modulo — ti aiuto a decidere senza impegno.'
+    },
+    sv: {
+      page_title:'Paket — Mesa.dev', page_desc:'Landningssida, fullständig webbplats, nätbutik eller ett skräddarsytt projekt — se vilket paket som passar din restaurang.',
+      back_link:'← Tillbaka till webbplatsen', intro_stamp:'Paket', intro_h1:'Vilken av dessa är din restaurang?',
+      intro_p:'Håll muspekaren över (eller tryck på, på mobilen) varje paket för att se detaljerna — vad som ingår, vem det passar, och vad som skiljer dem åt.',
+      fx_note:'Priser visas i euro (€) som standard, eller automatiskt i pund (£) för besökare i Storbritannien.',
+      p1_stamp:'Landningssida', p1_name:'Förrätt', p1_price_tag:'från {P}', p1_price_big:'från {P}',
+      p1_desc:'En landningssida är en enda sida som samlar allt en kund behöver veta för att bestämma sig för att besöka din restaurang: framhävd meny, bilder, adress, öppettider och en tydlig knapp för att boka eller skriva på WhatsApp. Inga krångliga menyer, inga separata sidor — laddas snabbt och är lätt att underhålla.',
+      p1_fit:'Perfekt för dig som precis börjar bygga en närvaro online, vill testa innan du investerar mer, eller bara behöver en snygg länk för Instagram och Google Maps.',
+      p1_f1:'1 sida med enkel scrollning', p1_f2:'Integrerad digital meny', p1_f3:'Direkt WhatsApp-knapp', p1_f4:'Mobiloptimerad', p1_f5:'1 revideringsrunda', p1_cta:'Beställ detta paket',
+      p2_stamp:'Fullständig webbplats', p2_name:'Huvudrätt', p2_price_tag:'från {P}', p2_price_big:'från {P} · inkluderar 1 månads justeringar',
+      p2_desc:'En fullständig webbplats har flera djupare sektioner eller sidor — en detaljerad meny per kategori, ett bildgalleri, en egen sida om restaurangens historia, och ibland till och med en evenemangssektion. Det hjälper Google att hitta dig i fler olika sökningar, inte bara en.',
+      p2_fit:'Perfekt om du redan har en kundbas och vill framstå som mer etablerad, synas bättre i lokala sökningar, eller har för mycket information för en enda sida.',
+      p2_f1:'Flera sektioner/sidor', p2_f2:'Fullständig meny per kategori', p2_f3:'Bildgalleri', p2_f4:'Bokningsformulär', p2_f5:'Starkare lokal SEO', p2_f6:'1 månads justeringar efter leverans', p2_cta:'Beställ detta paket',
+      p3_stamp:'Nätbutik · e-handel', p3_name:'Bankett', p3_price_tag:'från {P}', p3_price_big:'från {P}',
+      p3_desc:'En e-handelsbutik gör mer än att visa information — den säljer. Kunden väljer sina varor, betalar direkt på webbplatsen (kort eller PayPal), och du får beställningen klar, utan att vara beroende av leveransappar som tar upp till 30 % provision. Fungerar också för att sälja egna produkter, som vin, såser eller kit.',
+      p3_fit:'Perfekt om du vill sälja leverans eller upphämtning direkt, utan mellanhänder, eller har egna produkter att sälja utöver maten i lokalen.',
+      p3_f1:'Egen varukorg och kassa', p3_f2:'Integrerad betalning (kort/PayPal)', p3_f3:'Panel för att uppdatera meny och priser', p3_f4:'Mindre beroende av leveransappar', p3_f5:'Struktur byggd för att växa', p3_cta:'Beställ detta paket',
+      p4_stamp:'Skräddarsytt', p4_name:'Skräddarsydd', p4_price_tag:'offert på begäran', p4_price_big:'Inget fast pris — att diskutera',
+      p4_desc:'Vill du ha något annorlunda? Har du redan en egen idé om hur du vill ha webbplatsen, eller behöver du något som inte passar in i paketen ovan — fler platser, ett specifikt system, en ovanlig funktion? Berätta för oss här, helt utan förpliktelser, så pratar vi om vad som passar ditt fall.',
+      p4_f1:'Flera platser/franchiser', p4_f2:'Specifika integrationer', p4_f3:'Skräddarsytt omfång', p4_cta:'Låt oss prata',
+      note_p:'Osäker på vilket du ska välja? Chatta på startsidan eller fyll i formuläret — jag hjälper dig att bestämma, helt utan förpliktelser.'
+    },
+    ar: {
+      page_title:'الباقات — Mesa.dev', page_desc:'صفحة هبوط، موقع كامل، متجر إلكتروني، أو مشروع مخصص — اكتشف أي باقة تناسب مطعمك.',
+      back_link:'→ العودة إلى الموقع', intro_stamp:'الباقات', intro_h1:'أي من هذه الباقات يناسب مطعمك؟',
+      intro_p:'مرّر بالماوس (أو المس، على الجوال) فوق كل باقة لرؤية التفاصيل — ما الذي تتضمنه، ولمن هي مناسبة، وما الذي يتغير من واحدة إلى أخرى.',
+      fx_note:'الأسعار باليورو (€) افتراضيًا، أو بالجنيه الإسترليني (£) تلقائيًا للزوار من المملكة المتحدة.',
+      p1_stamp:'صفحة هبوط', p1_name:'المقبلات', p1_price_tag:'تبدأ من {P}', p1_price_big:'تبدأ من {P}',
+      p1_desc:'صفحة الهبوط هي صفحة واحدة تجمع كل ما يحتاج العميل معرفته ليقرر زيارة مطعمك: قائمة طعام بارزة، صور، عنوان، ساعات العمل، وزر واضح للحجز أو المراسلة عبر واتساب. بدون قوائم معقدة، بدون صفحات منفصلة — تُحمَّل بسرعة وسهلة الصيانة.',
+      p1_fit:'مثالية لمن يبدأ للتو ببناء حضور على الإنترنت، أو يريد التجربة قبل الاستثمار أكثر، أو يحتاج فقط رابطًا أنيقًا لإنستغرام وخرائط غوغل.',
+      p1_f1:'صفحة واحدة بتمرير مستمر', p1_f2:'قائمة رقمية مدمجة', p1_f3:'زر واتساب مباشر', p1_f4:'مُحسّنة للجوال', p1_f5:'جولة تعديل واحدة', p1_cta:'اطلب هذه الباقة',
+      p2_stamp:'موقع كامل', p2_name:'الطبق الرئيسي', p2_price_tag:'تبدأ من {P}', p2_price_big:'تبدأ من {P} · تشمل شهرًا من التعديلات',
+      p2_desc:'الموقع الكامل يحتوي على عدة أقسام أو صفحات أعمق — قائمة طعام مفصّلة حسب الفئة، معرض صور، صفحة مخصصة لقصة مطعمك، وأحيانًا حتى قسم للفعاليات. هذا يساعد غوغل على إيجادك في عمليات بحث مختلفة أكثر، وليس بحثًا واحدًا فقط.',
+      p2_fit:'مثالي لمن لديه بالفعل قاعدة عملاء ويريد الظهور بمظهر أكثر رسوخًا، والظهور بشكل أفضل في نتائج البحث المحلية، أو لديه معلومات كثيرة جدًا لا تتسع في صفحة واحدة.',
+      p2_f1:'عدة أقسام/صفحات', p2_f2:'قائمة كاملة حسب الفئة', p2_f3:'معرض صور', p2_f4:'نموذج حجز', p2_f5:'تحسين محركات بحث محلي أقوى', p2_f6:'شهر من التعديلات بعد التسليم', p2_cta:'اطلب هذه الباقة',
+      p3_stamp:'متجر إلكتروني', p3_name:'المأدبة', p3_price_tag:'تبدأ من {P}', p3_price_big:'تبدأ من {P}',
+      p3_desc:'المتجر الإلكتروني يتجاوز عرض المعلومات — إنه يبيع. يختار العميل المنتجات، ويدفع مباشرة على الموقع (بطاقة أو PayPal)، وتستلم أنت الطلب جاهزًا، دون الاعتماد على تطبيقات التوصيل التي تفرض عمولة تصل إلى 30%. يصلح أيضًا لبيع منتجاتك الخاصة، مثل النبيذ أو الصلصات أو الأطقم.',
+      p3_fit:'مثالي لمن يريد بيع التوصيل أو الاستلام مباشرة، دون وسيط، أو لديه منتجات خاصة يبيعها إلى جانب الطعام في الصالة.',
+      p3_f1:'سلة وعملية دفع خاصة', p3_f2:'دفع مدمج (بطاقة/PayPal)', p3_f3:'لوحة لتحديث القائمة والأسعار', p3_f4:'اعتماد أقل على تطبيقات التوصيل', p3_f5:'بنية جاهزة للنمو', p3_cta:'اطلب هذه الباقة',
+      p4_stamp:'مخصص', p4_name:'حسب الطلب', p4_price_tag:'عرض سعر عند الطلب', p4_price_big:'لا يوجد سعر ثابت — يُناقَش',
+      p4_desc:'تفضل شيئًا مختلفًا؟ لديك بالفعل فكرتك الخاصة عن الموقع، أو تحتاج شيئًا لا يتناسب مع الباقات أعلاه — أكثر من فرع، نظام محدد، ميزة خارج المألوف؟ أخبرنا هنا، دون أي التزام، ولنتحدث عمّا يناسب حالتك.',
+      p4_f1:'عدة فروع/امتيازات', p4_f2:'تكاملات محددة', p4_f3:'نطاق مخصص', p4_cta:'لنتحدث',
+      note_p:'لست متأكدًا أي باقة تختار؟ تحدث عبر الدردشة في الصفحة الرئيسية أو املأ النموذج — سأساعدك على القرار دون أي التزام.'
+    }
+  };
+  I18N['en-us'] = I18N.en;
+  I18N['pt-br'] = I18N.pt;
+
+  const LANG_META = {
+    en:{htmlLang:'en-GB',dir:'ltr'}, 'en-us':{htmlLang:'en-US',dir:'ltr'},
+    pt:{htmlLang:'pt-PT',dir:'ltr'}, 'pt-br':{htmlLang:'pt-BR',dir:'ltr'},
+    es:{htmlLang:'es-ES',dir:'ltr'}, de:{htmlLang:'de-DE',dir:'ltr'},
+    it:{htmlLang:'it-IT',dir:'ltr'}, sv:{htmlLang:'sv-SE',dir:'ltr'}, ar:{htmlLang:'ar',dir:'rtl'}
+  };
+
+  const PRICE_KEY_MAP = { p1_price_tag:'p1', p1_price_big:'p1', p2_price_tag:'p2', p2_price_big:'p2', p3_price_tag:'p3', p3_price_big:'p3' };
+
+  let currentLang = 'en';
+  function applyLang(lang, manual){
+    if(!I18N[lang]) return;
+    currentLang = lang;
+    window.currentLang = lang;
+    const dict = I18N[lang], meta = LANG_META[lang];
+    document.documentElement.lang = meta.htmlLang;
+    document.documentElement.dir = meta.dir;
+    document.title = dict.page_title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', dict.page_desc);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] === undefined) return;
+      let text = dict[key];
+      const priceKey = PRICE_KEY_MAP[key];
+      if(priceKey && text.indexOf('{P}') !== -1 && window.MesaDevCurrency){
+        text = text.replace('{P}', window.MesaDevCurrency.format(priceKey));
+      }
+      el.textContent = text;
+    });
+    const sel = document.getElementById('langSelect');
+    if(sel) sel.value = lang;
+    try{
+      localStorage.setItem('mesaDevLang', lang);
+      if(manual) localStorage.setItem('mesaDevLangManual', '1');
+    }catch(e){}
+  }
+  window.applyLang = applyLang;
+
+  document.getElementById('langSelect').addEventListener('change', (e)=> applyLang(e.target.value, true));
+
+  // Idioma inicial: usa o último idioma salvo (manual ou detectado por país em visita
+  // anterior); senão, tenta o idioma do navegador; senão, inglês. A detecção por país
+  // (currency.js) roda em seguida e pode ajustar — exceto se o visitante já escolheu
+  // manualmente antes.
+  (function setInitialLang(){
+    let initial = 'en';
+    const saved = localStorage.getItem('mesaDevLang');
+    if(saved && I18N[saved]){
+      initial = saved;
+    }else{
+      const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if(nav.startsWith('pt-br')) initial = 'pt-br';
+      else if(nav.startsWith('pt')) initial = 'pt';
+    }
+    applyLang(initial);
+  })();
+</script>
+
+<script>
+  const panels = document.querySelectorAll('.plan-panel');
+  const row = document.getElementById('plansRow');
+
+  function activate(panel){
+    panels.forEach(p=>{
+      p.classList.toggle('expanded', p === panel);
+      p.classList.toggle('shrink', p !== panel);
+    });
+  }
+  function resetAll(){
+    panels.forEach(p=>{ p.classList.remove('expanded'); p.classList.remove('shrink'); });
+  }
+
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  if(canHover){
+    panels.forEach(p=> p.addEventListener('mouseenter', ()=> activate(p)));
+    row.addEventListener('mouseleave', resetAll);
+  }else{
+    panels.forEach(p=>{
+      p.addEventListener('click', ()=>{
+        if(p.classList.contains('expanded')) resetAll();
+        else activate(p);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
