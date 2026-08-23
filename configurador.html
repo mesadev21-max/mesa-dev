@@ -72,7 +72,29 @@
     display:flex; align-items:center; justify-content:center; font-size:12px;
   }
   .pill.checkbox-style.selected .check{background:var(--gold); border-color:var(--gold); color:var(--black);}
-  .pill.checkbox-style .txt{flex:1; display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+  .pill.disabled{opacity:0.38; cursor:not-allowed; pointer-events:none;}
+
+  .encomenda-panel{margin-top:16px; border-top:1px solid var(--line); padding-top:16px;}
+  .disclosure-toggle{
+    display:flex; justify-content:space-between; align-items:center; cursor:pointer;
+    font-size:13.5px; font-weight:600; color:var(--charcoal); padding:4px 0;
+  }
+  .disclosure-arrow{font-family:'Space Mono',monospace; transition:transform .2s ease; color:var(--gold);}
+  .disclosure-arrow.open{transform:rotate(180deg);}
+  .disclosure-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .disclosure-body.open{max-height:900px; margin-top:16px;}
+  .mini-label{font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; opacity:0.6; margin-bottom:8px; display:block;}
+  .check-grid{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+  .check-pill{
+    border:1px solid var(--line); border-radius:20px; padding:7px 14px; font-size:13px; cursor:pointer;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .check-pill:hover{border-color:var(--gold);}
+  .check-pill.selected{background:var(--black); color:var(--cream); border-color:var(--black);}
+  textarea.desc-field{
+    width:100%; border:1px solid var(--line); border-radius:8px; padding:12px 14px;
+    font-family:'Work Sans',sans-serif; font-size:14px; resize:vertical; min-height:80px; color:var(--black);
+  }
 
   .example-tag{
     font-family:'Space Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.03em;
@@ -142,18 +164,47 @@
         <div class="group" id="grpPlanoWrap">
           <h2>Plano</h2>
           <div class="pill-grid" id="grp-plano">
-            <div class="pill" data-group="plano" data-value="aperitivo" data-price="600" data-label="Aperitivo">
-              <span class="t">Aperitivo</span><span class="p">€ 600</span>
+            <div class="pill" data-group="plano" data-value="aperitivo" data-price="599" data-label="Aperitivo">
+              <span class="t">Aperitivo</span><span class="p">€ 599</span>
             </div>
-            <div class="pill" data-group="plano" data-value="principal" data-price="1000" data-label="Prato Principal">
+            <div class="pill" data-group="plano" data-value="principal" data-price="999" data-label="Prato Principal">
               <span class="badge">Mais escolhido</span>
-              <span class="t">Prato Principal</span><span class="p">€ 1.000</span>
+              <span class="t">Prato Principal</span><span class="p">€ 999</span>
             </div>
-            <div class="pill" data-group="plano" data-value="banquete" data-price="2500" data-label="Banquete">
-              <span class="t">Banquete</span><span class="p">€ 2.500</span>
+            <div class="pill" data-group="plano" data-value="banquete" data-price="2499" data-label="Banquete">
+              <span class="t">Banquete</span><span class="p">€ 2.499</span>
             </div>
             <div class="pill" data-group="plano" data-value="encomenda" data-price="0" data-label="Sob Encomenda">
               <span class="t">Sob Encomenda</span><span class="p">a combinar</span>
+            </div>
+          </div>
+
+          <div class="encomenda-panel" id="encomendaPanel" style="display:none;">
+            <div class="disclosure-toggle" id="encomendaToggle">
+              <span>Contar mais detalhes do que você tem em mente</span>
+              <span class="disclosure-arrow" id="encomendaArrow">▾</span>
+            </div>
+            <div class="disclosure-body" id="encomendaBody">
+              <span class="mini-label">Estilo preferido (pode marcar mais de um)</span>
+              <div class="check-grid" id="grp-estilo">
+                <div class="check-pill" data-group="estilo" data-value="elegante">Elegante</div>
+                <div class="check-pill" data-group="estilo" data-value="moderno">Moderno</div>
+                <div class="check-pill" data-group="estilo" data-value="rustico">Rústico</div>
+                <div class="check-pill" data-group="estilo" data-value="minimalista">Minimalista</div>
+                <div class="check-pill" data-group="estilo" data-value="colorido">Colorido</div>
+                <div class="check-pill" data-group="estilo" data-value="sofisticado">Sofisticado</div>
+              </div>
+
+              <span class="mini-label">Formato preferido (pode marcar mais de um)</span>
+              <div class="check-grid" id="grp-formato">
+                <div class="check-pill" data-group="formato" data-value="landing">Landing page</div>
+                <div class="check-pill" data-group="formato" data-value="completo">Site completo</div>
+                <div class="check-pill" data-group="formato" data-value="ecommerce">Loja online</div>
+                <div class="check-pill" data-group="formato" data-value="outro">Outro</div>
+              </div>
+
+              <span class="mini-label">Descreva o que você tem em mente</span>
+              <textarea class="desc-field" id="encomendaDescricao" placeholder="Ex: quero um site com mais de uma unidade, sistema de reservas próprio, algo fora do padrão..."></textarea>
             </div>
           </div>
         </div>
@@ -161,14 +212,16 @@
         <div class="group">
           <h2>Prazo de entrega</h2>
           <div class="pill-grid" id="grp-entrega">
-            <div class="pill selected" data-group="entrega" data-value="padrao" data-price="0" data-label="Entrega padrão (5 dias úteis)">
-              <span class="t">Padrão</span><span class="p">5 dias úteis · grátis</span>
+            <div class="pill selected" data-group="entrega" data-value="padrao" data-price="0" data-label="Entrega padrão">
+              <span class="t">Padrão</span><span class="p" id="entregaPadraoTxt">5 dias úteis · grátis</span>
             </div>
-            <div class="pill" data-group="entrega" data-value="rapida" data-price="150" data-label="Entrega expressa">
-              <span class="badge">Exemplo</span>
-              <span class="t">Expressa</span><span class="p">+€ 150</span>
+            <div class="pill" data-group="entrega" data-value="rapida" data-price="0" data-label="Entrega expressa">
+              <span class="t">Expressa</span><span class="p" id="entregaRapidaTxt">o mais breve possível</span>
             </div>
           </div>
+          <p id="entregaEncomendaNote" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
+            No Sob Encomenda o prazo é combinado na conversa, conforme o escopo.
+          </p>
         </div>
 
         <div class="group">
@@ -196,10 +249,30 @@
             <div class="pill" data-group="manutencao" data-value="completo" data-price="50" data-label="Manutenção Completo (até 4 atualizações/mês)">
               <span class="t">Completo</span><span class="p">€ 50/mês</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="premium" data-price="90" data-label="Manutenção Premium (atualizações ilimitadas)">
-              <span class="badge">Exemplo</span>
-              <span class="t">Premium</span><span class="p">€ 90/mês</span>
+            <div class="pill" data-group="manutencao" data-value="premium" data-price="99" data-label="Manutenção Premium (atualizações ilimitadas)">
+              <span class="t">Premium</span><span class="p">€ 99/mês</span>
             </div>
+          </div>
+        </div>
+
+        <div class="group" id="grpBackendWrap" style="display:none;">
+          <h2>Infraestrutura (Backend)</h2>
+          <div class="pill-grid" id="grp-backend">
+            <div class="pill selected" data-group="backend" data-value="nenhum" data-pct="0" data-label="Site direto, sem backend">
+              <span class="t">Site direto (sem backend)</span><span class="p">grátis</span>
+            </div>
+            <div class="pill" data-group="backend" data-value="propria" data-pct="0.35" data-label="Infraestrutura própria (backend)">
+              <span class="t">Infraestrutura própria</span><span class="p" id="backendPropriaTxt">+35%</span>
+            </div>
+            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.10" data-label="Shopify (backend)">
+              <span class="t">Shopify</span><span class="p" id="backendShopifyTxt">+10%</span>
+            </div>
+            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.10" data-label="WooCommerce (backend)">
+              <span class="t">WooCommerce</span><span class="p" id="backendWooTxt">+10%</span>
+            </div>
+          </div>
+          <div id="backendNote" style="display:none; margin-top:14px; background:#fbeaea; border:1px solid #d94141; border-radius:8px; padding:12px 14px; font-size:12.5px; color:#8f2323; opacity:0; transform:translateY(-4px); transition:opacity .25s ease, transform .25s ease;">
+            <b>Sem backend:</b> o site é só apresentação — sem login, carrinho dinâmico real ou banco de dados. Ótimo pra maioria dos casos, mas pra área de cliente, estoque automático ou pagamento processado direto no site, é preciso um dos planos com backend acima.
           </div>
         </div>
 
@@ -240,10 +313,18 @@
 </section>
 
 <script>
-  const state = { plano:null, entrega:'padrao', dominio:'vercel', manutencao:'nenhuma', addons:{} };
+  const state = {
+    plano:null, entrega:'padrao', dominio:'vercel', manutencao:'nenhuma', backend:'nenhum', addons:{},
+    estilos:[], formatos:[]
+  };
 
   const params = new URLSearchParams(location.search);
   const planoParam = params.get('plano');
+
+  // % de acréscimo da entrega expressa por plano — e-commerce é mais complexo, custa mais
+  const RUSH_PCT = { aperitivo:0.15, principal:0.15, banquete:0.25 };
+  const STANDARD_DAYS = { aperitivo:'5 dias úteis', principal:'5 dias úteis', banquete:'7-10 dias úteis' };
+  const BACKEND_PLANOS = ['principal', 'banquete']; // só site completo e e-commerce
 
   function selectSingle(group, value){
     document.querySelectorAll('.pill[data-group="'+group+'"]').forEach(p=>{
@@ -251,8 +332,109 @@
     });
   }
 
+  function findPill(group, value){
+    return document.querySelector('.pill[data-group="'+group+'"][data-value="'+value+'"]');
+  }
+
+  function planoPrice(){
+    if(!state.plano) return 0;
+    return Number(findPill('plano', state.plano).dataset.price);
+  }
+
+  // ===== Infraestrutura / backend: só aparece pra Prato Principal e Banquete =====
+  function updateBackendGroup(){
+    const wrap = document.getElementById('grpBackendWrap');
+    const show = BACKEND_PLANOS.includes(state.plano);
+    wrap.style.display = show ? 'block' : 'none';
+
+    if(!show){
+      state.backend = 'nenhum';
+      document.getElementById('backendNote').style.opacity = '0';
+      document.getElementById('backendNote').style.display = 'none';
+      return;
+    }
+
+    selectSingle('backend', state.backend);
+    const price = planoPrice();
+    ['propria','shopify','woocommerce'].forEach(v=>{
+      const pill = findPill('backend', v);
+      const pct = Number(pill.dataset.pct);
+      const val = Math.round(price * pct);
+      pill.querySelector('.p').textContent = '+€ ' + val.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)';
+    });
+    updateBackendNote();
+  }
+
+  function updateBackendNote(){
+    const note = document.getElementById('backendNote');
+    if(state.backend === 'nenhum'){
+      note.style.display = 'block';
+      requestAnimationFrame(()=>{ note.style.opacity = '1'; note.style.transform = 'translateY(0)'; });
+    } else {
+      note.style.opacity = '0';
+      note.style.transform = 'translateY(-4px)';
+      setTimeout(()=>{ if(state.backend !== 'nenhum') note.style.display = 'none'; }, 250);
+    }
+  }
+
+  // ===== Prazo de entrega: muda de acordo com o plano escolhido =====
+  function updateEntregaGroup(){
+    const entregaPills = document.querySelectorAll('.pill[data-group="entrega"]');
+    const note = document.getElementById('entregaEncomendaNote');
+
+    if(state.plano === 'encomenda'){
+      entregaPills.forEach(p=> p.classList.add('disabled'));
+      note.style.display = 'block';
+      state.entrega = null;
+      return;
+    }
+
+    note.style.display = 'none';
+    entregaPills.forEach(p=> p.classList.remove('disabled'));
+    if(!state.entrega) state.entrega = 'padrao';
+    selectSingle('entrega', state.entrega);
+
+    const pct = RUSH_PCT[state.plano] || 0.15;
+    const days = STANDARD_DAYS[state.plano] || '5 dias úteis';
+    document.getElementById('entregaPadraoTxt').textContent = days + ' · grátis';
+
+    if(state.plano){
+      const rushValue = Math.round(planoPrice() * pct);
+      document.getElementById('entregaRapidaTxt').textContent =
+        'o mais breve possível · +€ ' + rushValue.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)';
+    } else {
+      document.getElementById('entregaRapidaTxt').textContent = 'o mais breve possível';
+    }
+  }
+
+  // ===== Painel do Sob Encomenda =====
+  function updateEncomendaPanel(){
+    const panel = document.getElementById('encomendaPanel');
+    panel.style.display = state.plano === 'encomenda' ? 'block' : 'none';
+  }
+
+  document.getElementById('encomendaToggle').addEventListener('click', ()=>{
+    document.getElementById('encomendaBody').classList.toggle('open');
+    document.getElementById('encomendaArrow').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.check-pill').forEach(cp=>{
+    cp.addEventListener('click', ()=>{
+      cp.classList.toggle('selected');
+      const group = cp.dataset.group === 'estilo' ? state.estilos : state.formatos;
+      const value = cp.dataset.value;
+      const idx = group.indexOf(value);
+      if(idx === -1) group.push(value); else group.splice(idx,1);
+      render();
+    });
+  });
+
+  document.getElementById('encomendaDescricao').addEventListener('input', render);
+
+  // ===== Pills normais (plano, entrega, domínio, manutenção, addons) =====
   document.querySelectorAll('.pill').forEach(pill=>{
     pill.addEventListener('click', ()=>{
+      if(pill.classList.contains('disabled')) return;
       const group = pill.dataset.group;
       const value = pill.dataset.value;
       if(group.startsWith('addon-')){
@@ -263,32 +445,47 @@
       } else {
         selectSingle(group, value);
         state[group] = value;
+        if(group === 'plano'){
+          updateEntregaGroup();
+          updateEncomendaPanel();
+          updateBackendGroup();
+        }
+        if(group === 'backend'){
+          updateBackendNote();
+        }
       }
       render();
     });
   });
 
-  function findPill(group, value){
-    return document.querySelector('.pill[data-group="'+group+'"][data-value="'+value+'"]');
-  }
-
   function render(){
     const lines = [];
     let total = 0;
+    const isEncomenda = state.plano === 'encomenda';
 
     if(state.plano){
       const p = findPill('plano', state.plano);
       const price = Number(p.dataset.price);
       total += price;
-      lines.push([p.dataset.label, price === 0 ? 'a combinar' : '€ ' + price.toLocaleString('pt-PT')]);
+      lines.push([p.dataset.label, isEncomenda ? 'a combinar' : '€ ' + price.toLocaleString('pt-PT')]);
     }
-    if(state.entrega === 'rapida'){
-      const p = findPill('entrega','rapida'); total += Number(p.dataset.price);
-      lines.push([p.dataset.label, '+€ ' + p.dataset.price]);
+
+    if(!isEncomenda && state.entrega === 'rapida' && state.plano){
+      const pct = RUSH_PCT[state.plano] || 0.15;
+      const rushValue = Math.round(planoPrice() * pct);
+      total += rushValue;
+      lines.push(['Entrega expressa (+' + Math.round(pct*100) + '%)', '+€ ' + rushValue.toLocaleString('pt-PT')]);
     }
     if(state.dominio === 'proprio'){
       const p = findPill('dominio','proprio'); total += Number(p.dataset.price);
       lines.push([p.dataset.label, '+€ ' + p.dataset.price]);
+    }
+    if(BACKEND_PLANOS.includes(state.plano) && state.backend !== 'nenhum'){
+      const p = findPill('backend', state.backend);
+      const pct = Number(p.dataset.pct);
+      const val = Math.round(planoPrice() * pct);
+      total += val;
+      lines.push([p.dataset.label, '+€ ' + val.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)']);
     }
     if(state.manutencao !== 'nenhuma'){
       const p = findPill('manutencao', state.manutencao);
@@ -298,6 +495,13 @@
       if(a){ total += a.price; lines.push([a.label, '+€ ' + a.price]); }
     });
 
+    if(isEncomenda){
+      if(state.estilos.length) lines.push(['Estilo preferido', state.estilos.join(', ')]);
+      if(state.formatos.length) lines.push(['Formato preferido', state.formatos.join(', ')]);
+      const desc = document.getElementById('encomendaDescricao').value.trim();
+      if(desc) lines.push(['Descrição', desc.length > 40 ? desc.slice(0,40) + '…' : desc]);
+    }
+
     const linesEl = document.getElementById('comandaLines');
     if(!state.plano){
       linesEl.innerHTML = '<div class="empty">Escolha um plano pra começar…</div>';
@@ -306,18 +510,21 @@
         '<div class="line"><span>'+l[0]+'</span><span class="v">'+l[1]+'</span></div>'
       ).join('');
     }
-    document.getElementById('comandaTotal').textContent = '€ ' + total.toLocaleString('pt-PT');
+    document.getElementById('comandaTotal').textContent = isEncomenda ? 'a combinar' : '€ ' + total.toLocaleString('pt-PT');
 
-    let msg = 'Olá! Montei um orçamento no configurador do site:%0A';
-    lines.forEach(l=> msg += '- ' + l[0] + '%0A');
-    msg += 'Total estimado: € ' + total.toLocaleString('pt-PT');
-    document.getElementById('ctaWhats').href = 'https://wa.me/5554996336129?text=' + msg;
+    let msg = 'Olá! Montei um orçamento no configurador do site:\n';
+    lines.forEach(l=> msg += '- ' + l[0] + ': ' + l[1] + '\n');
+    msg += isEncomenda ? 'Valor: a combinar' : 'Total estimado: € ' + total.toLocaleString('pt-PT');
+    document.getElementById('ctaWhats').href = 'https://wa.me/5554996336129?text=' + encodeURIComponent(msg);
   }
 
   if(planoParam && findPill('plano', planoParam)){
     selectSingle('plano', planoParam);
     state.plano = planoParam;
   }
+  updateEntregaGroup();
+  updateEncomendaPanel();
+  updateBackendGroup();
   render();
 </script>
 
