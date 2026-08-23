@@ -60,6 +60,8 @@
   .pill .t{font-weight:600; font-size:14.5px;}
   .pill.selected .t{color:var(--cream);}
   .pill .p{font-family:'Space Mono',monospace; font-size:12.5px; opacity:0.65;}
+  .pill .d{font-size:11px; opacity:0.55; margin-top:-2px;}
+  .pill.selected .d{color:var(--cream-2); opacity:0.75;}
   .pill.selected .p{color:var(--gold-light); opacity:1;}
   .pill .badge{
     position:absolute; top:-9px; right:10px; background:var(--gold); color:var(--black);
@@ -165,17 +167,17 @@
           <h2>Plano</h2>
           <div class="pill-grid" id="grp-plano">
             <div class="pill" data-group="plano" data-value="aperitivo" data-price="599" data-label="Aperitivo">
-              <span class="t">Aperitivo</span><span class="p">€ 599</span>
+              <span class="t">Aperitivo</span><span class="d">Landing page · 1 página</span><span class="p">€ 599</span>
             </div>
             <div class="pill" data-group="plano" data-value="principal" data-price="999" data-label="Prato Principal">
               <span class="badge">Mais escolhido</span>
-              <span class="t">Prato Principal</span><span class="p">€ 999</span>
+              <span class="t">Prato Principal</span><span class="d">Site completo · 3-5 páginas</span><span class="p">€ 999</span>
             </div>
             <div class="pill" data-group="plano" data-value="banquete" data-price="2499" data-label="Banquete">
-              <span class="t">Banquete</span><span class="p">€ 2.499</span>
+              <span class="t">Banquete</span><span class="d">Loja online · carrinho e checkout</span><span class="p">€ 2.499</span>
             </div>
             <div class="pill" data-group="plano" data-value="encomenda" data-price="0" data-label="Sob Encomenda">
-              <span class="t">Sob Encomenda</span><span class="p">a combinar</span>
+              <span class="t">Sob Encomenda</span><span class="d">Projeto personalizado</span><span class="p">a combinar</span>
             </div>
           </div>
 
@@ -261,16 +263,16 @@
             <div class="pill selected" data-group="backend" data-value="nenhum" data-pct="0" data-label="Site direto, sem backend">
               <span class="t">Site direto (sem backend)</span><span class="p">grátis</span>
             </div>
-            <div class="pill" data-group="backend" data-value="propria" data-pct="0.35" data-label="Infraestrutura própria (backend)">
-              <span class="t">Infraestrutura própria</span><span class="p" id="backendPropriaTxt">+35%</span>
+            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.20" data-label="Shopify (backend)">
+              <span class="t">Shopify</span><span class="p" id="backendShopifyTxt">+20%</span>
             </div>
-            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.10" data-label="Shopify (backend)">
-              <span class="t">Shopify</span><span class="p" id="backendShopifyTxt">+10%</span>
-            </div>
-            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.10" data-label="WooCommerce (backend)">
-              <span class="t">WooCommerce</span><span class="p" id="backendWooTxt">+10%</span>
+            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.20" data-label="WooCommerce (backend)">
+              <span class="t">WooCommerce</span><span class="p" id="backendWooTxt">+20%</span>
             </div>
           </div>
+          <p id="backendDisabledNote" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
+            Não disponível pra landing page — se seu projeto crescer, dá pra migrar de plano depois.
+          </p>
           <div id="backendNote" style="display:none; margin-top:14px; background:#fbeaea; border:1px solid #d94141; border-radius:8px; padding:12px 14px; font-size:12.5px; color:#8f2323; opacity:0; transform:translateY(-4px); transition:opacity .25s ease, transform .25s ease;">
             <b>Sem backend:</b> o site é só apresentação — sem login, carrinho dinâmico real ou banco de dados. Ótimo pra maioria dos casos, mas pra área de cliente, estoque automático ou pagamento processado direto no site, é preciso um dos planos com backend acima.
           </div>
@@ -322,7 +324,7 @@
   const planoParam = params.get('plano');
 
   // % de acréscimo da entrega expressa por plano — e-commerce é mais complexo, custa mais
-  const RUSH_PCT = { aperitivo:0.15, principal:0.15, banquete:0.25 };
+  const RUSH_PCT = { aperitivo:0.35, principal:0.35, banquete:0.35 };
   const STANDARD_DAYS = { aperitivo:'5 dias úteis', principal:'5 dias úteis', banquete:'7-10 dias úteis' };
   const BACKEND_PLANOS = ['principal', 'banquete']; // só site completo e e-commerce
 
@@ -341,22 +343,37 @@
     return Number(findPill('plano', state.plano).dataset.price);
   }
 
-  // ===== Infraestrutura / backend: só aparece pra Prato Principal e Banquete =====
+  // ===== Infraestrutura / backend: disponível pra Prato Principal e Banquete;
+  // aparece cinza/inclicável no Aperitivo (landing não precisa); some no Sob Encomenda =====
   function updateBackendGroup(){
     const wrap = document.getElementById('grpBackendWrap');
-    const show = BACKEND_PLANOS.includes(state.plano);
-    wrap.style.display = show ? 'block' : 'none';
+    const pills = document.querySelectorAll('.pill[data-group="backend"]');
+    const disabledNote = document.getElementById('backendDisabledNote');
 
-    if(!show){
+    if(state.plano === 'encomenda' || !state.plano){
+      wrap.style.display = 'none';
       state.backend = 'nenhum';
       document.getElementById('backendNote').style.opacity = '0';
       document.getElementById('backendNote').style.display = 'none';
       return;
     }
 
+    wrap.style.display = 'block';
+
+    if(state.plano === 'aperitivo'){
+      pills.forEach(p=> p.classList.add('disabled'));
+      disabledNote.style.display = 'block';
+      state.backend = 'nenhum';
+      document.getElementById('backendNote').style.opacity = '0';
+      document.getElementById('backendNote').style.display = 'none';
+      return;
+    }
+
+    pills.forEach(p=> p.classList.remove('disabled'));
+    disabledNote.style.display = 'none';
     selectSingle('backend', state.backend);
     const price = planoPrice();
-    ['propria','shopify','woocommerce'].forEach(v=>{
+    ['shopify','woocommerce'].forEach(v=>{
       const pill = findPill('backend', v);
       const pct = Number(pill.dataset.pct);
       const val = Math.round(price * pct);
@@ -394,16 +411,16 @@
     if(!state.entrega) state.entrega = 'padrao';
     selectSingle('entrega', state.entrega);
 
-    const pct = RUSH_PCT[state.plano] || 0.15;
+    const pct = RUSH_PCT[state.plano] || 0.35;
     const days = STANDARD_DAYS[state.plano] || '5 dias úteis';
     document.getElementById('entregaPadraoTxt').textContent = days + ' · grátis';
 
     if(state.plano){
       const rushValue = Math.round(planoPrice() * pct);
       document.getElementById('entregaRapidaTxt').textContent =
-        'o mais breve possível · +€ ' + rushValue.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)';
+        'em até 3 dias úteis · +€ ' + rushValue.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)';
     } else {
-      document.getElementById('entregaRapidaTxt').textContent = 'o mais breve possível';
+      document.getElementById('entregaRapidaTxt').textContent = 'em até 3 dias úteis';
     }
   }
 
