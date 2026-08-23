@@ -112,14 +112,6 @@
     .layout{grid-template-columns:1fr;}
     .comanda{position:static;}
   }
-  .try-fixed{
-    background:var(--cream-2); border:1px solid var(--line); border-radius:10px;
-    padding:20px 24px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; gap:16px;
-  }
-  .try-fixed .t{font-family:'Fraunces',serif; font-size:18px; margin-bottom:4px;}
-  .try-fixed .d{font-size:13px; opacity:0.65;}
-  .try-fixed .p{font-family:'Space Mono',monospace; font-size:20px; color:var(--gold); white-space:nowrap;}
-  [data-modo-hide]{display:none;}
 </style>
 </head>
 <body>
@@ -147,15 +139,7 @@
     <div class="layout">
       <div class="options">
 
-        <div class="try-fixed" id="tryFixedBlock" style="display:none;">
-          <div>
-            <div class="t">Mesa Try — Cardápio digital com QR Code</div>
-            <div class="d">Experimente o Mesa.dev com o item mais simples: só o cardápio, sem site completo.</div>
-          </div>
-          <div class="p">€ 100</div>
-        </div>
-
-        <div class="group" data-modo-hide id="grpPlanoWrap">
+        <div class="group" id="grpPlanoWrap">
           <h2>Plano</h2>
           <div class="pill-grid" id="grp-plano">
             <div class="pill" data-group="plano" data-value="aperitivo" data-price="600" data-label="Aperitivo">
@@ -174,7 +158,7 @@
           </div>
         </div>
 
-        <div class="group" data-modo-hide>
+        <div class="group">
           <h2>Prazo de entrega</h2>
           <div class="pill-grid" id="grp-entrega">
             <div class="pill selected" data-group="entrega" data-value="padrao" data-price="0" data-label="Entrega padrão (5 dias úteis)">
@@ -187,7 +171,7 @@
           </div>
         </div>
 
-        <div class="group" data-modo-hide>
+        <div class="group">
           <h2>Domínio</h2>
           <div class="pill-grid" id="grp-dominio">
             <div class="pill selected" data-group="dominio" data-value="vercel" data-price="0" data-label="Domínio gratuito (vercel.app)">
@@ -219,7 +203,7 @@
           </div>
         </div>
 
-        <div class="group" data-modo-hide>
+        <div class="group">
           <h2>Complementares</h2>
           <div class="pill-grid" id="grp-addons" style="flex-direction:column;">
             <div class="pill checkbox-style" data-group="addon-qr" data-value="qr" data-price="100" data-label="Cardápio digital com QR Code">
@@ -257,18 +241,9 @@
 
 <script>
   const state = { plano:null, entrega:'padrao', dominio:'vercel', manutencao:'nenhuma', addons:{} };
-  const TRY_ITEM = { price:100, label:'Mesa Try — Cardápio digital com QR Code' };
 
   const params = new URLSearchParams(location.search);
   const planoParam = params.get('plano');
-  const isTryMode = params.get('modo') === 'try';
-
-  if(isTryMode){
-    document.querySelectorAll('[data-modo-hide]').forEach(el=> el.style.display = 'none');
-    document.getElementById('tryFixedBlock').style.display = 'flex';
-    document.querySelector('.intro h1').textContent = 'Experimente o Mesa Try';
-    document.querySelector('.intro p').textContent = 'Sem site completo, sem compromisso — só o cardápio digital com QR Code, pra você sentir como é trabalhar com a gente. Adicione manutenção mensal se quiser que eu mantenha atualizado.';
-  }
 
   function selectSingle(group, value){
     document.querySelectorAll('.pill[data-group="'+group+'"]').forEach(p=>{
@@ -301,35 +276,30 @@
     const lines = [];
     let total = 0;
 
-    if(isTryMode){
-      total += TRY_ITEM.price;
-      lines.push([TRY_ITEM.label, '€ ' + TRY_ITEM.price]);
-    } else if(state.plano){
+    if(state.plano){
       const p = findPill('plano', state.plano);
       const price = Number(p.dataset.price);
       total += price;
       lines.push([p.dataset.label, price === 0 ? 'a combinar' : '€ ' + price.toLocaleString('pt-PT')]);
     }
-    if(!isTryMode && state.entrega === 'rapida'){
+    if(state.entrega === 'rapida'){
       const p = findPill('entrega','rapida'); total += Number(p.dataset.price);
       lines.push([p.dataset.label, '+€ ' + p.dataset.price]);
     }
-    if(!isTryMode && state.dominio === 'proprio'){
+    if(state.dominio === 'proprio'){
       const p = findPill('dominio','proprio'); total += Number(p.dataset.price);
       lines.push([p.dataset.label, '+€ ' + p.dataset.price]);
     }
     if(state.manutencao !== 'nenhuma'){
-      const p = findPill('manutencao', state.manutencao); 
+      const p = findPill('manutencao', state.manutencao);
       lines.push([p.dataset.label, '€ ' + p.dataset.price + '/mês']);
     }
-    if(!isTryMode){
-      Object.values(state.addons).forEach(a=>{
-        if(a){ total += a.price; lines.push([a.label, '+€ ' + a.price]); }
-      });
-    }
+    Object.values(state.addons).forEach(a=>{
+      if(a){ total += a.price; lines.push([a.label, '+€ ' + a.price]); }
+    });
 
     const linesEl = document.getElementById('comandaLines');
-    if(!isTryMode && !state.plano){
+    if(!state.plano){
       linesEl.innerHTML = '<div class="empty">Escolha um plano pra começar…</div>';
     } else {
       linesEl.innerHTML = lines.map(l=>
@@ -338,16 +308,13 @@
     }
     document.getElementById('comandaTotal').textContent = '€ ' + total.toLocaleString('pt-PT');
 
-    // monta a mensagem de WhatsApp com o resumo
-    let msg = isTryMode
-      ? 'Olá! Quero experimentar o Mesa Try (cardápio digital com QR Code):%0A'
-      : 'Olá! Montei um orçamento no configurador do site:%0A';
+    let msg = 'Olá! Montei um orçamento no configurador do site:%0A';
     lines.forEach(l=> msg += '- ' + l[0] + '%0A');
     msg += 'Total estimado: € ' + total.toLocaleString('pt-PT');
     document.getElementById('ctaWhats').href = 'https://wa.me/5554996336129?text=' + msg;
   }
 
-  if(!isTryMode && planoParam && findPill('plano', planoParam)){
+  if(planoParam && findPill('plano', planoParam)){
     selectSingle('plano', planoParam);
     state.plano = planoParam;
   }
