@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mercearia do Vale — Produtos regionais, à porta de casa</title>
-<meta name="description" content="Azeite, compotas, enchidos e vinho de pequenos produtores do Vale, entregues em Portugal e na Europa. Os mesmos produtos da nossa loja física, há 30 anos.">
-<meta property="og:title" content="Mercearia do Vale — Produtos regionais, à porta de casa">
-<meta property="og:description" content="Direto do produtor, sem intermediários. Azeite, compotas, enchidos e vinho do Vale, entregues à sua porta.">
+<title>Produtos — Mercearia do Vale</title>
+<meta name="description" content="Catálogo completo da Mercearia do Vale: azeites, compotas, enchidos, queijos, vinhos, licores e cabazes de pequenos produtores do Vale.">
+<meta property="og:title" content="Produtos — Mercearia do Vale">
+<meta property="og:description" content="Catálogo completo: azeites, compotas, enchidos, queijos, vinhos, licores e cabazes de pequenos produtores do Vale.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -29,7 +29,6 @@
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
 
-  /* announce bar */
   .announce{background:var(--olive);color:#fff;text-align:center;font-size:12.5px;padding:9px 0;letter-spacing:0.02em;}
 
   header{position:sticky;top:0;z-index:30;background:rgba(250,248,244,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
@@ -38,7 +37,8 @@
   .brand-mark{width:34px;height:34px;border-radius:7px;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:16px;}
   .brand-name{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;}
   nav{display:flex;gap:26px;font-size:14px;color:var(--ink-soft);}
-  nav a:hover{color:var(--ink);}
+  nav a:hover, nav a.current{color:var(--ink);}
+  nav a.current{font-weight:600;}
   .header-right{display:flex;align-items:center;gap:12px;}
   .hamburger{display:none;background:none;border:1.3px solid var(--line);border-radius:8px;width:38px;height:38px;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0;}
   .hamburger span, .hamburger span::before, .hamburger span::after{content:'';display:block;width:16px;height:1.6px;background:var(--ink);position:relative;transition:transform .2s,opacity .2s;}
@@ -61,36 +61,36 @@
     font-family:'Space Mono',monospace;
   }
 
-  /* hero */
-  .hero{padding:64px 0;background:var(--panel);}
-  .hero .grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;}
-  .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta-dark);margin-bottom:16px;}
-  .hero h1{font-size:clamp(34px,4.6vw,50px);line-height:1.08;}
-  .hero p{margin-top:16px;font-size:16px;color:var(--ink-soft);max-width:44ch;}
-  .hero-ctas{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{display:inline-block;background:var(--olive);color:#fff !important;padding:12px 24px;border-radius:6px;font-weight:600;font-size:14px;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
-  .btn:hover{background:var(--olive-dark);transform:translateY(-1px);}
-  .btn.outline{background:transparent;border:1.3px solid var(--ink);color:var(--ink) !important;}
-  .btn.outline:hover{background:var(--ink);color:#fff !important;}
-  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .hero-tile{aspect-ratio:1;border-radius:10px;}
-  .hero-tile:nth-child(1){background:linear-gradient(155deg,#8C9C6F,#4A5D3A);margin-top:24px;}
-  .hero-tile:nth-child(2){background:linear-gradient(155deg,#E3A15D,#C1602D);}
-  .hero-tile:nth-child(3){background:linear-gradient(155deg,#C1602D,#7A3A18);}
-  .hero-tile:nth-child(4){background:linear-gradient(155deg,#4A5D3A,#232D1B);margin-top:-24px;}
+  /* page head */
+  .page-head{padding:44px 0 8px;background:var(--panel);}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta-dark);margin-bottom:14px;}
+  .page-head h1{font-size:clamp(28px,3.6vw,40px);line-height:1.1;}
+  .page-head p{margin-top:12px;font-size:15px;color:var(--ink-soft);max-width:56ch;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-soft);margin-bottom:18px;}
+  .back-link:hover{color:var(--ink);}
 
-  /* categories strip */
-  .cats{padding:40px 0;border-bottom:1px solid var(--line);}
+  /* toolbar: search + sort + filters */
+  .toolbar{background:var(--panel);padding:22px 0 32px;border-bottom:1px solid var(--line);}
+  .toolbar-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .search-box{position:relative;flex:1;min-width:220px;max-width:360px;}
+  .search-box input{
+    width:100%;padding:10px 14px 10px 36px;border-radius:30px;border:1px solid var(--line);
+    background:#fff;font-family:'Inter',sans-serif;font-size:13.5px;color:var(--ink);
+  }
+  .search-box input:focus{outline:none;border-color:var(--olive);}
+  .search-box svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;opacity:0.5;}
+  select#sort{
+    padding:10px 14px;border-radius:30px;border:1px solid var(--line);background:#fff;
+    font-family:'Inter',sans-serif;font-size:13.5px;color:var(--ink);cursor:pointer;
+  }
   .cats .row{display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;}
   .chip{flex-shrink:0;padding:9px 18px;border-radius:30px;border:1px solid var(--line);font-size:13.5px;cursor:pointer;background:#fff;transition:all .15s;}
   .chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
   .chip:hover:not(.active){border-color:var(--ink);}
 
   /* products */
-  .section{padding:60px 0;}
-  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
-  .section-head h2{font-size:clamp(24px,3vw,32px);}
-  .section-head p{font-size:13.5px;color:var(--ink-soft);}
+  .section{padding:48px 0 60px;}
+  .result-count{font-size:13px;color:var(--ink-soft);margin-bottom:20px;}
   .p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
   .p-card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1);}
   .p-card:hover{box-shadow:0 24px 42px -18px rgba(34,32,28,0.35);transform:translateY(-9px) scale(1.025);}
@@ -110,14 +110,7 @@
     display:flex;align-items:center;justify-content:center;
   }
   .add-btn:hover{background:var(--terracotta);}
-
-  /* trust strip */
-  .trust{background:var(--olive);color:#fff;}
-  .trust .grid{display:grid;grid-template-columns:repeat(3,1fr);}
-  .t-item{padding:34px 28px;border-left:1px solid rgba(255,255,255,0.15);}
-  .t-item:first-child{border-left:none;}
-  .t-item h3{font-size:16px;margin-bottom:6px;}
-  .t-item p{font-size:13px;opacity:0.8;margin:0;}
+  .empty-state{padding:60px 0;text-align:center;color:var(--ink-soft);font-size:14px;grid-column:1/-1;}
 
   footer{padding:40px 0 26px;border-top:1px solid var(--line);}
   footer .bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
@@ -151,13 +144,11 @@
   .subtotal-row .v{font-family:'Space Mono',monospace;font-weight:700;}
 
   @media(max-width:900px){
-    .hero .grid{grid-template-columns:1fr;}
     .p-grid{grid-template-columns:repeat(2,1fr);}
-    .trust .grid{grid-template-columns:1fr;}
-    .t-item{border-left:none;border-top:1px solid rgba(255,255,255,0.15);}
-    .t-item:first-child{border-top:none;}
     nav{display:none;}
     .hamburger{display:flex;}
+    .toolbar-row{flex-direction:column;align-items:stretch;}
+    .search-box{max-width:none;}
   }
   :focus-visible{outline:2px solid var(--terracotta);outline-offset:2px;}
 </style>
@@ -173,9 +164,9 @@
       <div class="brand-name">Mercearia do Vale</div>
     </div>
     <nav>
-      <a href="produtos.html">Produtos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contacto">Contacto</a>
+      <a href="produtos.html" class="current">Produtos</a>
+      <a href="mercearia-do-vale.html#sobre">Sobre</a>
+      <a href="mercearia-do-vale.html#contacto">Contacto</a>
     </nav>
     <div class="header-right">
       <button class="cart-btn" onclick="toggleCart(true)">
@@ -187,76 +178,52 @@
     </div>
   </div>
   <nav class="mobile-nav wrap" id="mobile-nav">
-    <a href="produtos.html">Produtos</a>
-    <a href="#sobre" onclick="closeMobileNav()">Sobre</a>
-    <a href="#contacto" onclick="closeMobileNav()">Contacto</a>
+    <a href="produtos.html" class="current">Produtos</a>
+    <a href="mercearia-do-vale.html#sobre">Sobre</a>
+    <a href="mercearia-do-vale.html#contacto">Contacto</a>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="wrap grid">
-    <div>
-      <div class="eyebrow">Direto do produtor, sem intermediários</div>
-      <h1>O melhor da região,<br>entregue à sua porta</h1>
-      <p>Azeite, compotas, enchidos e vinho de pequenos produtores do Vale — os mesmos que abastecem a nossa loja física há 30 anos.</p>
-      <div class="hero-ctas">
-        <a href="produtos.html" class="btn">Ver produtos</a>
-        <a href="#sobre" class="btn outline">Conhecer os produtores</a>
+<section class="page-head">
+  <div class="wrap">
+    <a href="mercearia-do-vale.html" class="back-link">← Voltar à página principal</a>
+    <div class="eyebrow">Catálogo completo</div>
+    <h1>Todos os produtos</h1>
+    <p>Azeite, compotas, enchidos, queijos, vinho e licores de pequenos produtores do Vale. Filtre por categoria ou procure diretamente pelo nome.</p>
+  </div>
+</section>
+
+<section class="toolbar">
+  <div class="wrap">
+    <div class="toolbar-row">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-input" placeholder="Procurar produtos..." oninput="onSearch(this.value)">
+      </div>
+      <select id="sort" onchange="onSort(this.value)">
+        <option value="relevancia">Ordenar: relevância</option>
+        <option value="preco-asc">Preço: mais baixo primeiro</option>
+        <option value="preco-desc">Preço: mais alto primeiro</option>
+        <option value="nome">Nome: A-Z</option>
+      </select>
+    </div>
+    <div class="cats">
+      <div class="row" id="filter-row">
+        <div class="chip active" data-filter="todos">Todos</div>
+        <div class="chip" data-filter="azeites">Azeites</div>
+        <div class="chip" data-filter="compotas">Compotas &amp; doces</div>
+        <div class="chip" data-filter="enchidos">Enchidos &amp; queijos</div>
+        <div class="chip" data-filter="vinho">Vinho &amp; licores</div>
+        <div class="chip" data-filter="cabazes">Cabazes</div>
       </div>
     </div>
-    <div class="hero-grid">
-      <div class="hero-tile"></div>
-      <div class="hero-tile"></div>
-      <div class="hero-tile"></div>
-      <div class="hero-tile"></div>
-    </div>
   </div>
 </section>
 
-<section class="cats">
-  <div class="wrap row">
-    <div class="chip active" data-filter="todos">Todos</div>
-    <div class="chip" data-filter="azeites">Azeites</div>
-    <div class="chip" data-filter="compotas">Compotas &amp; doces</div>
-    <div class="chip" data-filter="enchidos">Enchidos &amp; queijos</div>
-    <div class="chip" data-filter="vinho">Vinho &amp; licores</div>
-    <div class="chip" data-filter="cabazes">Cabazes</div>
-  </div>
-</section>
-
-<section class="section" id="produtos">
+<section class="section">
   <div class="wrap">
-    <div class="section-head">
-      <div><h2>Mais vendidos</h2><p>Selecionados pelos nossos clientes habituais</p></div>
-      <a href="produtos.html" class="btn outline">Ver catálogo completo →</a>
-    </div>
+    <div class="result-count" id="result-count"></div>
     <div class="p-grid" id="product-grid"></div>
-  </div>
-</section>
-
-<section class="trust">
-  <div class="wrap grid">
-    <div class="t-item"><h3>Direto do produtor</h3><p>Compramos a menos de 40km da nossa loja física.</p></div>
-    <div class="t-item"><h3>Envio cuidado</h3><p>Embalagem própria para líquidos e frágeis.</p></div>
-    <div class="t-item"><h3>Satisfação garantida</h3><p>Não gostou? Devolvemos o dinheiro em 14 dias.</p></div>
-  </div>
-</section>
-
-<section class="section" id="sobre">
-  <div class="wrap">
-    <div class="section-head"><div><h2>Sobre nós</h2></div></div>
-    <p style="max-width:60ch;color:var(--ink-soft);font-size:15px;">A Mercearia do Vale começou como uma loja de bairro em 1994. Hoje, além da loja física, levamos os mesmos produtos — dos mesmos produtores — a qualquer morada em Portugal e no resto da Europa.</p>
-  </div>
-</section>
-
-<section class="section" id="contacto" style="padding-top:8px;">
-  <div class="wrap">
-    <div class="section-head"><div><h2>Contacto</h2><p>Dúvidas sobre um produto ou uma encomenda? Fale connosco.</p></div></div>
-    <div style="display:flex;gap:40px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-soft);">
-      <div><strong style="color:var(--ink);">Loja física</strong><br>Rua do Vale, 12 — 4900-000, Ponte do Vale</div>
-      <div><strong style="color:var(--ink);">WhatsApp</strong><br><a href="https://wa.me/351900000000" target="_blank" rel="noopener">+351 900 000 000</a></div>
-      <div><strong style="color:var(--ink);">Email</strong><br><a href="mailto:ola@merceariadovale.pt">ola@merceariadovale.pt</a></div>
-    </div>
   </div>
 </section>
 
@@ -276,12 +243,14 @@
   <div class="drawer-items" id="drawer-items"></div>
   <div class="drawer-foot">
     <div class="subtotal-row"><span>Subtotal</span><span class="v mono" id="subtotal">0,00€</span></div>
-    <button class="btn" style="width:100%;" onclick="checkoutViaWhatsapp()">Finalizar encomenda</button>
+    <button class="btn" style="width:100%;background:var(--olive);color:#fff;padding:12px 24px;border-radius:6px;font-weight:600;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;" onclick="checkoutViaWhatsapp()">Finalizar encomenda</button>
     <p style="font-size:11.5px;color:var(--ink-soft);text-align:center;margin:10px 0 0;">Vai abrir o WhatsApp com o seu pedido pronto a enviar</p>
   </div>
 </div>
 
 <script>
+  // Catálogo — mantido idêntico ao da página principal (mesmos IDs) para
+  // que o carrinho funcione corretamente em ambas as páginas.
   const products = [
     {id:1, name:"Azeite virgem extra", cat:"Azeites", price:9.90, badge:"Mais vendido", desc:"Colheita 2025, garrafa 500ml"},
     {id:2, name:"Compota de figo", cat:"Compotas", price:4.50, badge:null, desc:"Sem conservantes, frasco 250g"},
@@ -306,8 +275,38 @@
     {id:21, name:"Cabaz gourmet", cat:"Cabazes", price:45.00, badge:"Edição limitada", desc:"Seleção de 10 produtos regionais"},
   ];
 
-  // IDs em destaque na página principal (catálogo completo está em produtos.html)
-  const featuredIds = [1,2,3,4,5,6,7,8];
+  const filterGroups = {
+    todos: null,
+    azeites: ["Azeites"],
+    compotas: ["Compotas"],
+    enchidos: ["Enchidos","Queijos"],
+    vinho: ["Vinho","Licores"],
+    cabazes: ["Cabazes"],
+  };
+
+  const categoryIcons = {
+    Azeites: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6c6 3 6 7 4 10-3 4-3 7 0 10 3 3 3 7-1 10"/><path d="M17 9c-4 2-4 5-2 7"/><rect x="16" y="18" width="16" height="22" rx="3"/><path d="M20 18v-4h8v4"/></svg>`,
+    Compotas: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="16" width="24" height="24" rx="4"/><path d="M15 16v-3a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3"/><path d="M12 24h24"/><circle cx="24" cy="30" r="3.5"/></svg>`,
+    Enchidos: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 30c0-9 8-17 17-17 5 0 9 4 9 9 0 9-8 17-17 17-5 0-9-4-9-9Z"/><path d="M15 15l3 3M33 33l3 3"/></svg>`,
+    Queijos: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 24 8l18 12v18a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2Z"/><circle cx="20" cy="26" r="1.6" fill="#fff" stroke="none"/><circle cx="30" cy="30" r="1.6" fill="#fff" stroke="none"/><circle cx="24" cy="20" r="1.6" fill="#fff" stroke="none"/></svg>`,
+    Vinho: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6h16l-2 16a6 6 0 0 1-12 0Z"/><path d="M24 28v10M17 40h14"/></svg>`,
+    Licores: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h8v8l6 8v18a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V22l6-8Z"/><path d="M14 26h20"/></svg>`,
+    Cabazes: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h32l-3 18a3 3 0 0 1-3 2.5H14A3 3 0 0 1 11 38Z"/><path d="M8 20l6-10h20l6 10M18 20v-6M30 20v-6"/></svg>`,
+  };
+  function iconFor(cat){ return categoryIcons[cat] || categoryIcons.Cabazes; }
+
+  // Fotos genéricas por categoria (Wikimedia Commons, licença livre —
+  // CC0 / CC-BY), mesma lista usada na página principal.
+  const categoryImages = {
+    Azeites: "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle_of_olive_oil.jpg?width=600",
+    Compotas: "https://commons.wikimedia.org/wiki/Special:FilePath/P.S._Church_Raspberry_Jam_Jar.JPG?width=600",
+    Enchidos: "https://commons.wikimedia.org/wiki/Special:FilePath/Chorizo_de_Cebu_garlic5.jpg?width=600",
+    Queijos: "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese_48_bg_060106.jpg?width=600",
+    Vinho: "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle_and_glass_of_red_wine.jpg?width=600",
+    Licores: "https://commons.wikimedia.org/wiki/Special:FilePath/Goldschl%C3%A4ger_bottle.jpg?width=600",
+    Cabazes: "https://commons.wikimedia.org/wiki/Special:FilePath/Food_basket.jpg?width=600",
+  };
+  function imgFor(cat){ return categoryImages[cat] || categoryImages.Cabazes; }
 
   const categoryTiles = {
     Azeites: "linear-gradient(155deg,#8C9C6F,#4A5D3A)",
@@ -320,68 +319,31 @@
   };
   function tileFor(cat){ return categoryTiles[cat] || categoryTiles.Cabazes; }
 
-  let cart = loadCart();
-  let activeFilter = 'todos';
-
-  // Grupos de categoria usados pelos chips de filtro
-  const filterGroups = {
-    todos: null,
-    azeites: ["Azeites"],
-    compotas: ["Compotas"],
-    enchidos: ["Enchidos","Queijos"],
-    vinho: ["Vinho","Licores"],
-    cabazes: ["Cabazes"],
-  };
-
-  // Ícones em linha (SVG), um por categoria de produto — usados como imagem
-  // provisória enquanto não há fotografia real do produto.
-  const categoryIcons = {
-    Azeites: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6c6 3 6 7 4 10-3 4-3 7 0 10 3 3 3 7-1 10"/><path d="M17 9c-4 2-4 5-2 7"/><rect x="16" y="18" width="16" height="22" rx="3"/><path d="M20 18v-4h8v4"/></svg>`,
-    Compotas: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="16" width="24" height="24" rx="4"/><path d="M15 16v-3a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v3"/><path d="M12 24h24"/><circle cx="24" cy="30" r="3.5"/></svg>`,
-    Enchidos: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 30c0-9 8-17 17-17 5 0 9 4 9 9 0 9-8 17-17 17-5 0-9-4-9-9Z"/><path d="M15 15l3 3M33 33l3 3"/></svg>`,
-    Queijos: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 24 8l18 12v18a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2Z"/><circle cx="20" cy="26" r="1.6" fill="#fff" stroke="none"/><circle cx="30" cy="30" r="1.6" fill="#fff" stroke="none"/><circle cx="24" cy="20" r="1.6" fill="#fff" stroke="none"/></svg>`,
-    Vinho: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6h16l-2 16a6 6 0 0 1-12 0Z"/><path d="M24 28v10M17 40h14"/></svg>`,
-    Licores: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6h8v8l6 8v18a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V22l6-8Z"/><path d="M14 26h20"/></svg>`,
-    Cabazes: `<svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h32l-3 18a3 3 0 0 1-3 2.5H14A3 3 0 0 1 11 38Z"/><path d="M8 20l6-10h20l6 10M18 20v-6M30 20v-6"/></svg>`,
-  };
-
-  function iconFor(cat){
-    return categoryIcons[cat] || categoryIcons.Cabazes;
-  }
-
-  // Fotos genéricas por categoria (Wikimedia Commons, licença livre —
-  // CC0 / CC-BY). Como ainda não há fotografia própria de cada produto,
-  // usamos uma foto representativa por categoria como imagem de fundo do
-  // cartão, mantendo o degradê + ícone como reserva caso a foto não carregue.
-  const categoryImages = {
-    Azeites: "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle_of_olive_oil.jpg?width=600",
-    Compotas: "https://commons.wikimedia.org/wiki/Special:FilePath/P.S._Church_Raspberry_Jam_Jar.JPG?width=600",
-    Enchidos: "https://commons.wikimedia.org/wiki/Special:FilePath/Chorizo_de_Cebu_garlic5.jpg?width=600",
-    Queijos: "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese_48_bg_060106.jpg?width=600",
-    Vinho: "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle_and_glass_of_red_wine.jpg?width=600",
-    Licores: "https://commons.wikimedia.org/wiki/Special:FilePath/Goldschl%C3%A4ger_bottle.jpg?width=600",
-    Cabazes: "https://commons.wikimedia.org/wiki/Special:FilePath/Food_basket.jpg?width=600",
-  };
-  function imgFor(cat){ return categoryImages[cat] || categoryImages.Cabazes; }
-
-  // O carrinho é guardado no localStorage para se manter ao navegar
-  // entre esta página e produtos.html (mesma origem/pasta).
+  // Carrinho partilhado com a página principal via localStorage.
   const CART_KEY = 'mercearia_cart';
   function loadCart(){
-    try{
-      const raw = localStorage.getItem(CART_KEY);
-      return raw ? JSON.parse(raw) : {};
-    }catch(e){ return {}; }
+    try{ const raw = localStorage.getItem(CART_KEY); return raw ? JSON.parse(raw) : {}; }
+    catch(e){ return {}; }
   }
-  function saveCart(){
-    try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }catch(e){}
-  }
+  function saveCart(){ try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }catch(e){} }
+
+  let cart = loadCart();
+  let activeFilter = 'todos';
+  let searchTerm = '';
+  let sortMode = 'relevancia';
 
   function visibleProducts(){
-    const featured = products.filter(p => featuredIds.includes(p.id));
+    let list = products.slice();
     const group = filterGroups[activeFilter];
-    if(!group) return featured;
-    return featured.filter(p => group.includes(p.cat));
+    if(group) list = list.filter(p => group.includes(p.cat));
+    if(searchTerm.trim()){
+      const q = searchTerm.trim().toLowerCase();
+      list = list.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+    }
+    if(sortMode === 'preco-asc') list.sort((a,b) => a.price - b.price);
+    else if(sortMode === 'preco-desc') list.sort((a,b) => b.price - a.price);
+    else if(sortMode === 'nome') list.sort((a,b) => a.name.localeCompare(b.name, 'pt'));
+    return list;
   }
 
   function setFilter(key){
@@ -391,12 +353,16 @@
     });
     renderProducts();
   }
+  function onSearch(value){ searchTerm = value; renderProducts(); }
+  function onSort(value){ sortMode = value; renderProducts(); }
 
   function renderProducts(){
     const grid = document.getElementById('product-grid');
+    const countEl = document.getElementById('result-count');
     const list = visibleProducts();
+    countEl.textContent = list.length === 1 ? '1 produto encontrado' : `${list.length} produtos encontrados`;
     if(list.length === 0){
-      grid.innerHTML = `<p style="grid-column:1/-1;color:var(--ink-soft);font-size:14px;">Sem produtos nesta categoria por agora.</p>`;
+      grid.innerHTML = `<div class="empty-state">Sem produtos para esta procura/filtro. Tente outro termo ou categoria.</div>`;
       return;
     }
     grid.innerHTML = list.map(p => `
@@ -454,6 +420,7 @@
     let subtotal = 0;
     itemsEl.innerHTML = items.map(([id, qty]) => {
       const p = products.find(x => x.id == id);
+      if(!p) return '';
       subtotal += p.price * qty;
       return `
         <div class="cart-row">
@@ -485,11 +452,6 @@
     nav.classList.toggle('open', open);
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open);
-  }
-  function closeMobileNav(){
-    document.getElementById('mobile-nav').classList.remove('open');
-    document.getElementById('hamburger-btn').classList.remove('open');
-    document.getElementById('hamburger-btn').setAttribute('aria-expanded', false);
   }
 
   // Número de WhatsApp da loja — substituir pelo número real antes de publicar.
