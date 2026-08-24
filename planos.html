@@ -95,6 +95,34 @@
   .note-strip{background:var(--cream-2); padding:36px 0; text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .note-strip p{font-size:13.5px; opacity:0.75; max-width:520px; margin:0 auto;}
 
+  /* ===== COMPLEMENTARES SOB CONSULTA ===== */
+  .extra-section{padding:80px 0; background:var(--cream);}
+  .extra-section .section-head{text-align:center; margin-bottom:12px;}
+  .extra-section .section-head p{opacity:0.72; font-size:14.5px; max-width:560px; margin:10px auto 0;}
+  .extra-group-label{
+    font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--gold); margin:44px 0 16px; text-align:center;
+  }
+  .extra-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; max-width:820px; margin:0 auto;}
+  @media(max-width:700px){ .extra-grid{grid-template-columns:1fr;} }
+  .extra-card{
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; position:relative;
+  }
+  .extra-card h3{font-family:'Fraunces',serif; font-size:16.5px; margin-bottom:6px;}
+  .extra-card p{font-size:13px; opacity:0.68; max-width:44ch;}
+  .extra-ecom-badge{
+    display:inline-block; font-family:'Space Mono',monospace; font-size:9.5px; text-transform:uppercase;
+    letter-spacing:0.05em; background:var(--black); color:var(--gold-light); padding:3px 8px; border-radius:10px;
+    margin-bottom:8px;
+  }
+  .extra-cta{text-align:center; margin-top:40px;}
+  .extra-cta a{
+    display:inline-block; background:var(--black); color:var(--cream); font-family:'Space Mono',monospace;
+    font-size:13px; text-transform:uppercase; letter-spacing:0.04em; padding:13px 26px; border-radius:4px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .extra-cta a:hover{background:var(--gold); color:var(--black); transform:translateY(-2px);}
+
   footer{background:var(--black); color:var(--cream); padding:40px 0; text-align:center;}
   footer p{font-size:12.5px; opacity:0.55; margin-top:8px;}
   footer a{color:var(--gold-light);}
@@ -180,12 +208,12 @@
         <div class="p-overlay"></div>
         <div class="p-inner">
           <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
-          <span class="p-price-tag" data-i18n="p1_price_tag">a partir de € 600</span>
+          <span class="p-price-tag" data-i18n="p1_price_tag">a partir de € 599</span>
           <span class="p-collapsed-label" data-i18n="p1_name">Aperitivo</span>
           <div class="p-expanded-content">
             <span class="stamp" data-i18n="p1_stamp">Landing page</span>
             <h2 data-i18n="p1_name">Aperitivo</h2>
-            <div class="p-price-big" data-i18n="p1_price_big">a partir de € 600</div>
+            <div class="p-price-big" data-i18n="p1_price_big">a partir de € 599</div>
             <p data-i18n="p1_desc">Uma landing page é uma única página que reúne tudo o que o cliente precisa saber pra decidir ir ao seu restaurante: cardápio em destaque, fotos, endereço, horário e um botão claro pra reservar ou chamar no WhatsApp. Sem menus complicados, sem páginas separadas — carrega rápido e é fácil de manter.</p>
             <p class="p-fit" data-i18n="p1_fit">Ideal pra quem está começando a ter presença online, quer testar antes de investir mais, ou só precisa de um link bonito pro Instagram e pro Google Maps.</p>
             <ul class="p-features">
@@ -206,12 +234,12 @@
         <div class="p-overlay"></div>
         <div class="p-inner">
           <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-          <span class="p-price-tag" data-i18n="p2_price_tag">a partir de € 1.000</span>
+          <span class="p-price-tag" data-i18n="p2_price_tag">a partir de € 999</span>
           <span class="p-collapsed-label" data-i18n="p2_name">Prato Principal</span>
           <div class="p-expanded-content">
             <span class="stamp" data-i18n="p2_stamp">Site completo</span>
             <h2 data-i18n="p2_name">Prato Principal</h2>
-            <div class="p-price-big" data-i18n="p2_price_big">a partir de € 1.000 · inclui 1 mês de revisão</div>
+            <div class="p-price-big" data-i18n="p2_price_big">a partir de € 999 · inclui 1 mês de revisão</div>
             <p data-i18n="p2_desc">Um site completo tem várias seções ou páginas mais profundas — cardápio detalhado por categoria, galeria de fotos, uma página só sobre a história do restaurante, e às vezes até uma área de eventos. Isso ajuda o Google a te encontrar em mais buscas diferentes, não só uma.</p>
             <p class="p-fit" data-i18n="p2_fit">Ideal pra quem já tem uma base de clientes e quer parecer mais estabelecido, aparecer melhor nas buscas locais, ou tem informação demais pra caber numa página só.</p>
             <ul class="p-features">
@@ -233,12 +261,12 @@
         <div class="p-overlay"></div>
         <div class="p-inner">
           <svg class="p-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.2a2 2 0 002 1.8h9.2a2 2 0 002-1.6L21 7H6"/></svg>
-          <span class="p-price-tag" data-i18n="p3_price_tag">a partir de € 2.500</span>
+          <span class="p-price-tag" data-i18n="p3_price_tag">a partir de € 2.499</span>
           <span class="p-collapsed-label" data-i18n="p3_name">Banquete</span>
           <div class="p-expanded-content">
             <span class="stamp" data-i18n="p3_stamp">Loja online · e-commerce</span>
             <h2 data-i18n="p3_name">Banquete</h2>
-            <div class="p-price-big" data-i18n="p3_price_big">a partir de € 2.500</div>
+            <div class="p-price-big" data-i18n="p3_price_big">a partir de € 2.499</div>
             <p data-i18n="p3_desc">Um e-commerce vai além de mostrar informação — ele vende. O cliente escolhe os itens, paga direto no site (cartão ou PayPal) e você recebe o pedido pronto, sem depender de aplicativos de entrega que cobram até 30% de comissão. Também serve pra vender produtos próprios, como vinhos, molhos ou kits.</p>
             <p class="p-fit" data-i18n="p3_fit">Ideal pra quem quer vender delivery ou retirada direto, sem intermediário, ou tem produtos próprios pra vender além da comida no salão.</p>
             <ul class="p-features">
@@ -276,6 +304,54 @@
         </div>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<section class="extra-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">Sob consulta</span>
+      <h2>Complementares que não estão no configurador</h2>
+      <p>Esses eu não deixei pra marcar sozinho no pedido — são combinados direto numa conversa, porque cada caso é um pouco diferente. Se algum fizer sentido pro seu restaurante, é só chamar.</p>
+    </div>
+
+    <div class="extra-group-label">Pra qualquer plano</div>
+    <div class="extra-grid">
+      <div class="extra-card">
+        <h3>Configuração de anúncios (Meta/Google Ads)</h3>
+        <p>Monto a campanha inicial pra você aparecer pra quem está procurando restaurante na sua região — gestão mensal é opcional, combinada à parte.</p>
+      </div>
+      <div class="extra-card">
+        <h3>Vale-presente / gift card digital</h3>
+        <p>Uma página própria pra vender vale-presentes do seu restaurante direto pelo site.</p>
+      </div>
+      <div class="extra-card">
+        <h3>Avaliações via QR → Google Reviews</h3>
+        <p>QR code de mesa que leva o cliente direto pra deixar uma avaliação no Google — rápido de configurar, ajuda bastante na reputação online.</p>
+      </div>
+      <div class="extra-card">
+        <h3>Cartão de visita digital (vCard)</h3>
+        <p>Um link/QR code que salva seus contatos e endereço direto na agenda de quem recebe — substitui o cartão de papel.</p>
+      </div>
+    </div>
+
+    <div class="extra-group-label">Só pra loja online (plano Banquete)</div>
+    <div class="extra-grid">
+      <div class="extra-card">
+        <span class="extra-ecom-badge">E-commerce</span>
+        <h3>Sistema de reserva online</h3>
+        <p>Calendário de mesas integrado ao site, pra cliente reservar sozinho sem precisar ligar.</p>
+      </div>
+      <div class="extra-card">
+        <span class="extra-ecom-badge">E-commerce</span>
+        <h3>Encomenda online direta</h3>
+        <p>Cliente pede e paga direto no seu site, sem depender de app de entrega e sem pagar comissão a terceiros.</p>
+      </div>
+    </div>
+
+    <div class="extra-cta">
+      <a href="https://wa.me/5554996336129" target="_blank" rel="noopener">Perguntar sobre um complementar</a>
     </div>
   </div>
 </section>
