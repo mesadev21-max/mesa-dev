@@ -208,13 +208,42 @@
   .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
   .burger span{width:22px; height:2px; background:var(--black);}
   @media(max-width:900px){
-    .main-nav{position:fixed; inset:56px 0 0 0; background:var(--cream); padding:24px 28px; display:none; overflow-y:auto; border-top:1px solid var(--line); z-index:90;}
+    .main-nav{
+      position:fixed; inset:56px 0 0 0; z-index:90; display:none; overflow-y:auto;
+      padding:36px 30px 40px;
+      background:linear-gradient(160deg, rgba(11,11,9,0.97), rgba(23,20,15,0.97));
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border-top:1px solid var(--line-dark);
+    }
     .main-nav.open{display:block;}
-    .main-nav > ul{flex-direction:column; align-items:flex-start; gap:2px;}
-    .main-nav .submenu{position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; margin:4px 0 10px 10px; display:none;}
+    .main-nav > ul{flex-direction:column; align-items:stretch; gap:2px;}
+    .main-nav > ul > li{border-bottom:1px solid var(--line-dark);}
+    .main-nav > ul > li:last-child{border-bottom:none;}
+    .main-nav > ul > li > a{
+      display:block; width:100%; padding:18px 4px; font-size:20px; font-weight:500;
+      color:var(--cream); opacity:0.92; font-family:'Fraunces',serif;
+    }
+    .main-nav > ul > li > a::after{display:none;}
+    .main-nav > ul > li > a:hover, .main-nav > ul > li > a:active{opacity:1; color:var(--gold-light);}
+    .main-nav .submenu{
+      position:static; opacity:1; visibility:visible; transform:none; box-shadow:none;
+      background:rgba(251,248,242,0.06); border:1px solid var(--line-dark); border-radius:8px;
+      margin:0 0 14px 0; padding:6px; display:none;
+    }
     .main-nav li.mobile-open .submenu{display:block;}
-    .burger{display:flex;}
+    .main-nav .submenu a{color:var(--cream); opacity:0.85; font-size:16px; padding:12px 14px;}
+    .main-nav .submenu a:hover{background:rgba(251,248,242,0.08); opacity:1;}
+    .burger{display:flex; z-index:110; position:relative;}
+    .burger span{transition:transform .2s ease, opacity .2s ease;}
+    .burger.is-open span{background:var(--black);}
+    .burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .burger.is-open span:nth-child(2){opacity:0;}
+    .burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
     .nav-cta .btn{display:none;}
+    body.nav-open{overflow:hidden;}
+    body.nav-open > section, body.nav-open > footer{
+      filter:blur(6px); transition:filter .25s ease;
+    }
   }
 
   /* ===== HERO ===== */
@@ -646,6 +675,7 @@
       </span>
       <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
     </a>
+
     <div class="main-nav" id="mainNav">
       <ul>
         <li>
@@ -669,6 +699,7 @@
         <li><a href="#sobre" data-i18n="nav_sobre">Sobre mim</a></li>
       </ul>
     </div>
+
     <div class="nav-cta">
       <a href="#peca" class="btn" data-i18n="nav_cta">Peça o seu site</a>
       <button class="burger" id="burgerBtn" aria-label="Abrir menu"><span></span><span></span><span></span></button>
@@ -1157,7 +1188,6 @@ const I18N = {
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
     sobre_quote:'"Prefiro fazer poucos sites bem feitos do que muitos sites genéricos."',
     story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'Mesa.dev',
-    story_note:'Fundo de exemplo — envie fotos do seu restaurante e eu aplico aqui com efeito parallax.',
     como_eyebrow:'Como funciona', como_title:'Do pedido ao site no ar',
     step1_t:'Você conta o que precisa', step1_d:'Preenche o formulário com o nome do restaurante e o estilo que imagina.',
     step2_t:'Eu monto um protótipo', step2_d:'Em até 5 dias úteis você recebe um link pra ver o site antes de qualquer pagamento.',
@@ -1227,7 +1257,6 @@ const I18N = {
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
     sobre_quote:'"Prefiro fazer poucos sites bem feitos do que muitos sites genéricos."',
     story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'Mesa.dev',
-    story_note:'Fundo de exemplo — envie fotos do seu restaurante e eu aplico aqui com efeito parallax.',
     como_eyebrow:'Como funciona', como_title:'Do pedido ao site no ar',
     step1_t:'Você conta o que precisa', step1_d:'Preenche o formulário com o nome do restaurante e o estilo que imagina.',
     step2_t:'Eu monto um protótipo', step2_d:'Em até 5 dias úteis você recebe um link pra ver o site antes de qualquer pagamento.',
@@ -1297,7 +1326,6 @@ const I18N = {
     sobre_p:'Soy yo quien diseña, escribe y publica cada web — sin equipo grande, sin subcontratar. Trabajo directo con dueños de restaurantes, desde el primer prototipo hasta la web publicada.',
     sobre_quote:'"Prefiero hacer pocas webs bien hechas que muchas webs genéricas."',
     story_quote:'"Una web no sustituye la buena comida — pero es el motivo por el que alguien decide probarla."', story_sign:'Mesa.dev',
-    story_note:'Fondo de ejemplo — envíe fotos de su restaurante y las aplico aquí con efecto parallax.',
     como_eyebrow:'Cómo funciona', como_title:'Del pedido a la web publicada',
     step1_t:'Nos cuenta lo que necesita', step1_d:'Rellena el formulario con el nombre del restaurante y el estilo que imagina.',
     step2_t:'Preparo un prototipo', step2_d:'En hasta 5 días hábiles recibe un enlace para ver la web antes de cualquier pago.',
@@ -1507,7 +1535,6 @@ const I18N = {
     sobre_p:'Ich entwerfe, schreibe und veröffentliche jede Website selbst — kein großes Team, nichts ausgelagert. Ich arbeite direkt mit Restaurantbesitzern zusammen, vom ersten Prototyp bis zum Launch.',
     sobre_quote:'"Ich baue lieber wenige großartige Websites als viele generische."',
     story_quote:'"Eine Website ersetzt kein gutes Essen — aber sie ist der Grund, warum sich jemand entscheidet, Ihres zu probieren."', story_sign:'Mesa.dev',
-    story_note:'Platzhalter-Hintergrund — schicken Sie mir Fotos Ihres Restaurants, und ich setze sie hier mit Parallax-Effekt ein.',
     como_eyebrow:'So funktioniert\'s', como_title:'Von der Anfrage zur Live-Website',
     step1_t:'Sagen Sie mir, was Sie brauchen', step1_d:'Füllen Sie das Formular mit dem Namen Ihres Restaurants und dem gewünschten Stil aus.',
     step2_t:'Ich baue einen Prototyp', step2_d:'Innerhalb von 5 Werktagen erhalten Sie einen Link, um die Website vor jeder Zahlung zu sehen.',
@@ -1577,7 +1604,6 @@ const I18N = {
     sobre_p:'Progetto, scrivo e pubblico ogni sito da solo — senza un grande team, senza esternalizzare. Lavoro direttamente con i proprietari dei ristoranti, dal primo prototipo al lancio.',
     sobre_quote:'"Preferisco realizzare pochi siti fatti bene piuttosto che tanti siti generici."',
     story_quote:'"Un sito non sostituisce il buon cibo — ma è il motivo per cui qualcuno decide di provare il tuo."', story_sign:'Mesa.dev',
-    story_note:'Sfondo segnaposto — mandami le foto del tuo ristorante e le applico qui con un effetto parallasse.',
     como_eyebrow:'Come funziona', como_title:'Dall\'ordine al sito online',
     step1_t:'Dimmi cosa ti serve', step1_d:'Compila il modulo con il nome del ristorante e lo stile che hai in mente.',
     step2_t:'Costruisco un prototipo', step2_d:'Entro 5 giorni lavorativi ricevi un link per vedere il sito prima di qualsiasi pagamento.',
@@ -1647,7 +1673,6 @@ const I18N = {
     sobre_p:'Jag designar, skriver och publicerar varje webbplats själv — inget stort team, inget outsourcat. Jag jobbar direkt med restaurangägare, från första prototyp till lansering.',
     sobre_quote:'"Jag bygger hellre några riktigt bra webbplatser än många generiska."',
     story_quote:'"En webbplats ersätter inte bra mat — men den är anledningen till att någon bestämmer sig för att prova din."', story_sign:'Mesa.dev',
-    story_note:'Platshållarbakgrund — skicka bilder på din restaurang så lägger jag in dem här med en parallaxeffekt.',
     como_eyebrow:'Så funkar det', como_title:'Från beställning till live webbplats',
     step1_t:'Berätta vad du behöver', step1_d:'Fyll i formuläret med restaurangens namn och önskad stil.',
     step2_t:'Jag bygger en prototyp', step2_d:'Inom 5 arbetsdagar får du en länk för att se webbplatsen innan någon betalning.',
@@ -1717,7 +1742,6 @@ const I18N = {
     sobre_p:'أنا من يصمم ويكتب وينشر كل موقع بنفسي — بدون فريق كبير، وبدون تعهيد خارجي. أعمل مباشرة مع أصحاب المطاعم من النموذج الأول حتى الإطلاق.',
     sobre_quote:'"أفضّل بناء مواقع قليلة ومتقنة على الكثير من المواقع العامة."',
     story_quote:'"الموقع لا يعوّض الطعام الجيد — لكنه السبب الذي يجعل أحدهم يقرر تجربة مطعمك."', story_sign:'Mesa.dev',
-    story_note:'خلفية مؤقتة — أرسل صورًا لمطعمك وسأضعها هنا بتأثير حركي (parallax).',
     como_eyebrow:'كيف يعمل', como_title:'من الطلب إلى الموقع المباشر',
     step1_t:'أخبرني بما تحتاجه', step1_d:'املأ النموذج باسم مطعمك والنمط الذي تتخيله.',
     step2_t:'أبني نموذجًا أوليًا', step2_d:'خلال 5 أيام عمل تحصل على رابط لمشاهدة الموقع قبل أي دفع.',
@@ -1879,7 +1903,11 @@ popupForm.addEventListener('submit', async (e)=>{
 /* ===================== NAV MOBILE ===================== */
 const burger = document.getElementById('burgerBtn');
 const mainNav = document.getElementById('mainNav');
-burger.addEventListener('click', ()=> mainNav.classList.toggle('open'));
+burger.addEventListener('click', ()=>{
+  const isOpen = mainNav.classList.toggle('open');
+  burger.classList.toggle('is-open', isOpen);
+  document.body.classList.toggle('nav-open', isOpen);
+});
 if(window.innerWidth <= 900){
   document.querySelectorAll('.main-nav li').forEach(li=>{
     const link = li.querySelector('a');
