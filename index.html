@@ -1927,23 +1927,42 @@ popupForm.addEventListener('submit', async (e)=>{
   try{ await window.storage.set(key, JSON.stringify(lead), true); }catch(err){ /* esperado fora do preview */ }
   // Canal real: reaproveita o mesmo Google Forms já usado na comanda final,
   // assim o lead rápido do pop-up também chega na sua planilha.
-  try{
-    const fd = new FormData();
-    fd.append(GOOGLE_FORM_ENTRIES.restName, lead.restaurant || '');
-    fd.append(GOOGLE_FORM_ENTRIES.ownerName, '(via pop-up rápido)');
-    fd.append(GOOGLE_FORM_ENTRIES.country, lead.countryLabel || lead.country || '');
-    fd.append(GOOGLE_FORM_ENTRIES.city, '—');
-    fd.append(GOOGLE_FORM_ENTRIES.style, '__other_option__');
-    fd.append(GOOGLE_FORM_ENTRIES.styleOther, 'Lead rápido (pop-up) — sem estilo definido ainda');
-    fd.append(GOOGLE_FORM_ENTRIES.siteStatus, lead.hasSite || '');
-    fd.append(GOOGLE_FORM_ENTRIES.contact, 'Contato informado: ' + (lead.contact || ''));
-    await fetch(GOOGLE_FORM_ACTION, { method:'POST', mode:'no-cors', body: fd });
-  }catch(err){ console.error('Erro ao enviar lead do pop-up pro Google Forms', err); }
+  submitToGoogleForm(GOOGLE_FORM_ACTION, {
+    [GOOGLE_FORM_ENTRIES.restName]: lead.restaurant || '',
+    [GOOGLE_FORM_ENTRIES.ownerName]: '(via pop-up rápido)',
+    [GOOGLE_FORM_ENTRIES.country]: lead.countryLabel || lead.country || '',
+    [GOOGLE_FORM_ENTRIES.city]: '—',
+    [GOOGLE_FORM_ENTRIES.style]: '__other_option__',
+    [GOOGLE_FORM_ENTRIES.styleOther]: 'Lead rápido (pop-up) — sem estilo definido ainda',
+    [GOOGLE_FORM_ENTRIES.siteStatus]: lead.hasSite || '',
+    [GOOGLE_FORM_ENTRIES.contact]: 'Contato informado: ' + (lead.contact || '')
+  });
   popupFormView.style.display = 'none';
   popupConfirm.classList.add('show');
   applyLang(detectedLang);
   setTimeout(closePopup, 2200);
 });
+
+// Envia pro Google Forms usando um <form> real direcionado a um iframe invisível.
+// É a forma mais confiável: fetch()/no-cors às vezes é descartado silenciosamente
+// pelo Google por parecer tráfego automatizado; um <form> de verdade não tem esse problema.
+function submitToGoogleForm(actionUrl, fields){
+  const form = document.createElement('form');
+  form.action = actionUrl;
+  form.method = 'POST';
+  form.target = 'hidden_iframe';
+  form.style.display = 'none';
+  Object.entries(fields).forEach(([name, value])=>{
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value == null ? '' : value;
+    form.appendChild(input);
+  });
+  document.body.appendChild(form);
+  form.submit();
+  setTimeout(()=> form.remove(), 1000);
+}
 
 /* ===================== NAV MOBILE ===================== */
 const burger = document.getElementById('burgerBtn');
@@ -2073,19 +2092,16 @@ document.getElementById('orderForm').addEventListener('submit', async (e)=>{
   const contactValue = document.getElementById('contactValue').value;
   const notes = document.getElementById('notes').value; // ainda não tem campo correspondente no Google Forms
 
-  const fd = new FormData();
-  fd.append(GOOGLE_FORM_ENTRIES.restName, restName);
-  fd.append(GOOGLE_FORM_ENTRIES.ownerName, ownerName);
-  fd.append(GOOGLE_FORM_ENTRIES.country, country);
-  fd.append(GOOGLE_FORM_ENTRIES.city, city);
-  fd.append(GOOGLE_FORM_ENTRIES.style, '__other_option__');
-  fd.append(GOOGLE_FORM_ENTRIES.styleOther, style + (notes ? ' | Notas: ' + notes : ''));
-  fd.append(GOOGLE_FORM_ENTRIES.siteStatus, siteStatus);
-  fd.append(GOOGLE_FORM_ENTRIES.contact, contactPref + ': ' + contactValue);
-
-  try{
-    await fetch(GOOGLE_FORM_ACTION, { method:'POST', mode:'no-cors', body: fd });
-  }catch(err){ console.error('Erro ao enviar comanda pro Google Forms', err); }
+  submitToGoogleForm(GOOGLE_FORM_ACTION, {
+    [GOOGLE_FORM_ENTRIES.restName]: restName,
+    [GOOGLE_FORM_ENTRIES.ownerName]: ownerName,
+    [GOOGLE_FORM_ENTRIES.country]: country,
+    [GOOGLE_FORM_ENTRIES.city]: city,
+    [GOOGLE_FORM_ENTRIES.style]: '__other_option__',
+    [GOOGLE_FORM_ENTRIES.styleOther]: style + (notes ? ' | Notas: ' + notes : ''),
+    [GOOGLE_FORM_ENTRIES.siteStatus]: siteStatus,
+    [GOOGLE_FORM_ENTRIES.contact]: contactPref + ': ' + contactValue
+  });
 
   const prevCount = parseInt(localStorage.getItem('mesaDevOrderCount') || '0', 10);
   localStorage.setItem('mesaDevOrderCount', String(prevCount + 1));
@@ -2168,5 +2184,9 @@ async function loadLeads(){
 }
 </script>
 
+<!-- iframe invisível usado para enviar os formulários pro Google Forms como
+     submissão real de <form>, em vez de fetch() — o Google trata isso de forma
+     diferente e mais confiável que uma chamada fetch/no-cors -->
+<iframe name="hidden_iframe" style="display:none;" title="envio de formulário"></iframe>
 </body>
 </html>
