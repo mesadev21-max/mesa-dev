@@ -99,6 +99,26 @@
   .closing-cta{text-align:center; padding:60px 0 20px;}
   .closing-cta p{opacity:0.7; margin-bottom:20px; font-size:15px;}
 
+  /* ===== FAQ ===== */
+  .faq-section{background:var(--cream-2); padding:80px 0;}
+  .faq-section .section-head{text-align:center; margin-bottom:40px;}
+  .faq-section .section-head p{opacity:0.7; font-size:15px; max-width:520px; margin:10px auto 0;}
+  .faq-list{max-width:760px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; display:flex; justify-content:space-between; align-items:center; gap:16px;
+    background:none; border:none; cursor:pointer; padding:22px 4px; text-align:left;
+    font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--black);
+  }
+  .faq-icon{
+    flex-shrink:0; width:26px; height:26px; border-radius:50%; border:1.5px solid var(--gold);
+    display:flex; align-items:center; justify-content:center; font-family:'Space Mono',monospace;
+    font-size:15px; color:var(--gold); transition:transform .25s ease;
+  }
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease, padding .3s ease;}
+  .faq-item.open .faq-a{max-height:260px; padding-bottom:22px;}
+  .faq-a p{font-size:14.5px; opacity:0.75; max-width:64ch;}
   footer{background:var(--black); color:var(--cream); padding:40px 0; text-align:center;}
   footer p{font-size:12.5px; opacity:0.55; margin-top:8px;}
   footer a{color:var(--gold-light);}
@@ -202,8 +222,8 @@
         </button>
         <div class="r-card">
           <span class="r-tag">Passo 5</span>
-          <h3>Pagamento — PayPal ou cartão em até 12x</h3>
-          <p class="r-desc">Com tudo aprovado, fechamos o pagamento — PayPal é a forma mais simples pra quem está fora do Brasil, mas cartão parcelado também funciona.</p>
+          <h3>Pagamento — combinamos e você paga com segurança</h3>
+          <p class="r-desc">Com tudo aprovado, te mando um link de pagamento seguro (PayPal) com o valor combinado — funciona bem pra quem está fora do Brasil e não exige conta PayPal pra pagar.</p>
         </div>
       </div>
 
@@ -218,9 +238,9 @@
           <span class="r-num">6</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Opcional<span class="opt-badge">a partir de € 15/mês</span></span>
+          <span class="r-tag">Opcional<span class="opt-badge">a partir de € 25/mês</span></span>
           <h3>Atualização mensal</h3>
-          <p class="r-desc">Mudou o cardápio? Trocou o horário? Quer testar uma foto nova? Eu atualizo o seu site sempre que precisar, sem você ter que mexer em nada.</p>
+          <p class="r-desc">Mudou o cardápio? Trocou o horário? Quer testar uma foto nova? Eu atualizo o seu site sempre que precisar — em três níveis (Essencial, Completo ou Premium), conforme quanto você precisa mexer por mês.</p>
         </div>
       </div>
 
@@ -234,6 +254,83 @@
           <h3>Parceria contínua</h3>
           <p class="r-desc">Depois do site no ar, posso acompanhar como ele está performando — o que trazer mais reserva, o que testar, e apoiar as decisões digitais do seu restaurante ao longo do tempo.</p>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">Perguntas frequentes</span>
+      <h2>Ainda com dúvidas?</h2>
+      <p>As perguntas que mais recebo antes de alguém pedir o site. Se não achar a sua aqui, é só chamar no WhatsApp.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item open">
+        <button class="faq-q">
+          <span>Quanto tempo demora pra ter meu site pronto?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Pra landing page e site completo, o protótipo fica pronto em até 5 dias úteis. Pra loja online (e-commerce), o prazo é de 7 a 10 dias úteis, já que envolve mais configuração. Se precisar de mais urgência, tem a opção de entrega expressa.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Preciso entender de tecnologia pra pedir um site?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Não, nada. Você me conta o que precisa (por WhatsApp, e-mail ou pelo formulário do site) e eu cuido de toda a parte técnica — do design até publicar o site no ar.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Como funciona o pagamento?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Depois de combinarmos o escopo e o valor final, te mando um link de pagamento seguro por PayPal — funciona bem pra clientes fora do Brasil, e você não precisa ter conta PayPal pra pagar.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Posso pedir alterações depois que o site estiver pronto?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Sim — antes do pagamento, os ajustes já estão incluídos no processo (passo 4). Depois de publicado, dá pra continuar contando comigo com um dos planos de manutenção mensal, ou pedir ajustes pontuais sob consulta.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Preciso pagar hospedagem à parte?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Não necessariamente — seu site fica hospedado gratuitamente (domínio tipo seusite.vercel.app). Se preferir um domínio próprio (seurestaurante.com), tem uma configuração única, e o domínio em si é pago à parte, direto no registrador, geralmente um valor pequeno por ano.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Meu restaurante fica fora de Portugal, Espanha ou Reino Unido — atendem?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Sim! Esses são os mercados onde comecei, mas já atendo outros países — o site detecta automaticamente o idioma e a moeda de quem visita, então funciona bem pra clientes de fora dessa região também.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Já tenho um site — dá pra trocar sem perder nada?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Dá sim. Me conta o que você já tem hoje (cardápio, fotos, textos) e eu reaproveito o que fizer sentido no site novo — não precisa recomeçar do zero.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Qual a diferença entre os planos?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Aperitivo é uma landing page (1 página). Prato Principal é um site completo, com várias seções. Banquete é uma loja online, com carrinho e checkout. E Sob Encomenda é pra quem precisa de algo fora do padrão — a gente conversa e monta sob medida.</p></div>
       </div>
 
     </div>
@@ -296,6 +393,16 @@
       document.getElementById('pathOptional').setAttribute('d', buildSegment([lastMain, ...optPts]));
     }
   }
+
+  // FAQ — abre um por vez
+  document.querySelectorAll('.faq-item .faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=> i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
 
   window.addEventListener('load', drawPath);
   window.addEventListener('resize', ()=>{ clearTimeout(window._rmT); window._rmT = setTimeout(drawPath, 150); });
