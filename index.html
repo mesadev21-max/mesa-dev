@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mesa.dev — Sites para restaurantes</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <meta name="description" content="Mesa.dev cria sites e landing pages para restaurantes em Portugal, Espanha e Reino Unido. Protótipo em 5 dias úteis, sem mensalidade escondida.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mesa.dev — Sites para restaurantes">
@@ -71,6 +76,21 @@
   .comp-section .stamp{color:var(--gold-light);}
   .comp-section h2{color:var(--cream);}
   .comp-section .lede{color:var(--cream-2); opacity:0.8; font-size:14.5px; max-width:60ch; margin-top:10px;}
+  /* botão "Experimentar o Mesa Try": no hover fica mais elegante — funda
+     escurece, texto vira dourado bem legível e ganha um contorno fino
+     dourado com leve brilho ao redor */
+  .btn-try{position:relative; transition:background .25s ease, color .25s ease, box-shadow .25s ease, transform .2s ease; font-weight:700;}
+  @media (hover:hover) and (pointer:fine){
+    .btn-try:hover{
+      background:var(--black) !important; color:var(--gold-light) !important; border-color:var(--gold) !important;
+      box-shadow:0 0 0 1px var(--gold), 0 8px 22px rgba(201,162,39,0.35); transform:translateY(-2px);
+    }
+  }
+  /* linha dupla dourada separando "Complementares" do "Portfólio" */
+  .section-divider{max-width:1120px; margin:56px auto 0; padding:0 28px; display:flex; flex-direction:column; gap:5px;}
+  .section-divider span{display:block; height:1px; background:linear-gradient(90deg, transparent, var(--gold) 50%, transparent);}
+  .section-divider span:first-child{opacity:0.75;}
+  .section-divider span:last-child{opacity:0.4;}
   .comp-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:36px;}
   @media(max-width:900px){ .comp-grid{grid-template-columns:1fr;} }
   .comp-card{
@@ -326,7 +346,8 @@
   /* SOBRE / autor */
   .sobre-grid{display:grid; grid-template-columns:180px 1fr; gap:36px; align-items:center;}
   @media(max-width:600px){ .sobre-grid{grid-template-columns:1fr;} }
-  .sobre-photo{width:180px; height:180px; border-radius:50%; background:conic-gradient(from 210deg, var(--gold), var(--gold-light), #5b3a52, var(--gold));}
+  .sobre-photo{width:180px; height:180px; border-radius:50%; background:conic-gradient(from 210deg, var(--gold), var(--gold-light), #5b3a52, var(--gold)) center/cover; padding:6px;}
+  .sobre-photo img{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; background:var(--black);}
   .sobre-box{border:1px solid var(--line-dark); border-radius:8px; padding:30px; background:rgba(251,248,242,0.04);}
   .sobre-box h3{font-size:24px; margin:8px 0 12px;}
   .sobre-box p{font-size:14.5px; opacity:0.8; max-width:540px;}
@@ -417,10 +438,6 @@
   .pay-card.whatsapp svg{color:#25D366; filter:drop-shadow(0 2px 5px rgba(37,211,102,0.35));}
   .pay-card.email svg{color:var(--gold); filter:drop-shadow(0 2px 5px rgba(196,155,74,0.35));}
 
-  .pay-card.feat:hover{
-    transform:translateY(-6px) scale(1.015);
-    box-shadow:0 16px 32px rgba(11,11,9,0.14), 0 0 26px rgba(59,130,246,0.28), 0 0 26px rgba(236,72,153,0.24);
-  }
   /* anel de luz azul/rosa que preenche ao redor da borda, como uma barra
      de carregamento: começa em 0% e vai "andando" pelo contorno até
      fechar o quadrado no hover; ao tirar o mouse, esvazia de volta */
@@ -432,10 +449,6 @@
     -webkit-mask-composite:xor; mask-composite:exclude;
     opacity:0; transition:opacity .25s ease, --pcp .9s ease-out;
   }
-  .pay-card.feat:hover::before{
-    opacity:1; --pcp:100%;
-  }
-
   /* reflexo passando por cima do cartão no hover */
   .pay-card.feat::after{
     content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
@@ -443,8 +456,21 @@
     background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.65) 48%, rgba(255,255,255,0.65) 52%, transparent 70%);
     transform:translateX(-130%);
   }
-  .pay-card.feat:hover::after{
-    animation:payShine .9s ease-out 1;
+  /* IMPORTANTE: os efeitos de hover (salto, brilho ao redor, reflexo) só
+     rodam em telas com mouse de verdade. Em touch (celular/tablet) o
+     ":hover" fica "grudado" depois do toque — sem mouseleave pra soltar —
+     e o reflexo parecia travado ligado. Isolando em (hover:hover) resolve. */
+  @media (hover:hover) and (pointer:fine){
+    .pay-card.feat:hover{
+      transform:translateY(-6px) scale(1.015);
+      box-shadow:0 16px 32px rgba(11,11,9,0.14), 0 0 26px rgba(59,130,246,0.28), 0 0 26px rgba(236,72,153,0.24);
+    }
+    .pay-card.feat:hover::before{
+      opacity:1; --pcp:100%;
+    }
+    .pay-card.feat:hover::after{
+      animation:payShine .9s ease-out 1;
+    }
   }
   @keyframes payShine{ from{ transform:translateX(-130%); } to{ transform:translateX(130%); } }
 
@@ -820,6 +846,7 @@
     </div>
     <p class="comp-note">Essas opções ainda não estão disponíveis pra pedido direto — mande uma mensagem se quiser ser um dos primeiros a testar.</p>
   </div>
+  <div class="section-divider" aria-hidden="true"><span></span><span></span></div>
 </section>
 
 <section class="sec-dark reveal collage" id="portfolio">
@@ -909,7 +936,7 @@
 
 <section class="sec-dark reveal" id="sobre">
   <div class="wrap sobre-grid">
-    <div class="sobre-photo" role="img" aria-label="Foto de perfil"></div>
+    <div class="sobre-photo"><img src="assets/logo.jpg" alt="Mesa.dev"></div>
     <div class="sobre-box">
       <span class="stamp" data-i18n="sobre_eyebrow">Sobre mim</span>
       <h3 data-i18n="sobre_title">Quem está do outro lado da tela</h3>
@@ -954,7 +981,7 @@
         <h2 style="color:var(--cream); font-size:clamp(22px,3vw,30px); margin-bottom:10px;">Mesa Try — experimente sem compromisso</h2>
         <p style="color:var(--cream-2); opacity:0.85; font-size:14.5px;">Não sabe se é a hora de investir num site completo? Comece pelo cardápio digital com QR Code — €100, sem site, sem burocracia. Se gostar, é só evoluir pra um dos planos completos depois.</p>
       </div>
-      <a href="mesa-try.html" class="btn" style="background:var(--gold); border-color:var(--gold); color:var(--black); flex-shrink:0;">Experimentar o Mesa Try</a>
+      <a href="mesa-try.html" class="btn btn-try" style="background:var(--gold); border-color:var(--gold); color:var(--black); flex-shrink:0;">Experimentar o Mesa Try</a>
     </div>
   </div>
 </section>
