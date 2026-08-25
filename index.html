@@ -607,18 +607,18 @@
       <h3 data-i18n="popup_title">Me conta rapidinho sobre o seu restaurante</h3>
       <p data-i18n="popup_p">Leva 15 segundos — me ajuda a te responder melhor. Totalmente opcional.</p>
       <form id="popupForm">
-        <div class="field"><label data-i18n="f_restname">Nome do restaurante</label><input type="text" id="popRestName" required></div>
+        <div class="field"><label for="popRestName" data-i18n="f_restname">Nome do restaurante</label><input type="text" id="popRestName" name="popRestName" autocomplete="off" required></div>
         <div class="field">
-          <label data-i18n="popup_hassite">Já tem site?</label>
-          <select id="popHasSite">
+          <label for="popHasSite" data-i18n="popup_hassite">Já tem site?</label>
+          <select id="popHasSite" name="popHasSite">
             <option data-i18n="popup_opt_no">Não tenho</option>
             <option data-i18n="popup_opt_bad">Tenho, mas não funciona bem</option>
             <option data-i18n="popup_opt_yes">Tenho e funciona bem</option>
           </select>
         </div>
         <div class="field">
-          <label data-i18n="f_country">País</label>
-          <select id="popCountry">
+          <label for="popCountry" data-i18n="f_country">País</label>
+          <select id="popCountry" name="popCountry">
             <option value="PT" data-i18n="opt_pt">Portugal</option>
             <option value="BR" data-i18n="opt_br">Brasil</option>
             <option value="ES" data-i18n="opt_es">Espanha</option>
@@ -635,7 +635,7 @@
             <option value="OTHER" data-i18n="opt_other">Outro</option>
           </select>
         </div>
-        <div class="field"><label data-i18n="popup_contact">Contato (WhatsApp, e-mail ou Facebook)</label><input type="text" id="popContact" required></div>
+        <div class="field"><label for="popContact" data-i18n="popup_contact">Contato (WhatsApp, e-mail ou Facebook)</label><input type="text" id="popContact" name="popContact" autocomplete="off" required></div>
         <button type="submit" class="btn" data-i18n="popup_submit">Enviar</button>
       </form>
       <button class="popup-skip" id="popupSkip" data-i18n="popup_skip">Agora não, obrigado</button>
@@ -1066,28 +1066,28 @@
         </div>
         <form id="orderForm">
           <div class="row2">
-            <div class="field"><label data-i18n="f_restname">Nome do restaurante</label><input type="text" id="restName" required></div>
-            <div class="field"><label data-i18n="f_ownername">Seu nome</label><input type="text" id="ownerName" required></div>
+            <div class="field"><label for="restName" data-i18n="f_restname">Nome do restaurante</label><input type="text" id="restName" name="restName" autocomplete="off" required></div>
+            <div class="field"><label for="ownerName" data-i18n="f_ownername">Seu nome</label><input type="text" id="ownerName" name="ownerName" autocomplete="name" required></div>
           </div>
           <div class="row2">
-            <div class="field"><label data-i18n="f_country">País</label>
-              <select id="country">
+            <div class="field"><label for="country" data-i18n="f_country">País</label>
+              <select id="country" name="country" autocomplete="country">
                 <option data-i18n="opt_pt">Portugal</option><option data-i18n="opt_es">Espanha</option><option data-i18n="opt_uk">Reino Unido</option><option data-i18n="opt_other">Outro</option>
               </select>
             </div>
-            <div class="field"><label data-i18n="f_city">Cidade</label><input type="text" id="city"></div>
+            <div class="field"><label for="city" data-i18n="f_city">Cidade</label><input type="text" id="city" name="city" autocomplete="address-level2"></div>
           </div>
           <div class="field">
-            <label data-i18n="f_sitestatus">Situação do site atual</label>
-            <select id="siteStatus">
+            <label for="siteStatus" data-i18n="f_sitestatus">Situação do site atual</label>
+            <select id="siteStatus" name="siteStatus">
               <option data-i18n="opt_nosite">Não tenho site</option>
               <option data-i18n="opt_badsite">Tenho, mas não funciona bem</option>
               <option data-i18n="opt_renew">Tenho, mas quero renovar</option>
             </select>
           </div>
           <div class="field">
-            <label data-i18n="f_style">Estilo desejado</label>
-            <div class="radio-group" id="styleGroup">
+            <label id="styleGroupLabel" data-i18n="f_style">Estilo desejado</label>
+            <div class="radio-group" id="styleGroup" role="radiogroup" aria-labelledby="styleGroupLabel">
               <label class="radio-pill"><input type="radio" name="style" value="Rústico e tradicional" data-i18n-value="style1"><span data-i18n="style1">Rústico e tradicional</span></label>
               <label class="radio-pill"><input type="radio" name="style" value="Elegante e minimalista" data-i18n-value="style2"><span data-i18n="style2">Elegante e minimalista</span></label>
               <label class="radio-pill"><input type="radio" name="style" value="Moderno e colorido" data-i18n-value="style3"><span data-i18n="style3">Moderno e colorido</span></label>
@@ -1095,14 +1095,14 @@
             </div>
           </div>
           <div class="row2">
-            <div class="field"><label data-i18n="f_contactpref">Melhor forma de contato</label>
-              <select id="contactPref">
+            <div class="field"><label for="contactPref" data-i18n="f_contactpref">Melhor forma de contato</label>
+              <select id="contactPref" name="contactPref">
                 <option>WhatsApp</option><option data-i18n="opt_fb">Facebook / Messenger</option><option data-i18n="opt_email">E-mail</option>
               </select>
             </div>
-            <div class="field"><label data-i18n="f_contactvalue">Contato (número, e-mail ou perfil)</label><input type="text" id="contactValue" required></div>
+            <div class="field"><label for="contactValue" data-i18n="f_contactvalue">Contato (número, e-mail ou perfil)</label><input type="text" id="contactValue" name="contactValue" autocomplete="off" required></div>
           </div>
-          <div class="field"><label data-i18n="f_notes">Observações (opcional)</label><textarea id="notes" data-i18n-ph="f_notes_ph" placeholder="Cores que gosta, referências, algo que não pode faltar..."></textarea></div>
+          <div class="field"><label for="notes" data-i18n="f_notes">Observações (opcional)</label><textarea id="notes" name="notes" data-i18n-ph="f_notes_ph" placeholder="Cores que gosta, referências, algo que não pode faltar..."></textarea></div>
           <button type="submit" class="btn ticket-submit" data-i18n="f_submit">Enviar comanda</button>
           <p class="ticket-note" data-i18n="f_note">Sem compromisso — você recebe uma resposta com o próximo passo.</p>
         </form>
@@ -1927,15 +1927,14 @@ popupForm.addEventListener('submit', async (e)=>{
   try{ await window.storage.set(key, JSON.stringify(lead), true); }catch(err){ /* esperado fora do preview */ }
   // Canal real: reaproveita o mesmo Google Forms já usado na comanda final,
   // assim o lead rápido do pop-up também chega na sua planilha.
-  submitToGoogleForm(GOOGLE_FORM_ACTION, {
-    [GOOGLE_FORM_ENTRIES.restName]: lead.restaurant || '',
-    [GOOGLE_FORM_ENTRIES.ownerName]: '(via pop-up rápido)',
-    [GOOGLE_FORM_ENTRIES.country]: lead.countryLabel || lead.country || '',
-    [GOOGLE_FORM_ENTRIES.city]: '—',
-    [GOOGLE_FORM_ENTRIES.style]: '__other_option__',
-    [GOOGLE_FORM_ENTRIES.styleOther]: 'Lead rápido (pop-up) — sem estilo definido ainda',
-    [GOOGLE_FORM_ENTRIES.siteStatus]: lead.hasSite || '',
-    [GOOGLE_FORM_ENTRIES.contact]: 'Contato informado: ' + (lead.contact || '')
+  submitLead({
+    restName: lead.restaurant || '',
+    ownerName: '(via pop-up rápido)',
+    country: lead.countryLabel || lead.country || '',
+    city: '—',
+    style: 'Lead rápido (pop-up) — sem estilo definido ainda',
+    siteStatus: lead.hasSite || '',
+    contact: 'Contato informado: ' + (lead.contact || '')
   });
   popupFormView.style.display = 'none';
   popupConfirm.classList.add('show');
@@ -1943,25 +1942,24 @@ popupForm.addEventListener('submit', async (e)=>{
   setTimeout(closePopup, 2200);
 });
 
-// Envia pro Google Forms usando um <form> real direcionado a um iframe invisível.
-// É a forma mais confiável: fetch()/no-cors às vezes é descartado silenciosamente
-// pelo Google por parecer tráfego automatizado; um <form> de verdade não tem esse problema.
-function submitToGoogleForm(actionUrl, fields){
-  const form = document.createElement('form');
-  form.action = actionUrl;
-  form.method = 'POST';
-  form.target = 'hidden_iframe';
-  form.style.display = 'none';
-  Object.entries(fields).forEach(([name, value])=>{
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value == null ? '' : value;
-    form.appendChild(input);
-  });
-  document.body.appendChild(form);
-  form.submit();
-  setTimeout(()=> form.remove(), 1000);
+// Envia os leads pro Google Apps Script Web App, que escreve direto numa planilha.
+// Content-Type "text/plain" evita o preflight de CORS (o Apps Script não responde
+// bem a OPTIONS); o mode "no-cors" impede a leitura da resposta, mas o script roda
+// normalmente do outro lado — diferente do Google Forms, aqui não existe bloqueio
+// de CSP nem detecção de "tráfego automatizado".
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwP4xTFXcDZ2X33J6fRknDjbjCnnFSQKiAb5_O0lnSAhvpHY4UxBeQsmgoouGPjauY/exec';
+
+async function submitLead(fields){
+  try{
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(fields)
+    });
+  }catch(err){
+    console.error('Erro ao enviar lead pro Apps Script', err);
+  }
 }
 
 /* ===================== NAV MOBILE ===================== */
@@ -2061,23 +2059,10 @@ async function refreshTicketNumber(){
     // window.storage não existe fora do preview de Artifacts — usa contador local do navegador
     count = parseInt(localStorage.getItem('mesaDevOrderCount') || '0', 10);
   }
-  document.getElementById('ticketNum').textContent = String(count+1).padStart(3,'0');
+  const ticketEl = document.getElementById('ticketNum');
+  if(ticketEl) ticketEl.textContent = String(count+1).padStart(3,'0');
 }
 refreshTicketNumber();
-
-// Envia a comanda pro Google Forms (sem backend próprio).
-// IDs dos campos vêm do formulário: https://docs.google.com/forms/d/e/1FAIpQLSeeG1xaIjYqE6D8DkddLEy2SdWxh7OnCRYn4_DGiOBEirZinQ
-const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeeG1xaIjYqE6D8DkddLEy2SdWxh7OnCRYn4_DGiOBEirZinQ/formResponse';
-const GOOGLE_FORM_ENTRIES = {
-  restName: 'entry.1531078943',
-  ownerName: 'entry.1069272711',
-  country: 'entry.1390675063',
-  city: 'entry.1121343959',
-  style: 'entry.1882051024',            // campo "outro" no Google Forms
-  styleOther: 'entry.1882051024.other_option_response',
-  siteStatus: 'entry.994170936',
-  contact: 'entry.1007031644'           // combina forma de contato + valor num só campo
-};
 
 document.getElementById('orderForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
@@ -2092,15 +2077,14 @@ document.getElementById('orderForm').addEventListener('submit', async (e)=>{
   const contactValue = document.getElementById('contactValue').value;
   const notes = document.getElementById('notes').value; // ainda não tem campo correspondente no Google Forms
 
-  submitToGoogleForm(GOOGLE_FORM_ACTION, {
-    [GOOGLE_FORM_ENTRIES.restName]: restName,
-    [GOOGLE_FORM_ENTRIES.ownerName]: ownerName,
-    [GOOGLE_FORM_ENTRIES.country]: country,
-    [GOOGLE_FORM_ENTRIES.city]: city,
-    [GOOGLE_FORM_ENTRIES.style]: '__other_option__',
-    [GOOGLE_FORM_ENTRIES.styleOther]: style + (notes ? ' | Notas: ' + notes : ''),
-    [GOOGLE_FORM_ENTRIES.siteStatus]: siteStatus,
-    [GOOGLE_FORM_ENTRIES.contact]: contactPref + ': ' + contactValue
+  submitLead({
+    restName: restName,
+    ownerName: ownerName,
+    country: country,
+    city: city,
+    style: style + (notes ? ' | Notas: ' + notes : ''),
+    siteStatus: siteStatus,
+    contact: contactPref + ': ' + contactValue
   });
 
   const prevCount = parseInt(localStorage.getItem('mesaDevOrderCount') || '0', 10);
@@ -2184,9 +2168,5 @@ async function loadLeads(){
 }
 </script>
 
-<!-- iframe invisível usado para enviar os formulários pro Google Forms como
-     submissão real de <form>, em vez de fetch() — o Google trata isso de forma
-     diferente e mais confiável que uma chamada fetch/no-cors -->
-<iframe name="hidden_iframe" style="display:none;" title="envio de formulário"></iframe>
 </body>
 </html>
