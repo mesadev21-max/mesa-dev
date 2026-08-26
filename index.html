@@ -629,6 +629,41 @@
     .wrap{ padding:0 18px; }
     header nav.topbar{ padding:14px 18px; }
   }
+
+  /* ===== Brasas / faíscas nos fundos escuros (referência: fogão aceso) ===== */
+  .comp-section, .sec-dark, footer{ position:relative; }
+  .ember-field{
+    position:absolute; inset:0; overflow:hidden; z-index:0;
+    pointer-events:none;
+  }
+  .comp-section > .wrap, .sec-dark > .wrap, footer > .wrap{ position:relative; z-index:1; }
+  .ember-field::after{
+    content:""; position:absolute; left:50%; bottom:-70px; width:65%; height:170px;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse at center, rgba(255,110,20,0.22), transparent 72%);
+    filter:blur(18px);
+  }
+  .ember{
+    position:absolute; bottom:-12px; left:var(--x, 50%); border-radius:50%;
+    background:radial-gradient(circle, #fff2d6 0%, #ffb347 32%, #ff5f1f 62%, transparent 76%);
+    opacity:0;
+    animation:emberRise var(--dur,7s) ease-in infinite, emberFlicker 1.4s ease-in-out infinite;
+    animation-delay:var(--delay,0s), var(--delay,0s);
+    box-shadow:0 0 6px 1px rgba(255,140,40,0.55);
+  }
+  @keyframes emberRise{
+    0%{ transform:translateY(0) translateX(0) scale(0.55); opacity:0; }
+    12%{ opacity:0.95; }
+    55%{ opacity:0.8; }
+    100%{ transform:translateY(calc(var(--rise,260px) * -1)) translateX(var(--drift,20px)) scale(0.1); opacity:0; }
+  }
+  @keyframes emberFlicker{
+    0%,100%{ filter:brightness(1); }
+    50%{ filter:brightness(1.45); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ember{ animation:none; opacity:0; }
+  }
 </style>
 </head>
 <body>
@@ -831,6 +866,7 @@
 </section>
 
 <section class="reveal comp-section" style="padding:80px 0;">
+  <div class="ember-field" data-count="16"></div>
   <div class="wrap">
     <div class="section-head">
       <span class="stamp">Serviço · em desenvolvimento</span>
@@ -860,6 +896,7 @@
 </section>
 
 <section class="sec-dark reveal collage" id="portfolio">
+  <div class="ember-field" data-count="18"></div>
   <div class="wrap">
     <div class="collage-top">
       <div>
@@ -945,6 +982,7 @@
 </section>
 
 <section class="sec-dark reveal" id="sobre">
+  <div class="ember-field" data-count="14"></div>
   <div class="wrap sobre-grid">
     <div class="sobre-photo"><img src="assets/logo.jpg" alt="Mesa.dev"></div>
     <div class="sobre-box">
@@ -997,6 +1035,7 @@
 </section>
 
 <section class="sec-dark reveal" id="precos">
+  <div class="ember-field" data-count="18"></div>
   <div class="wrap">
     <div class="section-head" style="text-align:center; margin:0 auto 0; max-width:100%;">
       <span class="stamp" data-i18n="precos_eyebrow">Planos</span>
@@ -1160,6 +1199,7 @@
 </section>
 
 <footer>
+  <div class="ember-field" data-count="12"></div>
   <div class="wrap">
     <div class="foot-grid">
       <div>
@@ -2140,5 +2180,34 @@ function resetForm(){
    já preenche a cada envio de formulário. */
 </script>
 
+<script>
+  // Gera faíscas/brasas dentro de cada .ember-field (fundos escuros),
+  // simulando um fogão aceso — cada partícula sobe, oscila levemente
+  // e se apaga, com tamanho/velocidade/atraso aleatórios.
+  (function(){
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion) return;
+    document.querySelectorAll('.ember-field').forEach(function(field){
+      var count = parseInt(field.getAttribute('data-count'), 10) || 16;
+      for(var i=0; i<count; i++){
+        var el = document.createElement('span');
+        el.className = 'ember';
+        var size = 2 + Math.random()*4.5;
+        var rise = 200 + Math.random()*220;
+        var drift = (Math.random()*70 - 35).toFixed(0) + 'px';
+        var dur = 5 + Math.random()*6;
+        var delay = -(Math.random()*dur);
+        el.style.width = size + 'px';
+        el.style.height = size + 'px';
+        el.style.setProperty('--x', Math.random()*100 + '%');
+        el.style.setProperty('--rise', rise + 'px');
+        el.style.setProperty('--drift', drift);
+        el.style.setProperty('--dur', dur + 's');
+        el.style.setProperty('--delay', delay + 's');
+        field.appendChild(el);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
