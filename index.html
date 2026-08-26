@@ -121,6 +121,26 @@
   .sec-light2{background:var(--cream-2); color:var(--black);}
   .sec-dark{background:var(--charcoal); color:var(--cream);}
   .sec-dark .stamp{color:var(--gold-light);}
+
+  /* ===== Emendas em degradê entre seções ===== */
+  /* Cada seção "derrama" a própria cor por cima da margem de baixo, esmaecendo
+     até transparente — assim a seção seguinte vai sendo revelada aos poucos,
+     em vez do corte seco de cor contra cor. */
+  .hero, .sec-light, .sec-light2, .sec-dark, .comp-section, .story, .closing{position:relative;}
+  .hero::after, .sec-light::after, .sec-light2::after, .sec-dark::after, .comp-section::after, .story::after, .closing::after{
+    content:""; position:absolute; left:0; right:0; bottom:-90px; height:90px;
+    pointer-events:none; z-index:4;
+  }
+  .hero::after{background:linear-gradient(to bottom, var(--cream), transparent);}
+  .sec-light::after{background:linear-gradient(to bottom, var(--cream), transparent);}
+  .sec-light2::after{background:linear-gradient(to bottom, var(--cream-2), transparent);}
+  .sec-dark::after{background:linear-gradient(to bottom, var(--charcoal), transparent);}
+  .comp-section::after{background:linear-gradient(to bottom, var(--charcoal), transparent);}
+  .story::after{background:linear-gradient(to bottom, var(--cream-2), transparent);}
+  .closing::after{background:linear-gradient(to bottom, var(--black), transparent);}
+  /* a última seção da página não deve derramar sobre o rodapé */
+  section:last-of-type::after{display:none;}
+
   .section-head{margin-bottom:48px; max-width:640px;}
   .section-head h2{font-size:clamp(28px,4vw,42px); margin-top:10px;}
 
@@ -360,6 +380,7 @@
   .mock-4 .mock-preview{background:linear-gradient(160deg,#111110,#3a2f22 55%, #b8923f);}
   .mock-5 .mock-preview{background:linear-gradient(160deg,#241a12,#d84a2b 55%, #f2b23a);}
   .mock-6 .mock-preview{background:linear-gradient(160deg,#3a0c15,#5c1421 55%, #c9a24d);}
+  .mock-7 .mock-preview{background:linear-gradient(160deg,#E5457A,#F2994A 55%, #F5C518);}
   .mock-preview h4{font-family:'Fraunces',serif; color:#fff; font-size:19px; font-weight:500;}
   .mock-body{padding:18px;}
   .mock-body .stamp{color:var(--gold);}
@@ -936,7 +957,6 @@
 </section>
 
 <section class="reveal comp-section" style="padding:80px 0;">
-  <div class="ember-field" data-count="16"></div>
   <div class="wrap">
     <div class="section-head">
       <span class="stamp">Serviço · em desenvolvimento</span>
@@ -981,6 +1001,7 @@
       <div class="cblock"><span data-i18n="block_label3">Estilo</span><span class="big" data-i18n="block3_big">Moderno &amp; colorido</span><span>Jardim &amp; Sal</span></div>
       <div class="cblock"><span data-i18n="block_label5">Estilo</span><span class="big" data-i18n="block5_big">Minimalista &amp; direto</span><span>Café Nômade</span></div>
       <div class="cblock"><span data-i18n="block_label6">Formato</span><span class="big" data-i18n="block6_big">Loja online</span><span>Adega Vinha Alta</span></div>
+      <div class="cblock"><span>Formato</span><span class="big">Loja online &amp; colorido</span><span>Mercado Las Flores</span></div>
       <div class="cblock"><span data-i18n="block_soon">Em breve</span><span class="big" data-i18n="block4_big">Seus projetos aqui</span><span data-i18n="block4_sub">Envie e eu adiciono</span></div>
     </div>
   </div>
@@ -1043,6 +1064,15 @@
           <p data-i18n="pcard6_desc">Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.</p>
         </div>
       </div>
+      <a href="mercado-las-flores.html" target="_blank" rel="noopener" class="mock-card mock-7 lift" style="text-decoration:none; color:inherit; display:block;">
+        <div class="mock-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="mock-preview"><h4>Mercado Las Flores</h4></div>
+        <div class="mock-body">
+          <span class="stamp">Colorido &amp; vibrante</span>
+          <h3>Mercado de sabores, loja online</h3>
+          <p>Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.</p>
+        </div>
+      </a>
       <a href="portfolio.html" class="mock-card port-more lift" style="text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
         <span class="stamp" data-i18n="portmore_cta">Ver todos</span>
         <p data-i18n="portmore_text" style="text-align:center;">Portfólio completo com filtros por estilo, formato e cores →</p>
