@@ -124,6 +124,28 @@
   .section-head{margin-bottom:48px; max-width:640px;}
   .section-head h2{font-size:clamp(28px,4vw,42px); margin-top:10px;}
 
+  /* ===== SEÇÃO "ISSO JÁ ACONTECEU COM VOCÊ?" — cards de dor/objeção,
+     mesmo padrão visual do resto do site (dourado sobre carvão) ===== */
+  .pain-section .lede{color:var(--cream-2); opacity:0.75; font-size:15px; margin-top:12px; max-width:56ch;}
+  .pain-badge{
+    display:inline-flex; align-items:center; font-family:'Space Mono',monospace; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light);
+    border:1px solid rgba(228,197,99,0.4); border-radius:30px; padding:7px 16px; margin-bottom:14px;
+  }
+  .pain-list{display:grid; gap:14px; margin-top:8px;}
+  .pain-card{
+    position:relative; display:flex; gap:18px; align-items:flex-start;
+    background:rgba(251,248,242,0.03); border:1px solid var(--line-dark);
+    border-left:3px solid var(--gold); border-radius:6px; padding:20px 24px;
+  }
+  .pain-quote{
+    flex-shrink:0; font-family:'Fraunces',serif; font-weight:700; font-size:26px; line-height:1;
+    color:var(--gold); border:1px solid rgba(201,162,39,0.4); border-radius:6px;
+    width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+  }
+  .pain-card p{color:var(--cream); font-size:15px; opacity:0.92; margin:0; padding-top:4px;}
+  @media(max-width:640px){ .pain-card{padding:16px 18px; gap:14px;} }
+
   .btn{
     display:inline-block; font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     background:var(--black); color:var(--cream); padding:13px 22px; border-radius:2px;
@@ -823,6 +845,35 @@
 <nav class="trail" aria-label="Trilha de navegação">
   <div class="wrap"><a href="#inicio" data-i18n="trail_inicio">Início</a> / <a href="#portfolio" data-i18n="trail_portfolio">Portfólio</a> / <span data-i18n="trail_exemplos">Exemplos de sites</span></div>
 </nav>
+
+<section class="sec-dark reveal pain-section">
+  <div class="ember-field" data-count="12"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pain-badge" data-i18n="pain_badge">A realidade de quem ainda não tem site</span>
+      <h2 data-i18n="pain_title">Isso já aconteceu com você?</h2>
+      <p class="lede" data-i18n="pain_sub">A maioria dos donos de restaurante que me procuram sente exatamente isso. Você não está sozinho.</p>
+    </div>
+    <div class="pain-list">
+      <div class="pain-card">
+        <span class="pain-quote" aria-hidden="true">"</span>
+        <p data-i18n="pain_q1">As pessoas perguntam se eu tenho site, e eu só mando o Instagram.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-quote" aria-hidden="true">"</span>
+        <p data-i18n="pain_q2">Sei que isso está me custando reservas, mas não sei o que fazer a respeito.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-quote" aria-hidden="true">"</span>
+        <p data-i18n="pain_q3">Ainda não tenho site nem identidade visual pronta — não sei nem por onde começar.</p>
+      </div>
+      <div class="pain-card">
+        <span class="pain-quote" aria-hidden="true">"</span>
+        <p data-i18n="pain_q4">Já pensei em fazer um site, mas nunca sobra tempo — o restaurante toma tudo.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="sec-light reveal" id="cardapio">
   <div class="wrap">
