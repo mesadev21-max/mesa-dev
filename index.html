@@ -9,10 +9,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png?v=2">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=2">
-<meta name="description" content="Mesa.dev cria sites e landing pages para restaurantes em Portugal, Espanha e Reino Unido. Protótipo em 5 dias úteis, sem mensalidade escondida.">
+<meta name="description" content="Mesa.dev cria sites e landing pages para restaurantes por toda a Europa. Protótipo em 5 dias úteis, sem mensalidade escondida.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mesa.dev — Sites para restaurantes">
-<meta property="og:description" content="Sites feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.">
+<meta property="og:description" content="Sites feitos à mão para restaurantes por toda a Europa.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -409,6 +409,11 @@
   .car-dot{width:8px; height:8px; border-radius:50%; background:rgba(251,248,242,0.3); cursor:pointer; transition:background .2s ease, transform .2s ease;}
   .car-dot.active{background:var(--gold); transform:scale(1.3);}
   .precos-note{text-align:center; font-size:13px; opacity:0.65; margin-top:36px; position:relative; z-index:1;}
+  .deposit-note{
+    display:inline-block; margin:18px auto 0; padding:10px 18px; border-radius:30px;
+    background:rgba(201,162,39,0.12); border:1px solid rgba(201,162,39,0.4);
+    color:var(--gold-light); font-size:12.5px; opacity:1; max-width:520px;
+  }
 
   /* CONTATO / ORÇAMENTO */
   .pay-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:820px; margin:20px auto 0;}
@@ -513,9 +518,9 @@
   .confirm.show{display:block;}
   .confirm .stamp{border:1px solid var(--gold); display:inline-block; padding:6px 14px; border-radius:20px;}
   .confirm h3{margin:16px 0 8px; font-size:24px;}
-  .admin-toggle{text-align:center; margin-top:36px;}
-  .admin-toggle button{background:none; border:none; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; opacity:0.45; cursor:pointer; text-decoration:underline;}
-  .admin{display:none; max-width:900px; margin:30px auto 0; border-top:1px solid var(--line); padding-top:30px;}
+  /* Painel do estúdio removido — a fonte real de pedidos agora é a
+     planilha do Google (preenchida pelo Apps Script). O painel antigo
+     lia window.storage, que só existe no preview do Claude. */
   .admin.show{display:block;}
   .order-row{border:1px solid var(--line); border-radius:3px; padding:16px 18px; margin-bottom:12px; font-size:13.5px; display:flex; flex-wrap:wrap; gap:6px 18px; background:var(--cream-2);}
   .order-row b{font-family:'Fraunces',serif; font-weight:600;}
@@ -682,7 +687,7 @@
 <div class="top-strip">
   <div class="wrap">
     <div class="top-contacts">
-      <a href="https://wa.me/5554996336129" class="link-anim" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://wa.me/447480206849" class="link-anim" target="_blank" rel="noopener">WhatsApp</a>
       <a href="mailto:mesadev21@gmail.com" class="link-anim">mesadev21@gmail.com</a>
     </div>
     <div class="lang-switch" id="langSwitch" role="group" aria-label="Idioma">
@@ -763,7 +768,7 @@
   <div class="wrap">
     <span class="stamp" data-i18n="hero_eyebrow">Estúdio de sites — restaurantes da Europa</span>
     <h1><span data-i18n="hero_h1a">O seu restaurante fica</span> <em data-i18n="hero_h1em">lotado</em><br><span data-i18n="hero_h1b">às sextas. O site também devia estar cheio de gente.</span></h1>
-    <p data-i18n="hero_p">Faço sites simples, rápidos e feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.</p>
+    <p data-i18n="hero_p">Faço sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.</p>
     <div class="hero-cta">
       <a href="#peca" class="btn" data-i18n="hero_cta1">Peça o seu site</a>
       <a href="portfolio.html" class="btn btn-ghost" data-i18n="hero_cta2">Ver exemplos</a>
@@ -971,7 +976,7 @@
     </div>
     <div class="steps">
       <div class="step"><span class="n">01</span><h3 data-i18n="step1_t">Você conta o que precisa</h3><p data-i18n="step1_d">Preenche o formulário com o nome do restaurante e o estilo que imagina.</p></div>
-      <div class="step"><span class="n">02</span><h3 data-i18n="step2_t">Eu monto um protótipo</h3><p data-i18n="step2_d">Em até 5 dias úteis você recebe um link pra ver o site antes de qualquer pagamento.</p></div>
+      <div class="step"><span class="n">02</span><h3 data-i18n="step2_t">Eu monto um protótipo</h3><p data-i18n="step2_d">Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.</p></div>
       <div class="step"><span class="n">03</span><h3 data-i18n="step3_t">Ajustamos juntos</h3><p data-i18n="step3_d">Trocamos fotos, textos e cores até ficar do seu jeito.</p></div>
       <div class="step"><span class="n">04</span><h3 data-i18n="step4_t">Site no ar</h3><p data-i18n="step4_d">Publicamos com endereço próprio, pronto pra receber clientes.</p></div>
     </div>
@@ -1051,6 +1056,7 @@
       <div class="car-dots" id="carDots"></div>
     </div>
     <p class="precos-note" data-i18n="precos_note">Preços em euro — valor equivalente em outras moedas. Manutenção mensal a partir de € 15.</p>
+    <div style="text-align:center;"><p class="deposit-note" data-i18n="precos_deposit_note">💳 Início do projeto: sinal de 30% do valor combinado. Os 70% restantes só são cobrados depois das alterações e do site pronto e finalizado.</p></div>
     <p class="precos-note" style="margin-top:10px;"><a href="planos.html" class="link-anim" style="color:var(--gold-light); font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em;">Ver todos os detalhes dos planos →</a></p>
   </div>
 </section>
@@ -1062,11 +1068,11 @@
       <h2>Vamos combinar os detalhes do seu orçamento</h2>
     </div>
     <div class="pay-grid">
-      <a href="https://wa.me/5554996336129" target="_blank" rel="noopener" class="pay-card feat whatsapp lift" style="text-decoration:none; color:inherit; display:block;">
+      <a href="https://wa.me/447480206849" target="_blank" rel="noopener" class="pay-card feat whatsapp lift" style="text-decoration:none; color:inherit; display:block;">
         <span class="card-shine" aria-hidden="true"></span>
         <svg viewBox="0 0 32 32" fill="currentColor" style="width:30px;height:30px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.36.65 4.57 1.78 6.46L3 29l7.22-2.24a12.44 12.44 0 005.78 1.43h.01c6.89 0 12.5-5.607 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.3 10.3 0 01-5.24-1.44l-.376-.223-4.29 1.33 1.36-4.18-.246-.39a10.19 10.19 0 01-1.6-5.5c0-5.66 4.6-10.26 10.26-10.26 5.66 0 10.26 4.6 10.26 10.26.005 5.657-4.596 10.407-10.114 10.407zm5.63-7.688c-.31-.155-1.83-.902-2.11-1.006-.283-.104-.489-.155-.695.156-.206.31-.797 1.006-.977 1.212-.18.206-.36.232-.669.078-.31-.155-1.31-.483-2.494-1.538-.922-.822-1.545-1.838-1.726-2.148-.18-.31-.02-.478.136-.632.14-.14.31-.362.464-.543.155-.18.206-.31.31-.516.103-.206.052-.387-.026-.542-.078-.155-.695-1.677-.952-2.297-.25-.601-.505-.52-.695-.53l-.593-.01c-.206 0-.542.077-.826.387-.283.31-1.082 1.058-1.082 2.58s1.108 2.99 1.262 3.196c.155.206 2.18 3.33 5.28 4.67.738.319 1.314.51 1.763.653.741.236 1.415.203 1.948.123.594-.089 1.83-.748 2.088-1.47.258-.723.258-1.343.18-1.47-.077-.129-.283-.207-.593-.362z"/></svg>
         <h3>Peça um orçamento pelo WhatsApp</h3>
-        <p>Depois de combinarmos o escopo e o valor do seu site, te mando um link de pagamento seguro — sem compromisso pra começar a conversa.</p>
+        <p>Depois de combinarmos o escopo e o valor do seu site, te mando o link do sinal de 30% pra começar — sem compromisso pra começar a conversa.</p>
       </a>
       <a href="mailto:mesadev21@gmail.com" class="pay-card feat email lift" style="text-decoration:none; color:inherit; display:block;">
         <span class="card-shine" aria-hidden="true"></span>
@@ -1150,16 +1156,6 @@
       </div>
     </div>
 
-    <div class="admin-toggle">
-      <button onclick="toggleAdmin()" id="adminBtn" data-i18n="admin_toggle">Painel do estúdio (ver pedidos recebidos)</button>
-    </div>
-    <div class="admin" id="adminPanel">
-      <h3 data-i18n="admin_title">Pedidos recebidos</h3>
-      <div id="ordersList"></div>
-      <h3 style="margin-top:36px;">Leads rápidos (pop-up) por país</h3>
-      <div id="leadsCountry" style="margin-bottom:16px;"></div>
-      <div id="leadsList"></div>
-    </div>
   </div>
 </section>
 
@@ -1178,7 +1174,7 @@
           </span>
           <span class="brand-name" style="color:var(--cream);">Mesa<span class="dot">.</span>dev</span>
         </div>
-        <p style="font-size:13.5px; opacity:0.7; max-width:240px; margin-top:12px;" data-i18n="foot_desc">Sites feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.</p>
+        <p style="font-size:13.5px; opacity:0.7; max-width:240px; margin-top:12px;" data-i18n="foot_desc">Sites feitos à mão para restaurantes por toda a Europa.</p>
       </div>
       <nav aria-label="Navegação do rodapé"><h4 data-i18n="foot_nav_title">Navegação</h4><ul>
         <li><a href="#cardapio" class="link-anim" data-i18n="nav_servicos">Serviços</a></li>
@@ -1187,7 +1183,7 @@
         <li><a href="#sobre" class="link-anim" data-i18n="nav_sobre">Sobre mim</a></li>
       </ul></nav>
       <div><h4 data-i18n="foot_contact_title">Contato</h4><ul>
-        <li><a href="https://wa.me/5554996336129" class="link-anim" target="_blank" rel="noopener">+55 54 99633-6129</a></li>
+        <li><a href="https://wa.me/447480206849" class="link-anim" target="_blank" rel="noopener">+44 7480 206849</a></li>
         <li><a href="mailto:mesadev21@gmail.com" class="link-anim">mesadev21@gmail.com</a></li>
       </ul></div>
       <div>
@@ -1209,7 +1205,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
 </a>
 <div class="email-tooltip">Envie um e-mail</div>
-<a class="wa-float" id="waFloat" href="https://wa.me/5554996336129" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+<a class="wa-float" id="waFloat" href="https://wa.me/447480206849" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.36.65 4.57 1.78 6.46L3 29l7.22-2.24a12.44 12.44 0 005.78 1.43h.01c6.89 0 12.5-5.607 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.3 10.3 0 01-5.24-1.44l-.376-.223-4.29 1.33 1.36-4.18-.246-.39a10.19 10.19 0 01-1.6-5.5c0-5.66 4.6-10.26 10.26-10.26 5.66 0 10.26 4.6 10.26 10.26.005 5.657-4.596 10.407-10.114 10.407zm5.63-7.688c-.31-.155-1.83-.902-2.11-1.006-.283-.104-.489-.155-.695.156-.206.31-.797 1.006-.977 1.212-.18.206-.36.232-.669.078-.31-.155-1.31-.483-2.494-1.538-.922-.822-1.545-1.838-1.726-2.148-.18-.31-.02-.478.136-.632.14-.14.31-.362.464-.543.155-.18.206-.31.31-.516.103-.206.052-.387-.026-.542-.078-.155-.695-1.677-.952-2.297-.25-.601-.505-.52-.695-.53l-.593-.01c-.206 0-.542.077-.826.387-.283.31-1.082 1.058-1.082 2.58s1.108 2.99 1.262 3.196c.155.206 2.18 3.33 5.28 4.67.738.319 1.314.51 1.763.653.741.236 1.415.203 1.948.123.594-.089 1.83-.748 2.088-1.47.258-.723.258-1.343.18-1.47-.077-.129-.283-.207-.593-.362z"/></svg>
 </a>
 <div class="wa-tooltip">Fale comigo no WhatsApp</div>
@@ -1224,7 +1220,7 @@ const I18N = {
     sub_diagnostico:'Diagnóstico grátis', sub_site:'Site personalizado', sub_manutencao:'Manutenção',
     hero_eyebrow:'Estúdio de sites — restaurantes da Europa',
     hero_h1a:'O seu restaurante fica', hero_h1em:'lotado', hero_h1b:'às sextas. O site também devia estar cheio de gente.',
-    hero_p:'Faço sites simples, rápidos e feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.',
+    hero_p:'Faço sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.',
     hero_cta1:'Peça o seu site', hero_cta2:'Ver exemplos',
     stat1_b:'5 dias úteis', stat1_t:'prazo médio até o protótipo', stat2_t:'atendimento nos três mercados',
     stat3_b:'Sem enrolação', stat3_t:'orçamento claro, sem mensalidade escondida',
@@ -1253,7 +1249,7 @@ const I18N = {
     story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'Mesa.dev',
     como_eyebrow:'Como funciona', como_title:'Do pedido ao site no ar',
     step1_t:'Você conta o que precisa', step1_d:'Preenche o formulário com o nome do restaurante e o estilo que imagina.',
-    step2_t:'Eu monto um protótipo', step2_d:'Em até 5 dias úteis você recebe um link pra ver o site antes de qualquer pagamento.',
+    step2_t:'Eu monto um protótipo', step2_d:'Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.',
     step3_t:'Ajustamos juntos', step3_d:'Trocamos fotos, textos e cores até ficar do seu jeito.',
     step4_t:'Site no ar', step4_d:'Publicamos com endereço próprio, pronto pra receber clientes.',
     precos_eyebrow:'Planos', precos_title:'Escolha o ponto de partida',
@@ -1263,8 +1259,9 @@ const I18N = {
     plan4_name:'Sob Encomenda', plan4_price:'A combinar', plan4_f1:'Tem sua própria ideia? Conte pra mim', plan4_f2:'Múltiplas unidades/franquias', plan4_f3:'Integrações específicas',
     plan_cta:'Ver detalhes', plan_cta_custom:'Vamos conversar',
     precos_note:'Preços em euro — valor equivalente em outras moedas. Manutenção mensal a partir de € 15.',
+    precos_deposit_note:'💳 Início do projeto: sinal de 30% do valor combinado. Os 70% restantes só são cobrados depois das alterações e do site pronto e finalizado.',
     pag_eyebrow:'Pagamento', pag_title:'Como você pode pagar',
-    pag_paypal_label:'Forma recomendada', pag_paypal_desc:'Pagamento internacional simples e protegido, ideal pra quem está em Portugal, Espanha ou Reino Unido.',
+    pag_paypal_label:'Forma recomendada', pag_paypal_desc:'Pagamento internacional simples e protegido, ideal pra quem está em qualquer país da Europa.',
     pag_card_label:'Cartão de crédito', pag_card_desc:'Parcelamento em até 12x, direto na hora do pedido.',
     closing_text:'O site que falta pro seu restaurante não vai se construir sozinho.', closing_cta:'Peça o seu site agora',
     peca_eyebrow:'Peça o seu', peca_title:'Vamos montar o site do seu restaurante', peca_title2:'Peça o seu site', ticket_label:'Comanda Nº',
@@ -1276,8 +1273,7 @@ const I18N = {
     f_notes:'Observações (opcional)', f_notes_ph:'Cores que gosta, referências, algo que não pode faltar...',
     f_submit:'Enviar comanda', f_note:'Sem compromisso — você recebe uma resposta com o próximo passo.',
     confirm_stamp:'Comanda recebida', confirm_title:'Obrigado! 🎉', confirm_p:'Guardei o seu pedido. O próximo contato é comigo, pelo canal que você escolheu.', confirm_btn:'Enviar outro pedido',
-    admin_toggle:'Painel do estúdio (ver pedidos recebidos)', admin_title:'Pedidos recebidos',
-    foot_desc:'Sites feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.',
+    foot_desc:'Sites feitos à mão para restaurantes por toda a Europa.',
     foot_nav_title:'Navegação', foot_contact_title:'Contato', foot_social_title:'Redes',
     foot_copy:'© Mesa.dev.', foot_madeby:'Feito com carinho, sem agência grande.',
     chat_title:'Fale com o Mesa.dev', chat_sub:'Tira dúvidas antes de pedir', chat_placeholder:'Escreva sua pergunta...', chat_send:'Enviar',
@@ -1293,7 +1289,7 @@ const I18N = {
     sub_diagnostico:'Diagnóstico grátis', sub_site:'Site personalizado', sub_manutencao:'Manutenção',
     hero_eyebrow:'Estúdio de sites — restaurantes da Europa',
     hero_h1a:'O seu restaurante fica', hero_h1em:'lotado', hero_h1b:'às sextas. O site também devia estar cheio de gente.',
-    hero_p:'Faço sites simples, rápidos e feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.',
+    hero_p:'Faço sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.',
     hero_cta1:'Peça o seu site', hero_cta2:'Ver exemplos',
     stat1_b:'5 dias úteis', stat1_t:'prazo médio até o protótipo', stat2_t:'atendimento nos três mercados',
     stat3_b:'Sem enrolação', stat3_t:'orçamento claro, sem mensalidade escondida',
@@ -1322,7 +1318,7 @@ const I18N = {
     story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'Mesa.dev',
     como_eyebrow:'Como funciona', como_title:'Do pedido ao site no ar',
     step1_t:'Você conta o que precisa', step1_d:'Preenche o formulário com o nome do restaurante e o estilo que imagina.',
-    step2_t:'Eu monto um protótipo', step2_d:'Em até 5 dias úteis você recebe um link pra ver o site antes de qualquer pagamento.',
+    step2_t:'Eu monto um protótipo', step2_d:'Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.',
     step3_t:'Ajustamos juntos', step3_d:'Trocamos fotos, textos e cores até ficar do seu jeito.',
     step4_t:'Site no ar', step4_d:'Publicamos com endereço próprio, pronto pra receber clientes.',
     precos_eyebrow:'Planos', precos_title:'Escolha o ponto de partida',
@@ -1332,8 +1328,9 @@ const I18N = {
     plan4_name:'Sob Encomenda', plan4_price:'A combinar', plan4_f1:'Tem sua própria ideia? Conte pra mim', plan4_f2:'Múltiplas unidades/franquias', plan4_f3:'Integrações específicas',
     plan_cta:'Ver detalhes', plan_cta_custom:'Vamos conversar',
     precos_note:'Preços em euro — valor equivalente em outras moedas. Manutenção mensal a partir de € 15.',
+    precos_deposit_note:'💳 Início do projeto: sinal de 30% do valor combinado. Os 70% restantes só são cobrados depois das alterações e do site pronto e finalizado.',
     pag_eyebrow:'Pagamento', pag_title:'Como você pode pagar',
-    pag_paypal_label:'Forma recomendada', pag_paypal_desc:'Pagamento internacional simples e protegido, ideal pra quem está em Portugal, Espanha ou Reino Unido.',
+    pag_paypal_label:'Forma recomendada', pag_paypal_desc:'Pagamento internacional simples e protegido, ideal pra quem está em qualquer país da Europa.',
     pag_card_label:'Cartão de crédito', pag_card_desc:'Parcelamento em até 12x, direto na hora do pedido.',
     closing_text:'O site que falta pro seu restaurante não vai se construir sozinho.', closing_cta:'Peça o seu site agora',
     peca_eyebrow:'Peça o seu', peca_title:'Vamos montar o site do seu restaurante', peca_title2:'Peça o seu site', ticket_label:'Comanda Nº',
@@ -1345,8 +1342,7 @@ const I18N = {
     f_notes:'Observações (opcional)', f_notes_ph:'Cores que gosta, referências, algo que não pode faltar...',
     f_submit:'Enviar comanda', f_note:'Sem compromisso — você recebe uma resposta com o próximo passo.',
     confirm_stamp:'Comanda recebida', confirm_title:'Obrigado! 🎉', confirm_p:'Guardei o seu pedido. O próximo contato é comigo, pelo canal que você escolheu.', confirm_btn:'Enviar outro pedido',
-    admin_toggle:'Painel do estúdio (ver pedidos recebidos)', admin_title:'Pedidos recebidos',
-    foot_desc:'Sites feitos à mão para restaurantes em Portugal, Espanha e Reino Unido.',
+    foot_desc:'Sites feitos à mão para restaurantes por toda a Europa.',
     foot_nav_title:'Navegação', foot_contact_title:'Contato', foot_social_title:'Redes',
     foot_copy:'© Mesa.dev.', foot_madeby:'Feito com carinho, sem agência grande.',
     chat_title:'Fale com o Mesa.dev', chat_sub:'Tira dúvidas antes de pedir', chat_placeholder:'Escreva sua pergunta...', chat_send:'Enviar',
@@ -1362,7 +1358,7 @@ const I18N = {
     sub_diagnostico:'Diagnóstico gratis', sub_site:'Web personalizada', sub_manutencao:'Mantenimiento',
     hero_eyebrow:'Estudio de webs — restaurantes de Europa',
     hero_h1a:'Su restaurante está', hero_h1em:'lleno', hero_h1b:'los viernes. La web también debería estarlo.',
-    hero_p:'Creo webs simples, rápidas y hechas a mano para restaurantes en Portugal, España y Reino Unido.',
+    hero_p:'Creo webs simples, rápidas y hechas a mano para restaurantes en toda Europa.',
     hero_cta1:'Pide tu web', hero_cta2:'Ver ejemplos',
     stat1_b:'5 días hábiles', stat1_t:'plazo medio hasta el prototipo', stat2_t:'atención en los tres mercados',
     stat3_b:'Sin rodeos', stat3_t:'presupuesto claro, sin cuota mensual oculta',
@@ -1391,7 +1387,7 @@ const I18N = {
     story_quote:'"Una web no sustituye la buena comida — pero es el motivo por el que alguien decide probarla."', story_sign:'Mesa.dev',
     como_eyebrow:'Cómo funciona', como_title:'Del pedido a la web publicada',
     step1_t:'Nos cuenta lo que necesita', step1_d:'Rellena el formulario con el nombre del restaurante y el estilo que imagina.',
-    step2_t:'Preparo un prototipo', step2_d:'En hasta 5 días hábiles recibe un enlace para ver la web antes de cualquier pago.',
+    step2_t:'Preparo un prototipo', step2_d:'Con el anticipo del 30% pagado, recibe en hasta 5 días hábiles un enlace para ver la web.',
     step3_t:'Ajustamos juntos', step3_d:'Cambiamos fotos, textos y colores hasta que quede a su gusto.',
     step4_t:'Web publicada', step4_d:'Publicamos con dominio propio, lista para recibir clientes.',
     precos_eyebrow:'Planes', precos_title:'Elija el punto de partida',
@@ -1401,8 +1397,9 @@ const I18N = {
     plan4_name:'A Medida', plan4_price:'A consultar', plan4_f1:'¿Tiene su propia idea? Cuéntemela', plan4_f2:'Varios locales/franquicias', plan4_f3:'Integraciones específicas',
     plan_cta:'Ver detalles', plan_cta_custom:'Hablemos',
     precos_note:'Precios en euro — valor equivalente en otras monedas. Mantenimiento mensual desde € 15.',
+    precos_deposit_note:'💳 Inicio del proyecto: anticipo del 30% del valor acordado. El 70% restante se cobra después de los ajustes y del sitio terminado.',
     pag_eyebrow:'Pago', pag_title:'Cómo puede pagar',
-    pag_paypal_label:'Forma recomendada', pag_paypal_desc:'Pago internacional simple y protegido, ideal para Portugal, España o Reino Unido.',
+    pag_paypal_label:'Forma recomendada', pag_paypal_desc:'Pago internacional simple y protegido, ideal para cualquier país de Europa.',
     pag_card_label:'Tarjeta de crédito', pag_card_desc:'Hasta 12 cuotas, directo al hacer el pedido.',
     closing_text:'La web que le falta a su restaurante no se va a construir sola.', closing_cta:'Pida su web ahora',
     peca_eyebrow:'Pida la suya', peca_title:'Construyamos la web de su restaurante', peca_title2:'Pida su web', ticket_label:'Pedido Nº',
@@ -1414,8 +1411,7 @@ const I18N = {
     f_notes:'Observaciones (opcional)', f_notes_ph:'Colores que le gustan, referencias, algo imprescindible...',
     f_submit:'Enviar pedido', f_note:'Sin compromiso — recibirá una respuesta con el próximo paso.',
     confirm_stamp:'Pedido recibido', confirm_title:'¡Gracias! 🎉', confirm_p:'Guardé su pedido. El próximo contacto lo haré yo, por el canal que eligió.', confirm_btn:'Enviar otro pedido',
-    admin_toggle:'Panel del estudio (ver pedidos recibidos)', admin_title:'Pedidos recibidos',
-    foot_desc:'Webs hechas a mano para restaurantes en Portugal, España y Reino Unido.',
+    foot_desc:'Webs hechas a mano para restaurantes en toda Europa.',
     foot_nav_title:'Navegación', foot_contact_title:'Contacto', foot_social_title:'Redes',
     foot_copy:'© Mesa.dev.', foot_madeby:'Hecho con cariño, sin agencia grande.',
     chat_title:'Hable con Mesa.dev', chat_sub:'Resuelva dudas antes de pedir', chat_placeholder:'Escriba su pregunta...', chat_send:'Enviar',
@@ -1431,7 +1427,7 @@ const I18N = {
     sub_diagnostico:'Free audit', sub_site:'Custom website', sub_manutencao:'Maintenance',
     hero_eyebrow:'Website studio — restaurants across Europe',
     hero_h1a:'Your restaurant is', hero_h1em:'packed', hero_h1b:'on Fridays. Your website should be too.',
-    hero_p:'I build simple, fast, hand-made websites for restaurants in Portugal, Spain and the UK.',
+    hero_p:'I build simple, fast, hand-made websites for restaurants across Europe.',
     hero_cta1:'Order your site', hero_cta2:'See examples',
     stat1_b:'5 working days', stat1_t:'average time to first prototype', stat2_t:'support across all three markets',
     stat3_b:'No nonsense', stat3_t:'clear pricing, no hidden monthly fee',
@@ -1461,7 +1457,7 @@ const I18N = {
     story_note:'Placeholder background — send photos of your restaurant and I\'ll apply them here with a parallax effect.',
     como_eyebrow:'How it works', como_title:'From order to live website',
     step1_t:'Tell me what you need', step1_d:'Fill in the form with your restaurant name and the style you have in mind.',
-    step2_t:'I build a prototype', step2_d:'Within 5 working days you get a link to see the site before any payment.',
+    step2_t:'I build a prototype', step2_d:'With the 30% deposit paid, you get a link to see the site within 5 working days.',
     step3_t:'We fine-tune it together', step3_d:'We swap photos, copy and colours until it feels right.',
     step4_t:'Site goes live', step4_d:'We publish it on its own address, ready to bring in customers.',
     precos_eyebrow:'Plans', precos_title:'Choose your starting point',
@@ -1471,8 +1467,9 @@ const I18N = {
     plan4_name:'Bespoke', plan4_price:'On request', plan4_f1:'Have your own idea? Tell me about it', plan4_f2:'Multiple venues/franchises', plan4_f3:'Specific integrations',
     plan_cta:'See details', plan_cta_custom:'Let\'s talk',
     precos_note:'Prices in euro — equivalent value in other currencies. Monthly maintenance from € 15.',
+    precos_deposit_note:'💳 Project start: 30% deposit of the agreed value. The remaining 70% is charged after revisions and the finished site.',
     pag_eyebrow:'Payment', pag_title:'How you can pay',
-    pag_paypal_label:'Recommended', pag_paypal_desc:'Simple, protected international payment — ideal whether you\'re in Portugal, Spain or the UK.',
+    pag_paypal_label:'Recommended', pag_paypal_desc:'Simple, protected international payment — ideal wherever in Europe you are.',
     pag_card_label:'Credit card', pag_card_desc:'Up to 12 instalments, right when you place your order.',
     closing_text:'The website your restaurant is missing won\'t build itself.', closing_cta:'Order your site now',
     peca_eyebrow:'Get started', peca_title:'Let\'s build your restaurant\'s website', peca_title2:'Order your site', ticket_label:'Order No.',
@@ -1484,8 +1481,7 @@ const I18N = {
     f_notes:'Notes (optional)', f_notes_ph:'Colours you like, references, anything essential...',
     f_submit:'Submit order', f_note:'No commitment — you\'ll get a reply with the next step.',
     confirm_stamp:'Order received', confirm_title:'Thank you! 🎉', confirm_p:'I\'ve saved your order. I\'ll be in touch through the channel you chose.', confirm_btn:'Submit another order',
-    admin_toggle:'Studio panel (view received orders)', admin_title:'Received orders',
-    foot_desc:'Hand-made websites for restaurants in Portugal, Spain and the UK.',
+    foot_desc:'Hand-made websites for restaurants across Europe.',
     foot_nav_title:'Navigation', foot_contact_title:'Contact', foot_social_title:'Social',
     foot_copy:'© Mesa.dev.', foot_madeby:'Made with care, no big agency.',
     chat_title:'Chat with Mesa.dev', chat_sub:'Get answers before you order', chat_placeholder:'Type your question...', chat_send:'Send',
@@ -1501,7 +1497,7 @@ const I18N = {
     sub_diagnostico:'Free audit', sub_site:'Custom website', sub_manutencao:'Maintenance',
     hero_eyebrow:'Website studio — restaurants across Europe',
     hero_h1a:'Your restaurant is', hero_h1em:'packed', hero_h1b:'on Fridays. Your website should be too.',
-    hero_p:'I build simple, fast, hand-made websites for restaurants in Portugal, Spain and the UK.',
+    hero_p:'I build simple, fast, hand-made websites for restaurants across Europe.',
     hero_cta1:'Order your site', hero_cta2:'See examples',
     stat1_b:'5 working days', stat1_t:'average time to first prototype', stat2_t:'support across all three markets',
     stat3_b:'No nonsense', stat3_t:'clear pricing, no hidden monthly fee',
@@ -1531,7 +1527,7 @@ const I18N = {
     story_note:'Placeholder background — send photos of your restaurant and I\'ll apply them here with a parallax effect.',
     como_eyebrow:'How it works', como_title:'From order to live website',
     step1_t:'Tell me what you need', step1_d:'Fill in the form with your restaurant name and the style you have in mind.',
-    step2_t:'I build a prototype', step2_d:'Within 5 working days you get a link to see the site before any payment.',
+    step2_t:'I build a prototype', step2_d:'With the 30% deposit paid, you get a link to see the site within 5 working days.',
     step3_t:'We fine-tune it together', step3_d:'We swap photos, copy and colours until it feels right.',
     step4_t:'Site goes live', step4_d:'We publish it on its own address, ready to bring in customers.',
     precos_eyebrow:'Plans', precos_title:'Choose your starting point',
@@ -1541,8 +1537,9 @@ const I18N = {
     plan4_name:'Bespoke', plan4_price:'On request', plan4_f1:'Have your own idea? Tell me about it', plan4_f2:'Multiple venues/franchises', plan4_f3:'Specific integrations',
     plan_cta:'See details', plan_cta_custom:'Let\'s talk',
     precos_note:'Prices in euro — equivalent value in other currencies. Monthly maintenance from € 15.',
+    precos_deposit_note:'💳 Project start: 30% deposit of the agreed value. The remaining 70% is charged after revisions and the finished site.',
     pag_eyebrow:'Payment', pag_title:'How you can pay',
-    pag_paypal_label:'Recommended', pag_paypal_desc:'Simple, protected international payment — ideal whether you\'re in Portugal, Spain or the UK.',
+    pag_paypal_label:'Recommended', pag_paypal_desc:'Simple, protected international payment — ideal wherever in Europe you are.',
     pag_card_label:'Credit card', pag_card_desc:'Up to 12 instalments, right when you place your order.',
     closing_text:'The website your restaurant is missing won\'t build itself.', closing_cta:'Order your site now',
     peca_eyebrow:'Get started', peca_title:'Let\'s build your restaurant\'s website', peca_title2:'Order your site', ticket_label:'Order No.',
@@ -1554,8 +1551,7 @@ const I18N = {
     f_notes:'Notes (optional)', f_notes_ph:'Colours you like, references, anything essential...',
     f_submit:'Submit order', f_note:'No commitment — you\'ll get a reply with the next step.',
     confirm_stamp:'Order received', confirm_title:'Thank you! 🎉', confirm_p:'I\'ve saved your order. I\'ll be in touch through the channel you chose.', confirm_btn:'Submit another order',
-    admin_toggle:'Studio panel (view received orders)', admin_title:'Received orders',
-    foot_desc:'Hand-made websites for restaurants in Portugal, Spain and the UK.',
+    foot_desc:'Hand-made websites for restaurants across Europe.',
     foot_nav_title:'Navigation', foot_contact_title:'Contact', foot_social_title:'Social',
     foot_copy:'© Mesa.dev.', foot_madeby:'Made with care, no big agency.',
     chat_title:'Chat with Mesa.dev', chat_sub:'Get answers before you order', chat_placeholder:'Type your question...', chat_send:'Send',
@@ -1571,7 +1567,7 @@ const I18N = {
     sub_diagnostico:'Kostenlose Analyse', sub_site:'Individuelle Website', sub_manutencao:'Wartung',
     hero_eyebrow:'Website-Studio — Restaurants in ganz Europa',
     hero_h1a:'Ihr Restaurant ist freitags', hero_h1em:'voll', hero_h1b:'. Ihre Website sollte es auch sein.',
-    hero_p:'Ich baue einfache, schnelle, handgemachte Websites für Restaurants in Portugal, Spanien und Großbritannien.',
+    hero_p:'Ich baue einfache, schnelle, handgemachte Websites für Restaurants in ganz Europa.',
     hero_cta1:'Website anfragen', hero_cta2:'Beispiele ansehen',
     stat1_b:'5 Werktage', stat1_t:'durchschnittliche Zeit bis zum Prototyp', stat2_t:'Betreuung in allen drei Märkten',
     stat3_b:'Ohne Umschweife', stat3_t:'klare Preise, keine versteckte Monatsgebühr',
@@ -1600,7 +1596,7 @@ const I18N = {
     story_quote:'"Eine Website ersetzt kein gutes Essen — aber sie ist der Grund, warum sich jemand entscheidet, Ihres zu probieren."', story_sign:'Mesa.dev',
     como_eyebrow:'So funktioniert\'s', como_title:'Von der Anfrage zur Live-Website',
     step1_t:'Sagen Sie mir, was Sie brauchen', step1_d:'Füllen Sie das Formular mit dem Namen Ihres Restaurants und dem gewünschten Stil aus.',
-    step2_t:'Ich baue einen Prototyp', step2_d:'Innerhalb von 5 Werktagen erhalten Sie einen Link, um die Website vor jeder Zahlung zu sehen.',
+    step2_t:'Ich baue einen Prototyp', step2_d:'Nach der Anzahlung von 30% erhalten Sie innerhalb von 5 Werktagen einen Link zur Website.',
     step3_t:'Wir feilen gemeinsam daran', step3_d:'Wir tauschen Fotos, Texte und Farben aus, bis es passt.',
     step4_t:'Website geht live', step4_d:'Wir veröffentlichen sie unter eigener Adresse, bereit für Ihre Kunden.',
     precos_eyebrow:'Pakete', precos_title:'Wählen Sie Ihren Ausgangspunkt',
@@ -1610,8 +1606,9 @@ const I18N = {
     plan4_name:'Maßgeschneidert', plan4_price:'Auf Anfrage', plan4_f1:'Eigene Idee? Erzählen Sie mir davon', plan4_f2:'Mehrere Standorte/Franchises', plan4_f3:'Spezifische Integrationen',
     plan_cta:'Details ansehen', plan_cta_custom:'Lassen Sie uns sprechen',
     precos_note:'Preise in Euro — entsprechender Wert in anderen Währungen. Monatliche Wartung ab € 15.',
+    precos_deposit_note:'💳 Projektstart: Anzahlung von 30% des vereinbarten Werts. Die restlichen 70% werden nach den Anpassungen und der fertigen Website berechnet.',
     pag_eyebrow:'Zahlung', pag_title:'Wie Sie bezahlen können',
-    pag_paypal_label:'Empfohlen', pag_paypal_desc:'Einfache, geschützte internationale Zahlung — ideal, egal ob Sie in Portugal, Spanien oder Großbritannien sind.',
+    pag_paypal_label:'Empfohlen', pag_paypal_desc:'Einfache, geschützte internationale Zahlung — ideal, egal in welchem Land Europas Sie sind.',
     pag_card_label:'Kreditkarte', pag_card_desc:'Bis zu 12 Raten, direkt bei der Bestellung.',
     closing_text:'Die Website, die Ihrem Restaurant fehlt, baut sich nicht von selbst.', closing_cta:'Jetzt Website anfragen',
     peca_eyebrow:'Loslegen', peca_title:'Lassen Sie uns die Website Ihres Restaurants bauen', peca_title2:'Website anfragen', ticket_label:'Bestellung Nr.',
@@ -1623,8 +1620,7 @@ const I18N = {
     f_notes:'Anmerkungen (optional)', f_notes_ph:'Bevorzugte Farben, Referenzen, alles Wichtige...',
     f_submit:'Anfrage senden', f_note:'Unverbindlich — Sie erhalten eine Antwort mit dem nächsten Schritt.',
     confirm_stamp:'Anfrage erhalten', confirm_title:'Vielen Dank! 🎉', confirm_p:'Ich habe Ihre Anfrage gespeichert. Ich melde mich über den von Ihnen gewählten Kanal.', confirm_btn:'Weitere Anfrage senden',
-    admin_toggle:'Studio-Panel (erhaltene Anfragen)', admin_title:'Erhaltene Anfragen',
-    foot_desc:'Handgemachte Websites für Restaurants in Portugal, Spanien und Großbritannien.',
+    foot_desc:'Handgemachte Websites für Restaurants in ganz Europa.',
     foot_nav_title:'Navigation', foot_contact_title:'Kontakt', foot_social_title:'Soziale Medien',
     foot_copy:'© Mesa.dev.', foot_madeby:'Mit Sorgfalt gemacht, ohne große Agentur.',
     chat_title:'Chat mit Mesa.dev', chat_sub:'Fragen klären, bevor Sie bestellen', chat_placeholder:'Ihre Frage eingeben...', chat_send:'Senden',
@@ -1640,7 +1636,7 @@ const I18N = {
     sub_diagnostico:'Analisi gratuita', sub_site:'Sito personalizzato', sub_manutencao:'Manutenzione',
     hero_eyebrow:'Studio di siti web — ristoranti in tutta Europa',
     hero_h1a:'Il tuo ristorante il venerdì è', hero_h1em:'pieno', hero_h1b:'. Anche il tuo sito dovrebbe esserlo.',
-    hero_p:'Creo siti semplici, veloci e fatti a mano per ristoranti in Portogallo, Spagna e Regno Unito.',
+    hero_p:'Creo siti semplici, veloci e fatti a mano per ristoranti in tutta Europa.',
     hero_cta1:'Richiedi il tuo sito', hero_cta2:'Vedi esempi',
     stat1_b:'5 giorni lavorativi', stat1_t:'tempo medio per il primo prototipo', stat2_t:'assistenza in tutti e tre i mercati',
     stat3_b:'Senza fronzoli', stat3_t:'prezzi chiari, nessun canone mensile nascosto',
@@ -1669,7 +1665,7 @@ const I18N = {
     story_quote:'"Un sito non sostituisce il buon cibo — ma è il motivo per cui qualcuno decide di provare il tuo."', story_sign:'Mesa.dev',
     como_eyebrow:'Come funziona', como_title:'Dall\'ordine al sito online',
     step1_t:'Dimmi cosa ti serve', step1_d:'Compila il modulo con il nome del ristorante e lo stile che hai in mente.',
-    step2_t:'Costruisco un prototipo', step2_d:'Entro 5 giorni lavorativi ricevi un link per vedere il sito prima di qualsiasi pagamento.',
+    step2_t:'Costruisco un prototipo', step2_d:'Con l\'acconto del 30% pagato, ricevi entro 5 giorni lavorativi un link per vedere il sito.',
     step3_t:'Perfezioniamo insieme', step3_d:'Cambiamo foto, testi e colori finché non è come lo vuoi tu.',
     step4_t:'Il sito va online', step4_d:'Lo pubblichiamo con un indirizzo proprio, pronto ad accogliere clienti.',
     precos_eyebrow:'Piani', precos_title:'Scegli il tuo punto di partenza',
@@ -1679,8 +1675,9 @@ const I18N = {
     plan4_name:'Su misura', plan4_price:'Su richiesta', plan4_f1:'Hai una tua idea? Raccontamela', plan4_f2:'Più sedi/franchising', plan4_f3:'Integrazioni specifiche',
     plan_cta:'Vedi dettagli', plan_cta_custom:'Parliamone',
     precos_note:'Prezzi in euro — valore equivalente in altre valute. Manutenzione mensile da € 15.',
+    precos_deposit_note:'💳 Inizio del progetto: acconto del 30% del valore concordato. Il restante 70% viene addebitato dopo le modifiche e il sito finito.',
     pag_eyebrow:'Pagamento', pag_title:'Come puoi pagare',
-    pag_paypal_label:'Consigliato', pag_paypal_desc:'Pagamento internazionale semplice e protetto, ideale che tu sia in Portogallo, Spagna o Regno Unito.',
+    pag_paypal_label:'Consigliato', pag_paypal_desc:'Pagamento internazionale semplice e protetto, ideale ovunque tu sia in Europa.',
     pag_card_label:'Carta di credito', pag_card_desc:'Fino a 12 rate, direttamente al momento dell\'ordine.',
     closing_text:'Il sito che manca al tuo ristorante non si costruirà da solo.', closing_cta:'Richiedi il tuo sito ora',
     peca_eyebrow:'Iniziamo', peca_title:'Costruiamo il sito del tuo ristorante', peca_title2:'Richiedi il tuo sito', ticket_label:'Ordine n.',
@@ -1692,8 +1689,7 @@ const I18N = {
     f_notes:'Note (facoltativo)', f_notes_ph:'Colori che ti piacciono, riferimenti, qualcosa di essenziale...',
     f_submit:'Invia richiesta', f_note:'Nessun impegno — riceverai una risposta con il prossimo passo.',
     confirm_stamp:'Richiesta ricevuta', confirm_title:'Grazie! 🎉', confirm_p:'Ho salvato la tua richiesta. Ti contatterò tramite il canale che hai scelto.', confirm_btn:'Invia un\'altra richiesta',
-    admin_toggle:'Pannello dello studio (richieste ricevute)', admin_title:'Richieste ricevute',
-    foot_desc:'Siti fatti a mano per ristoranti in Portogallo, Spagna e Regno Unito.',
+    foot_desc:'Siti fatti a mano per ristoranti in tutta Europa.',
     foot_nav_title:'Navigazione', foot_contact_title:'Contatto', foot_social_title:'Social',
     foot_copy:'© Mesa.dev.', foot_madeby:'Fatto con cura, senza una grande agenzia.',
     chat_title:'Chatta con Mesa.dev', chat_sub:'Chiarisci i dubbi prima di ordinare', chat_placeholder:'Scrivi la tua domanda...', chat_send:'Invia',
@@ -1709,7 +1705,7 @@ const I18N = {
     sub_diagnostico:'Gratis granskning', sub_site:'Skräddarsydd webbplats', sub_manutencao:'Underhåll',
     hero_eyebrow:'Webbstudio — restauranger i hela Europa',
     hero_h1a:'Din restaurang är fullsatt', hero_h1em:'på fredagar', hero_h1b:'. Din webbplats borde vara det också.',
-    hero_p:'Jag bygger enkla, snabba, handgjorda webbplatser för restauranger i Portugal, Spanien och Storbritannien.',
+    hero_p:'Jag bygger enkla, snabba, handgjorda webbplatser för restauranger i hela Europa.',
     hero_cta1:'Beställ din webbplats', hero_cta2:'Se exempel',
     stat1_b:'5 arbetsdagar', stat1_t:'genomsnittlig tid till första prototyp', stat2_t:'support på alla tre marknader',
     stat3_b:'Inget krångel', stat3_t:'tydliga priser, ingen dold månadsavgift',
@@ -1738,7 +1734,7 @@ const I18N = {
     story_quote:'"En webbplats ersätter inte bra mat — men den är anledningen till att någon bestämmer sig för att prova din."', story_sign:'Mesa.dev',
     como_eyebrow:'Så funkar det', como_title:'Från beställning till live webbplats',
     step1_t:'Berätta vad du behöver', step1_d:'Fyll i formuläret med restaurangens namn och önskad stil.',
-    step2_t:'Jag bygger en prototyp', step2_d:'Inom 5 arbetsdagar får du en länk för att se webbplatsen innan någon betalning.',
+    step2_t:'Jag bygger en prototyp', step2_d:'Med handpenningen på 30% betald får du inom 5 arbetsdagar en länk för att se webbplatsen.',
     step3_t:'Vi finjusterar tillsammans', step3_d:'Vi byter foton, texter och färger tills det känns rätt.',
     step4_t:'Webbplatsen går live', step4_d:'Vi publicerar den på egen adress, redo att ta emot kunder.',
     precos_eyebrow:'Paket', precos_title:'Välj din utgångspunkt',
@@ -1748,8 +1744,9 @@ const I18N = {
     plan4_name:'Skräddarsydd', plan4_price:'På begäran', plan4_f1:'Har du en egen idé? Berätta för mig', plan4_f2:'Flera platser/franchiser', plan4_f3:'Specifika integrationer',
     plan_cta:'Se detaljer', plan_cta_custom:'Låt oss prata',
     precos_note:'Priser i euro — motsvarande värde i andra valutor. Månatligt underhåll från € 15.',
+    precos_deposit_note:'💳 Projektstart: handpenning på 30% av det avtalade värdet. Resterande 70% debiteras efter ändringarna och den färdiga webbplatsen.',
     pag_eyebrow:'Betalning', pag_title:'Hur du kan betala',
-    pag_paypal_label:'Rekommenderas', pag_paypal_desc:'Enkel, skyddad internationell betalning — perfekt oavsett om du är i Portugal, Spanien eller Storbritannien.',
+    pag_paypal_label:'Rekommenderas', pag_paypal_desc:'Enkel, skyddad internationell betalning — perfekt oavsett vilket land i Europa du är i.',
     pag_card_label:'Kreditkort', pag_card_desc:'Upp till 12 delbetalningar, direkt vid beställning.',
     closing_text:'Webbplatsen din restaurang saknar bygger inte sig själv.', closing_cta:'Beställ din webbplats nu',
     peca_eyebrow:'Kom igång', peca_title:'Låt oss bygga din restaurangs webbplats', peca_title2:'Beställ din webbplats', ticket_label:'Beställning nr.',
@@ -1761,8 +1758,7 @@ const I18N = {
     f_notes:'Anteckningar (valfritt)', f_notes_ph:'Färger du gillar, referenser, något viktigt...',
     f_submit:'Skicka beställning', f_note:'Utan förpliktelser — du får ett svar med nästa steg.',
     confirm_stamp:'Beställning mottagen', confirm_title:'Tack! 🎉', confirm_p:'Jag har sparat din beställning. Jag hör av mig via kanalen du valde.', confirm_btn:'Skicka en till beställning',
-    admin_toggle:'Studiopanel (mottagna beställningar)', admin_title:'Mottagna beställningar',
-    foot_desc:'Handgjorda webbplatser för restauranger i Portugal, Spanien och Storbritannien.',
+    foot_desc:'Handgjorda webbplatser för restauranger i hela Europa.',
     foot_nav_title:'Navigation', foot_contact_title:'Kontakt', foot_social_title:'Sociala medier',
     foot_copy:'© Mesa.dev.', foot_madeby:'Gjord med omsorg, ingen stor byrå.',
     chat_title:'Chatta med Mesa.dev', chat_sub:'Få svar innan du beställer', chat_placeholder:'Skriv din fråga...', chat_send:'Skicka',
@@ -1778,7 +1774,7 @@ const I18N = {
     sub_diagnostico:'تقييم مجاني', sub_site:'موقع مخصص', sub_manutencao:'الصيانة',
     hero_eyebrow:'استوديو مواقع — للمطاعم في أوروبا',
     hero_h1a:'مطعمك يكون', hero_h1em:'ممتلئًا', hero_h1b:'أيام الجمعة. موقعك يجب أن يكون كذلك أيضًا.',
-    hero_p:'أُنشئ مواقع بسيطة وسريعة ومصنوعة يدويًا للمطاعم في البرتغال وإسبانيا والمملكة المتحدة.',
+    hero_p:'أُنشئ مواقع بسيطة وسريعة ومصنوعة يدويًا للمطاعم في جميع أنحاء أوروبا.',
     hero_cta1:'اطلب موقعك', hero_cta2:'شاهد الأمثلة',
     stat1_b:'5 أيام عمل', stat1_t:'متوسط الوقت للنموذج الأول', stat2_t:'دعم في الأسواق الثلاثة',
     stat3_b:'بدون تعقيد', stat3_t:'أسعار واضحة، بدون رسوم شهرية خفية',
@@ -1807,7 +1803,7 @@ const I18N = {
     story_quote:'"الموقع لا يعوّض الطعام الجيد — لكنه السبب الذي يجعل أحدهم يقرر تجربة مطعمك."', story_sign:'Mesa.dev',
     como_eyebrow:'كيف يعمل', como_title:'من الطلب إلى الموقع المباشر',
     step1_t:'أخبرني بما تحتاجه', step1_d:'املأ النموذج باسم مطعمك والنمط الذي تتخيله.',
-    step2_t:'أبني نموذجًا أوليًا', step2_d:'خلال 5 أيام عمل تحصل على رابط لمشاهدة الموقع قبل أي دفع.',
+    step2_t:'أبني نموذجًا أوليًا', step2_d:'بعد دفع العربون 30%، تحصل خلال 5 أيام عمل على رابط لمشاهدة الموقع.',
     step3_t:'نُتقن التفاصيل معًا', step3_d:'نستبدل الصور والنصوص والألوان حتى يصبح كما تريد.',
     step4_t:'الموقع يصبح مباشرًا', step4_d:'ننشره على عنوانه الخاص، جاهزًا لاستقبال العملاء.',
     precos_eyebrow:'الباقات', precos_title:'اختر نقطة البداية',
@@ -1817,8 +1813,9 @@ const I18N = {
     plan4_name:'حسب الطلب', plan4_price:'عند الطلب', plan4_f1:'لديك فكرتك الخاصة؟ أخبرني بها', plan4_f2:'عدة فروع/امتيازات', plan4_f3:'تكاملات محددة',
     plan_cta:'عرض التفاصيل', plan_cta_custom:'لنتحدث',
     precos_note:'الأسعار باليورو — القيمة المعادلة بعملات أخرى. الصيانة الشهرية تبدأ من 15 يورو.',
+    precos_deposit_note:'💳 بداية المشروع: دفعة مقدمة 30% من القيمة المتفق عليها. تُدفع نسبة الـ70% المتبقية بعد التعديلات واكتمال الموقع.',
     pag_eyebrow:'الدفع', pag_title:'كيف يمكنك الدفع',
-    pag_paypal_label:'موصى به', pag_paypal_desc:'دفع دولي بسيط وآمن — مثالي سواء كنت في البرتغال أو إسبانيا أو المملكة المتحدة.',
+    pag_paypal_label:'موصى به', pag_paypal_desc:'دفع دولي بسيط وآمن — مثالي أينما كنت في أوروبا.',
     pag_card_label:'بطاقة ائتمان', pag_card_desc:'حتى 12 دفعة، مباشرة عند تقديم الطلب.',
     closing_text:'الموقع الذي يفتقده مطعمك لن يُبنى من تلقاء نفسه.', closing_cta:'اطلب موقعك الآن',
     peca_eyebrow:'ابدأ الآن', peca_title:'لنبنِ موقع مطعمك', peca_title2:'اطلب موقعك', ticket_label:'رقم الطلب',
@@ -1830,8 +1827,7 @@ const I18N = {
     f_notes:'ملاحظات (اختياري)', f_notes_ph:'الألوان التي تفضلها، مراجع، أي شيء ضروري...',
     f_submit:'إرسال الطلب', f_note:'بدون التزام — ستحصل على رد بالخطوة التالية.',
     confirm_stamp:'تم استلام الطلب', confirm_title:'شكرًا لك! 🎉', confirm_p:'حفظت طلبك. سأتواصل معك عبر القناة التي اخترتها.', confirm_btn:'إرسال طلب آخر',
-    admin_toggle:'لوحة الاستوديو (الطلبات المستلمة)', admin_title:'الطلبات المستلمة',
-    foot_desc:'مواقع مصنوعة يدويًا للمطاعم في البرتغال وإسبانيا والمملكة المتحدة.',
+    foot_desc:'مواقع مصنوعة يدويًا للمطاعم في جميع أنحاء أوروبا.',
     foot_nav_title:'التنقل', foot_contact_title:'التواصل', foot_social_title:'التواصل الاجتماعي',
     foot_copy:'© Mesa.dev.', foot_madeby:'صُنع بعناية، بدون وكالة كبيرة.',
     chat_title:'تحدث مع Mesa.dev', chat_sub:'احصل على إجابات قبل الطلب', chat_placeholder:'اكتب سؤالك...', chat_send:'إرسال',
@@ -2136,70 +2132,12 @@ function resetForm(){
   refreshTicketNumber();
 }
 
-let adminOpen = false;
-async function toggleAdmin(){
-  adminOpen = !adminOpen;
-  document.getElementById('adminPanel').classList.toggle('show', adminOpen);
-  if(adminOpen){ await loadOrders(); await loadLeads(); }
-}
-async function loadOrders(){
-  const list = document.getElementById('ordersList');
-  list.innerHTML = '<p class="empty-note">Carregando...</p>';
-  try{
-    const res = await window.storage.list('order:', true);
-    const keys = (res && res.keys) ? res.keys : [];
-    if(keys.length === 0){ list.innerHTML = '<p class="empty-note">Nenhum pedido recebido ainda.</p>'; return; }
-    const orders = [];
-    for(const k of keys){
-      try{ const r = await window.storage.get(k, true); if(r && r.value) orders.push(JSON.parse(r.value)); }catch(e){}
-    }
-    orders.sort((a,b)=> new Date(b.submittedAt) - new Date(a.submittedAt));
-    list.innerHTML = orders.map(o=>`
-      <div class="order-row">
-        <span class="meta">${new Date(o.submittedAt).toLocaleString('pt-PT')} · ${o.lang || 'pt'}</span>
-        <span><b>${o.restaurant}</b> — ${o.owner}</span>
-        <span>${o.city || '—'}, ${o.country}</span>
-        <span>Site: ${o.siteStatus}</span>
-        <span>Estilo: ${o.style || '—'}</span>
-        <span>Contato: ${o.contactPref} (${o.contactValue})</span>
-        ${o.notes ? `<span style="width:100%;">Obs: ${o.notes}</span>` : ''}
-      </div>
-    `).join('');
-  }catch(e){ list.innerHTML = '<p class="empty-note">Ainda não há pedidos, ou houve um erro ao carregar.</p>'; }
-}
-
-async function loadLeads(){
-  const countryWrap = document.getElementById('leadsCountry');
-  const list = document.getElementById('leadsList');
-  list.innerHTML = '<p class="empty-note">Carregando...</p>';
-  countryWrap.innerHTML = '';
-  try{
-    const res = await window.storage.list('lead:', true);
-    const keys = (res && res.keys) ? res.keys : [];
-    if(keys.length === 0){ list.innerHTML = '<p class="empty-note">Nenhum lead do pop-up ainda.</p>'; return; }
-    const leads = [];
-    for(const k of keys){
-      try{ const r = await window.storage.get(k, true); if(r && r.value) leads.push(JSON.parse(r.value)); }catch(e){}
-    }
-    leads.sort((a,b)=> new Date(b.submittedAt) - new Date(a.submittedAt));
-
-    const counts = {};
-    leads.forEach(l=>{ const label = l.countryLabel || l.country; counts[label] = (counts[label]||0) + 1; });
-    countryWrap.innerHTML = Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([country,n])=>
-      `<span style="display:inline-block; font-family:'Space Mono',monospace; font-size:12px; background:var(--gold); color:var(--black); padding:6px 12px; border-radius:20px; margin:0 8px 8px 0;"><b>${n}</b> ${country}</span>`
-    ).join('');
-
-    list.innerHTML = leads.map(l=>`
-      <div class="order-row">
-        <span class="meta">${new Date(l.submittedAt).toLocaleString('pt-PT')} · idioma: ${l.lang || 'pt'}</span>
-        <span><b>${l.restaurant}</b></span>
-        <span>País: ${l.countryLabel || l.country}</span>
-        <span>Site: ${l.hasSite}</span>
-        <span>Contato: ${l.contact}</span>
-      </div>
-    `).join('');
-  }catch(e){ list.innerHTML = '<p class="empty-note">Ainda não há leads, ou houve um erro ao carregar.</p>'; }
-}
+/* Painel do estúdio (toggleAdmin/loadOrders/loadLeads) removido — não
+   funcionava em produção (dependia de window.storage, exclusivo do
+   preview do Claude) e ficava visível no código público sem servir
+   pra nada, o que passa insegurança pra quem olha com atenção.
+   Consulte os pedidos direto na planilha do Google que o Apps Script
+   já preenche a cada envio de formulário. */
 </script>
 
 </body>

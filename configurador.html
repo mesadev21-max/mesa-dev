@@ -162,7 +162,7 @@
     </div>
 
     <div class="draft-note">
-      <b>Rascunho pra revisarmos juntos:</b> os itens marcados <span class="example-tag">exemplo</span> têm nomes e preços que eu sugeri, mas ainda não estão confirmados por você — me diga o que muda (nomes, valores, ou se algum não deve entrar) antes de eu finalizar e traduzir a página.
+      <b>Rascunho pra revisarmos juntos:</b> ainda dá pra ajustar qualquer nome ou valor aqui antes de eu traduzir a página — é só me avisar o que muda.
     </div>
 
     <div class="layout">
@@ -237,9 +237,8 @@
             <div class="pill selected" data-group="dominio" data-value="vercel" data-price="0" data-label="Domínio gratuito (vercel.app)">
               <span class="t">Vercel (grátis)</span><span class="p">seusite.vercel.app</span>
             </div>
-            <div class="pill" data-group="dominio" data-value="proprio" data-price="30" data-label="Domínio próprio">
-              <span class="badge">Exemplo</span>
-              <span class="t">Domínio próprio</span><span class="p">+€ 30 config.</span>
+            <div class="pill" data-group="dominio" data-value="proprio" data-price="60" data-label="Domínio próprio">
+              <span class="t">Domínio próprio</span><span class="p">+€ 60 config.</span>
             </div>
           </div>
         </div>
@@ -250,11 +249,11 @@
             <div class="pill selected" data-group="manutencao" data-value="nenhuma" data-price="0" data-label="Sem manutenção mensal">
               <span class="t">Nenhuma</span><span class="p">—</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="essencial" data-price="25" data-label="Manutenção Essencial (até 2 atualizações/mês)">
-              <span class="t">Essencial</span><span class="p">€ 25/mês</span>
+            <div class="pill" data-group="manutencao" data-value="essencial" data-price="29" data-label="Manutenção Essencial (até 2 atualizações/mês)">
+              <span class="t">Essencial</span><span class="p">€ 29/mês</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="completo" data-price="50" data-label="Manutenção Completo (até 4 atualizações/mês)">
-              <span class="t">Completo</span><span class="p">€ 50/mês</span>
+            <div class="pill" data-group="manutencao" data-value="completo" data-price="59" data-label="Manutenção Completo (até 4 atualizações/mês)">
+              <span class="t">Completo</span><span class="p">€ 59/mês</span>
             </div>
             <div class="pill" data-group="manutencao" data-value="premium" data-price="99" data-label="Manutenção Premium (atualizações ilimitadas)">
               <span class="t">Premium</span><span class="p">€ 99/mês</span>
@@ -268,11 +267,11 @@
             <div class="pill selected" data-group="backend" data-value="nenhum" data-pct="0" data-label="Site direto, sem backend">
               <span class="t">Site direto (sem backend)</span><span class="p">grátis</span>
             </div>
-            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.20" data-label="Shopify (backend)">
-              <span class="t">Shopify</span><span class="p" id="backendShopifyTxt">+20%</span>
+            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.25" data-label="Shopify (backend)">
+              <span class="t">Shopify</span><span class="p" id="backendShopifyTxt">+25%</span>
             </div>
-            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.20" data-label="WooCommerce (backend)">
-              <span class="t">WooCommerce</span><span class="p" id="backendWooTxt">+20%</span>
+            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.25" data-label="WooCommerce (backend)">
+              <span class="t">WooCommerce</span><span class="p" id="backendWooTxt">+25%</span>
             </div>
           </div>
           <p id="backendDisabledNote" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
@@ -537,7 +536,7 @@
     let msg = 'Olá! Montei um orçamento no configurador do site:\n';
     lines.forEach(l=> msg += '- ' + l[0] + ': ' + l[1] + '\n');
     msg += isEncomenda ? 'Valor: a combinar' : 'Total estimado: € ' + total.toLocaleString('pt-PT');
-    document.getElementById('ctaWhats').href = 'https://wa.me/5554996336129?text=' + encodeURIComponent(msg);
+    document.getElementById('ctaWhats').href = 'https://wa.me/447480206849?text=' + encodeURIComponent(msg);
   }
 
   if(planoParam && findPill('plano', planoParam)){
