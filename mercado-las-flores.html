@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercado Las Flores — Sabores vivos, direto do mercado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito+Sans:wght@400;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8EE;
+    --panel:#FFF0DC;
+    --ink:#241C15;
+    --pink:#E5457A;
+    --pink-dark:#C22F5F;
+    --turq:#2CA6A4;
+    --turq-dark:#1F7D7B;
+    --orange:#F2994A;
+    --yellow:#F5C518;
+    --purple:#8E4B94;
+    --line: rgba(36,28,21,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Nunito Sans',sans-serif;line-height:1.6;font-weight:600;}
+  h1,h2,h3{font-family:'Alfa Slab One',serif;margin:0;font-weight:400;line-height:1.05;}
+  .hand{font-family:'Kalam',cursive;font-weight:700;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  .announce{background:var(--purple);color:#fff;text-align:center;font-size:13px;padding:10px 0;font-weight:800;letter-spacing:0.02em;}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(255,248,238,0.95);backdrop-filter:blur(8px);border-bottom:3px solid var(--ink);}
+  header .bar{display:flex;justify-content:space-between;align-items:center;padding:16px 0;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:44px;height:44px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Alfa Slab One',serif;font-size:20px;border:3px solid var(--ink);}
+  .brand-name{font-family:'Alfa Slab One',serif;font-size:21px;color:var(--ink);}
+  nav{display:flex;gap:26px;font-size:14px;font-weight:800;}
+  nav a:hover{color:var(--pink-dark);}
+  .cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:11px 20px;border-radius:30px;font-weight:800;font-size:13.5px;cursor:pointer;border:none;font-family:'Nunito Sans',sans-serif;}
+  .cart-count{background:var(--yellow);color:var(--ink);border-radius:50%;width:20px;height:20px;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+
+  /* hero */
+  .hero{padding:66px 0;position:relative;overflow:hidden;}
+  .hero::before{
+    content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;
+    background:var(--yellow);opacity:0.5;z-index:0;
+  }
+  .hero .grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;position:relative;z-index:1;}
+  .eyebrow{font-family:'Kalam',cursive;font-weight:700;font-size:18px;color:var(--pink-dark);margin-bottom:14px;transform:rotate(-2deg);display:inline-block;}
+  .hero h1{font-size:clamp(36px,5vw,56px);color:var(--ink);}
+  .hero h1 .c1{color:var(--pink);}
+  .hero h1 .c2{color:var(--turq-dark);}
+  .hero p.lede{margin-top:20px;font-size:17px;max-width:42ch;font-weight:600;color:#4a3d2f;}
+  .hero-ctas{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{display:inline-block;background:var(--pink);color:#fff !important;padding:13px 26px;border-radius:30px;font-weight:800;font-size:14px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .15s, box-shadow .15s;cursor:pointer;}
+  .btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);}
+  .btn.alt{background:var(--turq);}
+  .btn.outline{background:#fff;color:var(--ink) !important;}
+
+  .hero-collage{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;z-index:1;}
+  .h-tile{border-radius:16px;overflow:hidden;border:3px solid var(--ink);}
+  .h-tile:nth-child(1){aspect-ratio:1;}
+  .h-tile:nth-child(2){aspect-ratio:1;margin-top:28px;}
+  .h-tile:nth-child(3){aspect-ratio:1;margin-top:-28px;}
+  .h-tile:nth-child(4){aspect-ratio:1;}
+
+  /* categories */
+  .cats{padding:14px 0 40px;}
+  .cats .row{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;}
+  .chip{flex-shrink:0;padding:10px 20px;border-radius:30px;border:2.5px solid var(--ink);font-size:13.5px;font-weight:800;cursor:pointer;background:#fff;}
+  .chip.c-pink{background:var(--pink);color:#fff;}
+  .chip.c-turq{background:var(--turq);color:#fff;}
+  .chip.c-orange{background:var(--orange);color:#fff;}
+  .chip.c-yellow{background:var(--yellow);color:var(--ink);}
+  .chip.c-purple{background:var(--purple);color:#fff;}
+
+  .section{padding:50px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:30px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px);color:var(--ink);}
+  .section-head .hand{font-size:16px;color:var(--turq-dark);}
+
+  .p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .p-card{background:#fff;border:3px solid var(--ink);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:5px 5px 0 rgba(36,28,21,0.15);transition:transform .15s;}
+  .p-card:hover{transform:translateY(-4px);}
+  .p-img{aspect-ratio:1;position:relative;border-bottom:3px solid var(--ink);}
+  .p-badge{position:absolute;top:10px;left:10px;font-family:'Kalam',cursive;font-weight:700;font-size:13px;padding:4px 12px;border-radius:20px;border:2px solid var(--ink);transform:rotate(-4deg);}
+  .p-badge.pink{background:var(--pink);color:#fff;}
+  .p-badge.yellow{background:var(--yellow);color:var(--ink);}
+  .p-badge.turq{background:var(--turq);color:#fff;}
+  .p-body{padding:16px;display:flex;flex-direction:column;flex:1;}
+  .p-cat{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--purple);margin-bottom:6px;font-weight:800;}
+  .p-name{font-family:'Alfa Slab One',serif;font-size:16px;margin-bottom:8px;color:var(--ink);}
+  .p-desc{font-size:12.5px;color:#5c5347;margin-bottom:14px;flex:1;font-weight:600;}
+  .p-foot{display:flex;justify-content:space-between;align-items:center;}
+  .p-price{font-family:'Kalam',cursive;font-weight:700;font-size:18px;color:var(--pink-dark);}
+  .add-btn{background:var(--ink);color:#fff;border:none;border-radius:10px;width:36px;height:36px;font-size:20px;cursor:pointer;}
+  .add-btn:hover{background:var(--turq-dark);}
+
+  /* trust strip */
+  .trust{background:var(--ink);color:#fff;}
+  .trust .grid{display:grid;grid-template-columns:repeat(3,1fr);}
+  .t-item{padding:30px 26px;text-align:center;border-left:1px solid rgba(255,255,255,0.15);}
+  .t-item:first-child{border-left:none;}
+  .t-item .emoji{font-size:26px;margin-bottom:8px;}
+  .t-item h3{font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;margin-bottom:5px;}
+  .t-item p{font-size:12.5px;opacity:0.75;margin:0;font-weight:600;}
+
+  /* about */
+  .about .grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:50px;align-items:center;}
+  .about .img-block{border-radius:20px;overflow:hidden;border:3px solid var(--ink);aspect-ratio:4/5;}
+  .about h2{font-size:clamp(26px,3.2vw,34px);margin-bottom:16px;color:var(--ink);}
+  .about p{color:#4a3d2f;max-width:48ch;font-size:15px;font-weight:600;}
+
+  footer{padding:36px 0 24px;border-top:3px solid var(--ink);}
+  footer .bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  footer .fine{font-size:12px;color:#5c5347;font-weight:600;}
+
+  /* cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(36,28,21,0.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40;}
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:390px;max-width:92vw;background:var(--bg);z-index:41;border-left:3px solid var(--ink);transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column;}
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 22px 16px;border-bottom:3px solid var(--ink);}
+  .drawer-head h3{font-size:18px;font-family:'Alfa Slab One',serif;}
+  .close-btn{background:var(--pink);border:2px solid var(--ink);border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;color:#fff;font-weight:800;}
+  .drawer-items{flex:1;overflow-y:auto;padding:12px 22px;}
+  .cart-row{display:flex;gap:12px;padding:14px 0;border-bottom:2px dashed var(--line);align-items:center;}
+  .cart-thumb{width:54px;height:54px;border-radius:10px;flex-shrink:0;border:2px solid var(--ink);overflow:hidden;}
+  .cart-info{flex:1;}
+  .cart-info .n{font-size:13.5px;font-weight:800;}
+  .cart-info .p{font-size:12.5px;font-family:'Kalam',cursive;color:var(--pink-dark);}
+  .qty{display:flex;align-items:center;gap:8px;}
+  .qty button{width:24px;height:24px;border:2px solid var(--ink);background:#fff;border-radius:6px;cursor:pointer;font-size:14px;font-weight:800;line-height:1;}
+  .qty span{font-family:'Kalam',cursive;font-size:14px;min-width:14px;text-align:center;font-weight:700;}
+  .empty-cart{padding:40px 0;text-align:center;color:#5c5347;font-size:14px;font-weight:600;}
+  .drawer-foot{padding:20px 22px;border-top:3px solid var(--ink);}
+  .subtotal-row{display:flex;justify-content:space-between;font-size:16px;margin-bottom:16px;font-weight:800;}
+  .subtotal-row .v{font-family:'Kalam',cursive;color:var(--pink-dark);}
+
+  @media(max-width:900px){
+    .hero .grid{grid-template-columns:1fr;}
+    .p-grid{grid-template-columns:repeat(2,1fr);}
+    .trust .grid{grid-template-columns:1fr;}
+    .t-item{border-left:none;border-top:1px solid rgba(255,255,255,0.15);}
+    .t-item:first-child{border-top:none;}
+    .about .grid{grid-template-columns:1fr;}
+    nav{display:none;}
+  }
+  :focus-visible{outline:3px solid var(--turq);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="announce">🌶️ Portes grátis acima de 40€ · Novidade: cabaz "Fiesta" já disponível</div>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div class="brand-name">Mercado Las Flores</div>
+    </div>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart(true)">Carrinho <span class="cart-count" id="cart-count">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">viva o sabor!</div>
+      <h1>Comida com <span class="c1">cor</span>, <span class="c2">picante</span> e alma de mercado</h1>
+      <p class="lede">Molhos, especiarias e doces trazidos direto dos mercados que a nossa família visita há três gerações. Nada de prateleira sem graça.</p>
+      <div class="hero-ctas">
+        <a href="#produtos" class="btn">Ver a loja</a>
+        <a href="#sobre" class="btn alt">Conhecer a história</a>
+      </div>
+    </div>
+    <div class="hero-collage">
+      <div class="h-tile"><img src="https://loremflickr.com/500/500/chilipepper,market" alt="Pimentas frescas coloridas"></div>
+      <div class="h-tile"><img src="https://loremflickr.com/500/500/mexicancandy" alt="Doces mexicanos coloridos"></div>
+      <div class="h-tile"><img src="https://loremflickr.com/500/500/hotsauce,bottle" alt="Garrafa de molho picante"></div>
+      <div class="h-tile"><img src="https://loremflickr.com/500/500/spicemarket,colorful" alt="Especiarias coloridas em tigelas"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cats">
+  <div class="wrap row">
+    <div class="chip c-pink">🌶️ Molhos picantes</div>
+    <div class="chip c-turq">🍬 Doces &amp; sobremesas</div>
+    <div class="chip c-orange">🫙 Especiarias</div>
+    <div class="chip c-yellow">🌽 Milho &amp; tortillas</div>
+    <div class="chip c-purple">🎁 Cabazes</div>
+  </div>
+</section>
+
+<section class="section" id="produtos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Os mais pedidos</h2>
+      <span class="hand">escolhidos a dedo pelos clientes ✦</span>
+    </div>
+    <div class="p-grid" id="product-grid"></div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap grid">
+    <div class="t-item"><div class="emoji">🚚</div><h3>Entrega em toda a Europa</h3><p>2 a 4 dias úteis, embalagem própria para frascos</p></div>
+    <div class="t-item"><div class="emoji">🌶️</div><h3>Direto do produtor</h3><p>Compramos a pequenos produtores, sem intermediários</p></div>
+    <div class="t-item"><div class="emoji">💛</div><h3>Satisfação garantida</h3><p>Não gostou? Devolvemos o dinheiro em 14 dias</p></div>
+  </div>
+</section>
+
+<section class="section about" id="sobre">
+  <div class="wrap grid">
+    <div class="img-block"><img src="https://loremflickr.com/600/750/mexicanmarket,stall" alt="Banca de mercado colorida"></div>
+    <div>
+      <h2>Do mercado da nossa avó para a sua cozinha</h2>
+      <p>A Mercado Las Flores começou como uma banca de fim de semana. Hoje trazemos os mesmos molhos, doces e especiarias — dos mesmos produtores — a qualquer morada na Europa.</p>
+      <div class="hero-ctas" style="margin-top:22px;"><a href="#produtos" class="btn">Ver todos os produtos</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap bar">
+    <div class="brand-name" style="font-size:17px;">Mercado Las Flores</div>
+    <div class="fine">Mockup de portfólio — loja e produtos fictícios, criado para demonstração. Imagens de produtos meramente ilustrativas.</div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>O carrinho</h3>
+    <button class="close-btn" onclick="toggleCart(false)">✕</button>
+  </div>
+  <div class="drawer-items" id="drawer-items"></div>
+  <div class="drawer-foot">
+    <div class="subtotal-row"><span>Subtotal</span><span class="v" id="subtotal">0,00€</span></div>
+    <button class="btn" style="width:100%;">Finalizar encomenda</button>
+  </div>
+</div>
+
+<script>
+  const products = [
+    {id:1, name:"Molho habanero", cat:"Molhos picantes", price:7.50, badge:"Mais picante", badgeColor:"pink", img:"https://loremflickr.com/500/500/habanero,hotsauce"},
+    {id:2, name:"Mole poblano", cat:"Molhos", price:8.90, badge:null, img:"https://loremflickr.com/500/500/molesauce,jar"},
+    {id:3, name:"Doces de tamarindo", cat:"Doces", price:4.20, badge:"Popular", badgeColor:"yellow", img:"https://loremflickr.com/500/500/tamarindcandy"},
+    {id:4, name:"Tortillas de milho azul", cat:"Milho", price:5.00, badge:null, img:"https://loremflickr.com/500/500/cornTortillas"},
+    {id:5, name:"Mistura de especiarias", cat:"Especiarias", price:6.30, badge:"Novo", badgeColor:"turq", img:"https://loremflickr.com/500/500/spiceblend,bowl"},
+    {id:6, name:"Pimenta chipotle seca", cat:"Especiarias", price:5.80, badge:null, img:"https://loremflickr.com/500/500/driedchili"},
+    {id:7, name:"Chocolate de mesa", cat:"Doces", price:6.90, badge:null, img:"https://loremflickr.com/500/500/mexicanchocolate"},
+    {id:8, name:"Cabaz Fiesta", cat:"Cabazes", price:34.00, badge:"Edição limitada", badgeColor:"pink", img:"https://loremflickr.com/500/500/giftbasket,food"},
+  ];
+
+  let cart = {};
+
+  function renderProducts(){
+    document.getElementById('product-grid').innerHTML = products.map(p => `
+      <div class="p-card">
+        <div class="p-img">
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          ${p.badge ? `<span class="p-badge ${p.badgeColor}">${p.badge}</span>` : ''}
+        </div>
+        <div class="p-body">
+          <div class="p-cat">${p.cat}</div>
+          <div class="p-name">${p.name}</div>
+          <div class="p-desc">Selecionado dos nossos produtores parceiros</div>
+          <div class="p-foot">
+            <div class="p-price">${p.price.toFixed(2).replace('.',',')}€</div>
+            <button class="add-btn" onclick="addToCart(${p.id})" aria-label="Adicionar ${p.name}">+</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function addToCart(id){ cart[id] = (cart[id]||0)+1; renderCart(); toggleCart(true); }
+  function changeQty(id, d){ if(!cart[id])return; cart[id]+=d; if(cart[id]<=0) delete cart[id]; renderCart(); }
+
+  function renderCart(){
+    const items = Object.entries(cart);
+    document.getElementById('cart-count').textContent = items.reduce((s,[,q])=>s+q,0);
+    const itemsEl = document.getElementById('drawer-items');
+    const subtotalEl = document.getElementById('subtotal');
+    if(items.length===0){
+      itemsEl.innerHTML = `<div class="empty-cart">O carrinho está vazio.<br>Adicione produtos para ver aqui.</div>`;
+      subtotalEl.textContent = "0,00€"; return;
+    }
+    let subtotal=0;
+    itemsEl.innerHTML = items.map(([id,qty])=>{
+      const p = products.find(x=>x.id==id); subtotal += p.price*qty;
+      return `<div class="cart-row">
+        <div class="cart-thumb"><img src="${p.img}" alt="${p.name}"></div>
+        <div class="cart-info"><div class="n">${p.name}</div><div class="p">${p.price.toFixed(2).replace('.',',')}€</div></div>
+        <div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${qty}</span><button onclick="changeQty(${p.id},1)">+</button></div>
+      </div>`;
+    }).join('');
+    subtotalEl.textContent = subtotal.toFixed(2).replace('.',',')+"€";
+  }
+
+  function toggleCart(open){
+    document.getElementById('drawer').classList.toggle('open', open);
+    document.getElementById('overlay').classList.toggle('open', open);
+  }
+
+  renderProducts();
+  renderCart();
+</script>
+
+</body>
+</html>
