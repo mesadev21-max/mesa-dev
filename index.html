@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MesaDev´s — Sites para restaurantes</title>
+<title>MesaDev's — Sites para restaurantes</title>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png?v=2">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=2">
-<meta name="description" content="MesaDev´s cria sites e landing pages para restaurantes por toda a Europa. Protótipo em 5 dias úteis, sem mensalidade escondida.">
+<meta name="description" content="MesaDev's cria sites e landing pages para restaurantes por toda a Europa. Protótipo em 5 dias úteis, sem mensalidade escondida.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="MesaDev´s — Sites para restaurantes">
+<meta property="og:title" content="MesaDev's — Sites para restaurantes">
 <meta property="og:description" content="Sites feitos à mão para restaurantes por toda a Europa.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Mesa.dev",
+  "name": "MesaDev's",
   "description": "Estúdio independente de sites e landing pages para restaurantes.",
   "areaServed": ["Portugal", "Espanha", "Reino Unido"],
   "priceRange": "€€",
@@ -243,6 +243,7 @@
   .brand-name .dot{color:var(--gold);}
   .brand-mark{width:26px; height:26px; color:var(--gold); flex-shrink:0; position:relative; z-index:1;}
   .brand-mark svg{width:100%; height:100%;}
+  .brand-mark img{width:100%; height:100%; object-fit:cover; border-radius:50%; display:block;}
   .brand-watermark{
     position:absolute; left:-30px; top:50%; transform:translateY(-50%); width:120px; height:120px;
     color:var(--gold); opacity:0.07; z-index:0; pointer-events:none;
@@ -775,7 +776,7 @@
     <div class="popup-confirm" id="popupConfirm">
       <span class="stamp" data-i18n="popup_confirm_stamp">Recebido</span>
       <h3 data-i18n="popup_confirm_title">Obrigado! 🎉</h3>
-      <p style="font-size:13.5px; opacity:0.75;" data-i18n="popup_confirm_p">Já anotei — podes continuar navegando o site à vontade.</p>
+      <p style="font-size:13.5px; opacity:0.75;" data-i18n="popup_confirm_p">Já anotei — pode continuar navegando o site à vontade.</p>
     </div>
   </div>
 </div>
@@ -808,7 +809,7 @@
 
 <div class="promo-bar" id="promoBar">
   <div class="wrap">
-    <span data-i18n="promo_text">O primeiro pedido com <strong>10% OFF</strong>.</span>
+    <span data-i18n="promo_text">O seu primeiro pedido com <strong>10% OFF</strong>.</span>
     <a href="#peca" class="btn btn-gold" style="padding:8px 16px;" data-i18n="promo_cta">Aproveitar agora</a>
     <button class="promo-close" id="promoClose" aria-label="Fechar">×</button>
   </div>
@@ -825,7 +826,8 @@
           <circle cx="50" cy="58" r="26"/>
         </svg>
       </span>
-      <span class="brand-name">MesaDev´s</span>
+      <span class="brand-mark"><img src="/mesadevs-logo.png" alt="MesaDev's"></span>
+      <span class="brand-name">MesaDev's</span>
     </a>
 
     <div class="main-nav" id="mainNav">
@@ -959,28 +961,28 @@
 <section class="reveal comp-section" style="padding:80px 0;">
   <div class="wrap">
     <div class="section-head">
-      <span class="stamp">Serviço · em desenvolvimento</span>
-      <h2>Complementares que estão vindo</h2>
-      <p class="lede">Já estou desenhando essas frentes novas — especialmente úteis pra quem ainda não tem site nem identidade visual pronta (a maioria de quem me procura). Quero validar direitinho com os primeiros clientes antes de abrir pra todo mundo. Se algum desses interessar já, fala comigo.</p>
+      <span class="stamp" data-i18n="comp_badge">Serviço · em desenvolvimento</span>
+      <h2 data-i18n="comp_title">Complementares que estão vindo</h2>
+      <p class="lede" data-i18n="comp_lede">Já estou desenhando essas frentes novas — especialmente úteis pra quem ainda não tem site nem identidade visual pronta (a maioria de quem me procura). Quero validar direitinho com os primeiros clientes antes de abrir pra todo mundo. Se algum desses interessar já, fala comigo.</p>
     </div>
     <div class="comp-grid">
       <div class="comp-card">
-        <div class="comp-ribbon">Em breve</div>
-        <h3>Identidade visual do zero</h3>
-        <p>Logo, cores e tipografia pra quem ainda não tem nada — pra sair do papel junto com o site.</p>
+        <div class="comp-ribbon" data-i18n="block_soon">Em breve</div>
+        <h3 data-i18n="comp1_title">Identidade visual do zero</h3>
+        <p data-i18n="comp1_desc">Logo, cores e tipografia pra quem ainda não tem nada — pra sair do papel junto com o site.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-ribbon">Em breve</div>
-        <h3>Cardápio pra impressão</h3>
-        <p>O mesmo cardápio digital do site, desenhado pra imprimir e combinar com a mesa do restaurante.</p>
+        <div class="comp-ribbon" data-i18n="block_soon">Em breve</div>
+        <h3 data-i18n="comp2_title">Cardápio pra impressão</h3>
+        <p data-i18n="comp2_desc">O mesmo cardápio digital do site, desenhado pra imprimir e combinar com a mesa do restaurante.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-ribbon">Em breve</div>
-        <h3>Posts para redes sociais</h3>
-        <p>Pacote recorrente de posts prontos pras redes sociais do seu restaurante, todo mês — usando as fotos que você já tem.</p>
+        <div class="comp-ribbon" data-i18n="block_soon">Em breve</div>
+        <h3 data-i18n="comp3_title">Posts para redes sociais</h3>
+        <p data-i18n="comp3_desc">Pacote recorrente de posts prontos pras redes sociais do seu restaurante, todo mês — usando as fotos que você já tem.</p>
       </div>
     </div>
-    <p class="comp-note">Essas opções ainda não estão disponíveis pra pedido direto — mande uma mensagem se quiser ser um dos primeiros a testar.</p>
+    <p class="comp-note" data-i18n="comp_note">Essas opções ainda não estão disponíveis pra pedido direto — mande uma mensagem se quiser ser um dos primeiros a testar.</p>
   </div>
   <div class="section-divider" aria-hidden="true"><span></span><span></span></div>
 </section>
@@ -1001,7 +1003,7 @@
       <div class="cblock"><span data-i18n="block_label3">Estilo</span><span class="big" data-i18n="block3_big">Moderno &amp; colorido</span><span>Jardim &amp; Sal</span></div>
       <div class="cblock"><span data-i18n="block_label5">Estilo</span><span class="big" data-i18n="block5_big">Minimalista &amp; direto</span><span>Café Nômade</span></div>
       <div class="cblock"><span data-i18n="block_label6">Formato</span><span class="big" data-i18n="block6_big">Loja online</span><span>Adega Vinha Alta</span></div>
-      <div class="cblock"><span>Formato</span><span class="big">Loja online &amp; colorido</span><span>Mercado Las Flores</span></div>
+      <div class="cblock"><span data-i18n="block_label6">Formato</span><span class="big" data-i18n="block7_big">Loja online &amp; colorido</span><span>Mercado Las Flores</span></div>
       <div class="cblock"><span data-i18n="block_soon">Em breve</span><span class="big" data-i18n="block4_big">Seus projetos aqui</span><span data-i18n="block4_sub">Envie e eu adiciono</span></div>
     </div>
   </div>
@@ -1068,9 +1070,9 @@
         <div class="mock-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="mock-preview"><h4>Mercado Las Flores</h4></div>
         <div class="mock-body">
-          <span class="stamp">Colorido &amp; vibrante</span>
-          <h3>Mercado de sabores, loja online</h3>
-          <p>Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.</p>
+          <span class="stamp" data-i18n="pcard7_stamp">Colorido &amp; vibrante</span>
+          <h3 data-i18n="pcard7_title">Mercado de sabores, loja online</h3>
+          <p data-i18n="pcard7_desc">Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.</p>
         </div>
       </a>
       <a href="portfolio.html" class="mock-card port-more lift" style="text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
@@ -1084,7 +1086,7 @@
 <section class="sec-dark reveal" id="sobre">
   <div class="ember-field" data-count="14"></div>
   <div class="wrap sobre-grid">
-    <div class="sobre-photo"><img src="assets/logo.jpg" alt="Mesa.dev"></div>
+    <div class="sobre-photo"><img src="assets/mesadevs-logo.png" alt="MesaDev's"></div>
     <div class="sobre-box">
       <span class="stamp" data-i18n="sobre_eyebrow">Sobre mim</span>
       <h3 data-i18n="sobre_title">Quem está do outro lado da tela</h3>
@@ -1102,7 +1104,7 @@
   <div class="story-bg" id="storyBg"></div>
   <div class="wrap">
     <blockquote data-i18n="story_quote">"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."</blockquote>
-    <span data-i18n="story_sign">Mesa.dev</span>
+    <span data-i18n="story_sign">MesaDev's</span>
   </div>
 </section>
 
@@ -1144,7 +1146,7 @@
 
     <div class="carousel-wrap">
       <div class="carousel-bg"></div>
-      <button class="car-nav prev" id="carPrev" aria-label="Anterior">‹</button>
+      <button class="car-nav prev" id="carPrev" data-i18n-aria="car_prev" aria-label="Anterior">‹</button>
       <div class="carousel-track" id="carTrack">
         <div class="plan-card active" data-i="0">
           <div class="plan-name" data-i18n="plan1_name">Aperitivo</div>
@@ -1191,7 +1193,7 @@
           <a href="planos.html" class="btn btn-ghost" data-i18n="plan_cta_custom">Vamos conversar</a>
         </div>
       </div>
-      <button class="car-nav next" id="carNext" aria-label="Próximo">›</button>
+      <button class="car-nav next" id="carNext" data-i18n-aria="car_next" aria-label="Próximo">›</button>
       <div class="car-dots" id="carDots"></div>
     </div>
     <p class="precos-note" data-i18n="precos_note">Preços em euro — valor equivalente em outras moedas. Manutenção mensal a partir de € 15.</p>
@@ -1203,21 +1205,21 @@
 <section class="sec-light reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="stamp">Fale comigo</span>
-      <h2>Vamos combinar os detalhes do seu orçamento</h2>
+      <span class="stamp" data-i18n="contact_stamp">Fale comigo</span>
+      <h2 data-i18n="contact_title">Vamos combinar os detalhes do seu orçamento</h2>
     </div>
     <div class="pay-grid">
       <a href="https://wa.me/447480206849" target="_blank" rel="noopener" class="pay-card feat whatsapp lift" style="text-decoration:none; color:inherit; display:block;">
         <span class="card-shine" aria-hidden="true"></span>
         <svg viewBox="0 0 32 32" fill="currentColor" style="width:30px;height:30px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.36.65 4.57 1.78 6.46L3 29l7.22-2.24a12.44 12.44 0 005.78 1.43h.01c6.89 0 12.5-5.607 12.5-12.5S22.9 3 16.001 3zm0 22.7h-.01a10.3 10.3 0 01-5.24-1.44l-.376-.223-4.29 1.33 1.36-4.18-.246-.39a10.19 10.19 0 01-1.6-5.5c0-5.66 4.6-10.26 10.26-10.26 5.66 0 10.26 4.6 10.26 10.26.005 5.657-4.596 10.407-10.114 10.407zm5.63-7.688c-.31-.155-1.83-.902-2.11-1.006-.283-.104-.489-.155-.695.156-.206.31-.797 1.006-.977 1.212-.18.206-.36.232-.669.078-.31-.155-1.31-.483-2.494-1.538-.922-.822-1.545-1.838-1.726-2.148-.18-.31-.02-.478.136-.632.14-.14.31-.362.464-.543.155-.18.206-.31.31-.516.103-.206.052-.387-.026-.542-.078-.155-.695-1.677-.952-2.297-.25-.601-.505-.52-.695-.53l-.593-.01c-.206 0-.542.077-.826.387-.283.31-1.082 1.058-1.082 2.58s1.108 2.99 1.262 3.196c.155.206 2.18 3.33 5.28 4.67.738.319 1.314.51 1.763.653.741.236 1.415.203 1.948.123.594-.089 1.83-.748 2.088-1.47.258-.723.258-1.343.18-1.47-.077-.129-.283-.207-.593-.362z"/></svg>
-        <h3>Peça um orçamento pelo WhatsApp</h3>
-        <p>Depois de combinarmos o escopo e o valor do seu site, te mando o link do sinal de 30% pra começar — sem compromisso pra começar a conversa.</p>
+        <h3 data-i18n="contact_wa_title">Peça um orçamento pelo WhatsApp</h3>
+        <p data-i18n="contact_wa_desc">Depois de combinarmos o escopo e o valor do seu site, te mando o link do sinal de 30% pra começar — sem compromisso pra começar a conversa.</p>
       </a>
       <a href="mailto:mesadev21@gmail.com" class="pay-card feat email lift" style="text-decoration:none; color:inherit; display:block;">
         <span class="card-shine" aria-hidden="true"></span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-        <h3>Peça um orçamento por E-mail</h3>
-        <p>Prefere escrever com calma? Me manda os detalhes do seu restaurante por e-mail que eu respondo com o escopo e o valor certinhos.</p>
+        <h3 data-i18n="contact_email_title">Peça um orçamento por E-mail</h3>
+        <p data-i18n="contact_email_desc">Prefere escrever com calma? Me manda os detalhes do seu restaurante por e-mail que eu respondo com o escopo e o valor certinhos.</p>
       </a>
     </div>
   </div>
@@ -1304,15 +1306,8 @@
     <div class="foot-grid">
       <div>
         <div class="brand-block">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
-              <line x1="42" y1="10" x2="42" y2="26"/><line x1="50" y1="10" x2="50" y2="26"/><line x1="58" y1="10" x2="58" y2="26"/>
-              <path d="M42 26 Q42 34 50 34 Q58 34 58 26"/>
-              <line x1="50" y1="34" x2="50" y2="82"/>
-              <circle cx="50" cy="58" r="26"/>
-            </svg>
-          </span>
-          <span class="brand-name" style="color:var(--cream);">Mesa<span class="dot">.</span>dev</span>
+          <span class="brand-mark"><img src="assets/mesadevs-logo.png" alt="MesaDev's"></span>
+          <span class="brand-name" style="color:var(--cream);">MesaDev's</span>
         </div>
         <p style="font-size:13.5px; opacity:0.7; max-width:240px; margin-top:12px;" data-i18n="foot_desc">Sites feitos à mão para restaurantes por toda a Europa.</p>
       </div>
@@ -1335,7 +1330,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span data-i18n="foot_copy">© Mesa.dev.</span>
+      <span data-i18n="foot_copy">© MesaDev's.</span>
       <span data-i18n="foot_madeby">Feito com carinho, sem agência grande.</span>
     </div>
   </div>
@@ -1375,18 +1370,32 @@ const I18N = {
     port_eyebrow:'Portfólio', port_title_a:'Sites que fazem', port_title_b:'reservar mesa.', port_sub:'Cada projeto é desenhado do zero pro restaurante — nada de modelo pronto com o nome trocado.',
     block_label:'Estilo', block_label2:'Estilo', block_label3:'Estilo', block1_big:'Rústico & caseiro', block2_big:'Elegante & sóbrio', block3_big:'Moderno & colorido',
     block_soon:'Em breve', block4_big:'Seus projetos aqui', block4_sub:'Envie e eu adiciono',
+    pain_badge:'A realidade de quem ainda não tem site', pain_title:'Isso já aconteceu com você?', pain_sub:'A maioria dos donos de restaurante que me procuram sente exatamente isso. Você não está sozinho.',
+    pain_q1:'As pessoas perguntam se eu tenho site, e eu só mando o Instagram.', pain_q2:'Sei que isso está me custando reservas, mas não sei o que fazer a respeito.',
+    pain_q3:'Ainda não tenho site nem identidade visual pronta — não sei nem por onde começar.', pain_q4:'Já pensei em fazer um site, mas nunca sobra tempo — o restaurante toma tudo.',
+    comp_badge:'Serviço · em desenvolvimento', comp_title:'Complementares que estão vindo',
+    comp_lede:'Já estou desenhando essas frentes novas — especialmente úteis pra quem ainda não tem site nem identidade visual pronta (a maioria de quem me procura). Quero validar direitinho com os primeiros clientes antes de abrir pra todo mundo. Se algum desses interessar já, fala comigo.',
+    comp1_title:'Identidade visual do zero', comp1_desc:'Logo, cores e tipografia pra quem ainda não tem nada — pra sair do papel junto com o site.',
+    comp2_title:'Cardápio pra impressão', comp2_desc:'O mesmo cardápio digital do site, desenhado pra imprimir e combinar com a mesa do restaurante.',
+    comp3_title:'Posts para redes sociais', comp3_desc:'Pacote recorrente de posts prontos pras redes sociais do seu restaurante, todo mês — usando as fotos que você já tem.',
+    comp_note:'Essas opções ainda não estão disponíveis pra pedido direto — mande uma mensagem se quiser ser um dos primeiros a testar.',
+    contact_stamp:'Fale comigo', contact_title:'Vamos combinar os detalhes do seu orçamento',
+    contact_wa_title:'Peça um orçamento pelo WhatsApp', contact_wa_desc:'Depois de combinarmos o escopo e o valor do seu site, te mando o link do sinal de 30% pra começar — sem compromisso pra começar a conversa.',
+    contact_email_title:'Peça um orçamento por E-mail', contact_email_desc:'Prefere escrever com calma? Me manda os detalhes do seu restaurante por e-mail que eu respondo com o escopo e o valor certinhos.',
+    car_prev:'Anterior', car_next:'Próximo',
     pcard1_stamp:'Estilo rústico', pcard1_title:'Tasca tradicional, Lisboa', pcard1_desc:'Cara de tasca de bairro, cardápio do dia em destaque e reserva por WhatsApp.',
     pcard2_stamp:'Estilo elegante', pcard2_title:'Marisqueira, Porto', pcard2_desc:'Visual sóbrio e sofisticado, pra restaurante com ticket médio mais alto.',
     pcard3_stamp:'Estilo moderno', pcard3_title:'Alta cozinha, Cascais', pcard3_desc:'Paleta vibrante, cardápio em abas, chat e reserva integrados.',
     pcard4_stamp:'Estilo minimalista', pcard4_title:'Café de especialidade, Lisboa', pcard4_desc:'Landing page enxuta, preto e branco com toque dourado.',
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page jovem e informal, cores quentes e bem-humoradas.',
     pcard6_stamp:'E-commerce', pcard6_title:'Loja online, Douro', pcard6_desc:'Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.',
+    block7_big:'Loja online & colorido', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
     block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Formato', block6_big:'Loja online',
     portmore_text:'Portfólio completo com filtros por estilo, formato e cores →', portmore_cta:'Ver todos',
     sobre_eyebrow:'Sobre mim', sobre_title:'Quem está do outro lado da tela',
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
     sobre_quote:'"Prefiro fazer poucos sites bem feitos do que muitos sites genéricos."',
-    story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'Mesa.dev',
+    story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'MesaDev\'s',
     como_eyebrow:'Como funciona', como_title:'Do pedido ao site no ar',
     step1_t:'Você conta o que precisa', step1_d:'Preenche o formulário com o nome do restaurante e o estilo que imagina.',
     step2_t:'Eu monto um protótipo', step2_d:'Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.',
@@ -1415,8 +1424,8 @@ const I18N = {
     confirm_stamp:'Comanda recebida', confirm_title:'Obrigado! 🎉', confirm_p:'Guardei o seu pedido. O próximo contato é comigo, pelo canal que você escolheu.', confirm_btn:'Enviar outro pedido',
     foot_desc:'Sites feitos à mão para restaurantes por toda a Europa.',
     foot_nav_title:'Navegação', foot_contact_title:'Contato', foot_social_title:'Redes',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Feito com carinho, sem agência grande.',
-    chat_title:'Fale com o Mesa.dev', chat_sub:'Tira dúvidas antes de pedir', chat_placeholder:'Escreva sua pergunta...', chat_send:'Enviar',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Feito com carinho, sem agência grande.',
+    chat_title:'Fale com o MesaDev\'s', chat_sub:'Tira dúvidas antes de pedir', chat_placeholder:'Escreva sua pergunta...', chat_send:'Enviar',
     chat_initial:'Olá! Posso te ajudar a entender os planos e o próximo passo pra pedir o seu site. Pode perguntar.',
     popup_eyebrow:'Antes de continuar', popup_title:'Me conta rapidinho sobre o seu restaurante', popup_p:'Leva 15 segundos — me ajuda a te responder melhor. Totalmente opcional.',
     popup_hassite:'Já tem site?', popup_opt_no:'Não tenho', popup_opt_bad:'Tenho, mas não funciona bem', popup_opt_yes:'Tenho e funciona bem',
@@ -1444,18 +1453,32 @@ const I18N = {
     port_eyebrow:'Portfólio', port_title_a:'Sites que fazem', port_title_b:'reservar mesa.', port_sub:'Cada projeto é desenhado do zero pro restaurante — nada de modelo pronto com o nome trocado.',
     block_label:'Estilo', block_label2:'Estilo', block_label3:'Estilo', block1_big:'Rústico & caseiro', block2_big:'Elegante & sóbrio', block3_big:'Moderno & colorido',
     block_soon:'Em breve', block4_big:'Seus projetos aqui', block4_sub:'Envie e eu adiciono',
+    pain_badge:'A realidade de quem ainda não tem site', pain_title:'Isso já aconteceu com você?', pain_sub:'A maioria dos donos de restaurante que me procuram sente exatamente isso. Você não está sozinho.',
+    pain_q1:'As pessoas perguntam se eu tenho site, e eu só mando o Instagram.', pain_q2:'Sei que isso está me custando reservas, mas não sei o que fazer a respeito.',
+    pain_q3:'Ainda não tenho site nem identidade visual pronta — não sei nem por onde começar.', pain_q4:'Já pensei em fazer um site, mas nunca sobra tempo — o restaurante toma tudo.',
+    comp_badge:'Serviço · em desenvolvimento', comp_title:'Complementares que estão vindo',
+    comp_lede:'Já estou desenhando essas frentes novas — especialmente úteis pra quem ainda não tem site nem identidade visual pronta (a maioria de quem me procura). Quero validar direitinho com os primeiros clientes antes de abrir pra todo mundo. Se algum desses interessar já, fala comigo.',
+    comp1_title:'Identidade visual do zero', comp1_desc:'Logo, cores e tipografia pra quem ainda não tem nada — pra sair do papel junto com o site.',
+    comp2_title:'Cardápio pra impressão', comp2_desc:'O mesmo cardápio digital do site, desenhado pra imprimir e combinar com a mesa do restaurante.',
+    comp3_title:'Posts para redes sociais', comp3_desc:'Pacote recorrente de posts prontos pras redes sociais do seu restaurante, todo mês — usando as fotos que você já tem.',
+    comp_note:'Essas opções ainda não estão disponíveis pra pedido direto — mande uma mensagem se quiser ser um dos primeiros a testar.',
+    contact_stamp:'Fale comigo', contact_title:'Vamos combinar os detalhes do seu orçamento',
+    contact_wa_title:'Peça um orçamento pelo WhatsApp', contact_wa_desc:'Depois de combinarmos o escopo e o valor do seu site, te mando o link do sinal de 30% pra começar — sem compromisso pra começar a conversa.',
+    contact_email_title:'Peça um orçamento por E-mail', contact_email_desc:'Prefere escrever com calma? Me manda os detalhes do seu restaurante por e-mail que eu respondo com o escopo e o valor certinhos.',
+    car_prev:'Anterior', car_next:'Próximo',
     pcard1_stamp:'Estilo rústico', pcard1_title:'Tasca tradicional, Lisboa', pcard1_desc:'Cara de tasca de bairro, cardápio do dia em destaque e reserva por WhatsApp.',
     pcard2_stamp:'Estilo elegante', pcard2_title:'Marisqueira, Porto', pcard2_desc:'Visual sóbrio e sofisticado, pra restaurante com ticket médio mais alto.',
     pcard3_stamp:'Estilo moderno', pcard3_title:'Alta cozinha, Cascais', pcard3_desc:'Paleta vibrante, cardápio em abas, chat e reserva integrados.',
     pcard4_stamp:'Estilo minimalista', pcard4_title:'Café de especialidade, Lisboa', pcard4_desc:'Landing page enxuta, preto e branco com toque dourado.',
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page jovem e informal, cores quentes e bem-humoradas.',
     pcard6_stamp:'E-commerce', pcard6_title:'Loja online, Douro', pcard6_desc:'Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.',
+    block7_big:'Loja online & colorido', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
     block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Formato', block6_big:'Loja online',
     portmore_text:'Portfólio completo com filtros por estilo, formato e cores →', portmore_cta:'Ver todos',
     sobre_eyebrow:'Sobre mim', sobre_title:'Quem está do outro lado da tela',
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
     sobre_quote:'"Prefiro fazer poucos sites bem feitos do que muitos sites genéricos."',
-    story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'Mesa.dev',
+    story_quote:'"Um site não substitui a comida boa — mas é o motivo de alguém decidir experimentar a sua."', story_sign:'MesaDev\'s',
     como_eyebrow:'Como funciona', como_title:'Do pedido ao site no ar',
     step1_t:'Você conta o que precisa', step1_d:'Preenche o formulário com o nome do restaurante e o estilo que imagina.',
     step2_t:'Eu monto um protótipo', step2_d:'Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.',
@@ -1484,8 +1507,8 @@ const I18N = {
     confirm_stamp:'Comanda recebida', confirm_title:'Obrigado! 🎉', confirm_p:'Guardei o seu pedido. O próximo contato é comigo, pelo canal que você escolheu.', confirm_btn:'Enviar outro pedido',
     foot_desc:'Sites feitos à mão para restaurantes por toda a Europa.',
     foot_nav_title:'Navegação', foot_contact_title:'Contato', foot_social_title:'Redes',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Feito com carinho, sem agência grande.',
-    chat_title:'Fale com o Mesa.dev', chat_sub:'Tira dúvidas antes de pedir', chat_placeholder:'Escreva sua pergunta...', chat_send:'Enviar',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Feito com carinho, sem agência grande.',
+    chat_title:'Fale com o MesaDev\'s', chat_sub:'Tira dúvidas antes de pedir', chat_placeholder:'Escreva sua pergunta...', chat_send:'Enviar',
     chat_initial:'Olá! Posso te ajudar a entender os planos e o próximo passo pra pedir o seu site. Pode perguntar.',
     popup_eyebrow:'Antes de continuar', popup_title:'Me conta rapidinho sobre o seu restaurante', popup_p:'Leva 15 segundos — me ajuda a te responder melhor. Totalmente opcional.',
     popup_hassite:'Já tem site?', popup_opt_no:'Não tenho', popup_opt_bad:'Tenho, mas não funciona bem', popup_opt_yes:'Tenho e funciona bem',
@@ -1513,18 +1536,32 @@ const I18N = {
     port_eyebrow:'Portafolio', port_title_a:'Webs que hacen', port_title_b:'reservar mesa.', port_sub:'Cada proyecto se diseña desde cero para el restaurante — nada de plantilla con el nombre cambiado.',
     block_label:'Estilo', block_label2:'Estilo', block_label3:'Estilo', block1_big:'Rústico y casero', block2_big:'Elegante y sobrio', block3_big:'Moderno y colorido',
     block_soon:'Próximamente', block4_big:'Sus proyectos aquí', block4_sub:'Envíelos y los añado',
+    pain_badge:'La realidad de quien todavía no tiene web', pain_title:'¿Le suena familiar?', pain_sub:'La mayoría de los dueños de restaurantes que me contactan sienten exactamente esto. No está solo.',
+    pain_q1:'La gente me pregunta si tengo web, y solo les mando el Instagram.', pain_q2:'Sé que esto me está costando reservas, pero no sé qué hacer al respecto.',
+    pain_q3:'Todavía no tengo web ni identidad visual — ni siquiera sé por dónde empezar.', pain_q4:'Ya pensé en hacer una web, pero nunca sobra tiempo — el restaurante lo absorbe todo.',
+    comp_badge:'Servicio · en desarrollo', comp_title:'Complementos que están por llegar',
+    comp_lede:'Ya estoy diseñando estas nuevas líneas — especialmente útiles para quienes todavía no tienen web ni identidad visual (la mayoría de quienes me contactan). Quiero validarlas bien con los primeros clientes antes de abrirlas a todos. Si alguna le interesa ya, hábleme.',
+    comp1_title:'Identidad visual desde cero', comp1_desc:'Logo, colores y tipografía para quien todavía no tiene nada — para salir del papel junto con la web.',
+    comp2_title:'Carta para imprimir', comp2_desc:'La misma carta digital de la web, diseñada para imprimir y combinar con la mesa del restaurante.',
+    comp3_title:'Publicaciones para redes sociales', comp3_desc:'Paquete recurrente de publicaciones listas para las redes sociales de su restaurante, cada mes — usando las fotos que ya tiene.',
+    comp_note:'Estas opciones todavía no están disponibles para pedido directo — envíeme un mensaje si quiere ser de los primeros en probarlas.',
+    contact_stamp:'Hable conmigo', contact_title:'Vamos a acordar los detalles de su presupuesto',
+    contact_wa_title:'Pida un presupuesto por WhatsApp', contact_wa_desc:'Después de acordar el alcance y el valor de su web, le mando el enlace de la señal del 30% para empezar — sin compromiso para iniciar la conversación.',
+    contact_email_title:'Pida un presupuesto por email', contact_email_desc:'¿Prefiere escribir con calma? Envíeme los detalles de su restaurante por email y le respondo con el alcance y el valor exactos.',
+    car_prev:'Anterior', car_next:'Siguiente',
     pcard1_stamp:'Estilo rústico', pcard1_title:'Tasca tradicional, Lisboa', pcard1_desc:'Aire de taberna de barrio, plato del día destacado y reserva por WhatsApp.',
     pcard2_stamp:'Estilo elegante', pcard2_title:'Marisquería, Oporto', pcard2_desc:'Visual sobrio y sofisticado, para restaurante con ticket medio más alto.',
     pcard3_stamp:'Estilo moderno', pcard3_title:'Alta cocina, Cascais', pcard3_desc:'Paleta vibrante, carta con pestañas, chat y reserva integrados.',
     pcard4_stamp:'Estilo minimalista', pcard4_title:'Café de especialidad, Lisboa', pcard4_desc:'Landing page austera, blanco y negro con toque dorado.',
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Oporto', pcard5_desc:'Landing page joven e informal, colores cálidos y desenfadados.',
     pcard6_stamp:'E-commerce', pcard6_title:'Tienda online, Duero', pcard6_desc:'Carrito de compra, categorías de producto y checkout — el ejemplo del plan Banquete.',
+    block7_big:'Tienda online y colorida', pcard7_stamp:'Colorido y vibrante', pcard7_title:'Mercado de sabores, tienda online', pcard7_desc:'Salsas, especias y dulces — carrito de compra, categorías por chip y paleta vibrante llena de personalidad.',
     block_label5:'Estilo', block5_big:'Minimalista y directo', block_label6:'Formato', block6_big:'Tienda online',
     portmore_text:'Portafolio completo con filtros por estilo, formato y colores →', portmore_cta:'Ver todo',
     sobre_eyebrow:'Sobre mí', sobre_title:'Quién está al otro lado de la pantalla',
     sobre_p:'Soy yo quien diseña, escribe y publica cada web — sin equipo grande, sin subcontratar. Trabajo directo con dueños de restaurantes, desde el primer prototipo hasta la web publicada.',
     sobre_quote:'"Prefiero hacer pocas webs bien hechas que muchas webs genéricas."',
-    story_quote:'"Una web no sustituye la buena comida — pero es el motivo por el que alguien decide probarla."', story_sign:'Mesa.dev',
+    story_quote:'"Una web no sustituye la buena comida — pero es el motivo por el que alguien decide probarla."', story_sign:'MesaDev\'s',
     como_eyebrow:'Cómo funciona', como_title:'Del pedido a la web publicada',
     step1_t:'Nos cuenta lo que necesita', step1_d:'Rellena el formulario con el nombre del restaurante y el estilo que imagina.',
     step2_t:'Preparo un prototipo', step2_d:'Con el anticipo del 30% pagado, recibe en hasta 5 días hábiles un enlace para ver la web.',
@@ -1553,8 +1590,8 @@ const I18N = {
     confirm_stamp:'Pedido recibido', confirm_title:'¡Gracias! 🎉', confirm_p:'Guardé su pedido. El próximo contacto lo haré yo, por el canal que eligió.', confirm_btn:'Enviar otro pedido',
     foot_desc:'Webs hechas a mano para restaurantes en toda Europa.',
     foot_nav_title:'Navegación', foot_contact_title:'Contacto', foot_social_title:'Redes',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Hecho con cariño, sin agencia grande.',
-    chat_title:'Hable con Mesa.dev', chat_sub:'Resuelva dudas antes de pedir', chat_placeholder:'Escriba su pregunta...', chat_send:'Enviar',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Hecho con cariño, sin agencia grande.',
+    chat_title:'Hable con MesaDev\'s', chat_sub:'Resuelva dudas antes de pedir', chat_placeholder:'Escriba su pregunta...', chat_send:'Enviar',
     chat_initial:'¡Hola! Puedo ayudarle a entender los planes y el próximo paso para pedir su web. Pregunte lo que quiera.',
     popup_eyebrow:'Antes de continuar', popup_title:'Cuéntame rápido sobre su restaurante', popup_p:'Toma 15 segundos — me ayuda a responderle mejor. Totalmente opcional.',
     popup_hassite:'¿Ya tiene web?', popup_opt_no:'No tengo', popup_opt_bad:'Tengo, pero no funciona bien', popup_opt_yes:'Tengo y funciona bien',
@@ -1582,18 +1619,32 @@ const I18N = {
     port_eyebrow:'Portfolio', port_title_a:'Websites that get', port_title_b:'tables booked.', port_sub:'Every project is designed from scratch for the restaurant — no template with the name swapped out.',
     block_label:'Style', block_label2:'Style', block_label3:'Style', block1_big:'Rustic & homely', block2_big:'Elegant & refined', block3_big:'Modern & colourful',
     block_soon:'Coming soon', block4_big:'Your projects here', block4_sub:'Send them and I\'ll add them',
+    pain_badge:'The reality for restaurants without a website', pain_title:'Does this sound familiar?', pain_sub:'Most restaurant owners who come to me feel exactly this. You are not alone.',
+    pain_q1:'People ask if I have a website, and I just send them my Instagram.', pain_q2:'I know this is costing me bookings, but I do not know what to do about it.',
+    pain_q3:'I do not have a website or a visual identity yet — I do not even know where to start.', pain_q4:'I have thought about building a website, but there is never any time — the restaurant takes it all.',
+    comp_badge:'Coming service · in development', comp_title:'More services on the way',
+    comp_lede:'I am already designing these new offerings — especially useful for those who do not yet have a website or a visual identity (most people who reach out to me). I want to validate them properly with the first clients before opening them up to everyone. If any of these interest you already, get in touch.',
+    comp1_title:'Visual identity from scratch', comp1_desc:'Logo, colours and typography for those who do not have anything yet — so it launches together with the website.',
+    comp2_title:'Printable menu', comp2_desc:'The same digital menu from the site, designed to print and match your restaurant tables.',
+    comp3_title:'Social media posts', comp3_desc:'A recurring pack of ready-made posts for your restaurant social media, every month — using the photos you already have.',
+    comp_note:'These options are not yet available to order directly — send a message if you would like to be one of the first to try them.',
+    contact_stamp:'Get in touch', contact_title:"Let's work out the details of your quote",
+    contact_wa_title:'Request a quote on WhatsApp', contact_wa_desc:'Once we agree on the scope and price of your site, I will send you the link for the 30% deposit to get started — no commitment to start the conversation.',
+    contact_email_title:'Request a quote by email', contact_email_desc:'Prefer to write things out at your own pace? Send me the details of your restaurant by email and I will reply with the exact scope and price.',
+    car_prev:'Previous', car_next:'Next',
     pcard1_stamp:'Rustic style', pcard1_title:'Traditional tavern, Lisbon', pcard1_desc:'Neighbourhood tavern feel, daily special front and centre, WhatsApp booking.',
     pcard2_stamp:'Elegant style', pcard2_title:'Seafood restaurant, Porto', pcard2_desc:'Refined, understated look for a restaurant with a higher average spend.',
     pcard3_stamp:'Modern style', pcard3_title:'Fine dining, Cascais', pcard3_desc:'Vibrant palette, tabbed menu, integrated chat and booking.',
     pcard4_stamp:'Minimal style', pcard4_title:'Speciality coffee shop, Lisbon', pcard4_desc:'Lean landing page, black and white with a gold accent.',
     pcard5_stamp:'Colourful style', pcard5_title:'Food truck, Porto', pcard5_desc:'Young, informal landing page with warm, playful colours.',
     pcard6_stamp:'E-commerce', pcard6_title:'Online shop, Douro', pcard6_desc:'Shopping cart, product categories and checkout — the example for the Banquet plan.',
+    block7_big:'Colourful online shop', pcard7_stamp:'Colourful & vibrant', pcard7_title:'Flavour market, online shop', pcard7_desc:'Sauces, spices and sweets — shopping cart, chip-based categories and a vibrant, characterful palette.',
     block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Format', block6_big:'Online shop',
     portmore_text:'Full portfolio with filters by style, format and colour →', portmore_cta:'See all',
     sobre_eyebrow:'About me', sobre_title:'Who\'s on the other side of the screen',
     sobre_p:'I design, write and publish every site myself — no large team, nothing outsourced. I work directly with restaurant owners, from the first prototype to launch.',
     sobre_quote:'"I\'d rather build a few great sites than many generic ones."',
-    story_quote:'"A website doesn\'t replace great food — but it\'s the reason someone decides to try yours."', story_sign:'Mesa.dev',
+    story_quote:'"A website doesn\'t replace great food — but it\'s the reason someone decides to try yours."', story_sign:'MesaDev\'s',
     story_note:'Placeholder background — send photos of your restaurant and I\'ll apply them here with a parallax effect.',
     como_eyebrow:'How it works', como_title:'From order to live website',
     step1_t:'Tell me what you need', step1_d:'Fill in the form with your restaurant name and the style you have in mind.',
@@ -1623,8 +1674,8 @@ const I18N = {
     confirm_stamp:'Order received', confirm_title:'Thank you! 🎉', confirm_p:'I\'ve saved your order. I\'ll be in touch through the channel you chose.', confirm_btn:'Submit another order',
     foot_desc:'Hand-made websites for restaurants across Europe.',
     foot_nav_title:'Navigation', foot_contact_title:'Contact', foot_social_title:'Social',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Made with care, no big agency.',
-    chat_title:'Chat with Mesa.dev', chat_sub:'Get answers before you order', chat_placeholder:'Type your question...', chat_send:'Send',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Made with care, no big agency.',
+    chat_title:'Chat with MesaDev\'s', chat_sub:'Get answers before you order', chat_placeholder:'Type your question...', chat_send:'Send',
     chat_initial:'Hi! I can help explain the plans and the next step to order your site. Ask away.',
     popup_eyebrow:'Before you go on', popup_title:'Tell me a bit about your restaurant', popup_p:'Takes 15 seconds — helps me respond better. Totally optional.',
     popup_hassite:'Do you already have a website?', popup_opt_no:'No, I don\'t', popup_opt_bad:'Yes, but it doesn\'t work well', popup_opt_yes:'Yes, and it works well',
@@ -1652,18 +1703,32 @@ const I18N = {
     port_eyebrow:'Portfolio', port_title_a:'Websites that get', port_title_b:'tables booked.', port_sub:'Every project is designed from scratch for the restaurant — no template with the name swapped out.',
     block_label:'Style', block_label2:'Style', block_label3:'Style', block1_big:'Rustic & homely', block2_big:'Elegant & refined', block3_big:'Modern & colourful',
     block_soon:'Coming soon', block4_big:'Your projects here', block4_sub:'Send them and I\'ll add them',
+    pain_badge:'The reality for restaurants without a website', pain_title:'Does this sound familiar?', pain_sub:'Most restaurant owners who come to me feel exactly this way. You are not alone.',
+    pain_q1:"People ask if I have a website, and I just send them my Instagram.", pain_q2:"I know this is costing me bookings, but I don't know what to do about it.",
+    pain_q3:"I don't have a website or a visual identity yet — I don't even know where to start.", pain_q4:"I've thought about building a website, but there's never any time — the restaurant takes it all.",
+    comp_badge:'Coming service · in development', comp_title:'More services on the way',
+    comp_lede:"I'm already designing these new offerings — especially useful for people who don't have a website or a visual identity yet (most people who reach out to me). I want to test them properly with the first clients before opening them up to everyone. If any of these interest you already, reach out.",
+    comp1_title:'Visual identity from scratch', comp1_desc:"Logo, colors, and typography for people who don't have anything yet — so it launches together with the website.",
+    comp2_title:'Printable menu', comp2_desc:'The same digital menu from the site, designed to print and match your restaurant tables.',
+    comp3_title:'Social media posts', comp3_desc:"A recurring pack of ready-made posts for your restaurant's social media, every month — using the photos you already have.",
+    comp_note:"These options aren't available to order directly yet — send a message if you'd like to be one of the first to try them.",
+    contact_stamp:'Get in touch', contact_title:"Let's work out the details of your quote",
+    contact_wa_title:'Request a quote on WhatsApp', contact_wa_desc:"Once we agree on the scope and price of your site, I'll send you the link for the 30% deposit to get started — no commitment to start the conversation.",
+    contact_email_title:'Request a quote by email', contact_email_desc:"Prefer to write things out at your own pace? Send me your restaurant's details by email and I'll reply with the exact scope and price.",
+    car_prev:'Previous', car_next:'Next',
     pcard1_stamp:'Rustic style', pcard1_title:'Traditional tavern, Lisbon', pcard1_desc:'Neighbourhood tavern feel, daily special front and centre, WhatsApp booking.',
     pcard2_stamp:'Elegant style', pcard2_title:'Seafood restaurant, Porto', pcard2_desc:'Refined, understated look for a restaurant with a higher average spend.',
     pcard3_stamp:'Modern style', pcard3_title:'Fine dining, Cascais', pcard3_desc:'Vibrant palette, tabbed menu, integrated chat and booking.',
     pcard4_stamp:'Minimal style', pcard4_title:'Specialty coffee shop, Lisbon', pcard4_desc:'Lean landing page, black and white with a gold accent.',
     pcard5_stamp:'Colorful style', pcard5_title:'Food truck, Porto', pcard5_desc:'Young, informal landing page with warm, playful colors.',
     pcard6_stamp:'E-commerce', pcard6_title:'Online shop, Douro', pcard6_desc:'Shopping cart, product categories and checkout — the example for the Banquet plan.',
+    block7_big:'Colorful online shop', pcard7_stamp:'Colorful & vibrant', pcard7_title:'Flavor market, online shop', pcard7_desc:'Sauces, spices, and sweets — shopping cart, chip-based categories, and a vibrant, characterful palette.',
     block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Format', block6_big:'Online shop',
     portmore_text:'Full portfolio with filters by style, format and colour →', portmore_cta:'See all',
     sobre_eyebrow:'About me', sobre_title:'Who\'s on the other side of the screen',
     sobre_p:'I design, write and publish every site myself — no large team, nothing outsourced. I work directly with restaurant owners, from the first prototype to launch.',
     sobre_quote:'"I\'d rather build a few great sites than many generic ones."',
-    story_quote:'"A website doesn\'t replace great food — but it\'s the reason someone decides to try yours."', story_sign:'Mesa.dev',
+    story_quote:'"A website doesn\'t replace great food — but it\'s the reason someone decides to try yours."', story_sign:'MesaDev\'s',
     story_note:'Placeholder background — send photos of your restaurant and I\'ll apply them here with a parallax effect.',
     como_eyebrow:'How it works', como_title:'From order to live website',
     step1_t:'Tell me what you need', step1_d:'Fill in the form with your restaurant name and the style you have in mind.',
@@ -1693,8 +1758,8 @@ const I18N = {
     confirm_stamp:'Order received', confirm_title:'Thank you! 🎉', confirm_p:'I\'ve saved your order. I\'ll be in touch through the channel you chose.', confirm_btn:'Submit another order',
     foot_desc:'Hand-made websites for restaurants across Europe.',
     foot_nav_title:'Navigation', foot_contact_title:'Contact', foot_social_title:'Social',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Made with care, no big agency.',
-    chat_title:'Chat with Mesa.dev', chat_sub:'Get answers before you order', chat_placeholder:'Type your question...', chat_send:'Send',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Made with care, no big agency.',
+    chat_title:'Chat with MesaDev\'s', chat_sub:'Get answers before you order', chat_placeholder:'Type your question...', chat_send:'Send',
     chat_initial:'Hi! I can help explain the plans and the next step to order your site. Ask away.',
     popup_eyebrow:'Before you go on', popup_title:'Tell me a bit about your restaurant', popup_p:'Takes 15 seconds — helps me respond better. Totally optional.',
     popup_hassite:'Do you already have a website?', popup_opt_no:'No, I don\'t', popup_opt_bad:'Yes, but it doesn\'t work well', popup_opt_yes:'Yes, and it works well',
@@ -1722,18 +1787,32 @@ const I18N = {
     port_eyebrow:'Portfolio', port_title_a:'Websites, die Tische', port_title_b:'gebucht bekommen.', port_sub:'Jedes Projekt wird von Grund auf für das Restaurant entworfen — keine Vorlage mit ausgetauschtem Namen.',
     block_label:'Stil', block_label2:'Stil', block_label3:'Stil', block1_big:'Rustikal & gemütlich', block2_big:'Elegant & dezent', block3_big:'Modern & farbenfroh',
     block_soon:'Demnächst', block4_big:'Ihre Projekte hier', block4_sub:'Schicken Sie sie mir, ich füge sie hinzu',
+    pain_badge:'Die Realität für alle ohne Website', pain_title:'Kommt Ihnen das bekannt vor?', pain_sub:'Die meisten Restaurantbesitzer, die sich bei mir melden, fühlen genau das. Sie sind nicht allein.',
+    pain_q1:'Die Leute fragen, ob ich eine Website habe, und ich schicke ihnen nur mein Instagram.', pain_q2:'Ich weiß, dass mich das Reservierungen kostet, aber ich weiß nicht, was ich dagegen tun soll.',
+    pain_q3:'Ich habe noch keine Website oder visuelle Identität — ich weiß nicht einmal, wo ich anfangen soll.', pain_q4:'Ich habe schon über eine Website nachgedacht, aber es bleibt nie Zeit — das Restaurant nimmt alles in Anspruch.',
+    comp_badge:'Service · in Entwicklung', comp_title:'Weitere Leistungen sind unterwegs',
+    comp_lede:'Ich entwickle bereits diese neuen Angebote — besonders nützlich für alle, die noch keine Website oder visuelle Identität haben (die meisten, die sich bei mir melden). Ich möchte sie erst mit den ersten Kunden richtig testen, bevor ich sie für alle öffne. Falls Sie schon jetzt Interesse haben, sprechen Sie mich an.',
+    comp1_title:'Visuelle Identität von Grund auf', comp1_desc:'Logo, Farben und Typografie für alle, die noch nichts haben — damit es zusammen mit der Website startet.',
+    comp2_title:'Speisekarte zum Drucken', comp2_desc:'Dieselbe digitale Speisekarte der Website, gestaltet zum Drucken und passend zum Tisch Ihres Restaurants.',
+    comp3_title:'Social-Media-Beiträge', comp3_desc:'Ein wiederkehrendes Paket fertiger Beiträge für die sozialen Medien Ihres Restaurants, jeden Monat — mit den Fotos, die Sie bereits haben.',
+    comp_note:'Diese Optionen können noch nicht direkt bestellt werden — schreiben Sie mir, wenn Sie zu den Ersten gehören möchten, die es ausprobieren.',
+    contact_stamp:'Sprechen Sie mit mir', contact_title:'Lassen Sie uns die Details Ihres Angebots besprechen',
+    contact_wa_title:'Angebot per WhatsApp anfragen', contact_wa_desc:'Sobald wir uns über Umfang und Preis Ihrer Website einig sind, schicke ich Ihnen den Link für die 30%-Anzahlung, um zu starten — unverbindlich, nur um das Gespräch zu beginnen.',
+    contact_email_title:'Angebot per E-Mail anfragen', contact_email_desc:'Schreiben Sie lieber in Ruhe? Schicken Sie mir die Details zu Ihrem Restaurant per E-Mail, und ich antworte mit dem genauen Umfang und Preis.',
+    car_prev:'Zurück', car_next:'Weiter',
     pcard1_stamp:'Rustikaler Stil', pcard1_title:'Traditionelle Taverne, Lissabon', pcard1_desc:'Nachbarschafts-Tavernen-Gefühl, Tagesgericht im Mittelpunkt, Buchung per WhatsApp.',
     pcard2_stamp:'Eleganter Stil', pcard2_title:'Fischrestaurant, Porto', pcard2_desc:'Dezenter, edler Look für ein Restaurant mit höherem Durchschnittsumsatz.',
     pcard3_stamp:'Moderner Stil', pcard3_title:'Fine Dining, Cascais', pcard3_desc:'Lebendige Farbpalette, Menü mit Tabs, integrierter Chat und Buchung.',
     pcard4_stamp:'Minimalistischer Stil', pcard4_title:'Kaffeerösterei, Lissabon', pcard4_desc:'Schlanke Landingpage, Schwarz-Weiß mit goldenem Akzent.',
     pcard5_stamp:'Bunter Stil', pcard5_title:'Food-Truck, Porto', pcard5_desc:'Junge, unkomplizierte Landingpage mit warmen, verspielten Farben.',
     pcard6_stamp:'E-Commerce', pcard6_title:'Online-Shop, Douro', pcard6_desc:'Warenkorb, Produktkategorien und Kasse — das Beispiel für das Bankett-Paket.',
+    block7_big:'Bunter Online-Shop', pcard7_stamp:'Bunt & lebendig', pcard7_title:'Geschmackmarkt, Online-Shop', pcard7_desc:'Saucen, Gewürze und Süßes — Warenkorb, Kategorien als Chips und eine lebendige, charakterstarke Farbpalette.',
     block_label5:'Stil', block5_big:'Minimalistisch & direkt', block_label6:'Format', block6_big:'Online-Shop',
     portmore_text:'Vollständiges Portfolio mit Filtern nach Stil, Format und Farbe →', portmore_cta:'Alle ansehen',
     sobre_eyebrow:'Über mich', sobre_title:'Wer auf der anderen Seite des Bildschirms sitzt',
     sobre_p:'Ich entwerfe, schreibe und veröffentliche jede Website selbst — kein großes Team, nichts ausgelagert. Ich arbeite direkt mit Restaurantbesitzern zusammen, vom ersten Prototyp bis zum Launch.',
     sobre_quote:'"Ich baue lieber wenige großartige Websites als viele generische."',
-    story_quote:'"Eine Website ersetzt kein gutes Essen — aber sie ist der Grund, warum sich jemand entscheidet, Ihres zu probieren."', story_sign:'Mesa.dev',
+    story_quote:'"Eine Website ersetzt kein gutes Essen — aber sie ist der Grund, warum sich jemand entscheidet, Ihres zu probieren."', story_sign:'MesaDev\'s',
     como_eyebrow:'So funktioniert\'s', como_title:'Von der Anfrage zur Live-Website',
     step1_t:'Sagen Sie mir, was Sie brauchen', step1_d:'Füllen Sie das Formular mit dem Namen Ihres Restaurants und dem gewünschten Stil aus.',
     step2_t:'Ich baue einen Prototyp', step2_d:'Nach der Anzahlung von 30% erhalten Sie innerhalb von 5 Werktagen einen Link zur Website.',
@@ -1762,8 +1841,8 @@ const I18N = {
     confirm_stamp:'Anfrage erhalten', confirm_title:'Vielen Dank! 🎉', confirm_p:'Ich habe Ihre Anfrage gespeichert. Ich melde mich über den von Ihnen gewählten Kanal.', confirm_btn:'Weitere Anfrage senden',
     foot_desc:'Handgemachte Websites für Restaurants in ganz Europa.',
     foot_nav_title:'Navigation', foot_contact_title:'Kontakt', foot_social_title:'Soziale Medien',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Mit Sorgfalt gemacht, ohne große Agentur.',
-    chat_title:'Chat mit Mesa.dev', chat_sub:'Fragen klären, bevor Sie bestellen', chat_placeholder:'Ihre Frage eingeben...', chat_send:'Senden',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Mit Sorgfalt gemacht, ohne große Agentur.',
+    chat_title:'Chat mit MesaDev\'s', chat_sub:'Fragen klären, bevor Sie bestellen', chat_placeholder:'Ihre Frage eingeben...', chat_send:'Senden',
     chat_initial:'Hallo! Ich kann Ihnen die Pakete und den nächsten Schritt erklären. Fragen Sie ruhig.',
     popup_eyebrow:'Bevor Sie weitermachen', popup_title:'Erzählen Sie mir kurz von Ihrem Restaurant', popup_p:'Dauert 15 Sekunden — hilft mir, besser zu antworten. Völlig freiwillig.',
     popup_hassite:'Haben Sie schon eine Website?', popup_opt_no:'Nein', popup_opt_bad:'Ja, aber sie funktioniert nicht gut', popup_opt_yes:'Ja, und sie funktioniert gut',
@@ -1791,18 +1870,32 @@ const I18N = {
     port_eyebrow:'Portfolio', port_title_a:'Siti che fanno', port_title_b:'prenotare tavoli.', port_sub:'Ogni progetto è disegnato da zero per il ristorante — nessun modello con il nome cambiato.',
     block_label:'Stile', block_label2:'Stile', block_label3:'Stile', block1_big:'Rustico & accogliente', block2_big:'Elegante & sobrio', block3_big:'Moderno & colorato',
     block_soon:'Prossimamente', block4_big:'I tuoi progetti qui', block4_sub:'Mandameli e li aggiungo',
+    pain_badge:'La realtà di chi non ha ancora un sito', pain_title:'Ti è mai successo?', pain_sub:'La maggior parte dei ristoratori che mi contattano prova esattamente questo. Non sei solo.',
+    pain_q1:"Le persone mi chiedono se ho un sito, e io mando solo l'Instagram.", pain_q2:'So che questo mi sta costando prenotazioni, ma non so cosa fare.',
+    pain_q3:"Non ho ancora un sito né un'identità visiva — non so nemmeno da dove iniziare.", pain_q4:"Ho già pensato di fare un sito, ma non c'è mai tempo — il ristorante prende tutto.",
+    comp_badge:'Servizio · in sviluppo', comp_title:'Altri servizi in arrivo',
+    comp_lede:"Sto già progettando queste nuove offerte — particolarmente utili per chi non ha ancora un sito né un'identità visiva (la maggior parte di chi mi contatta). Voglio validarle bene con i primi clienti prima di aprirle a tutti. Se qualcuna ti interessa già, scrivimi.",
+    comp1_title:'Identità visiva da zero', comp1_desc:'Logo, colori e tipografia per chi non ha ancora nulla — per partire insieme al sito.',
+    comp2_title:'Menu da stampare', comp2_desc:'Lo stesso menu digitale del sito, pensato per la stampa e da abbinare al tavolo del ristorante.',
+    comp3_title:'Post per i social', comp3_desc:'Pacchetto ricorrente di post pronti per i social del tuo ristorante, ogni mese — usando le foto che hai già.',
+    comp_note:"Queste opzioni non sono ancora disponibili per l'ordine diretto — scrivimi se vuoi essere tra i primi a provarle.",
+    contact_stamp:'Parliamone', contact_title:'Definiamo insieme i dettagli del tuo preventivo',
+    contact_wa_title:'Richiedi un preventivo su WhatsApp', contact_wa_desc:"Dopo aver definito insieme l'ambito e il valore del tuo sito, ti mando il link dell'acconto del 30% per iniziare — nessun impegno, solo per iniziare la conversazione.",
+    contact_email_title:'Richiedi un preventivo via email', contact_email_desc:"Preferisci scrivere con calma? Mandami i dettagli del tuo ristorante via email e ti rispondo con l'ambito e il valore esatti.",
+    car_prev:'Precedente', car_next:'Successivo',
     pcard1_stamp:'Stile rustico', pcard1_title:'Trattoria tradizionale, Lisbona', pcard1_desc:'Atmosfera da trattoria di quartiere, piatto del giorno in evidenza, prenotazione via WhatsApp.',
     pcard2_stamp:'Stile elegante', pcard2_title:'Ristorante di pesce, Porto', pcard2_desc:'Look sobrio e raffinato, per un ristorante con uno scontrino medio più alto.',
     pcard3_stamp:'Stile moderno', pcard3_title:'Alta cucina, Cascais', pcard3_desc:'Palette vivace, menu a schede, chat e prenotazione integrati.',
     pcard4_stamp:'Stile minimale', pcard4_title:'Caffetteria di specialità, Lisbona', pcard4_desc:'Landing page essenziale, bianco e nero con tocco dorato.',
     pcard5_stamp:'Stile colorato', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page giovane e informale, colori caldi e giocosi.',
     pcard6_stamp:'E-commerce', pcard6_title:'Negozio online, Douro', pcard6_desc:'Carrello, categorie di prodotto e checkout — l\'esempio del piano Banchetto.',
+    block7_big:'Negozio online colorato', pcard7_stamp:'Colorato & vivace', pcard7_title:'Mercato dei sapori, negozio online', pcard7_desc:'Salse, spezie e dolci — carrello, categorie a chip e palette vivace piena di personalità.',
     block_label5:'Stile', block5_big:'Minimale & diretto', block_label6:'Formato', block6_big:'Negozio online',
     portmore_text:'Portfolio completo con filtri per stile, formato e colore →', portmore_cta:'Vedi tutti',
     sobre_eyebrow:'Chi sono', sobre_title:'Chi c\'è dall\'altra parte dello schermo',
     sobre_p:'Progetto, scrivo e pubblico ogni sito da solo — senza un grande team, senza esternalizzare. Lavoro direttamente con i proprietari dei ristoranti, dal primo prototipo al lancio.',
     sobre_quote:'"Preferisco realizzare pochi siti fatti bene piuttosto che tanti siti generici."',
-    story_quote:'"Un sito non sostituisce il buon cibo — ma è il motivo per cui qualcuno decide di provare il tuo."', story_sign:'Mesa.dev',
+    story_quote:'"Un sito non sostituisce il buon cibo — ma è il motivo per cui qualcuno decide di provare il tuo."', story_sign:'MesaDev\'s',
     como_eyebrow:'Come funziona', como_title:'Dall\'ordine al sito online',
     step1_t:'Dimmi cosa ti serve', step1_d:'Compila il modulo con il nome del ristorante e lo stile che hai in mente.',
     step2_t:'Costruisco un prototipo', step2_d:'Con l\'acconto del 30% pagato, ricevi entro 5 giorni lavorativi un link per vedere il sito.',
@@ -1831,8 +1924,8 @@ const I18N = {
     confirm_stamp:'Richiesta ricevuta', confirm_title:'Grazie! 🎉', confirm_p:'Ho salvato la tua richiesta. Ti contatterò tramite il canale che hai scelto.', confirm_btn:'Invia un\'altra richiesta',
     foot_desc:'Siti fatti a mano per ristoranti in tutta Europa.',
     foot_nav_title:'Navigazione', foot_contact_title:'Contatto', foot_social_title:'Social',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Fatto con cura, senza una grande agenzia.',
-    chat_title:'Chatta con Mesa.dev', chat_sub:'Chiarisci i dubbi prima di ordinare', chat_placeholder:'Scrivi la tua domanda...', chat_send:'Invia',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Fatto con cura, senza una grande agenzia.',
+    chat_title:'Chatta con MesaDev\'s', chat_sub:'Chiarisci i dubbi prima di ordinare', chat_placeholder:'Scrivi la tua domanda...', chat_send:'Invia',
     chat_initial:'Ciao! Posso aiutarti a capire i piani e il prossimo passo per richiedere il tuo sito. Chiedi pure.',
     popup_eyebrow:'Prima di continuare', popup_title:'Raccontami brevemente del tuo ristorante', popup_p:'Richiede 15 secondi — mi aiuta a risponderti meglio. Del tutto facoltativo.',
     popup_hassite:'Hai già un sito?', popup_opt_no:'No', popup_opt_bad:'Sì, ma non funziona bene', popup_opt_yes:'Sì, e funziona bene',
@@ -1860,18 +1953,32 @@ const I18N = {
     port_eyebrow:'Portfolio', port_title_a:'Webbplatser som får', port_title_b:'bord bokade.', port_sub:'Varje projekt designas från grunden för restaurangen — ingen mall med bytt namn.',
     block_label:'Stil', block_label2:'Stil', block_label3:'Stil', block1_big:'Rustik & hemtrevlig', block2_big:'Elegant & stilren', block3_big:'Modern & färgstark',
     block_soon:'Kommer snart', block4_big:'Dina projekt här', block4_sub:'Skicka dem så lägger jag till dem',
+    pain_badge:'Verkligheten för dem som inte har en webbplats', pain_title:'Känns det här bekant?', pain_sub:'De flesta restaurangägare som kontaktar mig känner precis så här. Du är inte ensam.',
+    pain_q1:'Folk frågar om jag har en webbplats, och jag skickar bara mitt Instagram.', pain_q2:'Jag vet att det kostar mig bokningar, men vet inte vad jag ska göra åt det.',
+    pain_q3:'Jag har varken webbplats eller visuell identitet än — vet inte ens var jag ska börja.', pain_q4:'Jag har tänkt på att bygga en webbplats, men det finns aldrig tid — restaurangen tar allt.',
+    comp_badge:'Tjänst · under utveckling', comp_title:'Fler tjänster är på väg',
+    comp_lede:'Jag utformar redan dessa nya erbjudanden — särskilt användbara för dem som ännu inte har en webbplats eller visuell identitet (de flesta som kontaktar mig). Jag vill testa dem ordentligt med de första kunderna innan jag öppnar dem för alla. Hör av dig om något av detta redan intresserar dig.',
+    comp1_title:'Visuell identitet från grunden', comp1_desc:'Logotyp, färger och typografi för dig som inte har något än — så det lanseras tillsammans med webbplatsen.',
+    comp2_title:'Meny för utskrift', comp2_desc:'Samma digitala meny som på webbplatsen, utformad för att skrivas ut och matcha restaurangens bord.',
+    comp3_title:'Inlägg för sociala medier', comp3_desc:'Ett återkommande paket med färdiga inlägg för din restaurangs sociala medier, varje månad — med de bilder du redan har.',
+    comp_note:'De här alternativen går inte att beställa direkt än — skicka ett meddelande om du vill vara en av de första att testa.',
+    contact_stamp:'Hör av dig', contact_title:'Låt oss komma överens om detaljerna för din offert',
+    contact_wa_title:'Begär en offert via WhatsApp', contact_wa_desc:'När vi kommit överens om omfattning och pris för din webbplats skickar jag länken för 30% handpenning för att komma igång — helt utan förpliktelser för att starta samtalet.',
+    contact_email_title:'Begär en offert via e-post', contact_email_desc:'Föredrar du att skriva i lugn och ro? Skicka mig detaljerna om din restaurang via e-post så svarar jag med exakt omfattning och pris.',
+    car_prev:'Föregående', car_next:'Nästa',
     pcard1_stamp:'Rustik stil', pcard1_title:'Traditionell krog, Lissabon', pcard1_desc:'Känsla av grannskapskrog, dagens rätt i fokus, bokning via WhatsApp.',
     pcard2_stamp:'Elegant stil', pcard2_title:'Fiskrestaurang, Porto', pcard2_desc:'Stilren, dämpad look för en restaurang med högre snittnota.',
     pcard3_stamp:'Modern stil', pcard3_title:'Fine dining, Cascais', pcard3_desc:'Levande palett, meny med flikar, integrerad chatt och bokning.',
     pcard4_stamp:'Minimalistisk stil', pcard4_title:'Kafferosteri, Lissabon', pcard4_desc:'Enkel landningssida, svart och vitt med guldaccent.',
     pcard5_stamp:'Färgstark stil', pcard5_title:'Food truck, Porto', pcard5_desc:'Ung, avslappnad landningssida med varma, lekfulla färger.',
     pcard6_stamp:'E-handel', pcard6_title:'Nätbutik, Douro', pcard6_desc:'Varukorg, produktkategorier och kassa — exemplet för Bankett-paketet.',
+    block7_big:'Färgstark nätbutik', pcard7_stamp:'Färgstark & levande', pcard7_title:'Smakmarknad, nätbutik', pcard7_desc:'Såser, kryddor och sötsaker — varukorg, kategorier som chips och en levande, karaktärsfull palett.',
     block_label5:'Stil', block5_big:'Minimalistisk & rak', block_label6:'Format', block6_big:'Nätbutik',
     portmore_text:'Fullständig portfolio med filter för stil, format och färg →', portmore_cta:'Se alla',
     sobre_eyebrow:'Om mig', sobre_title:'Vem som sitter på andra sidan skärmen',
     sobre_p:'Jag designar, skriver och publicerar varje webbplats själv — inget stort team, inget outsourcat. Jag jobbar direkt med restaurangägare, från första prototyp till lansering.',
     sobre_quote:'"Jag bygger hellre några riktigt bra webbplatser än många generiska."',
-    story_quote:'"En webbplats ersätter inte bra mat — men den är anledningen till att någon bestämmer sig för att prova din."', story_sign:'Mesa.dev',
+    story_quote:'"En webbplats ersätter inte bra mat — men den är anledningen till att någon bestämmer sig för att prova din."', story_sign:'MesaDev\'s',
     como_eyebrow:'Så funkar det', como_title:'Från beställning till live webbplats',
     step1_t:'Berätta vad du behöver', step1_d:'Fyll i formuläret med restaurangens namn och önskad stil.',
     step2_t:'Jag bygger en prototyp', step2_d:'Med handpenningen på 30% betald får du inom 5 arbetsdagar en länk för att se webbplatsen.',
@@ -1900,8 +2007,8 @@ const I18N = {
     confirm_stamp:'Beställning mottagen', confirm_title:'Tack! 🎉', confirm_p:'Jag har sparat din beställning. Jag hör av mig via kanalen du valde.', confirm_btn:'Skicka en till beställning',
     foot_desc:'Handgjorda webbplatser för restauranger i hela Europa.',
     foot_nav_title:'Navigation', foot_contact_title:'Kontakt', foot_social_title:'Sociala medier',
-    foot_copy:'© Mesa.dev.', foot_madeby:'Gjord med omsorg, ingen stor byrå.',
-    chat_title:'Chatta med Mesa.dev', chat_sub:'Få svar innan du beställer', chat_placeholder:'Skriv din fråga...', chat_send:'Skicka',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'Gjord med omsorg, ingen stor byrå.',
+    chat_title:'Chatta med MesaDev\'s', chat_sub:'Få svar innan du beställer', chat_placeholder:'Skriv din fråga...', chat_send:'Skicka',
     chat_initial:'Hej! Jag kan hjälpa dig förstå paketen och nästa steg för att beställa din webbplats. Fråga på.',
     popup_eyebrow:'Innan du fortsätter', popup_title:'Berätta kort om din restaurang', popup_p:'Tar 15 sekunder — hjälper mig svara bättre. Helt valfritt.',
     popup_hassite:'Har du redan en webbplats?', popup_opt_no:'Nej', popup_opt_bad:'Ja, men den fungerar inte bra', popup_opt_yes:'Ja, och den fungerar bra',
@@ -1929,18 +2036,32 @@ const I18N = {
     port_eyebrow:'الأعمال', port_title_a:'مواقع تجعل', port_title_b:'الطاولات محجوزة.', port_sub:'كل مشروع مصمم من الصفر للمطعم — لا قوالب بأسماء مُستبدلة.',
     block_label:'النمط', block_label2:'النمط', block_label3:'النمط', block1_big:'ريفي ودافئ', block2_big:'أنيق وهادئ', block3_big:'عصري وملون',
     block_soon:'قريبًا', block4_big:'مشاريعك هنا', block4_sub:'أرسلها وسأضيفها',
+    pain_badge:'واقع من ليس لديه موقع إلكتروني بعد', pain_title:'هل حدث لك هذا من قبل؟', pain_sub:'معظم أصحاب المطاعم الذين يتواصلون معي يشعرون بهذا بالضبط. أنت لست وحدك.',
+    pain_q1:'يسألني الناس إن كان لدي موقع، وأنا فقط أرسل لهم حساب إنستغرام.', pain_q2:'أعرف أن هذا يكلفني حجوزات، لكنني لا أعرف ماذا أفعل حيال ذلك.',
+    pain_q3:'ليس لدي موقع ولا هوية بصرية بعد — لا أعرف حتى من أين أبدأ.', pain_q4:'فكرت في إنشاء موقع، لكن لا يتوفر وقت أبدًا — المطعم يأخذ كل شيء.',
+    comp_badge:'خدمة · قيد التطوير', comp_title:'خدمات إضافية قادمة',
+    comp_lede:'أنا بصدد تصميم هذه الخدمات الجديدة — وهي مفيدة بشكل خاص لمن ليس لديه موقع أو هوية بصرية بعد (وهم أغلب من يتواصل معي). أريد اختبارها جيدًا مع أوائل العملاء قبل إتاحتها للجميع. إذا كان أي منها يهمك بالفعل، تواصل معي.',
+    comp1_title:'هوية بصرية من الصفر', comp1_desc:'شعار وألوان وخطوط لمن ليس لديه أي شيء بعد — لتنطلق مع الموقع في آن واحد.',
+    comp2_title:'قائمة طعام للطباعة', comp2_desc:'نفس القائمة الرقمية الموجودة في الموقع، مصممة للطباعة لتوضع على طاولة المطعم.',
+    comp3_title:'منشورات لوسائل التواصل الاجتماعي', comp3_desc:'باقة شهرية متجددة من المنشورات الجاهزة لحسابات مطعمك على وسائل التواصل — باستخدام الصور التي تملكها بالفعل.',
+    comp_note:'هذه الخيارات غير متاحة للطلب المباشر بعد — أرسل لي رسالة إذا كنت ترغب في أن تكون من أوائل من يجربها.',
+    contact_stamp:'تواصل معي', contact_title:'لنتفق على تفاصيل عرض السعر الخاص بك',
+    contact_wa_title:'اطلب عرض سعر عبر واتساب', contact_wa_desc:'بعد الاتفاق على نطاق موقعك وسعره، أرسل لك رابط دفعة 30% للبدء — دون أي التزام لبدء المحادثة.',
+    contact_email_title:'اطلب عرض سعر عبر البريد الإلكتروني', contact_email_desc:'تفضل الكتابة بهدوء؟ أرسل لي تفاصيل مطعمك عبر البريد الإلكتروني وسأرد بالنطاق والسعر بدقة.',
+    car_prev:'السابق', car_next:'التالي',
     pcard1_stamp:'نمط ريفي', pcard1_title:'حانة تقليدية، لشبونة', pcard1_desc:'أجواء حانة الحي، طبق اليوم في الواجهة، الحجز عبر واتساب.',
     pcard2_stamp:'نمط أنيق', pcard2_title:'مطعم مأكولات بحرية، بورتو', pcard2_desc:'مظهر هادئ وراقٍ لمطعم بمتوسط إنفاق أعلى.',
     pcard3_stamp:'نمط عصري', pcard3_title:'مطعم فاخر، كاشكايش', pcard3_desc:'ألوان زاهية، قائمة بعلامات تبويب، دردشة وحجز مدمجان.',
     pcard4_stamp:'نمط بسيط', pcard4_title:'مقهى متخصص، لشبونة', pcard4_desc:'صفحة هبوط مبسطة بالأبيض والأسود مع لمسة ذهبية.',
     pcard5_stamp:'نمط ملون', pcard5_title:'عربة طعام متنقلة، بورتو', pcard5_desc:'صفحة هبوط شبابية غير رسمية بألوان دافئة ومرحة.',
     pcard6_stamp:'متجر إلكتروني', pcard6_title:'متجر إلكتروني، دورو', pcard6_desc:'سلة تسوق، فئات منتجات، وعملية دفع — مثال باقة "المأدبة".',
+    block7_big:'متجر إلكتروني ملون', pcard7_stamp:'ملوّن وحيوي', pcard7_title:'سوق النكهات، متجر إلكتروني', pcard7_desc:'صلصات وتوابل وحلويات — سلة تسوق، فئات بشكل شرائح، وألوان زاهية مليئة بالطابع المميز.',
     block_label5:'النمط', block5_big:'بسيط ومباشر', block_label6:'التنسيق', block6_big:'متجر إلكتروني',
     portmore_text:'الأعمال الكاملة مع فلاتر حسب النمط والتنسيق واللون ←', portmore_cta:'عرض الكل',
     sobre_eyebrow:'عني', sobre_title:'من يقف خلف الشاشة',
     sobre_p:'أنا من يصمم ويكتب وينشر كل موقع بنفسي — بدون فريق كبير، وبدون تعهيد خارجي. أعمل مباشرة مع أصحاب المطاعم من النموذج الأول حتى الإطلاق.',
     sobre_quote:'"أفضّل بناء مواقع قليلة ومتقنة على الكثير من المواقع العامة."',
-    story_quote:'"الموقع لا يعوّض الطعام الجيد — لكنه السبب الذي يجعل أحدهم يقرر تجربة مطعمك."', story_sign:'Mesa.dev',
+    story_quote:'"الموقع لا يعوّض الطعام الجيد — لكنه السبب الذي يجعل أحدهم يقرر تجربة مطعمك."', story_sign:'MesaDev\'s',
     como_eyebrow:'كيف يعمل', como_title:'من الطلب إلى الموقع المباشر',
     step1_t:'أخبرني بما تحتاجه', step1_d:'املأ النموذج باسم مطعمك والنمط الذي تتخيله.',
     step2_t:'أبني نموذجًا أوليًا', step2_d:'بعد دفع العربون 30%، تحصل خلال 5 أيام عمل على رابط لمشاهدة الموقع.',
@@ -1969,8 +2090,8 @@ const I18N = {
     confirm_stamp:'تم استلام الطلب', confirm_title:'شكرًا لك! 🎉', confirm_p:'حفظت طلبك. سأتواصل معك عبر القناة التي اخترتها.', confirm_btn:'إرسال طلب آخر',
     foot_desc:'مواقع مصنوعة يدويًا للمطاعم في جميع أنحاء أوروبا.',
     foot_nav_title:'التنقل', foot_contact_title:'التواصل', foot_social_title:'التواصل الاجتماعي',
-    foot_copy:'© Mesa.dev.', foot_madeby:'صُنع بعناية، بدون وكالة كبيرة.',
-    chat_title:'تحدث مع Mesa.dev', chat_sub:'احصل على إجابات قبل الطلب', chat_placeholder:'اكتب سؤالك...', chat_send:'إرسال',
+    foot_copy:'© MesaDev\'s.', foot_madeby:'صُنع بعناية، بدون وكالة كبيرة.',
+    chat_title:'تحدث مع MesaDev\'s', chat_sub:'احصل على إجابات قبل الطلب', chat_placeholder:'اكتب سؤالك...', chat_send:'إرسال',
     chat_initial:'مرحبًا! يمكنني مساعدتك في فهم الباقات والخطوة التالية لطلب موقعك. تفضل بالسؤال.',
     popup_eyebrow:'قبل أن تكمل', popup_title:'أخبرني قليلًا عن مطعمك', popup_p:'يستغرق 15 ثانية — يساعدني على الرد بشكل أفضل. اختياري تمامًا.',
     popup_hassite:'هل لديك موقع بالفعل؟', popup_opt_no:'لا', popup_opt_bad:'نعم، لكنه لا يعمل جيدًا', popup_opt_yes:'نعم، ويعمل جيدًا',
@@ -2008,6 +2129,10 @@ function applyLang(lang, manual){
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
     const key = el.getAttribute('data-i18n-ph');
     if(dict[key] !== undefined) el.placeholder = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-aria');
+    if(dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
   });
   document.querySelectorAll('.lang-btn').forEach(b=> b.classList.toggle('active', b.dataset.lang === lang));
   document.getElementById('langCurrentLabel').textContent = meta.label;
