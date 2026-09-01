@@ -151,16 +151,23 @@
       </span>
       <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
     </a>
-    <a href="index.html" class="back-link">← Voltar ao site</a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <select id="langSelect" style="background:transparent; border:1px solid var(--line); border-radius:4px; font-family:'Space Mono',monospace; font-size:11px; padding:5px 8px; cursor:pointer; color:var(--black);">
+        <option value="pt">PT</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+      </select>
+      <a href="index.html" class="back-link" data-i18n="nav_back">← Voltar ao site</a>
+    </div>
   </nav>
 </header>
 
 <section class="intro">
   <div class="wrap">
-    <span class="stamp">Como funciona</span>
-    <h1>Do primeiro "olá" ao site no ar</h1>
-    <p>Um caminho simples, sem burocracia — e dois passos extras, opcionais, pra quem quer continuar contando comigo depois.</p>
-    <p class="intro-hint">Toque em cada bolinha pra ver os detalhes.</p>
+    <span class="stamp" data-i18n="intro_stamp">Como funciona</span>
+    <h1 data-i18n="intro_h1">Do primeiro "olá" ao site no ar</h1>
+    <p data-i18n="intro_p">Um caminho simples, sem burocracia — e dois passos extras, opcionais, pra quem quer continuar contando comigo depois.</p>
+    <p class="intro-hint" data-i18n="intro_hint">Toque em cada bolinha pra ver os detalhes.</p>
   </div>
 </section>
 
@@ -178,9 +185,9 @@
           <span class="r-num">1</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Passo 1</span>
-          <h3>Início — Contato</h3>
-          <p class="r-desc">Você me chama pelo WhatsApp, e-mail ou pelo formulário do site. Conto rapidinho o que você já tem hoje (ou não tem) e como funciona o processo daqui pra frente.</p>
+          <span class="r-tag" data-i18n="step1_tag">Passo 1</span>
+          <h3 data-i18n="step1_h3">Início — Contato</h3>
+          <p class="r-desc" data-i18n="step1_desc">Você me chama pelo WhatsApp, e-mail ou pelo formulário do site. Conto rapidinho o que você já tem hoje (ou não tem) e como funciona o processo daqui pra frente.</p>
         </div>
       </div>
 
@@ -190,9 +197,9 @@
           <span class="r-num">2</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Passo 2</span>
-          <h3>Descreva o site como quiser</h3>
-          <p class="r-desc">Cores, estilo, referências, o que não pode faltar no cardápio — quanto mais detalhe, melhor. Se não souber exatamente, eu ajudo a decidir com base no seu tipo de restaurante.</p>
+          <span class="r-tag" data-i18n="step2_tag">Passo 2</span>
+          <h3 data-i18n="step2_h3">Descreva o site como quiser</h3>
+          <p class="r-desc" data-i18n="step2_desc">Cores, estilo, referências, o que não pode faltar no cardápio — quanto mais detalhe, melhor. Se não souber exatamente, eu ajudo a decidir com base no seu tipo de restaurante.</p>
         </div>
       </div>
 
@@ -202,9 +209,9 @@
           <span class="r-num">3</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Passo 3</span>
-          <h3>Sinal de 30% — aí sim eu começo</h3>
-          <p class="r-desc">Combinado o escopo e o valor, te mando o link de pagamento de um sinal de 30% do total. É o que garante que eu não fico trabalhando de graça caso você suma no meio do caminho — o resto (70%) só depois de tudo pronto e aprovado.</p>
+          <span class="r-tag" data-i18n="step3_tag">Passo 3</span>
+          <h3 data-i18n="step3_h3">Sinal de 30% — aí sim eu começo</h3>
+          <p class="r-desc" data-i18n="step3_desc">Combinado o escopo e o valor, te mando o link de pagamento de um sinal de 30% do total. É o que garante que eu não fico trabalhando de graça caso você suma no meio do caminho — o resto (70%) só depois de tudo pronto e aprovado.</p>
         </div>
       </div>
 
@@ -214,9 +221,9 @@
           <span class="r-num">4</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Passo 4</span>
-          <h3>Pronto — protótipo em até 5 dias úteis</h3>
-          <p class="r-desc">Você recebe um link pra ver o site funcionando de verdade, no seu celular ou computador.</p>
+          <span class="r-tag" data-i18n="step4_tag">Passo 4</span>
+          <h3 data-i18n="step4_h3">Pronto — protótipo em até 5 dias úteis</h3>
+          <p class="r-desc" data-i18n="step4_desc">Você recebe um link pra ver o site funcionando de verdade, no seu celular ou computador.</p>
         </div>
       </div>
 
@@ -226,9 +233,9 @@
           <span class="r-num">5</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Passo 5</span>
-          <h3>Alterações — peça o que quiser</h3>
-          <p class="r-desc">Fique à vontade pra pedir ajustes: trocar fotos, mudar cores, reescrever textos. A gente refina até o site ficar do seu jeito.</p>
+          <span class="r-tag" data-i18n="step5_tag">Passo 5</span>
+          <h3 data-i18n="step5_h3">Alterações — peça o que quiser</h3>
+          <p class="r-desc" data-i18n="step5_desc">Fique à vontade pra pedir ajustes: trocar fotos, mudar cores, reescrever textos. A gente refina até o site ficar do seu jeito.</p>
         </div>
       </div>
 
@@ -238,14 +245,14 @@
           <span class="r-num">6</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Passo 6</span>
-          <h3>Pagamento final — os 70% restantes</h3>
-          <p class="r-desc">Com tudo aprovado e no ar, te mando o link do restante (70%) — mesmo pagamento seguro (PayPal), funciona bem pra quem está fora do Brasil e não exige conta PayPal pra pagar.</p>
+          <span class="r-tag" data-i18n="step6_tag">Passo 6</span>
+          <h3 data-i18n="step6_h3">Pagamento final — os 70% restantes</h3>
+          <p class="r-desc" data-i18n="step6_desc">Com tudo aprovado e no ar, te mando o link do restante (70%) — mesmo pagamento seguro (PayPal), funciona bem pra quem está fora do Brasil e não exige conta PayPal pra pagar.</p>
         </div>
       </div>
 
       <div class="divider-row">
-        <span class="stamp">Se quiser continuar</span>
+        <span class="stamp" data-i18n="divider_text">Se quiser continuar</span>
         <div class="line"></div>
       </div>
 
@@ -255,9 +262,9 @@
           <span class="r-num">6</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Opcional<span class="opt-badge">a partir de € 25/mês</span></span>
-          <h3>Atualização mensal</h3>
-          <p class="r-desc">Mudou o cardápio? Trocou o horário? Quer testar uma foto nova? Eu atualizo o seu site sempre que precisar — em três níveis (Essencial, Completo ou Premium), conforme quanto você precisa mexer por mês.</p>
+          <span class="r-tag"><span data-i18n="opt1_tag">Opcional</span><span class="opt-badge" data-i18n="opt1_badge">a partir de € 25/mês</span></span>
+          <h3 data-i18n="opt1_h3">Atualização mensal</h3>
+          <p class="r-desc" data-i18n="opt1_desc">Mudou o cardápio? Trocou o horário? Quer testar uma foto nova? Eu atualizo o seu site sempre que precisar — em três níveis (Essencial, Completo ou Premium), conforme quanto você precisa mexer por mês.</p>
         </div>
       </div>
 
@@ -267,9 +274,9 @@
           <span class="r-num">7</span>
         </button>
         <div class="r-card">
-          <span class="r-tag">Opcional<span class="opt-badge">sob consulta</span></span>
-          <h3>Parceria contínua</h3>
-          <p class="r-desc">Depois do site no ar, posso acompanhar como ele está performando — o que trazer mais reserva, o que testar, e apoiar as decisões digitais do seu restaurante ao longo do tempo.</p>
+          <span class="r-tag"><span data-i18n="opt2_tag">Opcional</span><span class="opt-badge" data-i18n="opt2_badge">sob consulta</span></span>
+          <h3 data-i18n="opt2_h3">Parceria contínua</h3>
+          <p class="r-desc" data-i18n="opt2_desc">Depois do site no ar, posso acompanhar como ele está performando — o que trazer mais reserva, o que testar, e apoiar as decisões digitais do seu restaurante ao longo do tempo.</p>
         </div>
       </div>
 
@@ -280,98 +287,98 @@
 <section class="faq-section">
   <div class="wrap">
     <div class="section-head">
-      <span class="stamp">Perguntas frequentes</span>
-      <h2>Ainda com dúvidas?</h2>
-      <p>As perguntas que mais recebo antes de alguém pedir o site. Se não achar a sua aqui, é só chamar no WhatsApp.</p>
+      <span class="stamp" data-i18n="faq_stamp">Perguntas frequentes</span>
+      <h2 data-i18n="faq_h2">Ainda com dúvidas?</h2>
+      <p data-i18n="faq_p">As perguntas que mais recebo antes de alguém pedir o site. Se não achar a sua aqui, é só chamar no WhatsApp.</p>
     </div>
     <div class="faq-list" id="faqList">
 
       <div class="faq-item open">
         <button class="faq-q">
-          <span>Quanto tempo demora pra ter meu site pronto?</span>
+          <span data-i18n="faq1_q">Quanto tempo demora pra ter meu site pronto?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Pra landing page e site completo, o protótipo fica pronto em até 5 dias úteis. Pra loja online (e-commerce), o prazo é de 7 a 10 dias úteis, já que envolve mais configuração. Se precisar de mais urgência, tem a opção de entrega expressa.</p></div>
+        <div class="faq-a"><p data-i18n="faq1_a">Pra landing page e site completo, o protótipo fica pronto em até 5 dias úteis. Pra loja online (e-commerce), o prazo é de 7 a 10 dias úteis, já que envolve mais configuração. Se precisar de mais urgência, tem a opção de entrega expressa.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Preciso entender de tecnologia pra pedir um site?</span>
+          <span data-i18n="faq2_q">Preciso entender de tecnologia pra pedir um site?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Não, nada. Você me conta o que precisa (por WhatsApp, e-mail ou pelo formulário do site) e eu cuido de toda a parte técnica — do design até publicar o site no ar.</p></div>
+        <div class="faq-a"><p data-i18n="faq2_a">Não, nada. Você me conta o que precisa (por WhatsApp, e-mail ou pelo formulário do site) e eu cuido de toda a parte técnica — do design até publicar o site no ar.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Como funciona o pagamento?</span>
+          <span data-i18n="faq3_q">Como funciona o pagamento?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Funciona em duas partes: um sinal de 30% antes de eu começar o protótipo (garante que ninguém trabalha de graça caso o contato suma no meio do caminho), e os 70% restantes depois de tudo aprovado e no ar. Os dois pagamentos são feitos por um link seguro do PayPal — funciona bem pra clientes fora do Brasil, e você não precisa ter conta PayPal pra pagar.</p></div>
+        <div class="faq-a"><p data-i18n="faq3_a">Funciona em duas partes: um sinal de 30% antes de eu começar o protótipo (garante que ninguém trabalha de graça caso o contato suma no meio do caminho), e os 70% restantes depois de tudo aprovado e no ar. Os dois pagamentos são feitos por um link seguro do PayPal — funciona bem pra clientes fora do Brasil, e você não precisa ter conta PayPal pra pagar.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Por que preciso pagar um sinal antes de ver o site pronto?</span>
+          <span data-i18n="faq4_q">Por que preciso pagar um sinal antes de ver o site pronto?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>É uma proteção pros dois lados: sem o sinal, eu correria o risco de montar o protótipo inteiro e o contato simplesmente sumir. Os 30% garantem que o projeto é levado a sério antes de eu dedicar as horas de trabalho — e os 70% restantes só saem do seu bolso depois que o site está pronto, ajustado e aprovado por você.</p></div>
+        <div class="faq-a"><p data-i18n="faq4_a">É uma proteção pros dois lados: sem o sinal, eu correria o risco de montar o protótipo inteiro e o contato simplesmente sumir. Os 30% garantem que o projeto é levado a sério antes de eu dedicar as horas de trabalho — e os 70% restantes só saem do seu bolso depois que o site está pronto, ajustado e aprovado por você.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Posso pedir alterações depois que o site estiver pronto?</span>
+          <span data-i18n="faq5_q">Posso pedir alterações depois que o site estiver pronto?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Sim — o sinal de 30% já cobre os ajustes do passo 5 (não é cobrado à parte). Depois de publicado, dá pra continuar contando comigo com um dos planos de manutenção mensal, ou pedir ajustes pontuais sob consulta.</p></div>
+        <div class="faq-a"><p data-i18n="faq5_a">Sim — o sinal de 30% já cobre os ajustes do passo 5 (não é cobrado à parte). Depois de publicado, dá pra continuar contando comigo com um dos planos de manutenção mensal, ou pedir ajustes pontuais sob consulta.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>E se eu não gostar do resultado?</span>
+          <span data-i18n="faq6_q">E se eu não gostar do resultado?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>O sinal de 30% é pago antes de eu começar o protótipo — depois disso, os ajustes do passo 5 (cores, textos, seções) já estão incluídos sem custo extra, e os 70% restantes só são cobrados no final, com tudo aprovado. Se mesmo depois dos ajustes sentir que não ficou com a cara do seu restaurante, a gente conversa antes de fechar; nunca empurro um site que você não aprovou.</p></div>
+        <div class="faq-a"><p data-i18n="faq6_a">O sinal de 30% é pago antes de eu começar o protótipo — depois disso, os ajustes do passo 5 (cores, textos, seções) já estão incluídos sem custo extra, e os 70% restantes só são cobrados no final, com tudo aprovado. Se mesmo depois dos ajustes sentir que não ficou com a cara do seu restaurante, a gente conversa antes de fechar; nunca empurro um site que você não aprovou.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Vocês garantem que meu restaurante vai aparecer no Google?</span>
+          <span data-i18n="faq7_q">Vocês garantem que meu restaurante vai aparecer no Google?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Nenhuma agência séria consegue garantir uma posição exata no Google — isso depende de fatores fora do controle de qualquer site, como concorrência da região e avaliações. O que eu garanto é um site tecnicamente pronto pra ser bem indexado (rápido, com a ficha do Google configurada, estrutura e palavras-chave certas) — a base do SEO local, sem os erros técnicos que travam muitos concorrentes.</p></div>
+        <div class="faq-a"><p data-i18n="faq7_a">Nenhuma agência séria consegue garantir uma posição exata no Google — isso depende de fatores fora do controle de qualquer site, como concorrência da região e avaliações. O que eu garanto é um site tecnicamente pronto pra ser bem indexado (rápido, com a ficha do Google configurada, estrutura e palavras-chave certas) — a base do SEO local, sem os erros técnicos que travam muitos concorrentes.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Preciso pagar hospedagem à parte?</span>
+          <span data-i18n="faq8_q">Preciso pagar hospedagem à parte?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Não necessariamente — seu site fica hospedado gratuitamente (domínio tipo seusite.vercel.app). Se preferir um domínio próprio (seurestaurante.com), tem uma configuração única, e o domínio em si é pago à parte, direto no registrador, geralmente um valor pequeno por ano.</p></div>
+        <div class="faq-a"><p data-i18n="faq8_a">Não necessariamente — seu site fica hospedado gratuitamente (domínio tipo seusite.vercel.app). Se preferir um domínio próprio (seurestaurante.com), tem uma configuração única, e o domínio em si é pago à parte, direto no registrador, geralmente um valor pequeno por ano.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Meu restaurante fica fora da Europa — atendem?</span>
+          <span data-i18n="faq9_q">Meu restaurante fica fora da Europa — atendem?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Sim! Comecei atendendo restaurantes na Europa, mas já atendo outros países — o site detecta automaticamente o idioma e a moeda de quem visita, então funciona bem pra clientes de fora dessa região também.</p></div>
+        <div class="faq-a"><p data-i18n="faq9_a">Sim! Comecei atendendo restaurantes na Europa, mas já atendo outros países — o site detecta automaticamente o idioma e a moeda de quem visita, então funciona bem pra clientes de fora dessa região também.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Já tenho um site — dá pra trocar sem perder nada?</span>
+          <span data-i18n="faq10_q">Já tenho um site — dá pra trocar sem perder nada?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Dá sim. Me conta o que você já tem hoje (cardápio, fotos, textos) e eu reaproveito o que fizer sentido no site novo — não precisa recomeçar do zero.</p></div>
+        <div class="faq-a"><p data-i18n="faq10_a">Dá sim. Me conta o que você já tem hoje (cardápio, fotos, textos) e eu reaproveito o que fizer sentido no site novo — não precisa recomeçar do zero.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Qual a diferença entre os planos?</span>
+          <span data-i18n="faq11_q">Qual a diferença entre os planos?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p>Aperitivo é uma landing page (1 página). Prato Principal é um site completo, com várias seções. Banquete é uma loja online, com carrinho e checkout. E Sob Encomenda é pra quem precisa de algo fora do padrão — a gente conversa e monta sob medida.</p></div>
+        <div class="faq-a"><p data-i18n="faq11_a">Aperitivo é uma landing page (1 página). Prato Principal é um site completo, com várias seções. Banquete é uma loja online, com carrinho e checkout. E Sob Encomenda é pra quem precisa de algo fora do padrão — a gente conversa e monta sob medida.</p></div>
       </div>
 
     </div>
@@ -380,19 +387,214 @@
 
 <div class="closing-cta">
   <div class="wrap">
-    <p>Pronto pra dar o primeiro passo?</p>
-    <a href="index.html#peca" class="btn">Peça o seu site</a>
+    <p data-i18n="closing_p">Pronto pra dar o primeiro passo?</p>
+    <a href="index.html#peca" class="btn" data-i18n="closing_btn">Peça o seu site</a>
   </div>
 </div>
 
 <footer>
   <div class="wrap">
     <span class="brand-name" style="color:var(--cream);">Mesa<span class="dot">.</span>dev</span>
-    <p>© Mesa.dev · <a href="index.html">Voltar ao site</a></p>
+    <p>© Mesa.dev · <a href="index.html" data-i18n="footer_back">Voltar ao site</a></p>
   </div>
 </footer>
 
 <script>
+  // ===== SISTEMA DE IDIOMAS (PT / ES / EN-UK) =====
+  const I18N = {
+    pt: {
+      meta_title:'Como funciona — Mesa.dev',
+      meta_desc:'Do primeiro contato ao site no ar — veja passo a passo como funciona o processo do Mesa.dev, incluindo manutenção e acompanhamento opcionais.',
+      nav_back:'← Voltar ao site',
+      intro_stamp:'Como funciona', intro_h1:'Do primeiro "olá" ao site no ar',
+      intro_p:'Um caminho simples, sem burocracia — e dois passos extras, opcionais, pra quem quer continuar contando comigo depois.',
+      intro_hint:'Toque em cada bolinha pra ver os detalhes.',
+      step1_tag:'Passo 1', step1_h3:'Início — Contato',
+      step1_desc:'Você me chama pelo WhatsApp, e-mail ou pelo formulário do site. Conto rapidinho o que você já tem hoje (ou não tem) e como funciona o processo daqui pra frente.',
+      step2_tag:'Passo 2', step2_h3:'Descreva o site como quiser',
+      step2_desc:'Cores, estilo, referências, o que não pode faltar no cardápio — quanto mais detalhe, melhor. Se não souber exatamente, eu ajudo a decidir com base no seu tipo de restaurante.',
+      step3_tag:'Passo 3', step3_h3:'Sinal de 30% — aí sim eu começo',
+      step3_desc:'Combinado o escopo e o valor, te mando o link de pagamento de um sinal de 30% do total. É o que garante que eu não fico trabalhando de graça caso você suma no meio do caminho — o resto (70%) só depois de tudo pronto e aprovado.',
+      step4_tag:'Passo 4', step4_h3:'Pronto — protótipo em até 5 dias úteis',
+      step4_desc:'Você recebe um link pra ver o site funcionando de verdade, no seu celular ou computador.',
+      step5_tag:'Passo 5', step5_h3:'Alterações — peça o que quiser',
+      step5_desc:'Fique à vontade pra pedir ajustes: trocar fotos, mudar cores, reescrever textos. A gente refina até o site ficar do seu jeito.',
+      step6_tag:'Passo 6', step6_h3:'Pagamento final — os 70% restantes',
+      step6_desc:'Com tudo aprovado e no ar, te mando o link do restante (70%) — mesmo pagamento seguro (PayPal), funciona bem pra quem está fora do Brasil e não exige conta PayPal pra pagar.',
+      divider_text:'Se quiser continuar',
+      opt1_tag:'Opcional', opt1_badge:'a partir de € 25/mês', opt1_h3:'Atualização mensal',
+      opt1_desc:'Mudou o cardápio? Trocou o horário? Quer testar uma foto nova? Eu atualizo o seu site sempre que precisar — em três níveis (Essencial, Completo ou Premium), conforme quanto você precisa mexer por mês.',
+      opt2_tag:'Opcional', opt2_badge:'sob consulta', opt2_h3:'Parceria contínua',
+      opt2_desc:'Depois do site no ar, posso acompanhar como ele está performando — o que trazer mais reserva, o que testar, e apoiar as decisões digitais do seu restaurante ao longo do tempo.',
+      faq_stamp:'Perguntas frequentes', faq_h2:'Ainda com dúvidas?',
+      faq_p:'As perguntas que mais recebo antes de alguém pedir o site. Se não achar a sua aqui, é só chamar no WhatsApp.',
+      faq1_q:'Quanto tempo demora pra ter meu site pronto?',
+      faq1_a:'Pra landing page e site completo, o protótipo fica pronto em até 5 dias úteis. Pra loja online (e-commerce), o prazo é de 7 a 10 dias úteis, já que envolve mais configuração. Se precisar de mais urgência, tem a opção de entrega expressa.',
+      faq2_q:'Preciso entender de tecnologia pra pedir um site?',
+      faq2_a:'Não, nada. Você me conta o que precisa (por WhatsApp, e-mail ou pelo formulário do site) e eu cuido de toda a parte técnica — do design até publicar o site no ar.',
+      faq3_q:'Como funciona o pagamento?',
+      faq3_a:'Funciona em duas partes: um sinal de 30% antes de eu começar o protótipo (garante que ninguém trabalha de graça caso o contato suma no meio do caminho), e os 70% restantes depois de tudo aprovado e no ar. Os dois pagamentos são feitos por um link seguro do PayPal — funciona bem pra clientes fora do Brasil, e você não precisa ter conta PayPal pra pagar.',
+      faq4_q:'Por que preciso pagar um sinal antes de ver o site pronto?',
+      faq4_a:'É uma proteção pros dois lados: sem o sinal, eu correria o risco de montar o protótipo inteiro e o contato simplesmente sumir. Os 30% garantem que o projeto é levado a sério antes de eu dedicar as horas de trabalho — e os 70% restantes só saem do seu bolso depois que o site está pronto, ajustado e aprovado por você.',
+      faq5_q:'Posso pedir alterações depois que o site estiver pronto?',
+      faq5_a:'Sim — o sinal de 30% já cobre os ajustes do passo 5 (não é cobrado à parte). Depois de publicado, dá pra continuar contando comigo com um dos planos de manutenção mensal, ou pedir ajustes pontuais sob consulta.',
+      faq6_q:'E se eu não gostar do resultado?',
+      faq6_a:'O sinal de 30% é pago antes de eu começar o protótipo — depois disso, os ajustes do passo 5 (cores, textos, seções) já estão incluídos sem custo extra, e os 70% restantes só são cobrados no final, com tudo aprovado. Se mesmo depois dos ajustes sentir que não ficou com a cara do seu restaurante, a gente conversa antes de fechar; nunca empurro um site que você não aprovou.',
+      faq7_q:'Vocês garantem que meu restaurante vai aparecer no Google?',
+      faq7_a:'Nenhuma agência séria consegue garantir uma posição exata no Google — isso depende de fatores fora do controle de qualquer site, como concorrência da região e avaliações. O que eu garanto é um site tecnicamente pronto pra ser bem indexado (rápido, com a ficha do Google configurada, estrutura e palavras-chave certas) — a base do SEO local, sem os erros técnicos que travam muitos concorrentes.',
+      faq8_q:'Preciso pagar hospedagem à parte?',
+      faq8_a:'Não necessariamente — seu site fica hospedado gratuitamente (domínio tipo seusite.vercel.app). Se preferir um domínio próprio (seurestaurante.com), tem uma configuração única, e o domínio em si é pago à parte, direto no registrador, geralmente um valor pequeno por ano.',
+      faq9_q:'Meu restaurante fica fora da Europa — atendem?',
+      faq9_a:'Sim! Comecei atendendo restaurantes na Europa, mas já atendo outros países — o site detecta automaticamente o idioma e a moeda de quem visita, então funciona bem pra clientes de fora dessa região também.',
+      faq10_q:'Já tenho um site — dá pra trocar sem perder nada?',
+      faq10_a:'Dá sim. Me conta o que você já tem hoje (cardápio, fotos, textos) e eu reaproveito o que fizer sentido no site novo — não precisa recomeçar do zero.',
+      faq11_q:'Qual a diferença entre os planos?',
+      faq11_a:'Aperitivo é uma landing page (1 página). Prato Principal é um site completo, com várias seções. Banquete é uma loja online, com carrinho e checkout. E Sob Encomenda é pra quem precisa de algo fora do padrão — a gente conversa e monta sob medida.',
+      closing_p:'Pronto pra dar o primeiro passo?', closing_btn:'Peça o seu site',
+      footer_back:'Voltar ao site'
+    },
+    es: {
+      meta_title:'Cómo funciona — Mesa.dev',
+      meta_desc:'Desde el primer contacto hasta el sitio publicado — mira paso a paso cómo funciona el proceso de Mesa.dev, incluyendo mantenimiento y seguimiento opcionales.',
+      nav_back:'← Volver al sitio',
+      intro_stamp:'Cómo funciona', intro_h1:'Desde el primer "hola" hasta el sitio publicado',
+      intro_p:'Un camino simple, sin burocracia — y dos pasos extra, opcionales, para quien quiera seguir contando conmigo después.',
+      intro_hint:'Toca cada círculo para ver los detalles.',
+      step1_tag:'Paso 1', step1_h3:'Inicio — Contacto',
+      step1_desc:'Me escribes por WhatsApp, correo o el formulario del sitio. Te cuento rápidamente qué tienes hoy (o no tienes) y cómo funciona el proceso a partir de ahí.',
+      step2_tag:'Paso 2', step2_h3:'Describe el sitio como quieras',
+      step2_desc:'Colores, estilo, referencias, lo que no puede faltar en la carta — cuanto más detalle, mejor. Si no lo sabes con exactitud, te ayudo a decidir según el tipo de tu restaurante.',
+      step3_tag:'Paso 3', step3_h3:'Depósito del 30% — y ahí empiezo',
+      step3_desc:'Una vez acordados el alcance y el valor, te mando el enlace de pago de un depósito del 30% del total. Esto garantiza que no trabajo gratis si desapareces en el camino — el resto (70%) se paga solo cuando todo está listo y aprobado.',
+      step4_tag:'Paso 4', step4_h3:'Listo — prototipo en hasta 5 días hábiles',
+      step4_desc:'Recibes un enlace para ver el sitio funcionando de verdad, en tu móvil o computadora.',
+      step5_tag:'Paso 5', step5_h3:'Cambios — pide lo que quieras',
+      step5_desc:'Siéntete libre de pedir ajustes: cambiar fotos, colores, reescribir textos. Afinamos hasta que el sitio quede a tu gusto.',
+      step6_tag:'Paso 6', step6_h3:'Pago final — el 70% restante',
+      step6_desc:'Con todo aprobado y publicado, te mando el enlace del resto (70%) — el mismo pago seguro (PayPal), funciona bien para quienes están fuera de Brasil y no requiere tener cuenta de PayPal para pagar.',
+      divider_text:'Si quieres continuar',
+      opt1_tag:'Opcional', opt1_badge:'desde 25 €/mes', opt1_h3:'Actualización mensual',
+      opt1_desc:'¿Cambió la carta? ¿Cambió el horario? ¿Quieres probar una foto nueva? Actualizo tu sitio siempre que lo necesites — en tres niveles (Esencial, Completo o Premium), según cuánto necesites cambiar cada mes.',
+      opt2_tag:'Opcional', opt2_badge:'a consultar', opt2_h3:'Colaboración continua',
+      opt2_desc:'Después de publicar el sitio, puedo hacer seguimiento de cómo está funcionando — qué trae más reservas, qué probar, y apoyar las decisiones digitales de tu restaurante con el tiempo.',
+      faq_stamp:'Preguntas frecuentes', faq_h2:'¿Todavía tienes dudas?',
+      faq_p:'Las preguntas que más recibo antes de que alguien pida el sitio. Si no encuentras la tuya aquí, solo escríbeme por WhatsApp.',
+      faq1_q:'¿Cuánto tarda en estar listo mi sitio?',
+      faq1_a:'Para landing page y sitio completo, el prototipo está listo en hasta 5 días hábiles. Para tienda online (e-commerce), el plazo es de 7 a 10 días hábiles, ya que implica más configuración. Si necesitas más urgencia, existe la opción de entrega exprés.',
+      faq2_q:'¿Necesito entender de tecnología para pedir un sitio?',
+      faq2_a:'No, nada. Me cuentas lo que necesitas (por WhatsApp, correo o el formulario del sitio) y yo me encargo de toda la parte técnica — desde el diseño hasta publicar el sitio.',
+      faq3_q:'¿Cómo funciona el pago?',
+      faq3_a:'Funciona en dos partes: un depósito del 30% antes de empezar el prototipo (garantiza que nadie trabaja gratis si el contacto desaparece en el camino), y el 70% restante después de que todo esté aprobado y publicado. Ambos pagos se hacen por un enlace seguro de PayPal — funciona bien para clientes fuera de Brasil, y no necesitas tener cuenta de PayPal para pagar.',
+      faq4_q:'¿Por qué tengo que pagar un depósito antes de ver el sitio listo?',
+      faq4_a:'Es una protección para ambas partes: sin el depósito, correría el riesgo de armar todo el prototipo y que el contacto simplemente desaparezca. El 30% garantiza que el proyecto se toma en serio antes de que dedique las horas de trabajo — y el 70% restante solo sale de tu bolsillo después de que el sitio esté listo, ajustado y aprobado por ti.',
+      faq5_q:'¿Puedo pedir cambios después de que el sitio esté listo?',
+      faq5_a:'Sí — el depósito del 30% ya cubre los ajustes del paso 5 (no se cobra aparte). Después de publicado, puedes seguir contando conmigo con uno de los planes de mantenimiento mensual, o pedir ajustes puntuales a consultar.',
+      faq6_q:'¿Y si no me gusta el resultado?',
+      faq6_a:'El depósito del 30% se paga antes de que empiece el prototipo — después de eso, los ajustes del paso 5 (colores, textos, secciones) ya están incluidos sin costo extra, y el 70% restante solo se cobra al final, con todo aprobado. Si aun después de los ajustes sientes que no quedó con la cara de tu restaurante, lo hablamos antes de cerrar; nunca entrego un sitio que no hayas aprobado.',
+      faq7_q:'¿Garantizan que mi restaurante va a aparecer en Google?',
+      faq7_a:'Ninguna agencia seria puede garantizar una posición exacta en Google — depende de factores fuera del control de cualquier sitio, como la competencia de la zona y las reseñas. Lo que sí garantizo es un sitio técnicamente listo para indexarse bien (rápido, con la ficha de Google configurada, estructura y palabras clave correctas) — la base del SEO local, sin los errores técnicos que frenan a muchos competidores.',
+      faq8_q:'¿Tengo que pagar hosting aparte?',
+      faq8_a:'No necesariamente — tu sitio queda alojado gratis (dominio tipo tusitio.vercel.app). Si prefieres un dominio propio (turestaurante.com), hay una configuración única, y el dominio en sí se paga aparte, directamente en el registrador, normalmente un valor pequeño al año.',
+      faq9_q:'Mi restaurante está fuera de Europa — ¿atienden?',
+      faq9_a:'¡Sí! Empecé atendiendo restaurantes en Europa, pero ya atiendo otros países — el sitio detecta automáticamente el idioma y la moneda de quien visita, así que funciona bien también para clientes de fuera de esa región.',
+      faq10_q:'Ya tengo un sitio — ¿puedo cambiar sin perder nada?',
+      faq10_a:'Sí se puede. Cuéntame qué tienes hoy (carta, fotos, textos) y reutilizo lo que tenga sentido en el sitio nuevo — no hace falta empezar de cero.',
+      faq11_q:'¿Cuál es la diferencia entre los planes?',
+      faq11_a:'Aperitivo es una landing page (1 página). Plato Principal es un sitio completo, con varias secciones. Banquete es una tienda online, con carrito y pago. Y A Medida es para quien necesita algo fuera de lo común — hablamos y lo armamos a medida.',
+      closing_p:'¿Listo para dar el primer paso?', closing_btn:'Pide tu sitio',
+      footer_back:'Volver al sitio'
+    },
+    en: {
+      meta_title:'How it works — Mesa.dev',
+      meta_desc:'From first contact to a live site — see step by step how the Mesa.dev process works, including optional maintenance and ongoing support.',
+      nav_back:'← Back to site',
+      intro_stamp:'How it works', intro_h1:'From the first "hi" to a live site',
+      intro_p:'A simple path, no red tape — plus two optional extra steps for anyone who wants to keep working with me afterwards.',
+      intro_hint:'Tap each circle to see the details.',
+      step1_tag:'Step 1', step1_h3:'Start — Get in touch',
+      step1_desc:"You message me on WhatsApp, email, or the site's form. I quickly find out what you already have (or don't) and how the process works from there.",
+      step2_tag:'Step 2', step2_h3:'Describe the site however you like',
+      step2_desc:"Colours, style, references, what can't be missing from the menu — the more detail, the better. If you're not sure, I'll help you decide based on your type of restaurant.",
+      step3_tag:'Step 3', step3_h3:'30% deposit — then I get started',
+      step3_desc:"Once we've agreed on scope and price, I send you a payment link for a 30% deposit of the total. This guarantees I'm not working for free if you disappear along the way — the remaining 70% is only due once everything is ready and approved.",
+      step4_tag:'Step 4', step4_h3:'Ready — prototype within 5 working days',
+      step4_desc:'You get a link to see the site actually working, on your phone or computer.',
+      step5_tag:'Step 5', step5_h3:'Changes — ask for whatever you want',
+      step5_desc:"Feel free to request adjustments: swap photos, change colours, rewrite text. We refine it until the site feels like yours.",
+      step6_tag:'Step 6', step6_h3:'Final payment — the remaining 70%',
+      step6_desc:"Once everything's approved and live, I send you the link for the rest (70%) — same secure payment method (PayPal), which works well for anyone outside Brazil and doesn't require a PayPal account to pay.",
+      divider_text:'If you want to keep going',
+      opt1_tag:'Optional', opt1_badge:'from €25/month', opt1_h3:'Monthly updates',
+      opt1_desc:"Menu changed? Hours changed? Want to try a new photo? I'll update your site whenever you need — across three tiers (Essential, Complete, or Premium), depending on how much you need changed each month.",
+      opt2_tag:'Optional', opt2_badge:'quote on request', opt2_h3:'Ongoing partnership',
+      opt2_desc:"Once the site is live, I can track how it's performing — what's driving more bookings, what to test, and support your restaurant's digital decisions over time.",
+      faq_stamp:'Frequently asked questions', faq_h2:'Still have questions?',
+      faq_p:"The questions I get asked most before someone orders a site. If you can't find yours here, just message me on WhatsApp.",
+      faq1_q:'How long until my site is ready?',
+      faq1_a:'For a landing page or full website, the prototype is ready within 5 working days. For an online shop (e-commerce), it takes 7 to 10 working days, since it involves more setup. If you need it sooner, there\'s an express delivery option.',
+      faq2_q:'Do I need to understand tech to order a site?',
+      faq2_a:"Not at all. You tell me what you need (via WhatsApp, email, or the site's form) and I handle all the technical side — from design through to publishing the site.",
+      faq3_q:'How does payment work?',
+      faq3_a:"It works in two parts: a 30% deposit before I start the prototype (this guarantees no one works for free if the contact disappears along the way), and the remaining 70% once everything's approved and live. Both payments go through a secure PayPal link — it works well for clients outside Brazil, and you don't need a PayPal account to pay.",
+      faq4_q:'Why do I need to pay a deposit before seeing the finished site?',
+      faq4_a:"It protects both sides: without the deposit, I'd risk building the entire prototype only for the contact to disappear. The 30% shows the project is being taken seriously before I commit the work hours — and the remaining 70% only leaves your pocket once the site is ready, adjusted, and approved by you.",
+      faq5_q:'Can I request changes after the site is ready?',
+      faq5_a:'Yes — the 30% deposit already covers the adjustments in step 5 (no extra charge). Once published, you can keep working with me through one of the monthly maintenance plans, or request one-off adjustments on request.',
+      faq6_q:"What if I don't like the result?",
+      faq6_a:"The 30% deposit is paid before I start the prototype — after that, the step 5 adjustments (colours, text, sections) are already included at no extra cost, and the remaining 70% is only charged at the end, once everything's approved. If, even after the adjustments, it still doesn't feel like your restaurant, we talk it through before finalising anything — I never hand over a site you haven't approved.",
+      faq7_q:'Do you guarantee my restaurant will show up on Google?',
+      faq7_a:"No serious agency can guarantee an exact Google ranking — that depends on factors outside any site's control, like local competition and reviews. What I do guarantee is a site that's technically ready to be well indexed (fast, with the Google Business listing set up, the right structure and keywords) — the foundation of local SEO, without the technical mistakes that hold many competitors back.",
+      faq8_q:'Do I need to pay for hosting separately?',
+      faq8_a:"Not necessarily — your site is hosted for free (a domain like yoursite.vercel.app). If you'd prefer your own domain (yourrestaurant.com), there's a one-off setup, and the domain itself is paid separately, directly with the registrar, usually a small amount per year.",
+      faq9_q:'My restaurant is outside Europe — do you take on clients there?',
+      faq9_a:"Yes! I started out working with restaurants in Europe, but I already work with other countries too — the site automatically detects each visitor's language and currency, so it works well for clients outside that region as well.",
+      faq10_q:'I already have a site — can I switch without losing anything?',
+      faq10_a:"Absolutely. Tell me what you already have (menu, photos, text) and I'll reuse whatever makes sense in the new site — no need to start from scratch.",
+      faq11_q:"What's the difference between the plans?",
+      faq11_a:'Starter is a landing page (1 page). Main Course is a full website with several sections. Banquet is an online shop, with cart and checkout. And Bespoke is for anyone who needs something out of the ordinary — we talk it through and build it to fit.',
+      closing_p:'Ready to take the first step?', closing_btn:'Order your site',
+      footer_back:'Back to site'
+    }
+  };
+
+  let currentLang = 'pt';
+  function applyLang(lang, manual){
+    if(!I18N[lang]) return;
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.title = dict.meta_title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', dict.meta_desc);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    const sel = document.getElementById('langSelect');
+    if(sel) sel.value = lang;
+    try{
+      localStorage.setItem('mesaDevComoLang', lang);
+      if(manual) localStorage.setItem('mesaDevComoLangManual', '1');
+    }catch(e){}
+    // reflui o roteiro, já que a mudança de idioma pode mudar a altura dos textos
+    if(typeof drawPath === 'function') setTimeout(drawPath, 60);
+  }
+
+  document.getElementById('langSelect').addEventListener('change', (e)=> applyLang(e.target.value, true));
+
+  (function initLang(){
+    let initial = 'pt';
+    let saved;
+    try{ saved = localStorage.getItem('mesaDevComoLang'); }catch(e){}
+    if(saved && I18N[saved]){
+      initial = saved;
+    } else {
+      const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if(nav.startsWith('es')) initial = 'es';
+      else if(!nav.startsWith('pt')) initial = 'en';
+    }
+    applyLang(initial);
+  })();
+
   // toggle open/close de cada checkpoint
   document.querySelectorAll('.r-node').forEach(node=>{
     node.querySelector('.r-circle').addEventListener('click', ()=> node.classList.toggle('open'));

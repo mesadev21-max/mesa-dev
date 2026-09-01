@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monte o seu pedido — MesaDev´s</title>
+<title>Monte o seu pedido — Mesa.dev</title>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
@@ -147,8 +147,15 @@
 
 <header>
   <div class="wrap bar">
-    <span class="brand-name">MesaDev´s</span>
-    <a href="planos.html" class="back-link">← Voltar aos planos</a>
+    <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <select id="langSelect" style="background:transparent; border:1px solid var(--line); border-radius:4px; font-family:'Space Mono',monospace; font-size:11px; padding:5px 8px; cursor:pointer; color:var(--charcoal);">
+        <option value="pt">PT</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+      </select>
+      <a href="planos.html" class="back-link" data-i18n="back_link">← Voltar aos planos</a>
+    </div>
   </div>
 </header>
 
@@ -156,146 +163,146 @@
   <div class="wrap">
 
     <div class="intro">
-      <span class="stamp">Monte o pedido</span>
-      <h1>Personalize o seu site</h1>
-      <p>Escolha o plano e adicione o que fizer sentido pro seu restaurante. O valor total atualiza conforme você escolhe — sem compromisso, é só pra você ter uma ideia antes de falar comigo.</p>
+      <span class="stamp" data-i18n="intro_stamp">Monte o seu pedido</span>
+      <h1 data-i18n="intro_h1">Personalize o seu site</h1>
+      <p data-i18n="intro_p">Escolha o plano e adicione o que fizer sentido pro seu restaurante. O valor total atualiza conforme você escolhe — sem compromisso, é só pra você ter uma ideia antes de falar comigo.</p>
     </div>
 
     <div class="draft-note">
-      <b>Rascunho pra revisarmos juntos:</b> ainda dá pra ajustar qualquer nome ou valor aqui antes de  traduzirmos a página — é só me avisar o que muda.
+      <b data-i18n="draft_b">Rascunho pra revisarmos juntos:</b> <span data-i18n="draft_p">ainda dá pra ajustar qualquer nome ou valor aqui antes de eu traduzir a página — é só me avisar o que muda.</span>
     </div>
 
     <div class="layout">
       <div class="options">
 
         <div class="group" id="grpPlanoWrap">
-          <h2>Plano</h2>
+          <h2 data-i18n="group_plano">Plano</h2>
           <div class="pill-grid" id="grp-plano">
-            <div class="pill" data-group="plano" data-value="aperitivo" data-price="599" data-label="Aperitivo">
-              <span class="t">Aperitivo</span><span class="d">Landing page · 1 página</span><span class="p">€ 599</span>
+            <div class="pill" data-group="plano" data-value="aperitivo" data-price="599" data-label-key="plano_aperitivo">
+              <span class="t" data-i18n="plano_aperitivo_t">Aperitivo</span><span class="d" data-i18n="plano_aperitivo_d">Landing page · 1 página</span><span class="p">€ 599</span>
             </div>
-            <div class="pill" data-group="plano" data-value="principal" data-price="999" data-label="Prato Principal">
-              <span class="badge">Mais escolhido</span>
-              <span class="t">Prato Principal</span><span class="d">Site completo · 3-5 páginas</span><span class="p">€ 999</span>
+            <div class="pill" data-group="plano" data-value="principal" data-price="999" data-label-key="plano_principal">
+              <span class="badge" data-i18n="plano_principal_badge">Mais escolhido</span>
+              <span class="t" data-i18n="plano_principal_t">Prato Principal</span><span class="d" data-i18n="plano_principal_d">Site completo · 3-5 páginas</span><span class="p">€ 999</span>
             </div>
-            <div class="pill" data-group="plano" data-value="banquete" data-price="2499" data-label="Banquete">
-              <span class="t">Banquete</span><span class="d">Loja online · carrinho e checkout</span><span class="p">€ 2.499</span>
+            <div class="pill" data-group="plano" data-value="banquete" data-price="2499" data-label-key="plano_banquete">
+              <span class="t" data-i18n="plano_banquete_t">Banquete</span><span class="d" data-i18n="plano_banquete_d">Loja online · carrinho e checkout</span><span class="p">€ 2.499</span>
             </div>
-            <div class="pill" data-group="plano" data-value="encomenda" data-price="0" data-label="Sob Encomenda">
-              <span class="t">Sob Encomenda</span><span class="d">Projeto personalizado</span><span class="p">a combinar</span>
+            <div class="pill" data-group="plano" data-value="encomenda" data-price="0" data-label-key="plano_encomenda">
+              <span class="t" data-i18n="plano_encomenda_t">Sob Encomenda</span><span class="d" data-i18n="plano_encomenda_d">Projeto personalizado</span><span class="p" data-i18n="plano_encomenda_price">a combinar</span>
             </div>
           </div>
 
           <div class="encomenda-panel" id="encomendaPanel" style="display:none;">
             <div class="disclosure-toggle" id="encomendaToggle">
-              <span>Contar mais detalhes do que você tem em mente</span>
+              <span data-i18n="encomenda_toggle">Contar mais detalhes do que você tem em mente</span>
               <span class="disclosure-arrow" id="encomendaArrow">▾</span>
             </div>
             <div class="disclosure-body" id="encomendaBody">
-              <span class="mini-label">Estilo preferido (pode marcar mais de um)</span>
+              <span class="mini-label" data-i18n="estilo_label">Estilo preferido (pode marcar mais de um)</span>
               <div class="check-grid" id="grp-estilo">
-                <div class="check-pill" data-group="estilo" data-value="elegante">Elegante</div>
-                <div class="check-pill" data-group="estilo" data-value="moderno">Moderno</div>
-                <div class="check-pill" data-group="estilo" data-value="rustico">Rústico</div>
-                <div class="check-pill" data-group="estilo" data-value="minimalista">Minimalista</div>
-                <div class="check-pill" data-group="estilo" data-value="colorido">Colorido</div>
-                <div class="check-pill" data-group="estilo" data-value="sofisticado">Sofisticado</div>
+                <div class="check-pill" data-group="estilo" data-value="elegante" data-i18n="estilo_elegante">Elegante</div>
+                <div class="check-pill" data-group="estilo" data-value="moderno" data-i18n="estilo_moderno">Moderno</div>
+                <div class="check-pill" data-group="estilo" data-value="rustico" data-i18n="estilo_rustico">Rústico</div>
+                <div class="check-pill" data-group="estilo" data-value="minimalista" data-i18n="estilo_minimalista">Minimalista</div>
+                <div class="check-pill" data-group="estilo" data-value="colorido" data-i18n="estilo_colorido">Colorido</div>
+                <div class="check-pill" data-group="estilo" data-value="sofisticado" data-i18n="estilo_sofisticado">Sofisticado</div>
               </div>
 
-              <span class="mini-label">Formato preferido (pode marcar mais de um)</span>
+              <span class="mini-label" data-i18n="formato_label">Formato preferido (pode marcar mais de um)</span>
               <div class="check-grid" id="grp-formato">
-                <div class="check-pill" data-group="formato" data-value="landing">Landing page</div>
-                <div class="check-pill" data-group="formato" data-value="completo">Site completo</div>
-                <div class="check-pill" data-group="formato" data-value="ecommerce">Loja online</div>
-                <div class="check-pill" data-group="formato" data-value="outro">Outro</div>
+                <div class="check-pill" data-group="formato" data-value="landing" data-i18n="formato_landing">Landing page</div>
+                <div class="check-pill" data-group="formato" data-value="completo" data-i18n="formato_completo">Site completo</div>
+                <div class="check-pill" data-group="formato" data-value="ecommerce" data-i18n="formato_ecommerce">Loja online</div>
+                <div class="check-pill" data-group="formato" data-value="outro" data-i18n="formato_outro">Outro</div>
               </div>
 
-              <span class="mini-label">Descreva o que você tem em mente</span>
-              <textarea class="desc-field" id="encomendaDescricao" placeholder="Ex: quero um site com mais de uma unidade, sistema de reservas próprio, algo fora do padrão..."></textarea>
+              <span class="mini-label" data-i18n="desc_label">Descreva o que você tem em mente</span>
+              <textarea class="desc-field" id="encomendaDescricao" data-i18n-ph="desc_placeholder" placeholder="Ex: quero um site com mais de uma unidade, sistema de reservas próprio, algo fora do padrão..."></textarea>
             </div>
           </div>
         </div>
 
         <div class="group">
-          <h2>Prazo de entrega</h2>
+          <h2 data-i18n="group_entrega">Prazo de entrega</h2>
           <div class="pill-grid" id="grp-entrega">
-            <div class="pill selected" data-group="entrega" data-value="padrao" data-price="0" data-label="Entrega padrão">
-              <span class="t">Padrão</span><span class="p" id="entregaPadraoTxt">5 dias úteis · grátis</span>
+            <div class="pill selected" data-group="entrega" data-value="padrao" data-price="0" data-label-key="entrega_padrao">
+              <span class="t" data-i18n="entrega_padrao_t">Padrão</span><span class="p" id="entregaPadraoTxt">5 dias úteis · grátis</span>
             </div>
-            <div class="pill" data-group="entrega" data-value="rapida" data-price="0" data-label="Entrega expressa">
-              <span class="t">Expressa</span><span class="p" id="entregaRapidaTxt">o mais breve possível</span>
+            <div class="pill" data-group="entrega" data-value="rapida" data-price="0" data-label-key="entrega_rapida">
+              <span class="t" data-i18n="entrega_rapida_t">Expressa</span><span class="p" id="entregaRapidaTxt">o mais breve possível</span>
             </div>
           </div>
-          <p id="entregaEncomendaNote" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
+          <p id="entregaEncomendaNote" data-i18n="entrega_encomenda_note" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
             No Sob Encomenda o prazo é combinado na conversa, conforme o escopo.
           </p>
         </div>
 
         <div class="group">
-          <h2>Domínio</h2>
+          <h2 data-i18n="group_dominio">Domínio</h2>
           <div class="pill-grid" id="grp-dominio">
-            <div class="pill selected" data-group="dominio" data-value="vercel" data-price="0" data-label="Domínio gratuito (vercel.app)">
-              <span class="t">Vercel (grátis)</span><span class="p">seusite.vercel.app</span>
+            <div class="pill selected" data-group="dominio" data-value="vercel" data-price="0" data-label-key="dominio_vercel">
+              <span class="t" data-i18n="dominio_vercel_t">Vercel (grátis)</span><span class="p">seusite.vercel.app</span>
             </div>
-            <div class="pill" data-group="dominio" data-value="proprio" data-price="60" data-label="Domínio próprio">
-              <span class="t">Domínio próprio</span><span class="p">+€ 60 config.</span>
+            <div class="pill" data-group="dominio" data-value="proprio" data-price="60" data-label-key="dominio_proprio">
+              <span class="t" data-i18n="dominio_proprio_t">Domínio próprio</span><span class="p" data-i18n="dominio_proprio_p">+€ 60 config.</span>
             </div>
           </div>
         </div>
 
         <div class="group">
-          <h2>Manutenção mensal</h2>
+          <h2 data-i18n="group_manutencao">Manutenção mensal</h2>
           <div class="pill-grid" id="grp-manutencao">
-            <div class="pill selected" data-group="manutencao" data-value="nenhuma" data-price="0" data-label="Sem manutenção mensal">
-              <span class="t">Nenhuma</span><span class="p">—</span>
+            <div class="pill selected" data-group="manutencao" data-value="nenhuma" data-price="0" data-label-key="manutencao_nenhuma">
+              <span class="t" data-i18n="manutencao_nenhuma_t">Nenhuma</span><span class="p">—</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="essencial" data-price="29" data-label="Manutenção Essencial (até 2 atualizações/mês)">
-              <span class="t">Essencial</span><span class="p">€ 29/mês</span>
+            <div class="pill" data-group="manutencao" data-value="essencial" data-price="29" data-label-key="manutencao_essencial">
+              <span class="t" data-i18n="manutencao_essencial_t">Essencial</span><span class="p" data-i18n="manutencao_essencial_p">€ 29/mês</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="completo" data-price="59" data-label="Manutenção Completo (até 4 atualizações/mês)">
-              <span class="t">Completo</span><span class="p">€ 59/mês</span>
+            <div class="pill" data-group="manutencao" data-value="completo" data-price="59" data-label-key="manutencao_completo">
+              <span class="t" data-i18n="manutencao_completo_t">Completo</span><span class="p" data-i18n="manutencao_completo_p">€ 59/mês</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="premium" data-price="99" data-label="Manutenção Premium (atualizações ilimitadas)">
-              <span class="t">Premium</span><span class="p">€ 99/mês</span>
+            <div class="pill" data-group="manutencao" data-value="premium" data-price="99" data-label-key="manutencao_premium">
+              <span class="t" data-i18n="manutencao_premium_t">Premium</span><span class="p" data-i18n="manutencao_premium_p">€ 99/mês</span>
             </div>
           </div>
         </div>
 
         <div class="group" id="grpBackendWrap" style="display:none;">
-          <h2>Infraestrutura (Backend)</h2>
+          <h2 data-i18n="group_backend">Infraestrutura (Backend)</h2>
           <div class="pill-grid" id="grp-backend">
-            <div class="pill selected" data-group="backend" data-value="nenhum" data-pct="0" data-label="Site direto, sem backend">
-              <span class="t">Site direto (sem backend)</span><span class="p">grátis</span>
+            <div class="pill selected" data-group="backend" data-value="nenhum" data-pct="0" data-label-key="backend_nenhum">
+              <span class="t" data-i18n="backend_nenhum_t">Site direto (sem backend)</span><span class="p" data-i18n="backend_gratis">grátis</span>
             </div>
-            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.25" data-label="Shopify (backend)">
+            <div class="pill" data-group="backend" data-value="shopify" data-pct="0.25" data-label-key="backend_shopify">
               <span class="t">Shopify</span><span class="p" id="backendShopifyTxt">+25%</span>
             </div>
-            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.25" data-label="WooCommerce (backend)">
+            <div class="pill" data-group="backend" data-value="woocommerce" data-pct="0.25" data-label-key="backend_woo">
               <span class="t">WooCommerce</span><span class="p" id="backendWooTxt">+25%</span>
             </div>
           </div>
-          <p id="backendDisabledNote" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
+          <p id="backendDisabledNote" data-i18n="backend_disabled_note" style="font-size:12.5px; opacity:0.6; margin-top:10px; display:none;">
             Não disponível pra landing page — se seu projeto crescer, dá pra migrar de plano depois.
           </p>
           <div id="backendNote" style="display:none; margin-top:14px; background:#fbeaea; border:1px solid #d94141; border-radius:8px; padding:12px 14px; font-size:12.5px; color:#8f2323; opacity:0; transform:translateY(-4px); transition:opacity .25s ease, transform .25s ease;">
-            <b>Sem backend:</b> o site é só apresentação — sem login, carrinho dinâmico real ou banco de dados. Ótimo pra maioria dos casos, mas pra área de cliente, estoque automático ou pagamento processado direto no site, é preciso um dos planos com backend acima.
+            <b data-i18n="backend_note_b">Sem backend:</b> <span data-i18n="backend_note_p">o site é só apresentação — sem login, carrinho dinâmico real ou banco de dados. Ótimo pra maioria dos casos, mas pra área de cliente, estoque automático ou pagamento processado direto no site, é preciso um dos planos com backend acima.</span>
           </div>
         </div>
 
         <div class="group">
-          <h2>Complementares</h2>
+          <h2 data-i18n="group_addons">Complementares</h2>
           <div class="pill-grid" id="grp-addons" style="flex-direction:column;">
-            <div class="pill checkbox-style" data-group="addon-qr" data-value="qr" data-price="100" data-label="Cardápio digital com QR Code">
+            <div class="pill checkbox-style" data-group="addon-qr" data-value="qr" data-price="100" data-label-key="addon_qr">
               <span class="check"></span>
-              <span class="txt"><span class="t">Cardápio digital (QR Code)</span><span class="p">€ 100</span></span>
+              <span class="txt"><span class="t" data-i18n="addon_qr_t">Cardápio digital (QR Code)</span><span class="p">€ 100</span></span>
             </div>
-            <div class="pill checkbox-style" data-group="addon-gbp" data-value="gbp" data-price="100" data-label="Configuração do Google Business Profile">
+            <div class="pill checkbox-style" data-group="addon-gbp" data-value="gbp" data-price="100" data-label-key="addon_gbp">
               <span class="check"></span>
               <span class="txt"><span class="t">Google Business Profile</span><span class="p">€ 100</span></span>
             </div>
-            <div class="pill checkbox-style" data-group="addon-seo" data-value="seo" data-price="200" data-label="SEO local">
+            <div class="pill checkbox-style" data-group="addon-seo" data-value="seo" data-price="200" data-label-key="addon_seo">
               <span class="check"></span>
-              <span class="txt"><span class="t">SEO local</span><span class="p">€ 200</span></span>
+              <span class="txt"><span class="t" data-i18n="addon_seo_t">SEO local</span><span class="p">€ 200</span></span>
             </div>
           </div>
         </div>
@@ -303,15 +310,15 @@
       </div>
 
       <aside class="comanda">
-        <h3>Sua comanda</h3>
-        <div class="sub">Resumo do que você escolheu</div>
-        <div id="comandaLines"><div class="empty">Escolha um plano pra começar…</div></div>
+        <h3 data-i18n="comanda_h3">Sua comanda</h3>
+        <div class="sub" data-i18n="comanda_sub">Resumo do que você escolheu</div>
+        <div id="comandaLines"><div class="empty" data-i18n="comanda_empty">Escolha um plano pra começar…</div></div>
         <div class="total">
-          <span class="l">Total</span>
+          <span class="l" data-i18n="comanda_total_label">Total</span>
           <span class="v mono" id="comandaTotal">€ 0</span>
         </div>
-        <a href="#" id="ctaWhats" class="cta" target="_blank" rel="noopener">Pedir esse orçamento pelo WhatsApp</a>
-        <div class="fine">Sem compromisso — o valor final é confirmado na conversa.</div>
+        <a href="#" id="ctaWhats" class="cta" target="_blank" rel="noopener" data-i18n="comanda_cta">Pedir esse orçamento pelo WhatsApp</a>
+        <div class="fine" data-i18n="comanda_fine">Sem compromisso — o valor final é confirmado na conversa.</div>
       </aside>
     </div>
 
@@ -326,6 +333,199 @@
 
   const params = new URLSearchParams(location.search);
   const planoParam = params.get('plano');
+
+  // ===== SISTEMA DE IDIOMAS (PT / ES / EN-UK) =====
+  const I18N = {
+    pt: {
+      page_title:'Monte o seu pedido — Mesa.dev',
+      page_desc:'Escolha o plano, prazo e complementares do seu site — veja o valor total antes de pedir.',
+      back_link:'← Voltar aos planos',
+      intro_stamp:'Monte o seu pedido', intro_h1:'Personalize o seu site',
+      intro_p:'Escolha o plano e adicione o que fizer sentido pro seu restaurante. O valor total atualiza conforme você escolhe — sem compromisso, é só pra você ter uma ideia antes de falar comigo.',
+      draft_b:'Rascunho pra revisarmos juntos:', draft_p:'ainda dá pra ajustar qualquer nome ou valor aqui antes de eu traduzir a página — é só me avisar o que muda.',
+      group_plano:'Plano',
+      plano_aperitivo_t:'Aperitivo', plano_aperitivo_d:'Landing page · 1 página',
+      plano_principal_badge:'Mais escolhido', plano_principal_t:'Prato Principal', plano_principal_d:'Site completo · 3-5 páginas',
+      plano_banquete_t:'Banquete', plano_banquete_d:'Loja online · carrinho e checkout',
+      plano_encomenda_t:'Sob Encomenda', plano_encomenda_d:'Projeto personalizado', plano_encomenda_price:'a combinar',
+      encomenda_toggle:'Contar mais detalhes do que você tem em mente',
+      estilo_label:'Estilo preferido (pode marcar mais de um)',
+      estilo_elegante:'Elegante', estilo_moderno:'Moderno', estilo_rustico:'Rústico', estilo_minimalista:'Minimalista', estilo_colorido:'Colorido', estilo_sofisticado:'Sofisticado',
+      formato_label:'Formato preferido (pode marcar mais de um)',
+      formato_landing:'Landing page', formato_completo:'Site completo', formato_ecommerce:'Loja online', formato_outro:'Outro',
+      desc_label:'Descreva o que você tem em mente',
+      desc_placeholder:'Ex: quero um site com mais de uma unidade, sistema de reservas próprio, algo fora do padrão...',
+      group_entrega:'Prazo de entrega', entrega_padrao_t:'Padrão', entrega_rapida_t:'Expressa',
+      entrega_encomenda_note:'No Sob Encomenda o prazo é combinado na conversa, conforme o escopo.',
+      group_dominio:'Domínio', dominio_vercel_t:'Vercel (grátis)', dominio_proprio_t:'Domínio próprio', dominio_proprio_p:'+€ 60 config.',
+      group_manutencao:'Manutenção mensal', manutencao_nenhuma_t:'Nenhuma',
+      manutencao_essencial_t:'Essencial', manutencao_essencial_p:'€ 29/mês',
+      manutencao_completo_t:'Completo', manutencao_completo_p:'€ 59/mês',
+      manutencao_premium_t:'Premium', manutencao_premium_p:'€ 99/mês',
+      group_backend:'Infraestrutura (Backend)', backend_nenhum_t:'Site direto (sem backend)', backend_gratis:'grátis',
+      backend_disabled_note:'Não disponível pra landing page — se seu projeto crescer, dá pra migrar de plano depois.',
+      backend_note_b:'Sem backend:', backend_note_p:'o site é só apresentação — sem login, carrinho dinâmico real ou banco de dados. Ótimo pra maioria dos casos, mas pra área de cliente, estoque automático ou pagamento processado direto no site, é preciso um dos planos com backend acima.',
+      group_addons:'Complementares', addon_qr_t:'Cardápio digital (QR Code)', addon_seo_t:'SEO local',
+      comanda_h3:'Sua comanda', comanda_sub:'Resumo do que você escolheu', comanda_empty:'Escolha um plano pra começar…',
+      comanda_total_label:'Total', comanda_cta:'Pedir esse orçamento pelo WhatsApp',
+      comanda_fine:'Sem compromisso — o valor final é confirmado na conversa.',
+      standard_days:{aperitivo:'5 dias úteis', principal:'5 dias úteis', banquete:'7-10 dias úteis'},
+      gratis_suffix:'grátis', rush_prefix:'em até 3 dias úteis', rush_summary_label:'Entrega expressa',
+      per_month:'/mês',
+      labels:{
+        plano_aperitivo:'Aperitivo', plano_principal:'Prato Principal', plano_banquete:'Banquete', plano_encomenda:'Sob Encomenda',
+        entrega_padrao:'Entrega padrão', entrega_rapida:'Entrega expressa',
+        dominio_vercel:'Domínio gratuito (vercel.app)', dominio_proprio:'Domínio próprio',
+        manutencao_nenhuma:'Sem manutenção mensal',
+        manutencao_essencial:'Manutenção Essencial (até 2 atualizações/mês)',
+        manutencao_completo:'Manutenção Completo (até 4 atualizações/mês)',
+        manutencao_premium:'Manutenção Premium (atualizações ilimitadas)',
+        backend_nenhum:'Site direto, sem backend', backend_shopify:'Shopify (backend)', backend_woo:'WooCommerce (backend)',
+        addon_qr:'Cardápio digital com QR Code', addon_gbp:'Configuração do Google Business Profile', addon_seo:'SEO local'
+      },
+      estilo_labels:{elegante:'Elegante', moderno:'Moderno', rustico:'Rústico', minimalista:'Minimalista', colorido:'Colorido', sofisticado:'Sofisticado'},
+      formato_labels:{landing:'Landing page', completo:'Site completo', ecommerce:'Loja online', outro:'Outro'},
+      estilo_summary:'Estilo preferido', formato_summary:'Formato preferido', descricao_summary:'Descrição',
+      wa_intro:'Olá! Montei um orçamento no configurador do site:', wa_total:'Total estimado:', wa_valor:'Valor:', wa_combinar:'a combinar'
+    },
+    es: {
+      page_title:'Personaliza tu pedido — Mesa.dev',
+      page_desc:'Elige el plan, el plazo y los complementos de tu sitio — mira el valor total antes de pedir.',
+      back_link:'← Volver a los planes',
+      intro_stamp:'Personaliza tu pedido', intro_h1:'Personaliza tu sitio web',
+      intro_p:'Elige el plan y añade lo que tenga sentido para tu restaurante. El valor total se actualiza según lo que elijas — sin compromiso, es solo para que tengas una idea antes de hablar conmigo.',
+      draft_b:'Borrador para revisar juntos:', draft_p:'todavía se puede ajustar cualquier nombre o valor aquí antes de traducir la página — solo avísame qué cambia.',
+      group_plano:'Plan',
+      plano_aperitivo_t:'Aperitivo', plano_aperitivo_d:'Landing page · 1 página',
+      plano_principal_badge:'El más elegido', plano_principal_t:'Plato Principal', plano_principal_d:'Sitio completo · 3-5 páginas',
+      plano_banquete_t:'Banquete', plano_banquete_d:'Tienda online · carrito y pago',
+      plano_encomenda_t:'A Medida', plano_encomenda_d:'Proyecto personalizado', plano_encomenda_price:'a consultar',
+      encomenda_toggle:'Contarme más detalles de lo que tienes en mente',
+      estilo_label:'Estilo preferido (puedes marcar más de uno)',
+      estilo_elegante:'Elegante', estilo_moderno:'Moderno', estilo_rustico:'Rústico', estilo_minimalista:'Minimalista', estilo_colorido:'Colorido', estilo_sofisticado:'Sofisticado',
+      formato_label:'Formato preferido (puedes marcar más de uno)',
+      formato_landing:'Landing page', formato_completo:'Sitio completo', formato_ecommerce:'Tienda online', formato_outro:'Otro',
+      desc_label:'Describe lo que tienes en mente',
+      desc_placeholder:'Ej: quiero un sitio con más de un local, sistema de reservas propio, algo fuera de lo común...',
+      group_entrega:'Plazo de entrega', entrega_padrao_t:'Estándar', entrega_rapida_t:'Exprés',
+      entrega_encomenda_note:'En el plan A Medida, el plazo se combina en la conversación, según el alcance.',
+      group_dominio:'Dominio', dominio_vercel_t:'Vercel (gratis)', dominio_proprio_t:'Dominio propio', dominio_proprio_p:'+60 € config.',
+      group_manutencao:'Mantenimiento mensual', manutencao_nenhuma_t:'Ninguno',
+      manutencao_essencial_t:'Esencial', manutencao_essencial_p:'29 €/mes',
+      manutencao_completo_t:'Completo', manutencao_completo_p:'59 €/mes',
+      manutencao_premium_t:'Premium', manutencao_premium_p:'99 €/mes',
+      group_backend:'Infraestructura (Backend)', backend_nenhum_t:'Sitio directo (sin backend)', backend_gratis:'gratis',
+      backend_disabled_note:'No disponible para landing page — si tu proyecto crece, puedes cambiar de plan después.',
+      backend_note_b:'Sin backend:', backend_note_p:'el sitio es solo informativo — sin login, carrito dinámico real ni base de datos. Perfecto para la mayoría de los casos, pero para área de cliente, stock automático o pago procesado en el sitio, hace falta uno de los planes con backend de arriba.',
+      group_addons:'Complementos', addon_qr_t:'Carta digital (código QR)', addon_seo_t:'SEO local',
+      comanda_h3:'Tu pedido', comanda_sub:'Resumen de lo que elegiste', comanda_empty:'Elige un plan para empezar…',
+      comanda_total_label:'Total', comanda_cta:'Pedir este presupuesto por WhatsApp',
+      comanda_fine:'Sin compromiso — el valor final se confirma en la conversación.',
+      standard_days:{aperitivo:'5 días hábiles', principal:'5 días hábiles', banquete:'7-10 días hábiles'},
+      gratis_suffix:'gratis', rush_prefix:'en hasta 3 días hábiles', rush_summary_label:'Entrega exprés',
+      per_month:'/mes',
+      labels:{
+        plano_aperitivo:'Aperitivo', plano_principal:'Plato Principal', plano_banquete:'Banquete', plano_encomenda:'A Medida',
+        entrega_padrao:'Entrega estándar', entrega_rapida:'Entrega exprés',
+        dominio_vercel:'Dominio gratuito (vercel.app)', dominio_proprio:'Dominio propio',
+        manutencao_nenhuma:'Sin mantenimiento mensual',
+        manutencao_essencial:'Mantenimiento Esencial (hasta 2 actualizaciones/mes)',
+        manutencao_completo:'Mantenimiento Completo (hasta 4 actualizaciones/mes)',
+        manutencao_premium:'Mantenimiento Premium (actualizaciones ilimitadas)',
+        backend_nenhum:'Sitio directo, sin backend', backend_shopify:'Shopify (backend)', backend_woo:'WooCommerce (backend)',
+        addon_qr:'Carta digital con código QR', addon_gbp:'Configuración de Google Business Profile', addon_seo:'SEO local'
+      },
+      estilo_labels:{elegante:'Elegante', moderno:'Moderno', rustico:'Rústico', minimalista:'Minimalista', colorido:'Colorido', sofisticado:'Sofisticado'},
+      formato_labels:{landing:'Landing page', completo:'Sitio completo', ecommerce:'Tienda online', outro:'Otro'},
+      estilo_summary:'Estilo preferido', formato_summary:'Formato preferido', descricao_summary:'Descripción',
+      wa_intro:'¡Hola! Preparé un presupuesto en el configurador del sitio:', wa_total:'Total estimado:', wa_valor:'Valor:', wa_combinar:'a consultar'
+    },
+    en: {
+      page_title:'Build your order — Mesa.dev',
+      page_desc:'Choose your plan, delivery time, and add-ons — see the total before you order.',
+      back_link:'← Back to plans',
+      intro_stamp:'Build your order', intro_h1:'Customise your site',
+      intro_p:'Choose the plan and add whatever makes sense for your restaurant. The total updates as you choose — no strings attached, just to give you an idea before we talk.',
+      draft_b:'Draft for us to review together:', draft_p:'names and values here can still be adjusted before I translate the page — just let me know what changes.',
+      group_plano:'Plan',
+      plano_aperitivo_t:'Starter', plano_aperitivo_d:'Landing page · 1 page',
+      plano_principal_badge:'Most popular', plano_principal_t:'Main Course', plano_principal_d:'Full website · 3-5 pages',
+      plano_banquete_t:'Banquet', plano_banquete_d:'Online shop · cart and checkout',
+      plano_encomenda_t:'Bespoke', plano_encomenda_d:'Custom project', plano_encomenda_price:'quote on request',
+      encomenda_toggle:'Tell me more about what you have in mind',
+      estilo_label:'Preferred style (you can select more than one)',
+      estilo_elegante:'Elegant', estilo_moderno:'Modern', estilo_rustico:'Rustic', estilo_minimalista:'Minimalist', estilo_colorido:'Colourful', estilo_sofisticado:'Sophisticated',
+      formato_label:'Preferred format (you can select more than one)',
+      formato_landing:'Landing page', formato_completo:'Full website', formato_ecommerce:'Online shop', formato_outro:'Other',
+      desc_label:'Describe what you have in mind',
+      desc_placeholder:'E.g. I want a site for more than one location, my own booking system, something out of the ordinary...',
+      group_entrega:'Delivery time', entrega_padrao_t:'Standard', entrega_rapida_t:'Express',
+      entrega_encomenda_note:'For Bespoke projects, the timeline is agreed during our conversation, depending on scope.',
+      group_dominio:'Domain', dominio_vercel_t:'Vercel (free)', dominio_proprio_t:'Custom domain', dominio_proprio_p:'+€60 setup',
+      group_manutencao:'Monthly maintenance', manutencao_nenhuma_t:'None',
+      manutencao_essencial_t:'Essential', manutencao_essencial_p:'€29/month',
+      manutencao_completo_t:'Complete', manutencao_completo_p:'€59/month',
+      manutencao_premium_t:'Premium', manutencao_premium_p:'€99/month',
+      group_backend:'Infrastructure (Backend)', backend_nenhum_t:'Direct site (no backend)', backend_gratis:'free',
+      backend_disabled_note:'Not available for landing pages — if your project grows, you can switch plans later.',
+      backend_note_b:'No backend:', backend_note_p:'the site is presentation-only — no login, no real dynamic cart or database. Great for most cases, but for a customer area, automatic stock, or on-site payment processing, you\'ll need one of the backend plans above.',
+      group_addons:'Add-ons', addon_qr_t:'Digital menu (QR code)', addon_seo_t:'Local SEO',
+      comanda_h3:'Your order', comanda_sub:'Summary of what you chose', comanda_empty:'Choose a plan to get started…',
+      comanda_total_label:'Total', comanda_cta:'Request this quote on WhatsApp',
+      comanda_fine:'No strings attached — the final value is confirmed in conversation.',
+      standard_days:{aperitivo:'5 working days', principal:'5 working days', banquete:'7-10 working days'},
+      gratis_suffix:'free', rush_prefix:'within 3 working days', rush_summary_label:'Express delivery',
+      per_month:'/month',
+      labels:{
+        plano_aperitivo:'Starter', plano_principal:'Main Course', plano_banquete:'Banquet', plano_encomenda:'Bespoke',
+        entrega_padrao:'Standard delivery', entrega_rapida:'Express delivery',
+        dominio_vercel:'Free domain (vercel.app)', dominio_proprio:'Custom domain',
+        manutencao_nenhuma:'No monthly maintenance',
+        manutencao_essencial:'Essential Maintenance (up to 2 updates/month)',
+        manutencao_completo:'Complete Maintenance (up to 4 updates/month)',
+        manutencao_premium:'Premium Maintenance (unlimited updates)',
+        backend_nenhum:'Direct site, no backend', backend_shopify:'Shopify (backend)', backend_woo:'WooCommerce (backend)',
+        addon_qr:'Digital menu with QR code', addon_gbp:'Google Business Profile setup', addon_seo:'Local SEO'
+      },
+      estilo_labels:{elegante:'Elegant', moderno:'Modern', rustico:'Rustic', minimalista:'Minimalist', colorido:'Colourful', sofisticado:'Sophisticated'},
+      formato_labels:{landing:'Landing page', completo:'Full website', ecommerce:'Online shop', outro:'Other'},
+      estilo_summary:'Preferred style', formato_summary:'Preferred format', descricao_summary:'Description',
+      wa_intro:"Hi! I've put together a quote in the site configurator:", wa_total:'Estimated total:', wa_valor:'Value:', wa_combinar:'to be discussed'
+    }
+  };
+
+  let currentLang = 'pt';
+  function t(key){ return I18N[currentLang][key]; }
+  function label(key){ return I18N[currentLang].labels[key] || key; }
+
+  function applyLang(lang, manual){
+    if(!I18N[lang]) return;
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.title = dict.page_title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', dict.page_desc);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-ph');
+      if(dict[key] !== undefined) el.placeholder = dict[key];
+    });
+    const sel = document.getElementById('langSelect');
+    if(sel) sel.value = lang;
+    try{
+      localStorage.setItem('mesaDevConfigLang', lang);
+      if(manual) localStorage.setItem('mesaDevConfigLangManual', '1');
+    }catch(e){}
+    // re-renderiza os textos dinâmicos (preços, notas, comanda) no idioma novo
+    updateEntregaGroup();
+    updateBackendGroup();
+    render();
+  }
+
+  document.getElementById('langSelect').addEventListener('change', (e)=> applyLang(e.target.value, true));
 
   // % de acréscimo da entrega expressa por plano — e-commerce é mais complexo, custa mais
   const RUSH_PCT = { aperitivo:0.35, principal:0.35, banquete:0.35 };
@@ -385,7 +585,6 @@
     });
     updateBackendNote();
   }
-
   function updateBackendNote(){
     const note = document.getElementById('backendNote');
     if(state.backend === 'nenhum'){
@@ -416,15 +615,16 @@
     selectSingle('entrega', state.entrega);
 
     const pct = RUSH_PCT[state.plano] || 0.35;
-    const days = STANDARD_DAYS[state.plano] || '5 dias úteis';
-    document.getElementById('entregaPadraoTxt').textContent = days + ' · grátis';
+    const dict = I18N[currentLang];
+    const days = dict.standard_days[state.plano] || dict.standard_days.aperitivo;
+    document.getElementById('entregaPadraoTxt').textContent = days + ' · ' + dict.gratis_suffix;
 
     if(state.plano){
       const rushValue = Math.round(planoPrice() * pct);
       document.getElementById('entregaRapidaTxt').textContent =
-        'em até 3 dias úteis · +€ ' + rushValue.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)';
+        dict.rush_prefix + ' · +€ ' + rushValue.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)';
     } else {
-      document.getElementById('entregaRapidaTxt').textContent = 'em até 3 dias úteis';
+      document.getElementById('entregaRapidaTxt').textContent = dict.rush_prefix;
     }
   }
 
@@ -462,7 +662,7 @@
         const on = !pill.classList.contains('selected');
         pill.classList.toggle('selected', on);
         pill.querySelector('.check').textContent = on ? '✓' : '';
-        state.addons[group] = on ? { price:Number(pill.dataset.price), label:pill.dataset.label } : null;
+        state.addons[group] = on ? { price:Number(pill.dataset.price), labelKey:pill.dataset.labelKey } : null;
       } else {
         selectSingle(group, value);
         state[group] = value;
@@ -483,70 +683,85 @@
     const lines = [];
     let total = 0;
     const isEncomenda = state.plano === 'encomenda';
+    const dict = I18N[currentLang];
 
     if(state.plano){
       const p = findPill('plano', state.plano);
       const price = Number(p.dataset.price);
       total += price;
-      lines.push([p.dataset.label, isEncomenda ? 'a combinar' : '€ ' + price.toLocaleString('pt-PT')]);
+      lines.push([label(p.dataset.labelKey), isEncomenda ? dict.plano_encomenda_price : '€ ' + price.toLocaleString('pt-PT')]);
     }
 
     if(!isEncomenda && state.entrega === 'rapida' && state.plano){
-      const pct = RUSH_PCT[state.plano] || 0.15;
+      const pct = RUSH_PCT[state.plano] || 0.35;
       const rushValue = Math.round(planoPrice() * pct);
       total += rushValue;
-      lines.push(['Entrega expressa (+' + Math.round(pct*100) + '%)', '+€ ' + rushValue.toLocaleString('pt-PT')]);
+      lines.push([dict.rush_summary_label + ' (+' + Math.round(pct*100) + '%)', '+€ ' + rushValue.toLocaleString('pt-PT')]);
     }
     if(state.dominio === 'proprio'){
       const p = findPill('dominio','proprio'); total += Number(p.dataset.price);
-      lines.push([p.dataset.label, '+€ ' + p.dataset.price]);
+      lines.push([label(p.dataset.labelKey), '+€ ' + p.dataset.price]);
     }
     if(BACKEND_PLANOS.includes(state.plano) && state.backend !== 'nenhum'){
       const p = findPill('backend', state.backend);
       const pct = Number(p.dataset.pct);
       const val = Math.round(planoPrice() * pct);
       total += val;
-      lines.push([p.dataset.label, '+€ ' + val.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)']);
+      lines.push([label(p.dataset.labelKey), '+€ ' + val.toLocaleString('pt-PT') + ' (+' + Math.round(pct*100) + '%)']);
     }
     if(state.manutencao !== 'nenhuma'){
       const p = findPill('manutencao', state.manutencao);
-      lines.push([p.dataset.label, '€ ' + p.dataset.price + '/mês']);
+      lines.push([label(p.dataset.labelKey), '€ ' + p.dataset.price + dict.per_month]);
     }
     Object.values(state.addons).forEach(a=>{
-      if(a){ total += a.price; lines.push([a.label, '+€ ' + a.price]); }
+      if(a){ total += a.price; lines.push([label(a.labelKey), '+€ ' + a.price]); }
     });
 
     if(isEncomenda){
-      if(state.estilos.length) lines.push(['Estilo preferido', state.estilos.join(', ')]);
-      if(state.formatos.length) lines.push(['Formato preferido', state.formatos.join(', ')]);
+      if(state.estilos.length) lines.push([dict.estilo_summary, state.estilos.map(v=>dict.estilo_labels[v]).join(', ')]);
+      if(state.formatos.length) lines.push([dict.formato_summary, state.formatos.map(v=>dict.formato_labels[v]).join(', ')]);
       const desc = document.getElementById('encomendaDescricao').value.trim();
-      if(desc) lines.push(['Descrição', desc.length > 40 ? desc.slice(0,40) + '…' : desc]);
+      if(desc) lines.push([dict.descricao_summary, desc.length > 40 ? desc.slice(0,40) + '…' : desc]);
     }
 
     const linesEl = document.getElementById('comandaLines');
     if(!state.plano){
-      linesEl.innerHTML = '<div class="empty">Escolha um plano pra começar…</div>';
+      linesEl.innerHTML = '<div class="empty">' + dict.comanda_empty + '</div>';
     } else {
       linesEl.innerHTML = lines.map(l=>
         '<div class="line"><span>'+l[0]+'</span><span class="v">'+l[1]+'</span></div>'
       ).join('');
     }
-    document.getElementById('comandaTotal').textContent = isEncomenda ? 'a combinar' : '€ ' + total.toLocaleString('pt-PT');
+    document.getElementById('comandaTotal').textContent = isEncomenda ? dict.plano_encomenda_price : '€ ' + total.toLocaleString('pt-PT');
 
-    let msg = 'Olá! Montei um orçamento no configurador do site:\n';
+    let msg = dict.wa_intro + '\n';
     lines.forEach(l=> msg += '- ' + l[0] + ': ' + l[1] + '\n');
-    msg += isEncomenda ? 'Valor: a combinar' : 'Total estimado: € ' + total.toLocaleString('pt-PT');
+    msg += isEncomenda ? (dict.wa_valor + ' ' + dict.wa_combinar) : (dict.wa_total + ' € ' + total.toLocaleString('pt-PT'));
     document.getElementById('ctaWhats').href = 'https://wa.me/447480206849?text=' + encodeURIComponent(msg);
   }
+
+  (function initLang(){
+    let initial = 'pt';
+    let saved;
+    try{ saved = localStorage.getItem('mesaDevConfigLang'); }catch(e){}
+    if(saved && I18N[saved]){
+      initial = saved;
+    } else {
+      const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if(nav.startsWith('es')) initial = 'es';
+      else if(!nav.startsWith('pt')) initial = 'en';
+    }
+    currentLang = initial;
+    const sel = document.getElementById('langSelect');
+    if(sel) sel.value = initial;
+  })();
 
   if(planoParam && findPill('plano', planoParam)){
     selectSingle('plano', planoParam);
     state.plano = planoParam;
   }
-  updateEntregaGroup();
+  applyLang(currentLang);
   updateEncomendaPanel();
-  updateBackendGroup();
-  render();
 </script>
 
 </body>
