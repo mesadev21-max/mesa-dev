@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mesa Try — Cardápio digital com QR Code — MesaDev´s</title>
+<title>Mesa Try — Cardápio digital com QR Code — Mesa.dev</title>
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
@@ -66,25 +66,15 @@
   .pill.selected .t{color:var(--cream);}
   .pill .p{font-family:'Space Mono',monospace; font-size:12.5px; opacity:0.65;}
   .pill.selected .p{color:var(--gold-light); opacity:1;}
-  .pill .badge{
-    position:absolute; top:-9px; right:10px; background:var(--gold); color:var(--black);
-    font-family:'Space Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:0.04em;
-    padding:2px 7px; border-radius:10px; font-weight:700;
-  }
-  .pill.checkbox-style{flex-direction:row; align-items:center; gap:10px; min-width:auto; width:100%;}
-  .pill.checkbox-style .check{
-    width:18px; height:18px; border-radius:4px; border:1.5px solid var(--line); flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; font-size:12px;
-  }
-  .pill.checkbox-style.selected .check{background:var(--gold); border-color:var(--gold); color:var(--black);}
-  .pill.checkbox-style .txt{flex:1; display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
 
-  .example-tag{
-    font-family:'Space Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.03em;
-    color:var(--gold); border:1px solid var(--gold); border-radius:3px; padding:1px 5px; margin-left:8px;
+  .try-fixed{
+    background:var(--cream-2); border:1px solid var(--line); border-radius:10px;
+    padding:20px 24px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; gap:16px;
   }
+  .try-fixed .t{font-family:'Fraunces',serif; font-size:18px; margin-bottom:4px;}
+  .try-fixed .d{font-size:13px; opacity:0.65;}
+  .try-fixed .p{font-family:'Space Mono',monospace; font-size:20px; color:var(--gold); white-space:nowrap;}
 
-  /* comanda / resumo */
   .comanda{
     position:sticky; top:24px; background:var(--black); color:var(--cream);
     border-radius:10px; padding:26px 24px; background-image:
@@ -123,8 +113,15 @@
 
 <header>
   <div class="wrap bar">
-    <span class="brand-name">MesaDev´s</span>
-    <a href="index.html" class="back-link">← Voltar ao site</a>
+    <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <select id="langSelect" style="background:transparent; border:1px solid var(--line); border-radius:4px; font-family:'Space Mono',monospace; font-size:11px; padding:5px 8px; cursor:pointer; color:var(--charcoal);">
+        <option value="pt">PT</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+      </select>
+      <a href="index.html" class="back-link" data-i18n="back_link">← Voltar ao site</a>
+    </div>
   </div>
 </header>
 
@@ -132,13 +129,13 @@
   <div class="wrap">
 
     <div class="intro">
-      <span class="stamp">Mesa Try</span>
-      <h1>Experimente o Mesa Try</h1>
-      <p>Sem site completo, sem compromisso — só o cardápio digital com QR Code, pra você sentir como é trabalhar com a gente. Adicione manutenção mensal se quiser que eu mantenha atualizado.</p>
+      <span class="stamp" data-i18n="intro_stamp">Mesa Try</span>
+      <h1 data-i18n="intro_h1">Experimente o Mesa Try</h1>
+      <p data-i18n="intro_p">Sem site completo, sem compromisso — só o cardápio digital com QR Code, pra você sentir como é trabalhar com a gente. Adicione manutenção mensal se quiser que eu mantenha atualizado.</p>
     </div>
 
     <div class="draft-note">
-      <b>Rascunho pra revisarmos juntos:</b> ainda dá pra ajustar qualquer nome ou valor aqui antes de eu traduzir a página — é só me avisar o que muda.
+      <b data-i18n="draft_b">Rascunho pra revisarmos juntos:</b> <span data-i18n="draft_p">ainda dá pra ajustar qualquer nome ou valor aqui antes de eu traduzir a página — é só me avisar o que muda.</span>
     </div>
 
     <div class="layout">
@@ -146,26 +143,26 @@
 
         <div class="try-fixed">
           <div>
-            <div class="t">Mesa Try — Cardápio digital com QR Code</div>
-            <div class="d">Item fixo desse plano — sem escolha de site completo, entrega ou domínio.</div>
+            <div class="t" data-i18n="try_fixed_t">Mesa Try — Cardápio digital com QR Code</div>
+            <div class="d" data-i18n="try_fixed_d">Item fixo desse plano — sem escolha de site completo, entrega ou domínio.</div>
           </div>
           <div class="p">€ 100</div>
         </div>
 
         <div class="group">
-          <h2>Manutenção mensal</h2>
+          <h2 data-i18n="group_manutencao">Manutenção mensal</h2>
           <div class="pill-grid" id="grp-manutencao">
-            <div class="pill selected" data-group="manutencao" data-value="nenhuma" data-price="0" data-label="Sem manutenção mensal">
-              <span class="t">Nenhuma</span><span class="p">—</span>
+            <div class="pill selected" data-group="manutencao" data-value="nenhuma" data-price="0" data-label-key="manutencao_nenhuma">
+              <span class="t" data-i18n="manutencao_nenhuma_t">Nenhuma</span><span class="p">—</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="essencial" data-price="29" data-label="Manutenção Essencial (até 2 atualizações/mês)">
-              <span class="t">Essencial</span><span class="p">€ 29/mês</span>
+            <div class="pill" data-group="manutencao" data-value="essencial" data-price="29" data-label-key="manutencao_essencial">
+              <span class="t" data-i18n="manutencao_essencial_t">Essencial</span><span class="p" data-i18n="manutencao_essencial_p">€ 29/mês</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="completo" data-price="59" data-label="Manutenção Completo (até 4 atualizações/mês)">
-              <span class="t">Completo</span><span class="p">€ 59/mês</span>
+            <div class="pill" data-group="manutencao" data-value="completo" data-price="59" data-label-key="manutencao_completo">
+              <span class="t" data-i18n="manutencao_completo_t">Completo</span><span class="p" data-i18n="manutencao_completo_p">€ 59/mês</span>
             </div>
-            <div class="pill" data-group="manutencao" data-value="premium" data-price="99" data-label="Manutenção Premium (atualizações ilimitadas)">
-              <span class="t">Premium</span><span class="p">€ 99/mês</span>
+            <div class="pill" data-group="manutencao" data-value="premium" data-price="99" data-label-key="manutencao_premium">
+              <span class="t" data-i18n="manutencao_premium_t">Premium</span><span class="p" data-i18n="manutencao_premium_p">€ 99/mês</span>
             </div>
           </div>
         </div>
@@ -173,15 +170,15 @@
       </div>
 
       <aside class="comanda">
-        <h3>Sua comanda</h3>
-        <div class="sub">Resumo do que você escolheu</div>
+        <h3 data-i18n="comanda_h3">Sua comanda</h3>
+        <div class="sub" data-i18n="comanda_sub">Resumo do que você escolheu</div>
         <div id="comandaLines"></div>
         <div class="total">
-          <span class="l">Total</span>
+          <span class="l" data-i18n="comanda_total_label">Total</span>
           <span class="v mono" id="comandaTotal">€ 100</span>
         </div>
-        <a href="#" id="ctaWhats" class="cta" target="_blank" rel="noopener">Pedir esse orçamento pelo WhatsApp</a>
-        <div class="fine">Sem compromisso — o valor final é confirmado na conversa.</div>
+        <a href="#" id="ctaWhats" class="cta" target="_blank" rel="noopener" data-i18n="comanda_cta">Pedir esse orçamento pelo WhatsApp</a>
+        <div class="fine" data-i18n="comanda_fine">Sem compromisso — o valor final é confirmado na conversa.</div>
       </aside>
     </div>
 
@@ -189,7 +186,91 @@
 </section>
 
 <script>
-  const TRY_ITEM = { price:100, label:'Mesa Try — Cardápio digital com QR Code' };
+  // ===== SISTEMA DE IDIOMAS (PT / ES / EN-UK) =====
+  const I18N = {
+    pt: {
+      page_title:'Mesa Try — Cardápio digital com QR Code — Mesa.dev',
+      page_desc:'Experimente o Mesa.dev sem compromisso: cardápio digital com QR Code, por €100.',
+      back_link:'← Voltar ao site',
+      intro_stamp:'Mesa Try', intro_h1:'Experimente o Mesa Try',
+      intro_p:'Sem site completo, sem compromisso — só o cardápio digital com QR Code, pra você sentir como é trabalhar com a gente. Adicione manutenção mensal se quiser que eu mantenha atualizado.',
+      draft_b:'Rascunho pra revisarmos juntos:', draft_p:'ainda dá pra ajustar qualquer nome ou valor aqui antes de eu traduzir a página — é só me avisar o que muda.',
+      try_fixed_t:'Mesa Try — Cardápio digital com QR Code',
+      try_fixed_d:'Item fixo desse plano — sem escolha de site completo, entrega ou domínio.',
+      group_manutencao:'Manutenção mensal', manutencao_nenhuma_t:'Nenhuma',
+      manutencao_essencial_t:'Essencial', manutencao_essencial_p:'€ 29/mês',
+      manutencao_completo_t:'Completo', manutencao_completo_p:'€ 59/mês',
+      manutencao_premium_t:'Premium', manutencao_premium_p:'€ 99/mês',
+      comanda_h3:'Sua comanda', comanda_sub:'Resumo do que você escolheu',
+      comanda_total_label:'Total', comanda_cta:'Pedir esse orçamento pelo WhatsApp',
+      comanda_fine:'Sem compromisso — o valor final é confirmado na conversa.',
+      per_month:'/mês',
+      labels:{
+        manutencao_nenhuma:'Sem manutenção mensal',
+        manutencao_essencial:'Manutenção Essencial (até 2 atualizações/mês)',
+        manutencao_completo:'Manutenção Completo (até 4 atualizações/mês)',
+        manutencao_premium:'Manutenção Premium (atualizações ilimitadas)'
+      },
+      try_item_label:'Mesa Try — Cardápio digital com QR Code',
+      wa_intro:'Olá! Quero experimentar o Mesa Try (cardápio digital com QR Code):', wa_total:'Total estimado:'
+    },
+    es: {
+      page_title:'Mesa Try — Carta digital con código QR — Mesa.dev',
+      page_desc:'Prueba Mesa.dev sin compromiso: carta digital con código QR, por 100 €.',
+      back_link:'← Volver al sitio',
+      intro_stamp:'Mesa Try', intro_h1:'Prueba el Mesa Try',
+      intro_p:'Sin sitio completo, sin compromiso — solo la carta digital con código QR, para que sientas cómo es trabajar con nosotros. Añade mantenimiento mensual si quieres que la mantenga actualizada.',
+      draft_b:'Borrador para revisar juntos:', draft_p:'todavía se puede ajustar cualquier nombre o valor aquí antes de traducir la página — solo avísame qué cambia.',
+      try_fixed_t:'Mesa Try — Carta digital con código QR',
+      try_fixed_d:'Elemento fijo de este plan — sin elección de sitio completo, entrega o dominio.',
+      group_manutencao:'Mantenimiento mensual', manutencao_nenhuma_t:'Ninguno',
+      manutencao_essencial_t:'Esencial', manutencao_essencial_p:'29 €/mes',
+      manutencao_completo_t:'Completo', manutencao_completo_p:'59 €/mes',
+      manutencao_premium_t:'Premium', manutencao_premium_p:'99 €/mes',
+      comanda_h3:'Tu pedido', comanda_sub:'Resumen de lo que elegiste',
+      comanda_total_label:'Total', comanda_cta:'Pedir este presupuesto por WhatsApp',
+      comanda_fine:'Sin compromiso — el valor final se confirma en la conversación.',
+      per_month:'/mes',
+      labels:{
+        manutencao_nenhuma:'Sin mantenimiento mensual',
+        manutencao_essencial:'Mantenimiento Esencial (hasta 2 actualizaciones/mes)',
+        manutencao_completo:'Mantenimiento Completo (hasta 4 actualizaciones/mes)',
+        manutencao_premium:'Mantenimiento Premium (actualizaciones ilimitadas)'
+      },
+      try_item_label:'Mesa Try — Carta digital con código QR',
+      wa_intro:'¡Hola! Quiero probar el Mesa Try (carta digital con código QR):', wa_total:'Total estimado:'
+    },
+    en: {
+      page_title:'Mesa Try — Digital menu with QR code — Mesa.dev',
+      page_desc:'Try Mesa.dev with no strings attached: digital menu with QR code, for €100.',
+      back_link:'← Back to site',
+      intro_stamp:'Mesa Try', intro_h1:'Try Mesa Try',
+      intro_p:"No full website, no strings attached — just the digital menu with QR code, so you can get a feel for working with us. Add monthly maintenance if you'd like me to keep it updated.",
+      draft_b:'Draft for us to review together:', draft_p:'names and values here can still be adjusted before I translate the page — just let me know what changes.',
+      try_fixed_t:'Mesa Try — Digital menu with QR code',
+      try_fixed_d:"Fixed item for this plan — no choice of full website, delivery, or domain.",
+      group_manutencao:'Monthly maintenance', manutencao_nenhuma_t:'None',
+      manutencao_essencial_t:'Essential', manutencao_essencial_p:'€29/month',
+      manutencao_completo_t:'Complete', manutencao_completo_p:'€59/month',
+      manutencao_premium_t:'Premium', manutencao_premium_p:'€99/month',
+      comanda_h3:'Your order', comanda_sub:'Summary of what you chose',
+      comanda_total_label:'Total', comanda_cta:'Request this quote on WhatsApp',
+      comanda_fine:'No strings attached — the final value is confirmed in conversation.',
+      per_month:'/month',
+      labels:{
+        manutencao_nenhuma:'No monthly maintenance',
+        manutencao_essencial:'Essential Maintenance (up to 2 updates/month)',
+        manutencao_completo:'Complete Maintenance (up to 4 updates/month)',
+        manutencao_premium:'Premium Maintenance (unlimited updates)'
+      },
+      try_item_label:'Mesa Try — Digital menu with QR code',
+      wa_intro:"Hi! I'd like to try Mesa Try (digital menu with QR code):", wa_total:'Estimated total:'
+    }
+  };
+
+  let currentLang = 'pt';
+  function label(key){ return I18N[currentLang].labels[key] || key; }
+
   const state = { manutencao:'nenhuma' };
 
   function selectSingle(group, value){
@@ -211,12 +292,13 @@
   }
 
   function render(){
-    const lines = [[TRY_ITEM.label, '€ ' + TRY_ITEM.price]];
-    let total = TRY_ITEM.price;
+    const dict = I18N[currentLang];
+    const lines = [[dict.try_item_label, '€ 100']];
+    let total = 100;
 
     if(state.manutencao !== 'nenhuma'){
       const p = findPill('manutencao', state.manutencao);
-      lines.push([p.dataset.label, '€ ' + p.dataset.price + '/mês']);
+      lines.push([label(p.dataset.labelKey), '€ ' + p.dataset.price + dict.per_month]);
     }
 
     document.getElementById('comandaLines').innerHTML = lines.map(l=>
@@ -224,13 +306,47 @@
     ).join('');
     document.getElementById('comandaTotal').textContent = '€ ' + total.toLocaleString('pt-PT');
 
-    let msg = 'Olá! Quero experimentar o Mesa Try (cardápio digital com QR Code):%0A';
-    lines.forEach(l=> msg += '- ' + l[0] + '%0A');
-    msg += 'Total estimado: € ' + total.toLocaleString('pt-PT');
-    document.getElementById('ctaWhats').href = 'https://wa.me/447480206849?text=' + msg;
+    let msg = dict.wa_intro + '\n';
+    lines.forEach(l=> msg += '- ' + l[0] + '\n');
+    msg += dict.wa_total + ' € ' + total.toLocaleString('pt-PT');
+    document.getElementById('ctaWhats').href = 'https://wa.me/447480206849?text=' + encodeURIComponent(msg);
   }
 
-  render();
+  function applyLang(lang, manual){
+    if(!I18N[lang]) return;
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.title = dict.page_title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', dict.page_desc);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    const sel = document.getElementById('langSelect');
+    if(sel) sel.value = lang;
+    try{
+      localStorage.setItem('mesaDevTryLang', lang);
+      if(manual) localStorage.setItem('mesaDevTryLangManual', '1');
+    }catch(e){}
+    render();
+  }
+
+  document.getElementById('langSelect').addEventListener('change', (e)=> applyLang(e.target.value, true));
+
+  (function initLang(){
+    let initial = 'pt';
+    let saved;
+    try{ saved = localStorage.getItem('mesaDevTryLang'); }catch(e){}
+    if(saved && I18N[saved]){
+      initial = saved;
+    } else {
+      const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if(nav.startsWith('es')) initial = 'es';
+      else if(!nav.startsWith('pt')) initial = 'en';
+    }
+    applyLang(initial);
+  })();
 </script>
 
 </body>

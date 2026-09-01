@@ -368,6 +368,46 @@
   .cblock .big{font-family:'Fraunces',serif; text-transform:none; letter-spacing:0; font-size:22px; font-weight:600; line-height:1.15;}
   .cblock:hover{transform:scale(1.05) rotate(0deg) !important; z-index:3;}
 
+  /* esboço animado que aparece ao passar o mouse — um "sketch" de site
+     colorido conforme o estilo/paleta daquele projeto específico */
+  .cblock{position:relative; overflow:hidden;}
+  .cblock-sketch{position:absolute; inset:0; border-radius:6px; opacity:0; z-index:5;
+    transition:opacity .3s ease; pointer-events:none; overflow:hidden;}
+  .cblock:hover .cblock-sketch{opacity:1;}
+  .cblock-sketch svg{width:100%; height:100%; display:block;}
+  .sk-bg{fill:var(--sk-bg,#f5f5f5);}
+  .sk-line{fill:none; stroke:var(--sk-a); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:640; stroke-dashoffset:640; transition:stroke-dashoffset .8s ease;}
+  .sk-line2{fill:none; stroke:var(--sk-b); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:300; stroke-dashoffset:300; transition:stroke-dashoffset .8s ease .25s;}
+  .sk-fill{fill:var(--sk-a); opacity:0; transform:scale(.6); transform-origin:center;
+    transition:opacity .4s ease, transform .4s ease;}
+  .sk-fill2{fill:var(--sk-b); opacity:0; transform:scale(.6); transform-origin:center;
+    transition:opacity .4s ease, transform .4s ease;}
+  .sk-fill3{fill:var(--sk-c,var(--sk-b)); opacity:0; transform:scale(.6); transform-origin:center;
+    transition:opacity .4s ease, transform .4s ease;}
+  .cblock:hover .sk-line{stroke-dashoffset:0;}
+  .cblock:hover .sk-line2{stroke-dashoffset:0;}
+  .cblock:hover .sk-fill{opacity:.9; transform:scale(1);}
+  .cblock:hover .sk-fill2{opacity:.6; transform:scale(1);}
+  .cblock:hover .sk-fill3{opacity:.6; transform:scale(1);}
+  /* reflexo passando, feito só de leve, pra dar sensação de "vivo" */
+  .cblock-sketch::after{content:''; position:absolute; top:0; left:-60%; width:35%; height:100%;
+    background:linear-gradient(115deg, transparent 0%, rgba(255,255,255,.5) 48%, rgba(255,255,255,.75) 50%, rgba(255,255,255,.5) 52%, transparent 100%);
+    transform:skewX(-20deg); opacity:0;}
+  .cblock:hover .cblock-sketch::after{opacity:1; animation:cblockShine 1.6s ease-in-out .5s infinite;}
+  @keyframes cblockShine{ 0%{left:-60%;} 45%,100%{left:130%;} }
+  @media (prefers-reduced-motion: reduce){
+    .sk-line,.sk-line2{transition:none; stroke-dashoffset:0;}
+    .sk-fill,.sk-fill2,.sk-fill3{transition:none;}
+    .cblock:hover .cblock-sketch::after{animation:none; opacity:0;}
+  }
+  .cblock-caption{position:absolute; left:50%; bottom:8px; transform:translateX(-50%) translateY(4px);
+    font-family:'Nunito Sans',sans-serif; font-size:10px; font-weight:800; letter-spacing:.03em;
+    text-transform:uppercase; color:#fff; background:rgba(0,0,0,.55); padding:4px 10px; border-radius:20px;
+    white-space:nowrap; opacity:0; transition:opacity .4s ease .5s, transform .4s ease .5s;}
+  .cblock:hover .cblock-caption{opacity:1; transform:translateX(-50%) translateY(0);}
+
   .port-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
   @media(max-width:960px){ .port-grid{grid-template-columns:1fr 1fr;} }
   @media(max-width:600px){ .port-grid{grid-template-columns:1fr;} }
@@ -998,13 +1038,114 @@
       <p class="collage-sub" data-i18n="port_sub">Cada projeto é desenhado do zero pro restaurante — nada de modelo pronto com o nome trocado.</p>
     </div>
     <div class="collage-stack">
-      <div class="cblock"><span data-i18n="block_label">Estilo</span><span class="big" data-i18n="block1_big">Rústico &amp; caseiro</span><span>Tasca do Rossio</span></div>
-      <div class="cblock"><span data-i18n="block_label2">Estilo</span><span class="big" data-i18n="block2_big">Elegante &amp; sóbrio</span><span>Marisqueira Atlântico</span></div>
-      <div class="cblock"><span data-i18n="block_label3">Estilo</span><span class="big" data-i18n="block3_big">Moderno &amp; colorido</span><span>Jardim &amp; Sal</span></div>
-      <div class="cblock"><span data-i18n="block_label5">Estilo</span><span class="big" data-i18n="block5_big">Minimalista &amp; direto</span><span>Café Nômade</span></div>
-      <div class="cblock"><span data-i18n="block_label6">Formato</span><span class="big" data-i18n="block6_big">Loja online</span><span>Adega Vinha Alta</span></div>
-      <div class="cblock"><span data-i18n="block_label6">Formato</span><span class="big" data-i18n="block7_big">Loja online &amp; colorido</span><span>Mercado Las Flores</span></div>
-      <div class="cblock"><span data-i18n="block_soon">Em breve</span><span class="big" data-i18n="block4_big">Seus projetos aqui</span><span data-i18n="block4_sub">Envie e eu adiciono</span></div>
+      <div class="cblock" style="--sk-a:#8b5a2b; --sk-b:#d99a44; --sk-bg:#fbf1e1;"><span data-i18n="block_label">Estilo</span><span class="big" data-i18n="block1_big">Rústico &amp; caseiro</span><span>Tasca do Rossio</span>
+        <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
+            <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
+            <circle class="sk-fill" cx="20" cy="18" r="5"/>
+            <rect class="sk-line" x="40" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="78" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="116" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-fill" x="264" y="10" width="44" height="16" rx="8"/>
+            <rect class="sk-fill2" x="86" y="40" width="148" height="9" rx="4.5"/>
+            <rect class="sk-line" x="65" y="58" width="190" height="68" rx="8"/>
+            <path class="sk-line2" d="M65 58 L255 126 M255 58 L65 126"/>
+            <path class="sk-fill" d="M231 58 L255 58 L255 82 Z"/>
+            <rect class="sk-fill" x="196" y="136" width="52" height="14" rx="7"/>
+            <rect class="sk-fill2" x="18" y="148" width="36" height="28" rx="5"/>
+            <rect class="sk-fill3" x="58" y="138" width="36" height="38" rx="5"/>
+            <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
+          </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
+      </div>
+      <div class="cblock" style="--sk-a:#c9a227; --sk-b:#1c2b3a; --sk-bg:#eef1f4;"><span data-i18n="block_label2">Estilo</span><span class="big" data-i18n="block2_big">Elegante &amp; sóbrio</span><span>Marisqueira Atlântico</span>
+        <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
+            <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
+            <circle class="sk-fill" cx="20" cy="18" r="5"/>
+            <rect class="sk-line" x="40" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="78" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="116" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-fill" x="264" y="10" width="44" height="16" rx="8"/>
+            <rect class="sk-fill2" x="86" y="40" width="148" height="9" rx="4.5"/>
+            <rect class="sk-line" x="65" y="58" width="190" height="68" rx="8"/>
+            <path class="sk-line2" d="M65 58 L255 126 M255 58 L65 126"/>
+            <path class="sk-fill" d="M231 58 L255 58 L255 82 Z"/>
+            <rect class="sk-fill" x="196" y="136" width="52" height="14" rx="7"/>
+            <rect class="sk-fill2" x="18" y="148" width="36" height="28" rx="5"/>
+            <rect class="sk-fill3" x="58" y="138" width="36" height="38" rx="5"/>
+            <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
+          </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
+      </div>
+      <div class="cblock" style="--sk-a:#ff6b6b; --sk-b:#16c2a3; --sk-c:#ffd166; --sk-bg:#fff7f0;"><span data-i18n="block_label3">Estilo</span><span class="big" data-i18n="block3_big">Moderno &amp; colorido</span><span>Jardim &amp; Sal</span>
+        <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
+            <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
+            <circle class="sk-fill" cx="20" cy="18" r="5"/>
+            <rect class="sk-line" x="40" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="78" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="116" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-fill" x="264" y="10" width="44" height="16" rx="8"/>
+            <rect class="sk-fill2" x="86" y="40" width="148" height="9" rx="4.5"/>
+            <rect class="sk-line" x="65" y="58" width="190" height="68" rx="8"/>
+            <path class="sk-line2" d="M65 58 L255 126 M255 58 L65 126"/>
+            <path class="sk-fill" d="M231 58 L255 58 L255 82 Z"/>
+            <rect class="sk-fill" x="196" y="136" width="52" height="14" rx="7"/>
+            <rect class="sk-fill2" x="18" y="148" width="36" height="28" rx="5"/>
+            <rect class="sk-fill3" x="58" y="138" width="36" height="38" rx="5"/>
+            <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
+          </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
+      </div>
+      <div class="cblock" style="--sk-a:#111111; --sk-b:#c9a227; --sk-bg:#f7f7f5;"><span data-i18n="block_label5">Estilo</span><span class="big" data-i18n="block5_big">Minimalista &amp; direto</span><span>Café Nômade</span>
+        <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
+            <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
+            <circle class="sk-fill" cx="20" cy="18" r="5"/>
+            <rect class="sk-line" x="40" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="78" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="116" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-fill" x="264" y="10" width="44" height="16" rx="8"/>
+            <rect class="sk-fill2" x="86" y="40" width="148" height="9" rx="4.5"/>
+            <rect class="sk-line" x="65" y="58" width="190" height="68" rx="8"/>
+            <path class="sk-line2" d="M65 58 L255 126 M255 58 L65 126"/>
+            <path class="sk-fill" d="M231 58 L255 58 L255 82 Z"/>
+            <rect class="sk-fill" x="196" y="136" width="52" height="14" rx="7"/>
+            <rect class="sk-fill2" x="18" y="148" width="36" height="28" rx="5"/>
+            <rect class="sk-fill3" x="58" y="138" width="36" height="38" rx="5"/>
+            <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
+          </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
+      </div>
+      <div class="cblock" style="--sk-a:#7a2035; --sk-b:#b08d57; --sk-bg:#f7ede0;"><span data-i18n="block_label6">Cores</span><span class="big" data-i18n="block6_big">Terrosas &amp; tons de vinho</span><span>Adega Vinha Alta</span>
+        <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
+            <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
+            <circle class="sk-fill" cx="20" cy="18" r="5"/>
+            <rect class="sk-line" x="40" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="78" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="116" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-fill" x="264" y="10" width="44" height="16" rx="8"/>
+            <rect class="sk-fill2" x="86" y="40" width="148" height="9" rx="4.5"/>
+            <rect class="sk-line" x="65" y="58" width="190" height="68" rx="8"/>
+            <path class="sk-line2" d="M65 58 L255 126 M255 58 L65 126"/>
+            <path class="sk-fill" d="M231 58 L255 58 L255 82 Z"/>
+            <rect class="sk-fill" x="196" y="136" width="52" height="14" rx="7"/>
+            <rect class="sk-fill2" x="18" y="148" width="36" height="28" rx="5"/>
+            <rect class="sk-fill3" x="58" y="138" width="36" height="38" rx="5"/>
+            <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
+          </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
+      </div>
+      <div class="cblock" style="--sk-a:#E5457A; --sk-b:#2CA6A4; --sk-c:#F5C518; --sk-bg:#FFF8EE;"><span data-i18n="block_label7">Estilo</span><span class="big" data-i18n="block7_big">Colorido &amp; vibrante</span><span>Mercado Las Flores</span>
+        <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
+            <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
+            <circle class="sk-fill" cx="20" cy="18" r="5"/>
+            <rect class="sk-line" x="40" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="78" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-line" x="116" y="13" width="30" height="10" rx="5"/>
+            <rect class="sk-fill" x="264" y="10" width="44" height="16" rx="8"/>
+            <rect class="sk-fill2" x="86" y="40" width="148" height="9" rx="4.5"/>
+            <rect class="sk-line" x="65" y="58" width="190" height="68" rx="8"/>
+            <path class="sk-line2" d="M65 58 L255 126 M255 58 L65 126"/>
+            <path class="sk-fill" d="M231 58 L255 58 L255 82 Z"/>
+            <rect class="sk-fill" x="196" y="136" width="52" height="14" rx="7"/>
+            <rect class="sk-fill2" x="18" y="148" width="36" height="28" rx="5"/>
+            <rect class="sk-fill3" x="58" y="138" width="36" height="38" rx="5"/>
+            <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
+          </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1389,8 +1530,8 @@ const I18N = {
     pcard4_stamp:'Estilo minimalista', pcard4_title:'Café de especialidade, Lisboa', pcard4_desc:'Landing page enxuta, preto e branco com toque dourado.',
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page jovem e informal, cores quentes e bem-humoradas.',
     pcard6_stamp:'E-commerce', pcard6_title:'Loja online, Douro', pcard6_desc:'Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.',
-    block7_big:'Loja online & colorido', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
-    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Formato', block6_big:'Loja online',
+    block7_big:'Colorido & vibrante', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
+    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Cores', block6_big:'Terrosas & tons de vinho', block_label7:'Estilo',
     portmore_text:'Portfólio completo com filtros por estilo, formato e cores →', portmore_cta:'Ver todos',
     sobre_eyebrow:'Sobre mim', sobre_title:'Quem está do outro lado da tela',
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
@@ -1472,8 +1613,8 @@ const I18N = {
     pcard4_stamp:'Estilo minimalista', pcard4_title:'Café de especialidade, Lisboa', pcard4_desc:'Landing page enxuta, preto e branco com toque dourado.',
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page jovem e informal, cores quentes e bem-humoradas.',
     pcard6_stamp:'E-commerce', pcard6_title:'Loja online, Douro', pcard6_desc:'Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.',
-    block7_big:'Loja online & colorido', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
-    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Formato', block6_big:'Loja online',
+    block7_big:'Colorido & vibrante', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
+    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Cores', block6_big:'Terrosas & tons de vinho', block_label7:'Estilo',
     portmore_text:'Portfólio completo com filtros por estilo, formato e cores →', portmore_cta:'Ver todos',
     sobre_eyebrow:'Sobre mim', sobre_title:'Quem está do outro lado da tela',
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
@@ -1555,8 +1696,8 @@ const I18N = {
     pcard4_stamp:'Estilo minimalista', pcard4_title:'Café de especialidad, Lisboa', pcard4_desc:'Landing page austera, blanco y negro con toque dorado.',
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Oporto', pcard5_desc:'Landing page joven e informal, colores cálidos y desenfadados.',
     pcard6_stamp:'E-commerce', pcard6_title:'Tienda online, Duero', pcard6_desc:'Carrito de compra, categorías de producto y checkout — el ejemplo del plan Banquete.',
-    block7_big:'Tienda online y colorida', pcard7_stamp:'Colorido y vibrante', pcard7_title:'Mercado de sabores, tienda online', pcard7_desc:'Salsas, especias y dulces — carrito de compra, categorías por chip y paleta vibrante llena de personalidad.',
-    block_label5:'Estilo', block5_big:'Minimalista y directo', block_label6:'Formato', block6_big:'Tienda online',
+    block7_big:'Colorido y vibrante', pcard7_stamp:'Colorido y vibrante', pcard7_title:'Mercado de sabores, tienda online', pcard7_desc:'Salsas, especias y dulces — carrito de compra, categorías por chip y paleta vibrante llena de personalidad.',
+    block_label5:'Estilo', block5_big:'Minimalista y directo', block_label6:'Colores', block6_big:'Terrosos y tonos de vino', block_label7:'Estilo',
     portmore_text:'Portafolio completo con filtros por estilo, formato y colores →', portmore_cta:'Ver todo',
     sobre_eyebrow:'Sobre mí', sobre_title:'Quién está al otro lado de la pantalla',
     sobre_p:'Soy yo quien diseña, escribe y publica cada web — sin equipo grande, sin subcontratar. Trabajo directo con dueños de restaurantes, desde el primer prototipo hasta la web publicada.',
@@ -1638,8 +1779,8 @@ const I18N = {
     pcard4_stamp:'Minimal style', pcard4_title:'Speciality coffee shop, Lisbon', pcard4_desc:'Lean landing page, black and white with a gold accent.',
     pcard5_stamp:'Colourful style', pcard5_title:'Food truck, Porto', pcard5_desc:'Young, informal landing page with warm, playful colours.',
     pcard6_stamp:'E-commerce', pcard6_title:'Online shop, Douro', pcard6_desc:'Shopping cart, product categories and checkout — the example for the Banquet plan.',
-    block7_big:'Colourful online shop', pcard7_stamp:'Colourful & vibrant', pcard7_title:'Flavour market, online shop', pcard7_desc:'Sauces, spices and sweets — shopping cart, chip-based categories and a vibrant, characterful palette.',
-    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Format', block6_big:'Online shop',
+    block7_big:'Colourful & vibrant', pcard7_stamp:'Colourful & vibrant', pcard7_title:'Flavour market, online shop', pcard7_desc:'Sauces, spices and sweets — shopping cart, chip-based categories and a vibrant, characterful palette.',
+    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Colors', block6_big:'Earthy & wine tones', block_label7:'Style',
     portmore_text:'Full portfolio with filters by style, format and colour →', portmore_cta:'See all',
     sobre_eyebrow:'About me', sobre_title:'Who\'s on the other side of the screen',
     sobre_p:'I design, write and publish every site myself — no large team, nothing outsourced. I work directly with restaurant owners, from the first prototype to launch.',
@@ -1722,8 +1863,8 @@ const I18N = {
     pcard4_stamp:'Minimal style', pcard4_title:'Specialty coffee shop, Lisbon', pcard4_desc:'Lean landing page, black and white with a gold accent.',
     pcard5_stamp:'Colorful style', pcard5_title:'Food truck, Porto', pcard5_desc:'Young, informal landing page with warm, playful colors.',
     pcard6_stamp:'E-commerce', pcard6_title:'Online shop, Douro', pcard6_desc:'Shopping cart, product categories and checkout — the example for the Banquet plan.',
-    block7_big:'Colorful online shop', pcard7_stamp:'Colorful & vibrant', pcard7_title:'Flavor market, online shop', pcard7_desc:'Sauces, spices, and sweets — shopping cart, chip-based categories, and a vibrant, characterful palette.',
-    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Format', block6_big:'Online shop',
+    block7_big:'Colorful & vibrant', pcard7_stamp:'Colorful & vibrant', pcard7_title:'Flavor market, online shop', pcard7_desc:'Sauces, spices, and sweets — shopping cart, chip-based categories, and a vibrant, characterful palette.',
+    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Colors', block6_big:'Earthy & wine tones', block_label7:'Style',
     portmore_text:'Full portfolio with filters by style, format and colour →', portmore_cta:'See all',
     sobre_eyebrow:'About me', sobre_title:'Who\'s on the other side of the screen',
     sobre_p:'I design, write and publish every site myself — no large team, nothing outsourced. I work directly with restaurant owners, from the first prototype to launch.',
@@ -1806,8 +1947,8 @@ const I18N = {
     pcard4_stamp:'Minimalistischer Stil', pcard4_title:'Kaffeerösterei, Lissabon', pcard4_desc:'Schlanke Landingpage, Schwarz-Weiß mit goldenem Akzent.',
     pcard5_stamp:'Bunter Stil', pcard5_title:'Food-Truck, Porto', pcard5_desc:'Junge, unkomplizierte Landingpage mit warmen, verspielten Farben.',
     pcard6_stamp:'E-Commerce', pcard6_title:'Online-Shop, Douro', pcard6_desc:'Warenkorb, Produktkategorien und Kasse — das Beispiel für das Bankett-Paket.',
-    block7_big:'Bunter Online-Shop', pcard7_stamp:'Bunt & lebendig', pcard7_title:'Geschmackmarkt, Online-Shop', pcard7_desc:'Saucen, Gewürze und Süßes — Warenkorb, Kategorien als Chips und eine lebendige, charakterstarke Farbpalette.',
-    block_label5:'Stil', block5_big:'Minimalistisch & direkt', block_label6:'Format', block6_big:'Online-Shop',
+    block7_big:'Bunt & lebendig', pcard7_stamp:'Bunt & lebendig', pcard7_title:'Geschmackmarkt, Online-Shop', pcard7_desc:'Saucen, Gewürze und Süßes — Warenkorb, Kategorien als Chips und eine lebendige, charakterstarke Farbpalette.',
+    block_label5:'Stil', block5_big:'Minimalistisch & direkt', block_label6:'Farben', block6_big:'Erdig & Weintöne', block_label7:'Stil',
     portmore_text:'Vollständiges Portfolio mit Filtern nach Stil, Format und Farbe →', portmore_cta:'Alle ansehen',
     sobre_eyebrow:'Über mich', sobre_title:'Wer auf der anderen Seite des Bildschirms sitzt',
     sobre_p:'Ich entwerfe, schreibe und veröffentliche jede Website selbst — kein großes Team, nichts ausgelagert. Ich arbeite direkt mit Restaurantbesitzern zusammen, vom ersten Prototyp bis zum Launch.',
@@ -1889,8 +2030,8 @@ const I18N = {
     pcard4_stamp:'Stile minimale', pcard4_title:'Caffetteria di specialità, Lisbona', pcard4_desc:'Landing page essenziale, bianco e nero con tocco dorato.',
     pcard5_stamp:'Stile colorato', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page giovane e informale, colori caldi e giocosi.',
     pcard6_stamp:'E-commerce', pcard6_title:'Negozio online, Douro', pcard6_desc:'Carrello, categorie di prodotto e checkout — l\'esempio del piano Banchetto.',
-    block7_big:'Negozio online colorato', pcard7_stamp:'Colorato & vivace', pcard7_title:'Mercato dei sapori, negozio online', pcard7_desc:'Salse, spezie e dolci — carrello, categorie a chip e palette vivace piena di personalità.',
-    block_label5:'Stile', block5_big:'Minimale & diretto', block_label6:'Formato', block6_big:'Negozio online',
+    block7_big:'Colorato & vivace', pcard7_stamp:'Colorato & vivace', pcard7_title:'Mercato dei sapori, negozio online', pcard7_desc:'Salse, spezie e dolci — carrello, categorie a chip e palette vivace piena di personalità.',
+    block_label5:'Stile', block5_big:'Minimale & diretto', block_label6:'Colori', block6_big:'Terrosi & toni di vino', block_label7:'Stile',
     portmore_text:'Portfolio completo con filtri per stile, formato e colore →', portmore_cta:'Vedi tutti',
     sobre_eyebrow:'Chi sono', sobre_title:'Chi c\'è dall\'altra parte dello schermo',
     sobre_p:'Progetto, scrivo e pubblico ogni sito da solo — senza un grande team, senza esternalizzare. Lavoro direttamente con i proprietari dei ristoranti, dal primo prototipo al lancio.',
@@ -1972,8 +2113,8 @@ const I18N = {
     pcard4_stamp:'Minimalistisk stil', pcard4_title:'Kafferosteri, Lissabon', pcard4_desc:'Enkel landningssida, svart och vitt med guldaccent.',
     pcard5_stamp:'Färgstark stil', pcard5_title:'Food truck, Porto', pcard5_desc:'Ung, avslappnad landningssida med varma, lekfulla färger.',
     pcard6_stamp:'E-handel', pcard6_title:'Nätbutik, Douro', pcard6_desc:'Varukorg, produktkategorier och kassa — exemplet för Bankett-paketet.',
-    block7_big:'Färgstark nätbutik', pcard7_stamp:'Färgstark & levande', pcard7_title:'Smakmarknad, nätbutik', pcard7_desc:'Såser, kryddor och sötsaker — varukorg, kategorier som chips och en levande, karaktärsfull palett.',
-    block_label5:'Stil', block5_big:'Minimalistisk & rak', block_label6:'Format', block6_big:'Nätbutik',
+    block7_big:'Färgstark & levande', pcard7_stamp:'Färgstark & levande', pcard7_title:'Smakmarknad, nätbutik', pcard7_desc:'Såser, kryddor och sötsaker — varukorg, kategorier som chips och en levande, karaktärsfull palett.',
+    block_label5:'Stil', block5_big:'Minimalistisk & rak', block_label6:'Färger', block6_big:'Jordnära & vintoner', block_label7:'Stil',
     portmore_text:'Fullständig portfolio med filter för stil, format och färg →', portmore_cta:'Se alla',
     sobre_eyebrow:'Om mig', sobre_title:'Vem som sitter på andra sidan skärmen',
     sobre_p:'Jag designar, skriver och publicerar varje webbplats själv — inget stort team, inget outsourcat. Jag jobbar direkt med restaurangägare, från första prototyp till lansering.',
@@ -2055,8 +2196,8 @@ const I18N = {
     pcard4_stamp:'نمط بسيط', pcard4_title:'مقهى متخصص، لشبونة', pcard4_desc:'صفحة هبوط مبسطة بالأبيض والأسود مع لمسة ذهبية.',
     pcard5_stamp:'نمط ملون', pcard5_title:'عربة طعام متنقلة، بورتو', pcard5_desc:'صفحة هبوط شبابية غير رسمية بألوان دافئة ومرحة.',
     pcard6_stamp:'متجر إلكتروني', pcard6_title:'متجر إلكتروني، دورو', pcard6_desc:'سلة تسوق، فئات منتجات، وعملية دفع — مثال باقة "المأدبة".',
-    block7_big:'متجر إلكتروني ملون', pcard7_stamp:'ملوّن وحيوي', pcard7_title:'سوق النكهات، متجر إلكتروني', pcard7_desc:'صلصات وتوابل وحلويات — سلة تسوق، فئات بشكل شرائح، وألوان زاهية مليئة بالطابع المميز.',
-    block_label5:'النمط', block5_big:'بسيط ومباشر', block_label6:'التنسيق', block6_big:'متجر إلكتروني',
+    block7_big:'ملوّن وحيوي', pcard7_stamp:'ملوّن وحيوي', pcard7_title:'سوق النكهات، متجر إلكتروني', pcard7_desc:'صلصات وتوابل وحلويات — سلة تسوق، فئات بشكل شرائح، وألوان زاهية مليئة بالطابع المميز.',
+    block_label5:'النمط', block5_big:'بسيط ومباشر', block_label6:'الألوان', block6_big:'ترابية وألوان النبيذ', block_label7:'النمط',
     portmore_text:'الأعمال الكاملة مع فلاتر حسب النمط والتنسيق واللون ←', portmore_cta:'عرض الكل',
     sobre_eyebrow:'عني', sobre_title:'من يقف خلف الشاشة',
     sobre_p:'أنا من يصمم ويكتب وينشر كل موقع بنفسي — بدون فريق كبير، وبدون تعهيد خارجي. أعمل مباشرة مع أصحاب المطاعم من النموذج الأول حتى الإطلاق.',
