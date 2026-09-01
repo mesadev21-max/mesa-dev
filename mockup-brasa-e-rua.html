@@ -59,10 +59,21 @@
   @media(max-width:480px){ .menu-grid{grid-template-columns:1fr;} }
   .item{background:#fff; border-radius:16px; padding:22px; box-shadow:0 6px 0 rgba(36,26,18,0.1); text-align:center; position:relative; transition:transform .18s ease, box-shadow .18s ease;}
   .item:hover{transform:translateY(-4px); box-shadow:0 10px 0 rgba(36,26,18,0.12);}
-  .item .icon{width:56px; height:56px; border-radius:50%; margin:0 auto 14px; background:linear-gradient(150deg,var(--yellow),var(--red));}
+  .item .icon{width:72px; height:72px; border-radius:50%; margin:0 auto 14px; background:linear-gradient(150deg,var(--yellow),var(--red)); overflow:hidden; border:3px solid var(--yellow);}
+  .item .icon img{width:100%; height:100%; object-fit:cover; display:block;}
   .item h3{font-size:17px; margin-bottom:6px;}
   .item .price{font-family:'Space Mono',monospace; color:var(--red); font-weight:700;}
   .item .fav{position:absolute; top:-10px; right:-8px; background:var(--ink); color:var(--yellow); font-family:'Space Mono',monospace; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:5px 10px; border-radius:20px; transform:rotate(8deg); box-shadow:0 3px 0 rgba(0,0,0,0.15);}
+
+  /* foto grande do hero, tipo polaroid caída ao lado do texto */
+  .hero-photo{
+    max-width:280px; margin:34px auto 0; border-radius:12px; overflow:hidden;
+    border:8px solid #fff; box-shadow:0 14px 0 rgba(36,26,18,0.15); transform:rotate(3deg);
+  }
+  .hero-photo img{width:100%; display:block; aspect-ratio:4/3; object-fit:cover;}
+  @media(min-width:860px){
+    .hero-photo{position:absolute; right:6%; top:56px; margin:0; max-width:230px;}
+  }
 
   /* "como pedir" — 3 passos com setas conectando, tipo fluxograma, pra dar
      energia de processo (inspirado na referência que você mandou) */
@@ -106,6 +117,7 @@
       <h1>Lanche bom<br>é lanche <span class="mark">de rua<svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M2 14 Q 50 2, 100 10 T 198 8" fill="none" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/></svg></span>.</h1>
       <p>Pão na chapa, carne no ponto, molho da casa que ninguém copia. Simples assim.</p>
       <a href="#menu" class="btn">Ver cardápio</a>
+      <div class="hero-photo"><img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=500&q=70" alt="Hambúrguer com batatas fritas"></div>
     </div>
   </div>
   <svg class="torn" viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0 10 L40 18 L80 6 L120 20 L160 8 L200 16 L240 4 L280 18 L320 9 L360 22 L400 7 L440 17 L480 5 L520 19 L560 10 L600 24 L640 6 L680 16 L720 8 L760 20 L800 5 L840 18 L880 9 L920 22 L960 7 L1000 16 L1040 6 L1080 20 L1120 9 L1160 17 L1200 8 L1200 34 L0 34 Z"/></svg>
@@ -136,12 +148,12 @@
   <div class="wrap">
     <h2>O cardápio</h2>
     <div class="menu-grid">
-      <div class="item"><span class="fav">Mais pedido</span><div class="icon"></div><h3>Brasa Clássico</h3><p>Pão, blend da casa, queijo, molho especial</p><div class="price">€ 7,50</div></div>
-      <div class="item"><div class="icon"></div><h3>Duplo Fumaça</h3><p>Dois hambúrgueres, bacon, cebola caramelizada</p><div class="price">€ 9,80</div></div>
-      <div class="item"><div class="icon"></div><h3>Batata da Rua</h3><p>Batata rústica, ervas, maionese defumada</p><div class="price">€ 4,00</div></div>
-      <div class="item"><div class="icon"></div><h3>Veggie da Praça</h3><p>Hambúrguer de grão-de-bico, molho verde</p><div class="price">€ 7,00</div></div>
-      <div class="item"><div class="icon"></div><h3>Limonada da Casa</h3><p>Limão siciliano, hortelã fresca</p><div class="price">€ 3,00</div></div>
-      <div class="item"><div class="icon"></div><h3>Brownie na Chapa</h3><p>Quente, com sorvete de baunilha</p><div class="price">€ 4,50</div></div>
+      <div class="item"><span class="fav">Mais pedido</span><div class="icon"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=200&q=70" alt=""></div><h3>Brasa Clássico</h3><p>Pão, blend da casa, queijo, molho especial</p><div class="price">€ 7,50</div></div>
+      <div class="item"><div class="icon"><img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=200&q=70" alt=""></div><h3>Duplo Fumaça</h3><p>Dois hambúrgueres, bacon, cebola caramelizada</p><div class="price">€ 9,80</div></div>
+      <div class="item"><div class="icon"><img src="https://images.unsplash.com/photo-1707773726979-4b87cd1c838a?auto=format&fit=crop&w=200&q=70" alt=""></div><h3>Batata da Rua</h3><p>Batata rústica, ervas, maionese defumada</p><div class="price">€ 4,00</div></div>
+      <div class="item"><div class="icon"><img src="https://images.unsplash.com/photo-1542554762515-82be5d8f0bfa?auto=format&fit=crop&w=200&q=70" alt=""></div><h3>Veggie da Praça</h3><p>Hambúrguer de grão-de-bico, molho verde</p><div class="price">€ 7,00</div></div>
+      <div class="item"><div class="icon"><img src="https://images.unsplash.com/photo-1555949366-819808d99159?auto=format&fit=crop&w=200&q=70" alt=""></div><h3>Limonada da Casa</h3><p>Limão siciliano, hortelã fresca</p><div class="price">€ 3,00</div></div>
+      <div class="item"><div class="icon"><img src="https://images.unsplash.com/photo-1461009312844-e80697a81cc7?auto=format&fit=crop&w=200&q=70" alt=""></div><h3>Brownie na Chapa</h3><p>Quente, com sorvete de baunilha</p><div class="price">€ 4,50</div></div>
     </div>
   </div>
   <svg class="torn dark" viewBox="0 0 1200 34" preserveAspectRatio="none" style="position:absolute; bottom:-1px; left:0;"><path d="M0 10 L40 18 L80 6 L120 20 L160 8 L200 16 L240 4 L280 18 L320 9 L360 22 L400 7 L440 17 L480 5 L520 19 L560 10 L600 24 L640 6 L680 16 L720 8 L760 20 L800 5 L840 18 L880 9 L920 22 L960 7 L1000 16 L1040 6 L1080 20 L1120 9 L1160 17 L1200 8 L1200 34 L0 34 Z"/></svg>
