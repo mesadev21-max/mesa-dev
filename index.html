@@ -465,6 +465,70 @@
   .step h3{font-size:18px; margin:10px 0 8px;}
   .step p{font-size:13.5px; opacity:0.7;}
 
+  /* ===== "Como funciona" em scrollytelling: esfera de pontos que gira
+     conforme a rolagem, com as 4 etapas surgindo ao redor dela e depois
+     descendo pra fora da tela — mesma técnica de páginas de produto. ===== */
+  .seq-alto{position:relative; height:4200px;}
+  .seq-fixo{position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center;}
+  .seq-canvas-wrap{position:relative; width:min(78vh,78vw,720px); height:min(78vh,78vw,720px); flex-shrink:0; z-index:3;}
+  .seq-canvas-wrap canvas{width:100%; height:100%; display:block;}
+  .seq-card{position:absolute; top:50%; left:50%; width:320px; padding:28px 30px;
+    border:1px solid rgba(201,162,39,0.35); border-top:3px solid var(--gold);
+    background:rgba(23,20,15,0.55); backdrop-filter:blur(3px); border-radius:10px;
+    box-shadow:0 22px 48px rgba(0,0,0,0.3);
+    transform:translate(-50%,-50%); opacity:0; pointer-events:none; text-align:center;}
+  .seq-card .icon{width:42px; height:42px; margin:0 auto 12px; color:var(--gold);}
+  .seq-card .icon svg{width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.6;
+    stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:120; stroke-dashoffset:120; transition:stroke-dashoffset .8s ease .15s;}
+  .seq-card.is-active .icon svg{stroke-dashoffset:0;}
+  .seq-card .n{font-family:'Space Mono',monospace; font-size:13px; color:var(--gold);}
+  .seq-card h3{font-size:21px; margin:10px 0 8px; color:var(--cream);}
+  .seq-card p{font-size:14.5px; opacity:.75; color:var(--cream-2); line-height:1.5;}
+  .seq-card.is-active{pointer-events:auto;}
+  /* palavra "SITE" do 4º cartão — some por trás, cresce até tomar a tela
+     como se rolar mais fosse "entrar" pela letra I, revelando a próxima seção */
+  .site-word-wrap{position:absolute; inset:0; display:flex; align-items:center;
+    justify-content:center; pointer-events:none;}
+  .site-word{font-family:'Fraunces',serif; font-weight:700; letter-spacing:.02em;
+    font-size:clamp(40px,7vw,64px); color:var(--gold-light); white-space:nowrap;
+    opacity:0; transform-origin:31% 55%;}
+  .steps-fallback{display:none;}
+  @media(max-width:900px){
+    .seq-alto{display:none;}
+    .steps-fallback{display:block; padding:44px 0 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .seq-alto{display:none;}
+    .steps-fallback{display:block; padding:44px 0 0;}
+  }
+
+  /* ===== Cena final "antes / depois": aparece no MESMO lugar do globo
+     (dentro do próprio .seq-fixo), em fade, assim que o zoom da palavra
+     "SITE" termina. Depois, um buraco redondo encolhe e revela o "depois"
+     (premium) por baixo do "antes" (avermelhado, sem site). ===== */
+  .reveal-overlay{position:absolute; inset:0; opacity:0; pointer-events:none; z-index:10;}
+  .reveal-cena{position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:30px; text-align:center; padding:20px;
+    border-radius:8px; overflow:hidden;}
+  .reveal-depois{background:linear-gradient(140deg,#3a2c08,#7a5a0e 45%,var(--gold) 100%); color:#241c0a;}
+  .reveal-antes{background:linear-gradient(140deg,#3a0d0d,#7a1f1f 55%,#a52e2e 100%); color:#fff;
+    clip-path:circle(150% at 50% 50%); will-change:clip-path;}
+
+  /* ===== Frase, sketch e selos usados dentro da cena "antes/depois" ===== */
+  .reveal-phrase{font-family:'Fraunces',serif; font-size:clamp(20px,3.2vw,32px); font-weight:600;
+    max-width:20ch; margin:0; line-height:1.25;}
+  .reveal-depois .reveal-phrase{color:#241c0a;}
+  .reveal-sketch-wrap{width:min(560px,82vw);}
+  .reveal-sketch{width:100%; height:auto; display:block;
+    filter:drop-shadow(0 24px 40px rgba(0,0,0,0.28));}
+  .reveal-badge{width:58px; height:58px;}
+  .reveal-badge svg{width:100%; height:100%; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;}
+  .reveal-badge-x svg{stroke:#fff;}
+  .reveal-badge-x svg circle{fill:rgba(255,255,255,.14);}
+  .reveal-badge-check svg{stroke:#241c0a;}
+  .reveal-badge-check svg circle{fill:rgba(36,28,10,.14);}
+
   /* PRICING CAROUSEL w/ glassmorphism */
   .carousel-wrap{position:relative; margin-top:44px; padding:20px 0 10px; overflow:hidden;}
   .carousel-bg{position:absolute; inset:-30%; z-index:0;
@@ -1110,7 +1174,7 @@
             <rect class="sk-fill2" x="98" y="144" width="36" height="32" rx="5"/>
           </svg><span class="cblock-caption">Paleta exemplificativa</span></div>
       </div>
-      <div class="cblock" style="--sk-a:#7a2035; --sk-b:#b08d57; --sk-bg:#f7ede0;"><span data-i18n="block_label6">Cores</span><span class="big" data-i18n="block6_big">Terrosas &amp; tons de vinho</span><span>Adega Vinha Alta</span>
+      <div class="cblock" style="--sk-a:#5c1421; --sk-b:#c9a24d; --sk-c:#3a0c15; --sk-bg:#f8f1e7;"><span data-i18n="block_label6">Cores</span><span class="big" data-i18n="block6_big">Vinho &amp; dourado</span><span>Adega Vinha Alta</span>
         <div class="cblock-sketch" aria-hidden="true"><svg viewBox="0 0 320 190" preserveAspectRatio="xMidYMid slice">
             <rect class="sk-bg" x="0" y="0" width="320" height="190"/>
             <circle class="sk-fill" cx="20" cy="18" r="5"/>
@@ -1249,12 +1313,79 @@
   </div>
 </section>
 
-<section class="sec-light reveal" id="como">
+<section class="sec-dark reveal" id="como">
   <div class="wrap">
     <div class="section-head">
       <span class="stamp" data-i18n="como_eyebrow">Como funciona</span>
       <h2 data-i18n="como_title">Do pedido ao site no ar</h2>
     </div>
+  </div>
+
+  <!-- Sequência que rola: a esfera de pontos gira conforme a página desce,
+       e cada uma das 4 etapas aparece "ao redor" dela, depois desce e some
+       (efeito scrollytelling, estilo página de produto). Em telas estreitas
+       isso vira uma grade normal de 4 cartões (mais fácil de usar no celular). -->
+  <div class="seq-alto">
+    <div class="seq-fixo">
+      <div class="seq-canvas-wrap">
+        <canvas width="220" height="220" aria-hidden="true"></canvas>
+      </div>
+      <div class="seq-card sc-1"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span class="n">01</span><h3 data-i18n="step1_t">Você conta o que precisa</h3><p data-i18n="step1_d">Preenche o formulário com o nome do restaurante e o estilo que imagina.</p></div>
+      <div class="seq-card sc-2"><span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="n">02</span><h3 data-i18n="step2_t">Eu monto um protótipo</h3><p data-i18n="step2_d">Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.</p></div>
+      <div class="seq-card sc-3"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h6M4 18h12"/><circle cx="17" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span><span class="n">03</span><h3 data-i18n="step3_t">Ajustamos juntos</h3><p data-i18n="step3_d">Trocamos fotos, textos e cores até ficar do seu jeito.</p></div>
+      <div class="seq-card sc-4">
+        <span class="icon sc4-fade"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+        <span class="n sc4-fade">04</span>
+        <h3 class="sc4-fade" data-i18n="step4_t">Site no ar</h3>
+        <p class="sc4-fade" data-i18n="step4_d">Publicamos com endereço próprio, pronto pra receber clientes.</p>
+        <div class="site-word-wrap" aria-hidden="true"><span class="site-word">S<span class="site-i">I</span>TE</span></div>
+      </div>
+
+      <!-- Cena final: aparece no MESMO lugar do globo, em fade, quando o zoom
+           da palavra "SITE" termina. O "antes" (avermelhado) encolhe num
+           círculo e revela o "depois" (dourado, premium) com o site completo. -->
+      <div class="reveal-overlay">
+        <div class="reveal-cena reveal-depois">
+          <div class="reveal-sketch-wrap">
+            <svg class="reveal-sketch" viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="632" height="372" rx="14" fill="#fbf8f2" stroke="#241c0a" stroke-width="2"/>
+              <circle cx="26" cy="24" r="4.5" fill="#d84a2b"/><circle cx="40" cy="24" r="4.5" fill="#e4c563"/><circle cx="54" cy="24" r="4.5" fill="#2f6f6a"/>
+              <rect x="4" y="4" width="632" height="34" rx="14" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <circle cx="90" cy="55" r="9" fill="#c9a227"/>
+              <rect x="112" y="49" width="60" height="12" rx="6" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <rect x="184" y="49" width="60" height="12" rx="6" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <rect x="256" y="49" width="60" height="12" rx="6" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <rect x="536" y="45" width="84" height="22" rx="11" fill="#c9a227"/>
+              <rect x="200" y="92" width="240" height="16" rx="8" fill="#c9a227" opacity=".55"/>
+              <rect x="150" y="120" width="340" height="10" rx="5" fill="#241c0a" opacity=".25"/>
+              <rect x="120" y="148" width="400" height="130" rx="12" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <path d="M120 148 L460 278 M460 148 L120 278" stroke="#c9a227" stroke-width="2"/>
+              <path d="M432 148 L460 148 L460 176 Z" fill="#241c0a"/>
+              <rect x="366" y="296" width="94" height="24" rx="12" fill="#241c0a"/>
+              <rect x="60" y="298" width="130" height="52" rx="10" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <rect x="200" y="298" width="130" height="52" rx="10" fill="#c9a227" opacity=".18"/>
+              <rect x="450" y="298" width="130" height="52" rx="10" fill="none" stroke="#241c0a" stroke-width="2"/>
+              <rect x="20" y="360" width="600" height="8" rx="4" fill="#241c0a" opacity=".15"/>
+            </svg>
+          </div>
+          <div class="reveal-badge reveal-badge-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+          </div>
+          <p class="reveal-phrase" data-i18n="reveal_after">Depois: site no ar, elegante e sempre nos eixos.</p>
+        </div>
+        <div class="reveal-cena reveal-antes">
+          <div class="reveal-badge reveal-badge-x" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+          </div>
+          <p class="reveal-phrase" data-i18n="reveal_before">Antes: sem site, o cliente pesquisa e não te encontra.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- mesmas 4 etapas, versão estática simples — some no desktop, aparece só
+       em telas estreitas onde o efeito de rolagem fica apertado demais -->
+  <div class="wrap steps-fallback">
     <div class="steps">
       <div class="step"><span class="n">01</span><h3 data-i18n="step1_t">Você conta o que precisa</h3><p data-i18n="step1_d">Preenche o formulário com o nome do restaurante e o estilo que imagina.</p></div>
       <div class="step"><span class="n">02</span><h3 data-i18n="step2_t">Eu monto um protótipo</h3><p data-i18n="step2_d">Com o sinal de 30% pago, você recebe em até 5 dias úteis um link pra ver o site.</p></div>
@@ -1510,7 +1641,7 @@ const I18N = {
     item5_t:'Preço combinado, sem surpresa', item5_d:'O valor depende do tamanho do site — combinamos tudo antes de eu começar a construir.', item5_tag:'sob consulta',
     port_eyebrow:'Portfólio', port_title_a:'Sites que fazem', port_title_b:'reservar mesa.', port_sub:'Cada projeto é desenhado do zero pro restaurante — nada de modelo pronto com o nome trocado.',
     block_label:'Estilo', block_label2:'Estilo', block_label3:'Estilo', block1_big:'Rústico & caseiro', block2_big:'Elegante & sóbrio', block3_big:'Moderno & colorido',
-    block_soon:'Em breve', block4_big:'Seus projetos aqui', block4_sub:'Envie e eu adiciono',
+    block_soon:'Em breve', block4_big:'Seus projetos aqui', block4_sub:'Envie e eu adiciono', reveal_before:'Antes: sem site, o cliente pesquisa e não te encontra.', reveal_after:'Depois: site no ar, elegante e sempre nos eixos.',
     pain_badge:'A realidade de quem ainda não tem site', pain_title:'Isso já aconteceu com você?', pain_sub:'A maioria dos donos de restaurante que me procuram sente exatamente isso. Você não está sozinho.',
     pain_q1:'As pessoas perguntam se eu tenho site, e eu só mando o Instagram.', pain_q2:'Sei que isso está me custando reservas, mas não sei o que fazer a respeito.',
     pain_q3:'Ainda não tenho site nem identidade visual pronta — não sei nem por onde começar.', pain_q4:'Já pensei em fazer um site, mas nunca sobra tempo — o restaurante toma tudo.',
@@ -1531,7 +1662,7 @@ const I18N = {
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page jovem e informal, cores quentes e bem-humoradas.',
     pcard6_stamp:'E-commerce', pcard6_title:'Loja online, Douro', pcard6_desc:'Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.',
     block7_big:'Colorido & vibrante', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
-    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Cores', block6_big:'Terrosas & tons de vinho', block_label7:'Estilo',
+    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Cores', block6_big:'Vinho & dourado', block_label7:'Estilo',
     portmore_text:'Portfólio completo com filtros por estilo, formato e cores →', portmore_cta:'Ver todos',
     sobre_eyebrow:'Sobre mim', sobre_title:'Quem está do outro lado da tela',
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
@@ -1593,7 +1724,7 @@ const I18N = {
     item5_t:'Preço combinado, sem surpresa', item5_d:'O valor depende do tamanho do site — combinamos tudo antes de eu começar a construir.', item5_tag:'sob consulta',
     port_eyebrow:'Portfólio', port_title_a:'Sites que fazem', port_title_b:'reservar mesa.', port_sub:'Cada projeto é desenhado do zero pro restaurante — nada de modelo pronto com o nome trocado.',
     block_label:'Estilo', block_label2:'Estilo', block_label3:'Estilo', block1_big:'Rústico & caseiro', block2_big:'Elegante & sóbrio', block3_big:'Moderno & colorido',
-    block_soon:'Em breve', block4_big:'Seus projetos aqui', block4_sub:'Envie e eu adiciono',
+    block_soon:'Em breve', block4_big:'Seus projetos aqui', block4_sub:'Envie e eu adiciono', reveal_before:'Antes: sem site, o cliente pesquisa e não te encontra.', reveal_after:'Depois: site no ar, elegante e sempre nos eixos.',
     pain_badge:'A realidade de quem ainda não tem site', pain_title:'Isso já aconteceu com você?', pain_sub:'A maioria dos donos de restaurante que me procuram sente exatamente isso. Você não está sozinho.',
     pain_q1:'As pessoas perguntam se eu tenho site, e eu só mando o Instagram.', pain_q2:'Sei que isso está me custando reservas, mas não sei o que fazer a respeito.',
     pain_q3:'Ainda não tenho site nem identidade visual pronta — não sei nem por onde começar.', pain_q4:'Já pensei em fazer um site, mas nunca sobra tempo — o restaurante toma tudo.',
@@ -1614,7 +1745,7 @@ const I18N = {
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page jovem e informal, cores quentes e bem-humoradas.',
     pcard6_stamp:'E-commerce', pcard6_title:'Loja online, Douro', pcard6_desc:'Carrinho de compras, categorias de produto e checkout — o exemplo do plano Banquete.',
     block7_big:'Colorido & vibrante', pcard7_stamp:'Colorido & vibrante', pcard7_title:'Mercado de sabores, loja online', pcard7_desc:'Molhos, especiarias e doces — carrinho de compras, categorias por chip e paleta vibrante cheia de personalidade.',
-    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Cores', block6_big:'Terrosas & tons de vinho', block_label7:'Estilo',
+    block_label5:'Estilo', block5_big:'Minimalista & direto', block_label6:'Cores', block6_big:'Vinho & dourado', block_label7:'Estilo',
     portmore_text:'Portfólio completo com filtros por estilo, formato e cores →', portmore_cta:'Ver todos',
     sobre_eyebrow:'Sobre mim', sobre_title:'Quem está do outro lado da tela',
     sobre_p:'Sou eu quem desenha, escreve e publica cada site — sem equipe grande, sem terceirizar pra fora. Trabalho direto com donos de restaurante, do primeiro protótipo até o site no ar.',
@@ -1676,7 +1807,7 @@ const I18N = {
     item5_t:'Precio acordado, sin sorpresas', item5_d:'El valor depende del tamaño de la web — lo acordamos todo antes de empezar a construir.', item5_tag:'a consultar',
     port_eyebrow:'Portafolio', port_title_a:'Webs que hacen', port_title_b:'reservar mesa.', port_sub:'Cada proyecto se diseña desde cero para el restaurante — nada de plantilla con el nombre cambiado.',
     block_label:'Estilo', block_label2:'Estilo', block_label3:'Estilo', block1_big:'Rústico y casero', block2_big:'Elegante y sobrio', block3_big:'Moderno y colorido',
-    block_soon:'Próximamente', block4_big:'Sus proyectos aquí', block4_sub:'Envíelos y los añado',
+    block_soon:'Próximamente', block4_big:'Sus proyectos aquí', block4_sub:'Envíelos y los añado', reveal_before:'Antes: sin sitio web, el cliente busca y no te encuentra.', reveal_after:'Después: sitio publicado, elegante y siempre en orden.',
     pain_badge:'La realidad de quien todavía no tiene web', pain_title:'¿Le suena familiar?', pain_sub:'La mayoría de los dueños de restaurantes que me contactan sienten exactamente esto. No está solo.',
     pain_q1:'La gente me pregunta si tengo web, y solo les mando el Instagram.', pain_q2:'Sé que esto me está costando reservas, pero no sé qué hacer al respecto.',
     pain_q3:'Todavía no tengo web ni identidad visual — ni siquiera sé por dónde empezar.', pain_q4:'Ya pensé en hacer una web, pero nunca sobra tiempo — el restaurante lo absorbe todo.',
@@ -1697,7 +1828,7 @@ const I18N = {
     pcard5_stamp:'Estilo colorido', pcard5_title:'Food truck, Oporto', pcard5_desc:'Landing page joven e informal, colores cálidos y desenfadados.',
     pcard6_stamp:'E-commerce', pcard6_title:'Tienda online, Duero', pcard6_desc:'Carrito de compra, categorías de producto y checkout — el ejemplo del plan Banquete.',
     block7_big:'Colorido y vibrante', pcard7_stamp:'Colorido y vibrante', pcard7_title:'Mercado de sabores, tienda online', pcard7_desc:'Salsas, especias y dulces — carrito de compra, categorías por chip y paleta vibrante llena de personalidad.',
-    block_label5:'Estilo', block5_big:'Minimalista y directo', block_label6:'Colores', block6_big:'Terrosos y tonos de vino', block_label7:'Estilo',
+    block_label5:'Estilo', block5_big:'Minimalista y directo', block_label6:'Colores', block6_big:'Vino y dorado', block_label7:'Estilo',
     portmore_text:'Portafolio completo con filtros por estilo, formato y colores →', portmore_cta:'Ver todo',
     sobre_eyebrow:'Sobre mí', sobre_title:'Quién está al otro lado de la pantalla',
     sobre_p:'Soy yo quien diseña, escribe y publica cada web — sin equipo grande, sin subcontratar. Trabajo directo con dueños de restaurantes, desde el primer prototipo hasta la web publicada.',
@@ -1759,7 +1890,7 @@ const I18N = {
     item5_t:'Agreed price, no surprises', item5_d:'The price depends on the size of the site — we agree on everything before I start building.', item5_tag:'on request',
     port_eyebrow:'Portfolio', port_title_a:'Websites that get', port_title_b:'tables booked.', port_sub:'Every project is designed from scratch for the restaurant — no template with the name swapped out.',
     block_label:'Style', block_label2:'Style', block_label3:'Style', block1_big:'Rustic & homely', block2_big:'Elegant & refined', block3_big:'Modern & colourful',
-    block_soon:'Coming soon', block4_big:'Your projects here', block4_sub:'Send them and I\'ll add them',
+    block_soon:'Coming soon', block4_big:'Your projects here', block4_sub:'Send them and I\'ll add them', reveal_before:'Before: no website, the customer searches and can\'t find you.', reveal_after:'After: site live, elegant and always on point.',
     pain_badge:'The reality for restaurants without a website', pain_title:'Does this sound familiar?', pain_sub:'Most restaurant owners who come to me feel exactly this. You are not alone.',
     pain_q1:'People ask if I have a website, and I just send them my Instagram.', pain_q2:'I know this is costing me bookings, but I do not know what to do about it.',
     pain_q3:'I do not have a website or a visual identity yet — I do not even know where to start.', pain_q4:'I have thought about building a website, but there is never any time — the restaurant takes it all.',
@@ -1780,7 +1911,7 @@ const I18N = {
     pcard5_stamp:'Colourful style', pcard5_title:'Food truck, Porto', pcard5_desc:'Young, informal landing page with warm, playful colours.',
     pcard6_stamp:'E-commerce', pcard6_title:'Online shop, Douro', pcard6_desc:'Shopping cart, product categories and checkout — the example for the Banquet plan.',
     block7_big:'Colourful & vibrant', pcard7_stamp:'Colourful & vibrant', pcard7_title:'Flavour market, online shop', pcard7_desc:'Sauces, spices and sweets — shopping cart, chip-based categories and a vibrant, characterful palette.',
-    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Colors', block6_big:'Earthy & wine tones', block_label7:'Style',
+    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Colors', block6_big:'Wine & gold', block_label7:'Style',
     portmore_text:'Full portfolio with filters by style, format and colour →', portmore_cta:'See all',
     sobre_eyebrow:'About me', sobre_title:'Who\'s on the other side of the screen',
     sobre_p:'I design, write and publish every site myself — no large team, nothing outsourced. I work directly with restaurant owners, from the first prototype to launch.',
@@ -1843,7 +1974,7 @@ const I18N = {
     item5_t:'Agreed price, no surprises', item5_d:'The price depends on the size of the site — we agree on everything before I start building.', item5_tag:'on request',
     port_eyebrow:'Portfolio', port_title_a:'Websites that get', port_title_b:'tables booked.', port_sub:'Every project is designed from scratch for the restaurant — no template with the name swapped out.',
     block_label:'Style', block_label2:'Style', block_label3:'Style', block1_big:'Rustic & homely', block2_big:'Elegant & refined', block3_big:'Modern & colourful',
-    block_soon:'Coming soon', block4_big:'Your projects here', block4_sub:'Send them and I\'ll add them',
+    block_soon:'Coming soon', block4_big:'Your projects here', block4_sub:'Send them and I\'ll add them', reveal_before:'Before: no website, the customer searches and can\'t find you.', reveal_after:'After: site live, elegant and always on point.',
     pain_badge:'The reality for restaurants without a website', pain_title:'Does this sound familiar?', pain_sub:'Most restaurant owners who come to me feel exactly this way. You are not alone.',
     pain_q1:"People ask if I have a website, and I just send them my Instagram.", pain_q2:"I know this is costing me bookings, but I don't know what to do about it.",
     pain_q3:"I don't have a website or a visual identity yet — I don't even know where to start.", pain_q4:"I've thought about building a website, but there's never any time — the restaurant takes it all.",
@@ -1864,7 +1995,7 @@ const I18N = {
     pcard5_stamp:'Colorful style', pcard5_title:'Food truck, Porto', pcard5_desc:'Young, informal landing page with warm, playful colors.',
     pcard6_stamp:'E-commerce', pcard6_title:'Online shop, Douro', pcard6_desc:'Shopping cart, product categories and checkout — the example for the Banquet plan.',
     block7_big:'Colorful & vibrant', pcard7_stamp:'Colorful & vibrant', pcard7_title:'Flavor market, online shop', pcard7_desc:'Sauces, spices, and sweets — shopping cart, chip-based categories, and a vibrant, characterful palette.',
-    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Colors', block6_big:'Earthy & wine tones', block_label7:'Style',
+    block_label5:'Style', block5_big:'Minimal & direct', block_label6:'Colors', block6_big:'Wine & gold', block_label7:'Style',
     portmore_text:'Full portfolio with filters by style, format and colour →', portmore_cta:'See all',
     sobre_eyebrow:'About me', sobre_title:'Who\'s on the other side of the screen',
     sobre_p:'I design, write and publish every site myself — no large team, nothing outsourced. I work directly with restaurant owners, from the first prototype to launch.',
@@ -1927,7 +2058,7 @@ const I18N = {
     item5_t:'Vereinbarter Preis, keine Überraschungen', item5_d:'Der Preis hängt von der Größe der Website ab — wir klären alles, bevor ich mit dem Bau beginne.', item5_tag:'auf Anfrage',
     port_eyebrow:'Portfolio', port_title_a:'Websites, die Tische', port_title_b:'gebucht bekommen.', port_sub:'Jedes Projekt wird von Grund auf für das Restaurant entworfen — keine Vorlage mit ausgetauschtem Namen.',
     block_label:'Stil', block_label2:'Stil', block_label3:'Stil', block1_big:'Rustikal & gemütlich', block2_big:'Elegant & dezent', block3_big:'Modern & farbenfroh',
-    block_soon:'Demnächst', block4_big:'Ihre Projekte hier', block4_sub:'Schicken Sie sie mir, ich füge sie hinzu',
+    block_soon:'Demnächst', block4_big:'Ihre Projekte hier', block4_sub:'Schicken Sie sie mir, ich füge sie hinzu', reveal_before:'Vorher: keine Website, der Kunde sucht und findet Sie nicht.', reveal_after:'Nachher: Website online, elegant und immer im Griff.',
     pain_badge:'Die Realität für alle ohne Website', pain_title:'Kommt Ihnen das bekannt vor?', pain_sub:'Die meisten Restaurantbesitzer, die sich bei mir melden, fühlen genau das. Sie sind nicht allein.',
     pain_q1:'Die Leute fragen, ob ich eine Website habe, und ich schicke ihnen nur mein Instagram.', pain_q2:'Ich weiß, dass mich das Reservierungen kostet, aber ich weiß nicht, was ich dagegen tun soll.',
     pain_q3:'Ich habe noch keine Website oder visuelle Identität — ich weiß nicht einmal, wo ich anfangen soll.', pain_q4:'Ich habe schon über eine Website nachgedacht, aber es bleibt nie Zeit — das Restaurant nimmt alles in Anspruch.',
@@ -1948,7 +2079,7 @@ const I18N = {
     pcard5_stamp:'Bunter Stil', pcard5_title:'Food-Truck, Porto', pcard5_desc:'Junge, unkomplizierte Landingpage mit warmen, verspielten Farben.',
     pcard6_stamp:'E-Commerce', pcard6_title:'Online-Shop, Douro', pcard6_desc:'Warenkorb, Produktkategorien und Kasse — das Beispiel für das Bankett-Paket.',
     block7_big:'Bunt & lebendig', pcard7_stamp:'Bunt & lebendig', pcard7_title:'Geschmackmarkt, Online-Shop', pcard7_desc:'Saucen, Gewürze und Süßes — Warenkorb, Kategorien als Chips und eine lebendige, charakterstarke Farbpalette.',
-    block_label5:'Stil', block5_big:'Minimalistisch & direkt', block_label6:'Farben', block6_big:'Erdig & Weintöne', block_label7:'Stil',
+    block_label5:'Stil', block5_big:'Minimalistisch & direkt', block_label6:'Farben', block6_big:'Wein & Gold', block_label7:'Stil',
     portmore_text:'Vollständiges Portfolio mit Filtern nach Stil, Format und Farbe →', portmore_cta:'Alle ansehen',
     sobre_eyebrow:'Über mich', sobre_title:'Wer auf der anderen Seite des Bildschirms sitzt',
     sobre_p:'Ich entwerfe, schreibe und veröffentliche jede Website selbst — kein großes Team, nichts ausgelagert. Ich arbeite direkt mit Restaurantbesitzern zusammen, vom ersten Prototyp bis zum Launch.',
@@ -2010,7 +2141,7 @@ const I18N = {
     item5_t:'Prezzo concordato, nessuna sorpresa', item5_d:'Il prezzo dipende dalla dimensione del sito — concordiamo tutto prima di iniziare a costruire.', item5_tag:'su richiesta',
     port_eyebrow:'Portfolio', port_title_a:'Siti che fanno', port_title_b:'prenotare tavoli.', port_sub:'Ogni progetto è disegnato da zero per il ristorante — nessun modello con il nome cambiato.',
     block_label:'Stile', block_label2:'Stile', block_label3:'Stile', block1_big:'Rustico & accogliente', block2_big:'Elegante & sobrio', block3_big:'Moderno & colorato',
-    block_soon:'Prossimamente', block4_big:'I tuoi progetti qui', block4_sub:'Mandameli e li aggiungo',
+    block_soon:'Prossimamente', block4_big:'I tuoi progetti qui', block4_sub:'Mandameli e li aggiungo', reveal_before:'Prima: nessun sito, il cliente cerca e non ti trova.', reveal_after:'Dopo: sito online, elegante e sempre in ordine.',
     pain_badge:'La realtà di chi non ha ancora un sito', pain_title:'Ti è mai successo?', pain_sub:'La maggior parte dei ristoratori che mi contattano prova esattamente questo. Non sei solo.',
     pain_q1:"Le persone mi chiedono se ho un sito, e io mando solo l'Instagram.", pain_q2:'So che questo mi sta costando prenotazioni, ma non so cosa fare.',
     pain_q3:"Non ho ancora un sito né un'identità visiva — non so nemmeno da dove iniziare.", pain_q4:"Ho già pensato di fare un sito, ma non c'è mai tempo — il ristorante prende tutto.",
@@ -2031,7 +2162,7 @@ const I18N = {
     pcard5_stamp:'Stile colorato', pcard5_title:'Food truck, Porto', pcard5_desc:'Landing page giovane e informale, colori caldi e giocosi.',
     pcard6_stamp:'E-commerce', pcard6_title:'Negozio online, Douro', pcard6_desc:'Carrello, categorie di prodotto e checkout — l\'esempio del piano Banchetto.',
     block7_big:'Colorato & vivace', pcard7_stamp:'Colorato & vivace', pcard7_title:'Mercato dei sapori, negozio online', pcard7_desc:'Salse, spezie e dolci — carrello, categorie a chip e palette vivace piena di personalità.',
-    block_label5:'Stile', block5_big:'Minimale & diretto', block_label6:'Colori', block6_big:'Terrosi & toni di vino', block_label7:'Stile',
+    block_label5:'Stile', block5_big:'Minimale & diretto', block_label6:'Colori', block6_big:'Vino e oro', block_label7:'Stile',
     portmore_text:'Portfolio completo con filtri per stile, formato e colore →', portmore_cta:'Vedi tutti',
     sobre_eyebrow:'Chi sono', sobre_title:'Chi c\'è dall\'altra parte dello schermo',
     sobre_p:'Progetto, scrivo e pubblico ogni sito da solo — senza un grande team, senza esternalizzare. Lavoro direttamente con i proprietari dei ristoranti, dal primo prototipo al lancio.',
@@ -2093,7 +2224,7 @@ const I18N = {
     item5_t:'Överenskommet pris, inga överraskningar', item5_d:'Priset beror på webbplatsens storlek — vi kommer överens om allt innan jag börjar bygga.', item5_tag:'på begäran',
     port_eyebrow:'Portfolio', port_title_a:'Webbplatser som får', port_title_b:'bord bokade.', port_sub:'Varje projekt designas från grunden för restaurangen — ingen mall med bytt namn.',
     block_label:'Stil', block_label2:'Stil', block_label3:'Stil', block1_big:'Rustik & hemtrevlig', block2_big:'Elegant & stilren', block3_big:'Modern & färgstark',
-    block_soon:'Kommer snart', block4_big:'Dina projekt här', block4_sub:'Skicka dem så lägger jag till dem',
+    block_soon:'Kommer snart', block4_big:'Dina projekt här', block4_sub:'Skicka dem så lägger jag till dem', reveal_before:'Innan: ingen webbplats, kunden söker och hittar dig inte.', reveal_after:'Efter: sidan live, elegant och alltid i ordning.',
     pain_badge:'Verkligheten för dem som inte har en webbplats', pain_title:'Känns det här bekant?', pain_sub:'De flesta restaurangägare som kontaktar mig känner precis så här. Du är inte ensam.',
     pain_q1:'Folk frågar om jag har en webbplats, och jag skickar bara mitt Instagram.', pain_q2:'Jag vet att det kostar mig bokningar, men vet inte vad jag ska göra åt det.',
     pain_q3:'Jag har varken webbplats eller visuell identitet än — vet inte ens var jag ska börja.', pain_q4:'Jag har tänkt på att bygga en webbplats, men det finns aldrig tid — restaurangen tar allt.',
@@ -2114,7 +2245,7 @@ const I18N = {
     pcard5_stamp:'Färgstark stil', pcard5_title:'Food truck, Porto', pcard5_desc:'Ung, avslappnad landningssida med varma, lekfulla färger.',
     pcard6_stamp:'E-handel', pcard6_title:'Nätbutik, Douro', pcard6_desc:'Varukorg, produktkategorier och kassa — exemplet för Bankett-paketet.',
     block7_big:'Färgstark & levande', pcard7_stamp:'Färgstark & levande', pcard7_title:'Smakmarknad, nätbutik', pcard7_desc:'Såser, kryddor och sötsaker — varukorg, kategorier som chips och en levande, karaktärsfull palett.',
-    block_label5:'Stil', block5_big:'Minimalistisk & rak', block_label6:'Färger', block6_big:'Jordnära & vintoner', block_label7:'Stil',
+    block_label5:'Stil', block5_big:'Minimalistisk & rak', block_label6:'Färger', block6_big:'Vin & guld', block_label7:'Stil',
     portmore_text:'Fullständig portfolio med filter för stil, format och färg →', portmore_cta:'Se alla',
     sobre_eyebrow:'Om mig', sobre_title:'Vem som sitter på andra sidan skärmen',
     sobre_p:'Jag designar, skriver och publicerar varje webbplats själv — inget stort team, inget outsourcat. Jag jobbar direkt med restaurangägare, från första prototyp till lansering.',
@@ -2176,7 +2307,7 @@ const I18N = {
     item5_t:'سعر متفق عليه، بدون مفاجآت', item5_d:'يعتمد السعر على حجم الموقع — نتفق على كل شيء قبل أن أبدأ البناء.', item5_tag:'عند الطلب',
     port_eyebrow:'الأعمال', port_title_a:'مواقع تجعل', port_title_b:'الطاولات محجوزة.', port_sub:'كل مشروع مصمم من الصفر للمطعم — لا قوالب بأسماء مُستبدلة.',
     block_label:'النمط', block_label2:'النمط', block_label3:'النمط', block1_big:'ريفي ودافئ', block2_big:'أنيق وهادئ', block3_big:'عصري وملون',
-    block_soon:'قريبًا', block4_big:'مشاريعك هنا', block4_sub:'أرسلها وسأضيفها',
+    block_soon:'قريبًا', block4_big:'مشاريعك هنا', block4_sub:'أرسلها وسأضيفها', reveal_before:'قبل: لا يوجد موقع، يبحث العميل ولا يجدك.', reveal_after:'بعد: الموقع منشور، أنيق ومنظم دائمًا.',
     pain_badge:'واقع من ليس لديه موقع إلكتروني بعد', pain_title:'هل حدث لك هذا من قبل؟', pain_sub:'معظم أصحاب المطاعم الذين يتواصلون معي يشعرون بهذا بالضبط. أنت لست وحدك.',
     pain_q1:'يسألني الناس إن كان لدي موقع، وأنا فقط أرسل لهم حساب إنستغرام.', pain_q2:'أعرف أن هذا يكلفني حجوزات، لكنني لا أعرف ماذا أفعل حيال ذلك.',
     pain_q3:'ليس لدي موقع ولا هوية بصرية بعد — لا أعرف حتى من أين أبدأ.', pain_q4:'فكرت في إنشاء موقع، لكن لا يتوفر وقت أبدًا — المطعم يأخذ كل شيء.',
@@ -2197,7 +2328,7 @@ const I18N = {
     pcard5_stamp:'نمط ملون', pcard5_title:'عربة طعام متنقلة، بورتو', pcard5_desc:'صفحة هبوط شبابية غير رسمية بألوان دافئة ومرحة.',
     pcard6_stamp:'متجر إلكتروني', pcard6_title:'متجر إلكتروني، دورو', pcard6_desc:'سلة تسوق، فئات منتجات، وعملية دفع — مثال باقة "المأدبة".',
     block7_big:'ملوّن وحيوي', pcard7_stamp:'ملوّن وحيوي', pcard7_title:'سوق النكهات، متجر إلكتروني', pcard7_desc:'صلصات وتوابل وحلويات — سلة تسوق، فئات بشكل شرائح، وألوان زاهية مليئة بالطابع المميز.',
-    block_label5:'النمط', block5_big:'بسيط ومباشر', block_label6:'الألوان', block6_big:'ترابية وألوان النبيذ', block_label7:'النمط',
+    block_label5:'النمط', block5_big:'بسيط ومباشر', block_label6:'الألوان', block6_big:'نبيذي وذهبي', block_label7:'النمط',
     portmore_text:'الأعمال الكاملة مع فلاتر حسب النمط والتنسيق واللون ←', portmore_cta:'عرض الكل',
     sobre_eyebrow:'عني', sobre_title:'من يقف خلف الشاشة',
     sobre_p:'أنا من يصمم ويكتب وينشر كل موقع بنفسي — بدون فريق كبير، وبدون تعهيد خارجي. أعمل مباشرة مع أصحاب المطاعم من النموذج الأول حتى الإطلاق.',
@@ -2573,6 +2704,127 @@ function resetForm(){
         field.appendChild(el);
       }
     });
+  })();
+</script>
+
+<script>
+  // "Como funciona" em scrollytelling, tudo numa só sequência contínua:
+  // 1) a esfera de pontos gira e os 4 cartões passam em carrossel na frente
+  //    dela (aparece no centro -> desliza pro lado -> vai pra trás do globo);
+  // 2) o 4º cartão dá zoom na palavra "SITE" até tomar a tela;
+  // 3) no mesmo lugar do globo, em fade, surge a cena "antes" (vermelha) que
+  //    depois se abre num círculo revelando o "depois" (dourado, premium).
+  (function(){
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var altoEl = document.querySelector('.seq-alto');
+    var canvas = document.querySelector('.seq-canvas-wrap canvas');
+    var canvasWrap = document.querySelector('.seq-canvas-wrap');
+    var overlay = document.querySelector('.reveal-overlay');
+    var antes = document.querySelector('.reveal-antes');
+    if(!altoEl || !canvas || reduceMotion) return;
+
+    var ctx = canvas.getContext('2d');
+    var cards = document.querySelectorAll('.seq-card');
+    var QUADROS = 90, N = 420, SIZE = 220, pontos = [];
+    var CARDS_ATE = 0.78; // fração da rolagem total dedicada ao carrossel dos cartões
+    var REVEAL_INICIO = 0.66; // começa um pouco antes do zoom do "SITE" terminar, pra cruzar os dois fades
+
+    // nuvem de pontos distribuída numa esfera (espiral de ângulo de ouro)
+    for(var i=0; i<N; i++){
+      var y = 1 - (i/(N-1))*2;
+      var raio = Math.sqrt(1 - y*y);
+      var t = i * 2.399963;
+      pontos.push({x: Math.cos(t)*raio, y: y, z: Math.sin(t)*raio});
+    }
+
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var ultimoQuadro = 0;
+
+    function ajustarTamanho(){
+      SIZE = canvas.clientWidth || 220;
+      canvas.width = SIZE*dpr; canvas.height = SIZE*dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      desenhar(ultimoQuadro);
+    }
+
+    function desenhar(quadro){
+      ultimoQuadro = quadro;
+      var ang = (quadro/QUADROS) * Math.PI * 2;
+      ctx.clearRect(0, 0, SIZE, SIZE);
+      pontos.map(function(p){
+        var x = p.x*Math.cos(ang) - p.z*Math.sin(ang);
+        var z = p.x*Math.sin(ang) + p.z*Math.cos(ang);
+        return {x:x, y:p.y, z:z};
+      }).sort(function(a,b){ return a.z - b.z; })
+        .forEach(function(p){
+          var esc = SIZE * 0.34 * (1 + p.z*0.28);
+          var op = .18 + (p.z+1)/2 * .82;
+          ctx.fillStyle = 'rgba(228,197,99,' + op.toFixed(2) + ')'; // var(--gold-light)
+          ctx.beginPath();
+          ctx.arc(SIZE/2 + p.x*esc, SIZE/2 + p.y*esc, (SIZE/220) * (1.1 + (p.z+1)*1.0), 0, 6.2832);
+          ctx.fill();
+        });
+    }
+
+    function onScroll(){
+      var rect = altoEl.getBoundingClientRect();
+      var total = rect.height - window.innerHeight;
+      var p = total > 0 ? (-rect.top) / total : 0;
+      p = Math.max(0, Math.min(1, p));
+
+      var quadro = Math.round(p * (QUADROS-1));
+      desenhar(quadro);
+
+      // ---- carrossel dos 4 cartões (ocupa os primeiros CARDS_ATE da rolagem) ----
+      var pCards = Math.min(1, p / CARDS_ATE);
+      var n = cards.length;
+      cards.forEach(function(card, idx){
+        var local = pCards*n - idx;
+        var isLast = idx === n-1;
+        var siteWord = card.querySelector('.site-word');
+        card.classList.remove('is-before','is-active','is-after');
+
+        if(!isLast || local <= 0){
+          var tx, scale, op, z;
+          if(local <= -1){ tx=70; scale=.72; op=0; z=6; card.classList.add('is-before'); }
+          else if(local <= 0){ var t=local+1; tx=70*(1-t); scale=.72+.28*t; op=t; z=6; card.classList.add('is-before'); }
+          else if(local <= 1){ var t=local; tx=-42*t; scale=1-.18*t; op=1-.5*t; z=6; card.classList.add('is-active'); }
+          else if(local <= 2){ var t=local-1; tx=-42-14*t; scale=.82-.32*t; op=.5-.42*t; z=(t>0.45?1:6); card.classList.add('is-after'); }
+          else { tx=-56; scale=.5; op=.06; z=1; card.classList.add('is-after'); }
+          card.style.transform = 'translate(-50%,-50%) translateX('+tx.toFixed(1)+'%) scale('+scale.toFixed(3)+')';
+          card.style.opacity = op.toFixed(3);
+          card.style.zIndex = z;
+          if(siteWord){ siteWord.style.opacity = 0; }
+        } else {
+          var t = Math.max(0, Math.min(1, local));
+          card.style.transform = 'translate(-50%,-50%)';
+          card.style.opacity = 1;
+          card.style.zIndex = 8;
+          card.classList.add('is-active');
+          var contentOp = Math.max(0, 1 - t/0.35);
+          card.querySelectorAll('.sc4-fade').forEach(function(el){ el.style.opacity = contentOp; });
+          if(siteWord){
+            var scaleWord = 1 + t*38;
+            var wordOp = t < 0.08 ? (t/0.08) : (t > 0.75 ? Math.max(0,(1-t)/0.25) : 1);
+            siteWord.style.transform = 'scale('+scaleWord.toFixed(2)+')';
+            siteWord.style.opacity = wordOp.toFixed(3);
+          }
+        }
+      });
+
+      // ---- cena final: aparece em fade no mesmo lugar do globo, depois abre o círculo ----
+      var pReveal = Math.max(0, Math.min(1, (p - REVEAL_INICIO) / (1 - REVEAL_INICIO)));
+      var fadeIn = Math.min(1, pReveal / 0.25);
+      if(overlay) overlay.style.opacity = fadeIn.toFixed(3);
+      if(canvasWrap) canvasWrap.style.opacity = (1 - fadeIn).toFixed(3);
+      var maskT = Math.max(0, Math.min(1, (pReveal - 0.25) / 0.75));
+      if(antes) antes.style.clipPath = 'circle(' + Math.max(0, 150 - maskT*150) + '% at 50% 50%)';
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', ajustarTamanho);
+    ajustarTamanho();
+    onScroll();
   })();
 </script>
 </body>
