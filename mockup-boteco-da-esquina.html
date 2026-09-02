@@ -7,15 +7,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Work+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --amarelo:#f2b134; --verde:#1f6f4f; --azul:#0f4c81; --tijolo:#a5462f; --cream:#fdf6e8; --ink:#2b2116; --line:rgba(43,33,22,0.14); }
+  :root{ --amarelo:#f2b134; --verde:#1f6f4f; --azul:#0f4c81; --tijolo:#a5462f; --cream:#fdf6e8; --ink:#2b2116; --line:rgba(43,33,22,0.14);
+    --hero-bg:#160f0a; --hero-bg2:#211508; }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{background:var(--cream); color:var(--ink); font-family:'Work Sans',sans-serif; line-height:1.6;}
   h1,h2,h3{font-family:'Fraunces',serif; font-weight:800; letter-spacing:-0.01em;}
   a{color:inherit; text-decoration:none;}
   .wrap{max-width:1040px; margin:0 auto; padding:0 26px;}
   .eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase;}
-  .btn{display:inline-block; background:var(--tijolo); color:#fff; padding:15px 28px; border-radius:6px; font-weight:700; font-size:14px;}
-  .btn:hover{background:#833520;}
+  .btn{display:inline-block; background:var(--tijolo); color:#fff; padding:15px 28px; border-radius:6px; font-weight:700; font-size:14px;
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .2s ease;}
+  .btn:hover{background:#833520; transform:rotate(-2deg) scale(1.05);}
+  .btn:active{transform:rotate(1deg) scale(0.95);}
   .btn-verde{background:var(--verde);}
   .btn-verde:hover{background:#164f38;}
 
@@ -26,11 +29,58 @@
   nav a{margin-left:22px; font-weight:600; font-size:13.5px; color:#fff; opacity:0.85;}
   @media(max-width:600px){ nav{display:none;} }
 
-  .hero{padding:70px 0 90px; text-align:center; background:linear-gradient(180deg, var(--cream), #f6ead2);}
-  .hero .eyebrow{color:var(--tijolo);}
-  .hero h1{font-size:clamp(36px,7vw,72px); line-height:0.98; margin:16px 0 20px;}
-  .hero p{max-width:440px; margin:0 auto 30px; opacity:0.72; font-weight:500;}
-  .hero-cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  /* ===================== HERO — escuro, bolhas subindo, título em degradê ===================== */
+  .hero{ position:relative; padding:110px 0 100px; text-align:center; overflow:hidden;
+    background:radial-gradient(120% 90% at 20% -10%, var(--hero-bg2) 0%, var(--hero-bg) 55%); color:#fff; }
+  .hero .glow{position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; z-index:0; mix-blend-mode:screen;}
+  .hero .glow-verde{width:480px; height:480px; background:rgba(31,111,79,0.35); top:-160px; left:8%;}
+  .hero .glow-amarelo{width:400px; height:400px; background:rgba(242,177,52,0.22); bottom:-140px; right:10%;}
+  .bubbles{ position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+  .bubble{
+    position:absolute; bottom:-60px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, rgba(255,255,255,0.95), rgba(242,177,52,0.45) 55%, rgba(242,177,52,0.05) 75%);
+    border:1px solid rgba(242,177,52,0.5);
+    animation:rise linear infinite;
+  }
+  @keyframes rise{
+    0%{ transform:translateY(0) translateX(0); opacity:0; }
+    12%{ opacity:0.85; }
+    88%{ opacity:0.55; }
+    100%{ transform:translateY(-620px) translateX(var(--drift,18px)); opacity:0; }
+  }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:translateY(0);} }
+  .hero .wrap{ position:relative; z-index:1; }
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:8px; font-family:'Space Mono',monospace; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--amarelo);
+    border:1px solid rgba(242,177,52,0.4); border-radius:30px; padding:8px 18px; margin-bottom:24px;
+    opacity:0; animation:fadeUp .6s ease forwards;
+  }
+  .hero-badge::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--amarelo);}
+  .hero h1{font-size:clamp(38px,7.5vw,84px); line-height:0.96; margin:0 0 22px;
+    background:linear-gradient(180deg, #fff 0%, #fff 55%, var(--amarelo) 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    opacity:0; animation:fadeUp .6s ease .12s forwards;}
+  .scramble-line{ display:inline-block; }
+  .hero p{max-width:460px; margin:0 auto 26px; opacity:0; color:rgba(255,255,255,0.72); font-weight:500;
+    animation:fadeUp .6s ease .3s forwards;}
+  .hero-stamp{
+    display:inline-block; border:2px solid var(--verde); color:#8fdcb8; border-radius:8px;
+    padding:6px 14px; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    transform:rotate(-4deg); margin-bottom:26px; opacity:0; animation:fadeUp .6s ease .42s forwards;
+  }
+  .hero-cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; opacity:0; animation:fadeUp .5s ease .52s forwards;}
+  .btn-pill{
+    display:inline-flex; align-items:center; gap:14px; background:#fff; color:var(--ink); font-weight:700; font-size:15px;
+    padding:6px 6px 6px 22px; border-radius:999px; transition:box-shadow .2s, transform .2s;
+  }
+  .btn-pill:hover{ box-shadow:0 0 26px rgba(255,255,255,0.28); transform:scale(1.03); }
+  .btn-pill .seta{width:40px; height:40px; border-radius:50%; background:var(--tijolo); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .2s;}
+  .btn-pill:hover .seta{background:#833520;}
+  .btn-ghost{display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,0.75); font-weight:600; font-size:14px; padding:12px 16px; border-radius:10px; transition:background .2s, color .2s;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.06); color:#fff;}
+  .btn-ghost svg{transition:transform .2s;}
+  .btn-ghost:hover svg{transform:translateX(3px);}
 
   .strip{background:var(--verde); color:#fff; padding:15px 0; text-align:center; font-family:'Space Mono',monospace; font-size:12.5px; letter-spacing:0.05em;}
 
@@ -40,7 +90,13 @@
   .menu-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px;}
   @media(max-width:760px){ .menu-grid{grid-template-columns:1fr 1fr;} }
   @media(max-width:480px){ .menu-grid{grid-template-columns:1fr;} }
-  .item{background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 8px 20px rgba(43,33,22,0.08);}
+
+  /* cards com inclinação 3D ao passar o mouse */
+  .item{
+    background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 8px 20px rgba(43,33,22,0.08);
+    transition:transform .25s ease, box-shadow .25s ease; will-change:transform;
+  }
+  .item:hover{ box-shadow:0 20px 34px rgba(43,33,22,0.16); }
   .item .icon{width:52px; height:52px; border-radius:50%; margin:0 auto 12px;}
   .item h3{font-size:16px; margin-bottom:6px;}
   .item p{font-size:12px; opacity:0.6; margin-bottom:10px;}
@@ -55,6 +111,49 @@
   .info-grid b{display:block; color:var(--amarelo); font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; margin-bottom:4px;}
 
   footer{padding:30px 0; text-align:center; font-family:'Space Mono',monospace; font-size:11px; opacity:0.5;}
+
+  /* ===================== OFERTA POR TEMPO LIMITADO — contador + cerveja girando ===================== */
+  .oferta{background:var(--hero-bg); color:#fff; padding:90px 0; text-align:center; position:relative; overflow:hidden;}
+  .oferta .eyebrow{color:var(--amarelo);}
+  .oferta h2{color:#fff; font-size:clamp(26px,4vw,38px); margin:12px 0 10px;}
+  .oferta p{opacity:0.68; max-width:440px; margin:0 auto 34px;}
+  .oferta-layout{display:grid; grid-template-columns:220px 1fr; gap:50px; align-items:center; max-width:640px; margin:0 auto;}
+  @media(max-width:620px){ .oferta-layout{grid-template-columns:1fr; gap:26px;} }
+  .cerveja-wrap{width:180px; height:180px; margin:0 auto;}
+  .cerveja-wrap svg{width:100%; height:100%; will-change:transform;}
+  .js-countdown{display:flex; gap:12px; justify-content:center;}
+  .js-countdown .caixa{min-width:74px; padding:14px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.05); text-align:center;}
+  .js-countdown .v{font-family:'Fraunces',serif; font-size:30px; font-weight:800; color:#fff; line-height:1; font-variant-numeric:tabular-nums;}
+  .js-countdown .k{font-family:'Work Sans',sans-serif; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:8px;}
+
+  /* ===================== PROGRAMAÇÃO DA SEMANA ===================== */
+  .programacao{padding:80px 0; background:var(--cream);}
+  .programacao h2{text-align:center; font-size:32px; margin-bottom:10px; color:var(--azul);}
+  .programacao .eyebrow{display:block; text-align:center; margin-bottom:6px; color:var(--tijolo);}
+  .prog-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:44px;}
+  @media(max-width:760px){ .prog-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:480px){ .prog-grid{grid-template-columns:1fr;} }
+  .prog-card{background:#fff; border-radius:12px; padding:22px 18px; box-shadow:0 8px 20px rgba(43,33,22,0.07); border-top:4px solid var(--verde);}
+  .prog-card:nth-child(2){border-top-color:var(--amarelo);}
+  .prog-card:nth-child(3){border-top-color:var(--tijolo);}
+  .prog-card:nth-child(4){border-top-color:var(--azul);}
+  .prog-card .dia{font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; opacity:0.55; margin-bottom:8px;}
+  .prog-card h3{font-size:16.5px; margin-bottom:6px;}
+  .prog-card p{font-size:12.5px; opacity:0.65;}
+
+  /* ===================== DEPOIMENTOS — carimbos tortos ===================== */
+  .depoimentos{padding:84px 0;}
+  .depoimentos h2{text-align:center; font-size:32px; margin-bottom:44px; color:var(--tijolo);}
+  .depoimentos .eyebrow{display:block; text-align:center; margin-bottom:6px;}
+  .dep-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media(max-width:760px){ .dep-grid{grid-template-columns:1fr;} }
+  .dep-card{background:#fff; border:2px solid var(--ink); border-radius:10px; padding:22px 20px; box-shadow:5px 5px 0 var(--amarelo); transition:transform .2s;}
+  .dep-card:nth-child(2){transform:rotate(-1.5deg); box-shadow:5px 5px 0 var(--verde);}
+  .dep-card:nth-child(3){transform:rotate(1.5deg); box-shadow:5px 5px 0 var(--azul);}
+  .dep-card:hover{transform:rotate(0deg) translateY(-4px);}
+  .dep-card .estrelas{color:var(--tijolo); font-size:13px; margin-bottom:10px;}
+  .dep-card p{font-size:14px; opacity:0.78; margin-bottom:14px;}
+  .dep-card .nome{font-family:'Space Mono',monospace; font-size:11.5px; opacity:0.6;}
 </style>
 </head>
 <body>
@@ -67,13 +166,20 @@
 </header>
 
 <section class="hero">
+  <div class="glow glow-verde"></div>
+  <div class="glow glow-amarelo"></div>
+  <div class="bubbles" id="bubbles"></div>
   <div class="wrap">
-    <span class="eyebrow">Boteco de bairro · Vila Madalena, São Paulo</span>
-    <h1>Cerveja gelada,<br>petisco na hora certa.</h1>
+    <span class="hero-badge">Boteco de bairro · Vila Madalena, SP</span>
+    <h1>
+      <span class="scramble-line" data-text="Cerveja gelada,"></span><br>
+      <span class="scramble-line" data-text="petisco na hora certa."></span>
+    </h1>
     <p>Mesa na calçada, futebol ligado, e aquele petisco que só fica bom depois das seis.</p>
+    <div class="hero-stamp">Rodada não se recusa</div>
     <div class="hero-cta">
-      <a href="#cardapio" class="btn">Ver cardápio</a>
-      <a href="#sobre" class="btn btn-verde">Como chegar</a>
+      <a href="#cardapio" class="btn-pill">Ver cardápio<span class="seta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="#sobre" class="btn-ghost">Como chegar <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -95,6 +201,56 @@
   </div>
 </section>
 
+<section class="oferta" id="oferta">
+  <div class="glow glow-verde" style="opacity:0.5;"></div>
+  <div class="wrap">
+    <span class="eyebrow">Por tempo limitado</span>
+    <h2>Chopp em dobro termina em</h2>
+    <p>De terça a quinta, das 18h às 20h. Corre antes que a rodada normal volte a valer.</p>
+    <div class="oferta-layout">
+      <div class="cerveja-wrap" id="cervejaGira">
+        <svg viewBox="0 0 120 140" fill="none">
+          <path d="M30 40h50v76a8 8 0 0 1-8 8H38a8 8 0 0 1-8-8z" fill="#f2b134" stroke="#2b2116" stroke-width="3"/>
+          <path d="M80 55h8a10 10 0 0 1 10 10v20a10 10 0 0 1-10 10h-8" fill="none" stroke="#2b2116" stroke-width="3"/>
+          <path d="M30 40c0-12 8-20 18-20s18 8 20 20" fill="#fff" stroke="#2b2116" stroke-width="3"/>
+          <circle cx="40" cy="26" r="4" fill="#fff"/><circle cx="52" cy="22" r="3.5" fill="#fff"/><circle cx="62" cy="27" r="3" fill="#fff"/>
+          <path d="M30 66h50M30 92h50" stroke="rgba(43,33,22,0.18)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="js-countdown">
+        <div class="caixa"><div class="v">00</div><div class="k">horas</div></div>
+        <div class="caixa"><div class="v">00</div><div class="k">min</div></div>
+        <div class="caixa"><div class="v">00</div><div class="k">seg</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="programacao">
+  <div class="wrap">
+    <span class="eyebrow">Toda semana</span>
+    <h2>Programação da casa</h2>
+    <div class="prog-grid">
+      <div class="prog-card"><div class="dia">Terça a quinta</div><h3>Chopp em dobro</h3><p>18h às 20h, no copo ou no litrão.</p></div>
+      <div class="prog-card"><div class="dia">Sexta</div><h3>Samba na esquina</h3><p>Roda de samba ao vivo a partir das 20h.</p></div>
+      <div class="prog-card"><div class="dia">Sábado</div><h3>Futebol na tela</h3><p>Todos os jogos do Brasileirão, som ligado.</p></div>
+      <div class="prog-card"><div class="dia">Domingo</div><h3>Feijoada da casa</h3><p>A partir do meio-dia, enquanto durar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="depoimentos">
+  <div class="wrap">
+    <span class="eyebrow">Quem já foi</span>
+    <h2>Direto da mesa ao lado</h2>
+    <div class="dep-grid">
+      <div class="dep-card"><div class="estrelas">★★★★★</div><p>"Coxinha melhor que a da minha mãe, e olha que eu adoro a da minha mãe."</p><div class="nome">— Rafael T.</div></div>
+      <div class="dep-card"><div class="estrelas">★★★★★</div><p>"Chopp sempre geladíssimo e o pessoal te trata como se você fosse cliente antigo."</p><div class="nome">— Camila S.</div></div>
+      <div class="dep-card"><div class="estrelas">★★★★★</div><p>"Fui assistir um jogo e acabei ficando até fechar. Ambiente sem frescura, do jeito certo."</p><div class="nome">— Diego M.</div></div>
+    </div>
+  </div>
+</section>
+
 <section class="sobre" id="sobre">
   <div class="wrap">
     <span class="eyebrow" style="color:var(--amarelo);">Onde estamos</span>
@@ -109,6 +265,100 @@
 </section>
 
 <footer>Boteco da Esquina — Vila Madalena, São Paulo</footer>
+
+<script>
+  /* ===== bolhas subindo no fundo do hero ===== */
+  const bubbleField = document.getElementById('bubbles');
+  const total = window.innerWidth < 640 ? 12 : 20;
+  for(let i = 0; i < total; i++){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    const size = 8 + Math.random() * 22;
+    const left = Math.random() * 100;
+    const duration = 6 + Math.random() * 7;
+    const delay = Math.random() * 8;
+    const drift = (Math.random() * 40 - 20).toFixed(0);
+    b.style.width = size + 'px';
+    b.style.height = size + 'px';
+    b.style.left = left + '%';
+    b.style.animationDuration = duration + 's';
+    b.style.animationDelay = '-' + delay + 's';
+    b.style.setProperty('--drift', drift + 'px');
+    bubbleField.appendChild(b);
+  }
+
+  /* ===== título "decodificando" ao carregar ===== */
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  function scramble(el, delayStart){
+    const final = el.dataset.text;
+    let frame = 0;
+    const totalFrames = 22;
+    const revealEvery = totalFrames / final.length;
+    setTimeout(() => {
+      function step(){
+        let out = '';
+        for(let i = 0; i < final.length; i++){
+          if(final[i] === ' '){ out += ' '; continue; }
+          out += frame > i * revealEvery ? final[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
+        }
+        el.textContent = out;
+        frame++;
+        if(frame < totalFrames + final.length * revealEvery){ requestAnimationFrame(step); }
+        else{ el.textContent = final; }
+      }
+      step();
+    }, delayStart);
+  }
+  document.querySelectorAll('.scramble-line').forEach((el, i) => scramble(el, i * 260));
+
+  /* ===== contador regressivo — "chopp em dobro termina em" =====
+     Sempre calcula a partir de uma data-alvo, nunca soma segundo a segundo
+     (evita o contador atrasar/travar se a aba ficar em segundo plano). */
+  (function(){
+    var caixas = document.querySelectorAll('.js-countdown .v');
+    if(!caixas.length) return;
+    var fim = Date.now() + (1*3600 + 47*60 + 33) * 1000; /* 1h47min33s a partir de agora */
+    function tick(){
+      var falta = Math.max(0, fim - Date.now());
+      var s = Math.floor(falta / 1000);
+      var vals = [Math.floor(s / 3600), Math.floor((s % 3600) / 60), s % 60];
+      caixas.forEach(function(c, i){ c.textContent = String(vals[i]).padStart(2, '0'); });
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ===== cerveja gira conforme a página rola (scrollytelling) ===== */
+  (function(){
+    var wrapEl = document.getElementById('cervejaGira');
+    if(!wrapEl) return;
+    var secao = wrapEl.closest('section');
+    var ticking = false;
+    function atualizar(){
+      var r = secao.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var total = r.height + vh;
+      var passado = vh - r.top;
+      var progresso = Math.min(1, Math.max(0, passado / total));
+      wrapEl.style.transform = 'rotate(' + (progresso * 360).toFixed(1) + 'deg)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ requestAnimationFrame(atualizar); ticking = true; }
+    }, { passive: true });
+    atualizar();
+  })();
+
+  document.querySelectorAll('.item').forEach((card) => {
+    card.addEventListener('mousemove', (ev) => {
+      const r = card.getBoundingClientRect();
+      const px = (ev.clientX - r.left) / r.width - 0.5;
+      const py = (ev.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(600px) rotateX(${(-py * 10).toFixed(2)}deg) rotateY(${(px * 10).toFixed(2)}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+</script>
 
 </body>
 </html>
