@@ -8,13 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Karla:wght@400;500&family=Space+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --fog:#F1F0EA;
-    --fog-2:#E7E4D9;
-    --ink:#1C1E1B;
-    --moss:#5C6B57;
-    --moss-dark:#414C3D;
-    --birch:#C9BBA0;
-    --line: rgba(28,30,27,0.13);
+    --fog:#EDEFEF;
+    --fog-2:#DCE2E4;
+    --ink:#12151A;
+    --moss:#2F6690;
+    --moss-dark:#1F4864;
+    --birch:#B7A88E;
+    --ember:#C1432B;
+    --line: rgba(18,21,26,0.13);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -40,24 +41,32 @@
   .btn.solid{background:var(--ink);color:var(--fog) !important;}
   .btn.solid:hover{background:var(--moss-dark);}
 
-  /* hero */
-  .hero{padding:110px 0 90px;}
-  .hero .eyebrow{color:var(--moss-dark);margin-bottom:26px;display:flex;align-items:center;gap:12px;}
-  .hero .eyebrow::before{content:'';width:30px;height:1px;background:var(--moss-dark);}
-  .hero h1{
-    font-size:clamp(46px,7vw,92px);
-    line-height:0.98;
-    max-width:14ch;
-    font-weight:500;
+  /* hero — alto contraste, wordmark gigante sobre paisagem, partículas de fundo */
+  .hero{padding:0; background:var(--ink); color:var(--fog); position:relative; overflow:hidden;}
+  .hero-inner{position:relative; min-height:640px; display:flex; flex-direction:column; justify-content:flex-end; padding:120px 0 0;}
+  .js-teia{position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0;}
+  .hero-landscape{position:absolute; inset:0; z-index:1; opacity:0.9; pointer-events:none;}
+  .hero .wrap{position:relative; z-index:2;}
+  .hero .eyebrow{color:var(--fog); opacity:0.7; margin-bottom:18px; display:flex; align-items:center; gap:12px;}
+  .hero .eyebrow::before{content:''; width:30px; height:1px; background:var(--fog); opacity:0.6;}
+  .hero-word{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.03em;
+    font-size:clamp(72px,15vw,220px); line-height:0.82; margin:0 0 8px; color:var(--fog);
   }
-  .hero-sub{
-    display:grid;grid-template-columns:1.3fr 0.7fr;gap:60px;
-    margin-top:46px;align-items:end;
+  .hero h1{font-size:clamp(20px,2.6vw,26px); font-weight:400; max-width:26ch; color:var(--fog); opacity:0.85; margin-bottom:50px;}
+  .hero-panel{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+    border-top:1px solid rgba(237,239,239,0.16); padding:26px 0 34px;
   }
-  .hero-sub p{font-size:17px;max-width:38ch;color:#3d3f39;}
-  .hero-meta{text-align:right;}
-  .hero-meta .row{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-top:1px solid var(--line);font-size:13.5px;}
-  .hero-ctas{margin-top:40px;display:flex;gap:14px;}
+  .hero-stats{display:flex; gap:34px; flex-wrap:wrap;}
+  .hero-stats .stat .num{font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:600;}
+  .hero-stats .stat .lbl{font-size:11px; text-transform:uppercase; letter-spacing:0.08em; opacity:0.55; margin-top:3px;}
+  .hero-ctas{margin-top:0; display:flex; gap:12px;}
+  .hero .btn{border-color:rgba(237,239,239,0.4); color:var(--fog);}
+  .hero .btn:hover{background:var(--fog); color:var(--ink) !important;}
+  .hero .btn.solid{background:var(--ember); border-color:var(--ember); color:var(--fog) !important;}
+  .hero .btn.solid:hover{background:#9c3521;}
+  @media(max-width:860px){ .hero-inner{padding-top:80px; min-height:520px;} .hero-panel{flex-direction:column; align-items:flex-start;} }
 
   /* moodboard swatches - signature */
   .moodboard{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;height:110px;}
@@ -135,6 +144,8 @@
     .moodboard div{aspect-ratio:1;}
   }
   :focus-visible{outline:2px solid var(--moss-dark);outline-offset:2px;}
+
+  ::view-transition-old(courses),::view-transition-new(courses){animation-duration:.45s;}
 </style>
 </head>
 <body>
@@ -152,20 +163,37 @@
 </header>
 
 <section class="hero">
-  <div class="wrap">
+  <canvas class="js-teia"></canvas>
+  <svg class="hero-landscape" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#12151A"/>
+        <stop offset="55%" stop-color="#1a2530"/>
+        <stop offset="100%" stop-color="#12151A"/>
+      </linearGradient>
+      <linearGradient id="glacierFace" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3a5a70"/>
+        <stop offset="100%" stop-color="#1F4864"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="1200" height="640" fill="url(#sky)"/>
+    <path d="M0 480 L140 380 250 430 400 300 560 420 720 340 900 440 1050 360 1200 430 1200 640 0 640 Z" fill="url(#glacierFace)" opacity="0.55"/>
+    <path d="M0 540 L180 470 380 520 620 440 860 530 1040 470 1200 520 1200 640 0 640 Z" fill="#0e2534" opacity="0.6"/>
+  </svg>
+  <div class="wrap hero-inner">
     <div class="eyebrow small-caps">Reykjavík — seasonal, foraged, unhurried</div>
-    <h1>Cooking with what the forest gives us this week</h1>
-    <div class="hero-sub">
-      <p>No menu printed more than seven days in advance. What we serve depends on what came off the boat, out of the ground, or down from the hills that morning.</p>
-      <div class="hero-meta">
-        <div class="row"><span>Seats</span><span class="mono">24</span></div>
-        <div class="row"><span>Courses</span><span class="mono">7 or 12</span></div>
-        <div class="row"><span>Service</span><span class="mono">Wed–Sun</span></div>
+    <h1 class="hero-word">SKOG</h1>
+    <h1>Cooking with what the forest gives us this week.</h1>
+    <div class="hero-panel">
+      <div class="hero-stats">
+        <div class="stat"><div class="num">24</div><div class="lbl">Seats</div></div>
+        <div class="stat"><div class="num">7–12</div><div class="lbl">Courses</div></div>
+        <div class="stat"><div class="num">Wed–Sun</div><div class="lbl">Service</div></div>
       </div>
-    </div>
-    <div class="hero-ctas">
-      <a href="#menu" class="btn solid">View this week's menu</a>
-      <a href="#visit" class="btn">Reserve a table</a>
+      <div class="hero-ctas">
+        <a href="#menu" class="btn solid">View this week's menu</a>
+        <a href="#visit" class="btn">Reserve a table</a>
+      </div>
     </div>
   </div>
 </section>
@@ -197,11 +225,12 @@
       <span class="small-caps">This week's tasting</span>
       <h2>Seven courses, early autumn</h2>
     </div>
-    <div class="season-tabs">
-      <div class="s-tab active">Tasting menu</div>
-      <div class="s-tab">Wine pairing</div>
-      <div class="s-tab">To share, Sunday</div>
+    <div class="season-tabs" id="seasonTabs">
+      <div class="s-tab active" data-tab="tasting">Tasting menu</div>
+      <div class="s-tab" data-tab="wine">Wine pairing</div>
+      <div class="s-tab" data-tab="share">To share, Sunday</div>
     </div>
+    <div id="courseList" style="view-transition-name: courses;">
     <div class="course">
       <div class="stage">Course 01</div>
       <div><div class="name">Raw langoustine, sea buckthorn, dill oil</div><div class="ing">Langoustine · sea buckthorn · dill · brown butter crumb</div></div>
@@ -227,7 +256,8 @@
       <div><div class="name">Skyr, cloudberry, oat crumble</div><div class="ing">House skyr · cloudberry · toasted oat</div></div>
       <div class="price mono">—</div>
     </div>
-    <div style="margin-top:34px;"><span class="mono" style="font-size:14px;">Seven courses — 89€ · Wine pairing +45€</span></div>
+    </div>
+    <div style="margin-top:34px;" id="menuFootnote"><span class="mono" style="font-size:14px;">Seven courses — 89€ · Wine pairing +45€</span></div>
   </div>
 </section>
 
@@ -267,6 +297,119 @@
     <div class="fine">Portfolio mockup — fictional name and content, built for demonstration purposes.</div>
   </div>
 </footer>
+
+<script>
+var FX = {};
+
+/* ── 28 · partículas conectadas — vira "aurora/estrelas" atrás do hero ──
+   Mesma lógica do efeito original, só recolorida pra tom gelado islandês
+   ao invés do branco genérico de fundo de site de tecnologia. */
+FX.j28 = function(cv){
+  var ctx = cv.getContext('2d');
+  var pts = [];
+  function medir(){
+    cv.width = cv.clientWidth; cv.height = cv.clientHeight;
+    var qtd = Math.min(70, Math.round(cv.width / 22));
+    pts = [];
+    for(var i = 0; i < qtd; i++) pts.push({
+      x: Math.random() * cv.width, y: Math.random() * cv.height,
+      vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22
+    });
+  }
+  medir();
+  window.addEventListener('resize', medir);
+  function passo(){
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    pts.forEach(function(p){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0 || p.x > cv.width) p.vx *= -1;
+      if(p.y < 0 || p.y > cv.height) p.vy *= -1;
+      ctx.fillStyle = 'rgba(220,226,228,0.75)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 1.3, 0, 6.284); ctx.fill();
+    });
+    for(var i = 0; i < pts.length; i++)
+      for(var j = i + 1; j < pts.length; j++){
+        var d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
+        if(d < 130){
+          ctx.strokeStyle = 'rgba(111,168,201,' + (0.28 * (1 - d / 130)) + ')';
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
+        }
+      }
+    requestAnimationFrame(passo);
+  }
+  requestAnimationFrame(passo);
+};
+try{
+  var cvTeia = document.querySelector('.js-teia');
+  if(cvTeia && cvTeia.getContext) FX.j28(cvTeia);
+}catch(e){ console.warn('Partículas do hero não iniciaram:', e); }
+
+/* ── 30 · troca de abas do cardápio com View Transition API ──
+   A API tira uma "foto" do antes/depois e faz a transição sozinha.
+   Onde o navegador não suportar, troca direto, sem quebrar nada. */
+var CARDAPIOS = {
+  tasting: {
+    rodape: 'Seven courses — 89€ · Wine pairing +45€',
+    pratos: [
+      ['Course 01','Raw langoustine, sea buckthorn, dill oil','Langoustine · sea buckthorn · dill · brown butter crumb'],
+      ['Course 02','Charred leek, smoked butter, ash','Leek · cultured butter · birch ash · chive oil'],
+      ['Course 03','Cod, brown butter, chanterelle','Line-caught cod · chanterelle · beurre noisette'],
+      ['Course 04','Aged lamb, juniper, root vegetables','Highland lamb · juniper jus · roasted roots'],
+      ['Course 05','Skyr, cloudberry, oat crumble','House skyr · cloudberry · toasted oat'],
+    ]
+  },
+  wine: {
+    rodape: 'Wine pairing — 5 glasses, +45€ added to any tasting menu',
+    pratos: [
+      ['Glass 01','Skin-contact, Vínlandi','Paired with langoustine, sea buckthorn'],
+      ['Glass 02','Orange wine, small producer, Mosel','Paired with charred leek, smoked butter'],
+      ['Glass 03','Chablis, unoaked','Paired with cod, chanterelle'],
+      ['Glass 04','Northern Rhône syrah, light extraction','Paired with aged lamb, juniper'],
+      ['Glass 05','Icelandic birch wine, off-dry','Paired with skyr, cloudberry'],
+    ]
+  },
+  share: {
+    rodape: 'To share, Sunday — 65€ per person, minimum two',
+    pratos: [
+      ['To start','Bread, cultured butter, seaweed salt','Baked that morning, served warm'],
+      ['Centre','Whole roasted lamb shoulder','Slow-roasted, juniper jus, for the table'],
+      ['Alongside','Root vegetable gratin','Potato, celeriac, brown butter crumb'],
+      ['To finish','Skyr trifle for the table','Cloudberry, toasted oat, served family-style'],
+    ]
+  }
+};
+
+function montarCourseHTML(chave){
+  var dados = CARDAPIOS[chave];
+  var html = '';
+  dados.pratos.forEach(function(c){
+    html += '<div class="course"><div class="stage">' + c[0] + '</div>' +
+      '<div><div class="name">' + c[1] + '</div><div class="ing">' + c[2] + '</div></div>' +
+      '<div class="price mono">—</div></div>';
+  });
+  return html;
+}
+
+function trocarCardapio(chave){
+  var lista = document.getElementById('courseList');
+  var rodape = document.getElementById('menuFootnote').querySelector('span');
+  function aplicar(){
+    lista.innerHTML = montarCourseHTML(chave);
+    rodape.textContent = CARDAPIOS[chave].rodape;
+  }
+  if(document.startViewTransition) document.startViewTransition(aplicar);
+  else aplicar();
+}
+
+document.querySelectorAll('#seasonTabs .s-tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('#seasonTabs .s-tab').forEach(function(t){ t.classList.remove('active'); });
+    tab.classList.add('active');
+    trocarCardapio(tab.dataset.tab);
+  });
+});
+</script>
 
 </body>
 </html>

@@ -156,15 +156,22 @@
       </span>
       <span class="brand-name">Mesa<span class="dot">.</span>dev</span>
     </a>
-    <a href="index.html" class="back-link">← Voltar ao site</a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <select id="langSelect" style="background:transparent; border:1px solid var(--line); border-radius:4px; font-family:'Space Mono',monospace; font-size:11px; padding:5px 8px; cursor:pointer; color:var(--black);">
+        <option value="pt">PT</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+      </select>
+      <a href="index.html" class="back-link" data-i18n="back_link">← Voltar ao site</a>
+    </div>
   </nav>
 </header>
 
 <section class="intro">
   <div class="wrap">
-    <span class="stamp">Portfólio</span>
-    <h1>Exemplos reais, não maquetes soltas</h1>
-    <p>Passe o mouse pra ampliar e ver o site de verdade rodando em miniatura. Clique pra abrir em tamanho normal.</p>
+    <span class="stamp" data-i18n="intro_stamp">Portfólio</span>
+    <h1 data-i18n="intro_h1">Exemplos reais, não maquetes soltas</h1>
+    <p data-i18n="intro_p">Passe o mouse pra ampliar e ver o site de verdade rodando em miniatura. Clique pra abrir em tamanho normal.</p>
   </div>
 </section>
 
@@ -172,7 +179,7 @@
   <div class="wrap">
     <div class="filters-toggle" id="filtersToggle">
       <div class="filters-toggle-left">
-        <h3>Filtros</h3>
+        <h3 data-i18n="filters_title">Filtros</h3>
         <span class="filters-active-badge" id="activeBadge">0 ativos</span>
       </div>
       <div class="filters-arrow" aria-label="Minimizar filtros">
@@ -182,45 +189,45 @@
     <div class="filters-content" id="filtersContent">
     <div class="filter-groups">
       <div class="filter-group">
-        <h4>Estilo</h4>
+        <h4 data-i18n="filter_h_estilo">Estilo</h4>
         <div class="filter-pills" data-group="estilo">
-          <button class="pill" data-value="elegante">Elegante</button>
-          <button class="pill" data-value="sobrio">Sóbrio</button>
-          <button class="pill" data-value="moderno">Moderno</button>
-          <button class="pill" data-value="sofisticado">Sofisticado</button>
-          <button class="pill" data-value="rustico">Rústico</button>
-          <button class="pill" data-value="colorido">Colorido</button>
-          <button class="pill" data-value="minimalista">Minimalista</button>
+          <button class="pill" data-value="elegante" data-i18n="tag_elegante">Elegante</button>
+          <button class="pill" data-value="sobrio" data-i18n="tag_sobrio">Sóbrio</button>
+          <button class="pill" data-value="moderno" data-i18n="tag_moderno">Moderno</button>
+          <button class="pill" data-value="sofisticado" data-i18n="tag_sofisticado">Sofisticado</button>
+          <button class="pill" data-value="rustico" data-i18n="tag_rustico">Rústico</button>
+          <button class="pill" data-value="colorido" data-i18n="tag_colorido">Colorido</button>
+          <button class="pill" data-value="minimalista" data-i18n="tag_minimalista">Minimalista</button>
         </div>
       </div>
       <div class="filter-group">
-        <h4>Formato</h4>
+        <h4 data-i18n="filter_h_formato">Formato</h4>
         <div class="filter-pills" data-group="formato">
-          <button class="pill" data-value="landing">Landing page</button>
-          <button class="pill" data-value="completo">Site completo</button>
-          <button class="pill" data-value="ecommerce">E-commerce</button>
+          <button class="pill" data-value="landing" data-i18n="tag_landing">Landing page</button>
+          <button class="pill" data-value="completo" data-i18n="tag_completo">Site completo</button>
+          <button class="pill" data-value="ecommerce" data-i18n="tag_ecommerce">E-commerce</button>
         </div>
       </div>
       <div class="filter-group">
-        <h4>Tipografia</h4>
+        <h4 data-i18n="filter_h_tipografia">Tipografia</h4>
         <div class="filter-pills" data-group="tipografia">
-          <button class="pill" data-value="encorpada">Encorpada &amp; rústica</button>
-          <button class="pill" data-value="fina">Fina &amp; elegante</button>
-          <button class="pill" data-value="moderna">Moderna &amp; marcante</button>
+          <button class="pill" data-value="encorpada" data-i18n="filter_tipo_encorpada">Encorpada &amp; rústica</button>
+          <button class="pill" data-value="fina" data-i18n="filter_tipo_fina">Fina &amp; elegante</button>
+          <button class="pill" data-value="moderna" data-i18n="filter_tipo_moderna">Moderna &amp; marcante</button>
         </div>
       </div>
       <div class="filter-group">
-        <h4>Paleta de cores</h4>
+        <h4 data-i18n="filter_h_cores">Paleta de cores</h4>
         <div class="filter-pills" data-group="cores">
-          <button class="pill" data-value="terrosos">Tons terrosos</button>
-          <button class="pill" data-value="escuro">Monocromático escuro</button>
-          <button class="pill" data-value="vibrante">Vibrante multicolor</button>
-          <button class="pill" data-value="dourado">Dourado &amp; neutro</button>
+          <button class="pill" data-value="terrosos" data-i18n="tag_terrosos">Tons terrosos</button>
+          <button class="pill" data-value="escuro" data-i18n="tag_escuro">Monocromático escuro</button>
+          <button class="pill" data-value="vibrante" data-i18n="tag_vibrante">Vibrante multicolor</button>
+          <button class="pill" data-value="dourado" data-i18n="tag_dourado">Dourado &amp; neutro</button>
         </div>
       </div>
     </div>
     <div class="filters-bottom">
-      <button class="clear-filters" id="clearFilters">Limpar filtros</button>
+      <button class="clear-filters" id="clearFilters" data-i18n="clear_filters">Limpar filtros</button>
       <span class="result-count" id="resultCount">4 projetos</span>
     </div>
     </div>
@@ -234,262 +241,543 @@
       <article class="p-card" data-estilo="rustico" data-formato="landing" data-tipografia="encorpada" data-cores="terrosos" onclick="window.open('mockup-tasca-do-rossio.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-tasca-do-rossio.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo rústico</span>
+          <span class="p-sub" data-i18n="sub_estilo_rustico">Estilo rústico</span>
           <span class="p-title">Tasca do Rossio</span>
-          <p class="p-desc">Cardápio do dia com preços, história do restaurante, horário e reserva direto por WhatsApp.</p>
-          <div class="p-tags"><span>Rústico</span><span>Landing page</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_1">Cardápio do dia com preços, história do restaurante, horário e reserva direto por WhatsApp.</p>
+          <div class="p-tags"><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="elegante sobrio sofisticado" data-formato="completo" data-tipografia="fina" data-cores="escuro" onclick="window.open('mockup-marisqueira-atlantico.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-marisqueira-atlantico.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo elegante</span>
+          <span class="p-sub" data-i18n="sub_estilo_elegante">Estilo elegante</span>
           <span class="p-title">Marisqueira Atlântico</span>
-          <p class="p-desc">Menu de degustação com preços, filosofia da casa, mesa com vista pro mar e reservas por telefone/e-mail.</p>
-          <div class="p-tags"><span>Elegante</span><span>Sóbrio</span><span>Site completo</span><span>Monocromático escuro</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_2">Menu de degustação com preços, filosofia da casa, mesa com vista pro mar e reservas por telefone/e-mail.</p>
+          <div class="p-tags"><span data-i18n="tag_elegante">Elegante</span><span data-i18n="tag_sobrio">Sóbrio</span><span data-i18n="tag_completo">Site completo</span><span data-i18n="tag_escuro">Monocromático escuro</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="moderno colorido" data-formato="completo" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-jardim-e-sal.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-jardim-e-sal.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo moderno</span>
+          <span class="p-sub" data-i18n="sub_estilo_moderno">Estilo moderno</span>
           <span class="p-title">Jardim &amp; Sal</span>
-          <p class="p-desc">Cardápio em abas com preços, eventos privados, depoimentos de clientes, formulário de reserva e chat.</p>
-          <div class="p-tags"><span>Moderno</span><span>Colorido</span><span>Site completo</span><span>Vibrante</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_3">Cardápio em abas com preços, eventos privados, depoimentos de clientes, formulário de reserva e chat.</p>
+          <div class="p-tags"><span data-i18n="tag_moderno">Moderno</span><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_completo">Site completo</span><span data-i18n="tag_vibrante_short">Vibrante</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="minimalista sofisticado" data-formato="landing" data-tipografia="fina" data-cores="dourado" onclick="window.open('mockup-cafe-nomade.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-cafe-nomade.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo minimalista</span>
+          <span class="p-sub" data-i18n="sub_estilo_minimalista">Estilo minimalista</span>
           <span class="p-title">Café Nômade</span>
-          <p class="p-desc">Menu enxuto com preços, horário de funcionamento e localização — uma página só, direto ao ponto.</p>
-          <div class="p-tags"><span>Minimalista</span><span>Landing page</span><span>Dourado &amp; neutro</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_4">Menu enxuto com preços, horário de funcionamento e localização — uma página só, direto ao ponto.</p>
+          <div class="p-tags"><span data-i18n="tag_minimalista">Minimalista</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_dourado">Dourado &amp; neutro</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="colorido moderno" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-brasa-e-rua.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-brasa-e-rua.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo colorido</span>
+          <span class="p-sub" data-i18n="sub_estilo_colorido">Estilo colorido</span>
           <span class="p-title">Brasa &amp; Rua</span>
-          <p class="p-desc">Cardápio com preços, localização do food truck e horário de funcionamento — visual jovem e informal.</p>
-          <div class="p-tags"><span>Colorido</span><span>Landing page</span><span>Vibrante</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_5">Cardápio com preços, localização do food truck e horário de funcionamento — visual jovem e informal.</p>
+          <div class="p-tags"><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_vibrante_short">Vibrante</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="sofisticado elegante" data-formato="ecommerce" data-tipografia="fina" data-cores="terrosos" onclick="window.open('mockup-adega-vinha-alta.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-adega-vinha-alta.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">E-commerce</span>
+          <span class="p-sub" data-i18n="sub_ecommerce">E-commerce</span>
           <span class="p-title">Adega Vinha Alta</span>
-          <p class="p-desc">Loja com carrinho, categorias de produto, preços e checkout — vende vinho, azeite e cestas presente direto ao cliente.</p>
-          <div class="p-tags"><span>Sofisticado</span><span>E-commerce</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_6">Loja com carrinho, categorias de produto, preços e checkout — vende vinho, azeite e cestas presente direto ao cliente.</p>
+          <div class="p-tags"><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_ecommerce">E-commerce</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="sobrio elegante" data-formato="landing" data-tipografia="fina" data-cores="terrosos" onclick="window.open('mockup-trattoria-vale-verde.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-trattoria-vale-verde.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo sóbrio</span>
+          <span class="p-sub" data-i18n="sub_estilo_sobrio">Estilo sóbrio</span>
           <span class="p-title">Trattoria Vale Verde</span>
-          <p class="p-desc">Menu com preços, horário de funcionamento, telefone e e-mail para reserva — clima de trattoria de família.</p>
-          <div class="p-tags"><span>Sóbrio</span><span>Landing page</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_7">Menu com preços, horário de funcionamento, telefone e e-mail para reserva — clima de trattoria de família.</p>
+          <div class="p-tags"><span data-i18n="tag_sobrio">Sóbrio</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
-      <article class="p-card" data-estilo="sofisticado escuro" data-formato="landing" data-tipografia="editorial" data-cores="escuro" onclick="window.open('mockup-verde-tigela.html','_blank')">
+      <article class="p-card" data-estilo="moderno colorido" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-verde-tigela.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-verde-tigela.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo editorial</span>
-          <span class="p-title">Raiz</span>
-          <p class="p-desc">Cardápio de bowls em lista estilo steakhouse, fundo escuro, filtro por categoria e cards interativos — visual mais autoral.</p>
-          <div class="p-tags"><span>Sofisticado</span><span>Escuro</span><span>Landing page</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <span class="p-sub" data-i18n="sub_estilo_moderno">Estilo moderno</span>
+          <span class="p-title">Verde Tigela</span>
+          <p class="p-desc" data-i18n="desc_8">Cardápio de bowls com preços, promessa da casa e horário — paleta vibrante em tom pastel-saturado.</p>
+          <div class="p-tags"><span data-i18n="tag_moderno">Moderno</span><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_landing">Landing page</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="sofisticado elegante" data-formato="landing" data-tipografia="encorpada" data-cores="escuro" onclick="window.open('mockup-talho-e-brasa.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-talho-e-brasa.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo sofisticado</span>
+          <span class="p-sub" data-i18n="sub_estilo_sofisticado">Estilo sofisticado</span>
           <span class="p-title">Talho &amp; Brasa</span>
-          <p class="p-desc">Cortes com preços, tempo de maturação, horário e botão de reserva — clima escuro de churrascaria de autor.</p>
-          <div class="p-tags"><span>Sofisticado</span><span>Landing page</span><span>Monocromático escuro</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_9">Cortes com preços, tempo de maturação, horário e botão de reserva — clima escuro de churrascaria de autor.</p>
+          <div class="p-tags"><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_escuro">Monocromático escuro</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="minimalista colorido" data-formato="landing" data-tipografia="fina" data-cores="dourado" onclick="window.open('mockup-padaria-boa-manha.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-padaria-boa-manha.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo minimalista</span>
+          <span class="p-sub" data-i18n="sub_estilo_minimalista">Estilo minimalista</span>
           <span class="p-title">Padaria Boa Manhã</span>
-          <p class="p-desc">Produtos com preços, horário de funcionamento e história da casa — visual limpo em tons pastel.</p>
-          <div class="p-tags"><span>Minimalista</span><span>Colorido</span><span>Landing page</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_10">Produtos com preços, horário de funcionamento e história da casa — visual limpo em tons pastel.</p>
+          <div class="p-tags"><span data-i18n="tag_minimalista">Minimalista</span><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_landing">Landing page</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="colorido moderno" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('mockup-liberty-diner.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-liberty-diner.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estados Unidos · em inglês</span>
+          <span class="p-sub" data-i18n="sub_usa_en">Estados Unidos · em inglês</span>
           <span class="p-title">Liberty Diner</span>
-          <p class="p-desc">Menu com preços em dólar, horário de funcionamento, endereço e telefone — clima clássico de diner americano.</p>
-          <div class="p-tags"><span>Colorido</span><span>Landing page</span><span>Vibrante</span><span>EUA</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_11">Menu com preços em dólar, horário de funcionamento, endereço e telefone — clima clássico de diner americano.</p>
+          <div class="p-tags"><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_vibrante_short">Vibrante</span><span data-i18n="tag_eua">EUA</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="colorido rustico" data-formato="landing" data-tipografia="encorpada" data-cores="vibrante" onclick="window.open('mockup-boteco-da-esquina.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-boteco-da-esquina.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Brasil · em português-BR</span>
+          <span class="p-sub" data-i18n="sub_br_pt">Brasil · em português-BR</span>
           <span class="p-title">Boteco da Esquina</span>
-          <p class="p-desc">Cardápio com preços em real, horário de funcionamento, endereço e reserva por WhatsApp — clima de boteco de bairro.</p>
-          <div class="p-tags"><span>Colorido</span><span>Rústico</span><span>Landing page</span><span>Brasil</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_12">Cardápio com preços em real, horário de funcionamento, endereço e reserva por WhatsApp — clima de boteco de bairro.</p>
+          <div class="p-tags"><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_brasil">Brasil</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="rustico sofisticado" data-formato="completo" data-tipografia="encorpada" data-cores="terrosos" onclick="window.open('mockup-quinta-do-silencio.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mockup-quinta-do-silencio.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo rústico</span>
+          <span class="p-sub" data-i18n="sub_estilo_rustico">Estilo rústico</span>
           <span class="p-title">Quinta do Silêncio</span>
-          <p class="p-desc">Menu sazonal com preços em abas, galeria, seção de eventos para casamentos e formulário de reserva completo.</p>
-          <div class="p-tags"><span>Rústico</span><span>Sofisticado</span><span>Site completo</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_13">Menu sazonal com preços em abas, galeria, seção de eventos para casamentos e formulário de reserva completo.</p>
+          <div class="p-tags"><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_completo">Site completo</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="minimalista sofisticado" data-formato="landing" data-tipografia="moderna" data-cores="terrosos" onclick="window.open('skog-nordic.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="skog-nordic.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Islândia · em inglês</span>
+          <span class="p-sub" data-i18n="sub_iceland_en">Islândia · em inglês</span>
           <span class="p-title">SKOG</span>
-          <p class="p-desc">Menu sazonal por curso com ingredientes forrageados, filosofia da casa e reserva por telefone — clima nórdico contemporâneo.</p>
-          <div class="p-tags"><span>Minimalista</span><span>Sofisticado</span><span>Landing page</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_14">Menu sazonal por curso com ingredientes forrageados, filosofia da casa e reserva por telefone — clima nórdico contemporâneo.</p>
+          <div class="p-tags"><span data-i18n="tag_minimalista">Minimalista</span><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="rustico" data-formato="landing" data-tipografia="encorpada" data-cores="terrosos" onclick="window.open('taberna-do-vale.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="taberna-do-vale.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo rústico</span>
+          <span class="p-sub" data-i18n="sub_estilo_rustico">Estilo rústico</span>
           <span class="p-title">Taberna do Vale</span>
-          <p class="p-desc">Ementa semanal com preços, três gerações de história da família e morada com mapa para reservas.</p>
-          <div class="p-tags"><span>Rústico</span><span>Landing page</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_15">Ementa semanal com preços, três gerações de história da família e morada com mapa para reservas.</p>
+          <div class="p-tags"><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="elegante sofisticado" data-formato="landing" data-tipografia="fina" data-cores="dourado" onclick="window.open('zaytoun-arab.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="zaytoun-arab.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Reino Unido · em inglês</span>
+          <span class="p-sub" data-i18n="sub_uk_en">Reino Unido · em inglês</span>
           <span class="p-title">Zaytoun</span>
-          <p class="p-desc">Mezze com preços, prateleira de especiarias ilustrada e reserva por telefone ou WhatsApp — mesa levantina em Londres.</p>
-          <div class="p-tags"><span>Elegante</span><span>Sofisticado</span><span>Landing page</span><span>Dourado</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_16">Mezze com preços, prateleira de especiarias ilustrada e reserva por telefone ou WhatsApp — mesa levantina em Londres.</p>
+          <div class="p-tags"><span data-i18n="tag_elegante">Elegante</span><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_dourado_short">Dourado</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="moderno colorido" data-formato="landing" data-tipografia="fina" data-cores="vibrante" onclick="window.open('pastelaria-rosinha.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="pastelaria-rosinha.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo moderno</span>
+          <span class="p-sub" data-i18n="sub_estilo_moderno">Estilo moderno</span>
           <span class="p-title">Pastelaria Rosinha</span>
-          <p class="p-desc">Categorias de produtos com preços, história da avó Rosinha, opiniões de clientes e formulário de encomenda de bolos.</p>
-          <div class="p-tags"><span>Moderno</span><span>Colorido</span><span>Landing page</span><span>Vibrante</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_17">Categorias de produtos com preços, história da avó Rosinha, opiniões de clientes e formulário de encomenda de bolos.</p>
+          <div class="p-tags"><span data-i18n="tag_moderno">Moderno</span><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_vibrante_short">Vibrante</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="rustico" data-formato="landing" data-tipografia="encorpada" data-cores="terrosos" onclick="window.open('pastificio-elvira.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="pastificio-elvira.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Itália · em italiano</span>
+          <span class="p-sub" data-i18n="sub_italy_it">Itália · em italiano</span>
           <span class="p-title">Pastificio Elvira</span>
-          <p class="p-desc">Processo da massa fresca passo a passo, ementa com preços e formatos de massa do dia — cozinha de família em Bolonha.</p>
-          <div class="p-tags"><span>Rústico</span><span>Landing page</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_18">Processo da massa fresca passo a passo, ementa com preços e formatos de massa do dia — cozinha de família em Bolonha.</p>
+          <div class="p-tags"><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="moderno colorido" data-formato="landing" data-tipografia="moderna" data-cores="vibrante" onclick="window.open('marlows-cafe.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="marlows-cafe.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Reino Unido · em inglês</span>
+          <span class="p-sub" data-i18n="sub_uk_en">Reino Unido · em inglês</span>
           <span class="p-title">Marlow's</span>
-          <p class="p-desc">Quadro do dia com preços, cartão de fidelidade com carimbos e pedido antecipado — café da manhã e almoço.</p>
-          <div class="p-tags"><span>Moderno</span><span>Colorido</span><span>Landing page</span><span>Vibrante</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_19">Quadro do dia com preços, cartão de fidelidade com carimbos e pedido antecipado — café da manhã e almoço.</p>
+          <div class="p-tags"><span data-i18n="tag_moderno">Moderno</span><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_vibrante_short">Vibrante</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="elegante sofisticado" data-formato="landing" data-tipografia="fina" data-cores="escuro" onclick="window.open('bistrot-marcel.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="bistrot-marcel.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">França · em francês</span>
+          <span class="p-sub" data-i18n="sub_france_fr">França · em francês</span>
           <span class="p-title">Bistrot Marcel</span>
-          <p class="p-desc">Ardósia do dia atualizada, carta de clássicos franceses com preços e linha do tempo de três gerações da família.</p>
-          <div class="p-tags"><span>Elegante</span><span>Sofisticado</span><span>Landing page</span><span>Monocromático escuro</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_20">Ardósia do dia atualizada, carta de clássicos franceses com preços e linha do tempo de três gerações da família.</p>
+          <div class="p-tags"><span data-i18n="tag_elegante">Elegante</span><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_escuro">Monocromático escuro</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="rustico sofisticado" data-formato="landing" data-tipografia="encorpada" data-cores="escuro" onclick="window.open('stag-and-anchor.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="stag-and-anchor.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Reino Unido · em inglês</span>
+          <span class="p-sub" data-i18n="sub_uk_en">Reino Unido · em inglês</span>
           <span class="p-title">The Stag &amp; Anchor</span>
-          <p class="p-desc">Chalkboard do dia, história do pub com quatro donos e uma lareira que nunca apagou, e morada para visita.</p>
-          <div class="p-tags"><span>Rústico</span><span>Sofisticado</span><span>Landing page</span><span>Monocromático escuro</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_21">Chalkboard do dia, história do pub com quatro donos e uma lareira que nunca apagou, e morada para visita.</p>
+          <div class="p-tags"><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_sofisticado">Sofisticado</span><span data-i18n="tag_landing">Landing page</span><span data-i18n="tag_escuro">Monocromático escuro</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card" data-estilo="rustico moderno" data-formato="ecommerce" data-tipografia="moderna" data-cores="terrosos" onclick="window.open('mercearia-do-vale.html','_blank')">
         <div class="p-frame-wrap"><iframe class="p-frame" src="mercearia-do-vale.html" loading="lazy" tabindex="-1"></iframe></div>
         <div class="p-overlay">
-          <span class="p-sub">Estilo rústico</span>
+          <span class="p-sub" data-i18n="sub_estilo_rustico">Estilo rústico</span>
           <span class="p-title">Mercearia do Vale</span>
-          <p class="p-desc">Loja de produtos regionais com carrinho funcional, categorias por tipo de produto e checkout com resumo do pedido.</p>
-          <div class="p-tags"><span>Rústico</span><span>Moderno</span><span>Ecommerce</span><span>Tons terrosos</span></div>
-          <span class="p-hint">Clique pra abrir o site completo →</span>
+          <p class="p-desc" data-i18n="desc_22">Loja de produtos regionais com carrinho funcional, categorias por tipo de produto e checkout com resumo do pedido.</p>
+          <div class="p-tags"><span data-i18n="tag_rustico">Rústico</span><span data-i18n="tag_moderno">Moderno</span><span data-i18n="tag_ecommerce">Ecommerce</span><span data-i18n="tag_terrosos">Tons terrosos</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
+        </div>
+      </article>
+
+      <article class="p-card" data-estilo="colorido moderno" data-formato="ecommerce" data-tipografia="encorpada" data-cores="vibrante" onclick="window.open('mercado-las-flores.html','_blank')">
+        <div class="p-frame-wrap"><iframe class="p-frame" src="mercado-las-flores.html" loading="lazy" tabindex="-1"></iframe></div>
+        <div class="p-overlay">
+          <span class="p-sub" data-i18n="sub_ecommerce_colorido">Ecommerce · estilo colorido</span>
+          <span class="p-title">Mercado Las Flores</span>
+          <p class="p-desc" data-i18n="desc_23">Loja de mercearia com carrinho funcional, tipografia bem encorpada e paleta vibrante — molhos, doces e especiarias direto do produtor.</p>
+          <div class="p-tags"><span data-i18n="tag_colorido">Colorido</span><span data-i18n="tag_moderno">Moderno</span><span data-i18n="tag_ecommerce">Ecommerce</span><span data-i18n="tag_vibrante_short">Vibrante</span></div>
+          <span class="p-hint" data-i18n="p_hint">Clique pra abrir o site completo →</span>
         </div>
       </article>
 
       <article class="p-card placeholder" data-estilo="" data-formato="" data-tipografia="" data-cores="">
-        <p>Tem um projeto seu pra mostrar aqui? Me manda o link ou o print.</p>
+        <p data-i18n="placeholder_text">Tem um projeto seu pra mostrar aqui? Me manda o link ou o print.</p>
       </article>
 
     </div>
-    <p class="no-results" id="noResults">Nenhum projeto combina com esses filtros ainda — tente remover algum.</p>
+    <p class="no-results" id="noResults" data-i18n="no_results">Nenhum projeto combina com esses filtros ainda — tente remover algum.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span class="brand-name" style="color:var(--cream);">Mesa<span class="dot">.</span>dev</span>
-    <p>© Mesa.dev · <a href="index.html">Voltar ao site</a></p>
+    <p>© Mesa.dev · <a href="index.html" data-i18n="footer_back">Voltar ao site</a></p>
   </div>
 </footer>
 
 <script>
+  const I18N = {
+    pt: {
+      meta_title: 'Portfólio — Mesa.dev',
+      meta_desc: 'Veja exemplos reais de sites feitos pelo Mesa.dev, filtrados por estilo, formato, tipografia e paleta de cores.',
+      back_link: '← Voltar ao site',
+      intro_stamp: 'Portfólio',
+      intro_h1: 'Exemplos reais, não maquetes soltas',
+      intro_p: 'Passe o mouse pra ampliar e ver o site de verdade rodando em miniatura. Clique pra abrir em tamanho normal.',
+      filters_title: 'Filtros',
+      filter_h_estilo: 'Estilo',
+      filter_h_formato: 'Formato',
+      filter_h_tipografia: 'Tipografia',
+      filter_h_cores: 'Paleta de cores',
+      filter_tipo_encorpada: 'Encorpada &amp; rústica',
+      filter_tipo_fina: 'Fina &amp; elegante',
+      filter_tipo_moderna: 'Moderna &amp; marcante',
+      clear_filters: 'Limpar filtros',
+      p_hint: 'Clique pra abrir o site completo →',
+      placeholder_text: 'Tem um projeto seu pra mostrar aqui? Me manda o link ou o print.',
+      no_results: 'Nenhum projeto combina com esses filtros ainda — tente remover algum.',
+      footer_back: 'Voltar ao site',
+      result_singular: 'projeto',
+      result_plural: 'projetos',
+      active_singular: 'ativo',
+      active_plural: 'ativos',
+      tag_elegante: 'Elegante',
+      tag_sobrio: 'Sóbrio',
+      tag_moderno: 'Moderno',
+      tag_sofisticado: 'Sofisticado',
+      tag_rustico: 'Rústico',
+      tag_colorido: 'Colorido',
+      tag_minimalista: 'Minimalista',
+      tag_landing: 'Landing page',
+      tag_completo: 'Site completo',
+      tag_ecommerce: 'E-commerce',
+      tag_terrosos: 'Tons terrosos',
+      tag_escuro: 'Monocromático escuro',
+      tag_vibrante: 'Vibrante multicolor',
+      tag_dourado: 'Dourado &amp; neutro',
+      tag_dourado_short: 'Dourado',
+      tag_vibrante_short: 'Vibrante',
+      tag_brasil: 'Brasil',
+      tag_eua: 'EUA',
+      sub_estilo_rustico: 'Estilo rústico',
+      sub_estilo_elegante: 'Estilo elegante',
+      sub_estilo_moderno: 'Estilo moderno',
+      sub_estilo_minimalista: 'Estilo minimalista',
+      sub_estilo_colorido: 'Estilo colorido',
+      sub_estilo_sobrio: 'Estilo sóbrio',
+      sub_estilo_sofisticado: 'Estilo sofisticado',
+      sub_ecommerce: 'E-commerce',
+      sub_ecommerce_colorido: 'Ecommerce · estilo colorido',
+      sub_usa_en: 'Estados Unidos · em inglês',
+      sub_br_pt: 'Brasil · em português-BR',
+      sub_iceland_en: 'Islândia · em inglês',
+      sub_uk_en: 'Reino Unido · em inglês',
+      sub_italy_it: 'Itália · em italiano',
+      sub_france_fr: 'França · em francês',
+      desc_1: 'Cardápio do dia com preços, história do restaurante, horário e reserva direto por WhatsApp.',
+      desc_2: 'Menu de degustação com preços, filosofia da casa, mesa com vista pro mar e reservas por telefone/e-mail.',
+      desc_3: 'Cardápio em abas com preços, eventos privados, depoimentos de clientes, formulário de reserva e chat.',
+      desc_4: 'Menu enxuto com preços, horário de funcionamento e localização — uma página só, direto ao ponto.',
+      desc_5: 'Cardápio com preços, localização do food truck e horário de funcionamento — visual jovem e informal.',
+      desc_6: 'Loja com carrinho, categorias de produto, preços e checkout — vende vinho, azeite e cestas presente direto ao cliente.',
+      desc_7: 'Menu com preços, horário de funcionamento, telefone e e-mail para reserva — clima de trattoria de família.',
+      desc_8: 'Cardápio de bowls com preços, promessa da casa e horário — paleta vibrante em tom pastel-saturado.',
+      desc_9: 'Cortes com preços, tempo de maturação, horário e botão de reserva — clima escuro de churrascaria de autor.',
+      desc_10: 'Produtos com preços, horário de funcionamento e história da casa — visual limpo em tons pastel.',
+      desc_11: 'Menu com preços em dólar, horário de funcionamento, endereço e telefone — clima clássico de diner americano.',
+      desc_12: 'Cardápio com preços em real, horário de funcionamento, endereço e reserva por WhatsApp — clima de boteco de bairro.',
+      desc_13: 'Menu sazonal com preços em abas, galeria, seção de eventos para casamentos e formulário de reserva completo.',
+      desc_14: 'Menu sazonal por curso com ingredientes forrageados, filosofia da casa e reserva por telefone — clima nórdico contemporâneo.',
+      desc_15: 'Ementa semanal com preços, três gerações de história da família e morada com mapa para reservas.',
+      desc_16: 'Mezze com preços, prateleira de especiarias ilustrada e reserva por telefone ou WhatsApp — mesa levantina em Londres.',
+      desc_17: 'Categorias de produtos com preços, história da avó Rosinha, opiniões de clientes e formulário de encomenda de bolos.',
+      desc_18: 'Processo da massa fresca passo a passo, ementa com preços e formatos de massa do dia — cozinha de família em Bolonha.',
+      desc_19: 'Quadro do dia com preços, cartão de fidelidade com carimbos e pedido antecipado — café da manhã e almoço.',
+      desc_20: 'Ardósia do dia atualizada, carta de clássicos franceses com preços e linha do tempo de três gerações da família.',
+      desc_21: 'Chalkboard do dia, história do pub com quatro donos e uma lareira que nunca apagou, e morada para visita.',
+      desc_22: 'Loja de produtos regionais com carrinho funcional, categorias por tipo de produto e checkout com resumo do pedido.',
+      desc_23: 'Loja de mercearia com carrinho funcional, tipografia bem encorpada e paleta vibrante — molhos, doces e especiarias direto do produtor.',
+    },
+    es: {
+      meta_title: 'Portafolio — Mesa.dev',
+      meta_desc: 'Mira ejemplos reales de sitios hechos por Mesa.dev, filtrados por estilo, formato, tipografía y paleta de colores.',
+      back_link: '← Volver al sitio',
+      intro_stamp: 'Portafolio',
+      intro_h1: 'Ejemplos reales, no maquetas sueltas',
+      intro_p: 'Pasa el ratón para ampliar y ver el sitio de verdad funcionando en miniatura. Haz clic para abrirlo a tamaño normal.',
+      filters_title: 'Filtros',
+      filter_h_estilo: 'Estilo',
+      filter_h_formato: 'Formato',
+      filter_h_tipografia: 'Tipografía',
+      filter_h_cores: 'Paleta de colores',
+      filter_tipo_encorpada: 'Robusta &amp; rústica',
+      filter_tipo_fina: 'Fina &amp; elegante',
+      filter_tipo_moderna: 'Moderna &amp; llamativa',
+      clear_filters: 'Limpiar filtros',
+      p_hint: 'Haz clic para abrir el sitio completo →',
+      placeholder_text: '¿Tienes un proyecto tuyo para mostrar aquí? Envíame el enlace o la captura.',
+      no_results: 'Ningún proyecto coincide con esos filtros todavía — intenta quitar alguno.',
+      footer_back: 'Volver al sitio',
+      result_singular: 'proyecto',
+      result_plural: 'proyectos',
+      active_singular: 'activo',
+      active_plural: 'activos',
+      tag_elegante: 'Elegante',
+      tag_sobrio: 'Sobrio',
+      tag_moderno: 'Moderno',
+      tag_sofisticado: 'Sofisticado',
+      tag_rustico: 'Rústico',
+      tag_colorido: 'Colorido',
+      tag_minimalista: 'Minimalista',
+      tag_landing: 'Landing page',
+      tag_completo: 'Sitio completo',
+      tag_ecommerce: 'E-commerce',
+      tag_terrosos: 'Tonos terrosos',
+      tag_escuro: 'Monocromático oscuro',
+      tag_vibrante: 'Vibrante multicolor',
+      tag_dourado: 'Dorado &amp; neutro',
+      tag_dourado_short: 'Dorado',
+      tag_vibrante_short: 'Vibrante',
+      tag_brasil: 'Brasil',
+      tag_eua: 'EE.UU.',
+      sub_estilo_rustico: 'Estilo rústico',
+      sub_estilo_elegante: 'Estilo elegante',
+      sub_estilo_moderno: 'Estilo moderno',
+      sub_estilo_minimalista: 'Estilo minimalista',
+      sub_estilo_colorido: 'Estilo colorido',
+      sub_estilo_sobrio: 'Estilo sobrio',
+      sub_estilo_sofisticado: 'Estilo sofisticado',
+      sub_ecommerce: 'E-commerce',
+      sub_ecommerce_colorido: 'Ecommerce · estilo colorido',
+      sub_usa_en: 'Estados Unidos · en inglés',
+      sub_br_pt: 'Brasil · en portugués de Brasil',
+      sub_iceland_en: 'Islandia · en inglés',
+      sub_uk_en: 'Reino Unido · en inglés',
+      sub_italy_it: 'Italia · en italiano',
+      sub_france_fr: 'Francia · en francés',
+      desc_1: 'Menú del día con precios, historia del restaurante, horario y reserva directa por WhatsApp.',
+      desc_2: 'Menú degustación con precios, filosofía de la casa, mesa con vista al mar y reservas por teléfono/correo.',
+      desc_3: 'Carta en pestañas con precios, eventos privados, testimonios de clientes, formulario de reserva y chat.',
+      desc_4: 'Menú breve con precios, horario y ubicación — una sola página, directa al grano.',
+      desc_5: 'Carta con precios, ubicación del food truck y horario — visual joven e informal.',
+      desc_6: 'Tienda con carrito, categorías de producto, precios y pago — vende vino, aceite y cestas de regalo directo al cliente.',
+      desc_7: 'Menú con precios, horario, teléfono y correo para reservar — ambiente de trattoria familiar.',
+      desc_8: 'Carta de bowls con precios, promesa de la casa y horario — paleta vibrante en tono pastel saturado.',
+      desc_9: 'Cortes con precios, tiempo de maduración, horario y botón de reserva — ambiente oscuro de asador de autor.',
+      desc_10: 'Productos con precios, horario e historia de la casa — visual limpio en tonos pastel.',
+      desc_11: 'Menú con precios en dólares, horario, dirección y teléfono — ambiente clásico de diner americano.',
+      desc_12: 'Carta con precios en reales, horario, dirección y reserva por WhatsApp — ambiente de bar de barrio.',
+      desc_13: 'Menú de temporada con precios en pestañas, galería, sección de eventos para bodas y formulario de reserva completo.',
+      desc_14: 'Menú de temporada por tiempos con ingredientes recolectados, filosofía de la casa y reserva por teléfono — ambiente nórdico contemporáneo.',
+      desc_15: 'Carta semanal con precios, tres generaciones de historia familiar y dirección con mapa para reservas.',
+      desc_16: 'Mezze con precios, estantería de especias ilustrada y reserva por teléfono o WhatsApp — mesa levantina en Londres.',
+      desc_17: 'Categorías de productos con precios, historia de la abuela Rosinha, opiniones de clientes y formulario de encargo de tartas.',
+      desc_18: 'Proceso de la pasta fresca paso a paso, carta con precios y formatos de pasta del día — cocina familiar en Bolonia.',
+      desc_19: 'Pizarra del día con precios, tarjeta de fidelidad con sellos y pedido anticipado — desayuno y almuerzo.',
+      desc_20: 'Pizarra del día actualizada, carta de clásicos franceses con precios y línea de tiempo de tres generaciones familiares.',
+      desc_21: 'Pizarra del día, historia del pub con cuatro dueños y una chimenea que nunca se apagó, y dirección para visitar.',
+      desc_22: 'Tienda de productos regionales con carrito funcional, categorías por tipo de producto y pago con resumen del pedido.',
+      desc_23: 'Tienda de abarrotes con carrito funcional, tipografía bien robusta y paleta vibrante — salsas, dulces y especias directo del productor.',
+    },
+    en: {
+      meta_title: 'Portfolio — Mesa.dev',
+      meta_desc: 'See real examples of sites built by Mesa.dev, filtered by style, format, typography, and colour palette.',
+      back_link: '← Back to site',
+      intro_stamp: 'Portfolio',
+      intro_h1: 'Real examples, not loose mockups',
+      intro_p: 'Hover to zoom in and see the actual site running in miniature. Click to open it at full size.',
+      filters_title: 'Filters',
+      filter_h_estilo: 'Style',
+      filter_h_formato: 'Format',
+      filter_h_tipografia: 'Typography',
+      filter_h_cores: 'Colour palette',
+      filter_tipo_encorpada: 'Bold &amp; rustic',
+      filter_tipo_fina: 'Thin &amp; elegant',
+      filter_tipo_moderna: 'Modern &amp; bold',
+      clear_filters: 'Clear filters',
+      p_hint: 'Click to open the full site →',
+      placeholder_text: 'Got a project of your own to show here? Send me the link or a screenshot.',
+      no_results: 'No project matches those filters yet — try removing one.',
+      footer_back: 'Back to site',
+      result_singular: 'project',
+      result_plural: 'projects',
+      active_singular: 'active',
+      active_plural: 'active',
+      tag_elegante: 'Elegant',
+      tag_sobrio: 'Understated',
+      tag_moderno: 'Modern',
+      tag_sofisticado: 'Sophisticated',
+      tag_rustico: 'Rustic',
+      tag_colorido: 'Colourful',
+      tag_minimalista: 'Minimalist',
+      tag_landing: 'Landing page',
+      tag_completo: 'Full website',
+      tag_ecommerce: 'E-commerce',
+      tag_terrosos: 'Earthy tones',
+      tag_escuro: 'Dark monochrome',
+      tag_vibrante: 'Vibrant multicolour',
+      tag_dourado: 'Gold &amp; neutral',
+      tag_dourado_short: 'Gold',
+      tag_vibrante_short: 'Vibrant',
+      tag_brasil: 'Brazil',
+      tag_eua: 'USA',
+      sub_estilo_rustico: 'Rustic style',
+      sub_estilo_elegante: 'Elegant style',
+      sub_estilo_moderno: 'Modern style',
+      sub_estilo_minimalista: 'Minimalist style',
+      sub_estilo_colorido: 'Colourful style',
+      sub_estilo_sobrio: 'Understated style',
+      sub_estilo_sofisticado: 'Sophisticated style',
+      sub_ecommerce: 'E-commerce',
+      sub_ecommerce_colorido: 'Ecommerce · colourful style',
+      sub_usa_en: 'United States · in English',
+      sub_br_pt: 'Brazil · in Brazilian Portuguese',
+      sub_iceland_en: 'Iceland · in English',
+      sub_uk_en: 'United Kingdom · in English',
+      sub_italy_it: 'Italy · in Italian',
+      sub_france_fr: 'France · in French',
+      desc_1: 'Daily menu with prices, restaurant history, hours, and booking straight through WhatsApp.',
+      desc_2: 'Tasting menu with prices, the house philosophy, a table with a sea view, and bookings by phone/email.',
+      desc_3: 'Tabbed menu with prices, private events, customer testimonials, a booking form, and chat.',
+      desc_4: 'A lean menu with prices, opening hours, and location — a single page, straight to the point.',
+      desc_5: 'Menu with prices, food truck location, and opening hours — a young, casual look.',
+      desc_6: 'Shop with cart, product categories, prices, and checkout — sells wine, olive oil, and gift baskets straight to the customer.',
+      desc_7: 'Menu with prices, opening hours, phone, and email for bookings — a family trattoria feel.',
+      desc_8: 'Bowl menu with prices, the house promise, and hours — a vibrant, saturated pastel palette.',
+      desc_9: 'Cuts with prices, ageing time, hours, and a booking button — a dark, chef-driven steakhouse feel.',
+      desc_10: 'Products with prices, opening hours, and the house story — a clean look in pastel tones.',
+      desc_11: 'Menu with prices in dollars, opening hours, address, and phone — a classic American diner feel.',
+      desc_12: 'Menu with prices in reais, opening hours, address, and WhatsApp booking — a neighbourhood bar feel.',
+      desc_13: 'Seasonal menu with tabbed prices, a gallery, a wedding events section, and a full booking form.',
+      desc_14: 'Seasonal tasting menu with foraged ingredients, the house philosophy, and phone bookings — a contemporary Nordic feel.',
+      desc_15: 'Weekly menu with prices, three generations of family history, and an address with a map for bookings.',
+      desc_16: 'Mezze with prices, an illustrated spice shelf, and bookings by phone or WhatsApp — a Levantine table in London.',
+      desc_17: 'Product categories with prices, grandma Rosinha\'s story, customer reviews, and a cake order form.',
+      desc_18: 'Fresh pasta process step by step, menu with prices, and the day\'s pasta shapes — a family kitchen in Bologna.',
+      desc_19: 'Today\'s board with prices, a stamp-based loyalty card, and pre-ordering — breakfast and lunch.',
+      desc_20: 'Daily updated chalkboard, a menu of French classics with prices, and a three-generation family timeline.',
+      desc_21: 'Today\'s chalkboard, the story of a pub with four owners and a fireplace that\'s never gone out, plus directions to visit.',
+      desc_22: 'Regional products shop with a working cart, product-type categories, and checkout with an order summary.',
+      desc_23: 'Grocery shop with a working cart, bold typography, and a vibrant palette — sauces, sweets, and spices straight from the producer.',
+    },
+  };
+  
+  let currentLang = 'pt';
+
+  function applyLang(lang, manual){
+    if(!I18N[lang]) return;
+    currentLang = lang;
+    const dict = I18N[lang];
+    document.title = dict.meta_title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc) metaDesc.setAttribute('content', dict.meta_desc);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.textContent = dict[key];
+    });
+    const sel = document.getElementById('langSelect');
+    if(sel) sel.value = lang;
+    try{
+      localStorage.setItem('mesaDevPortfolioLang', lang);
+      if(manual) localStorage.setItem('mesaDevPortfolioLangManual', '1');
+    }catch(e){}
+    applyFilters();
+  }
+
+  document.getElementById('langSelect').addEventListener('change', (e)=> applyLang(e.target.value, true));
+
   const activeFilters = { estilo: new Set(), formato: new Set(), tipografia: new Set(), cores: new Set() };
   const cards = Array.from(document.querySelectorAll('.p-card:not(.placeholder)'));
   const allCardsCount = cards.length;
@@ -524,12 +812,13 @@
       card.classList.toggle('hidden-by-filter', !matches);
       if(matches) visible++;
     });
-    document.getElementById('resultCount').textContent = visible + (visible === 1 ? ' projeto' : ' projetos');
+    const dict = I18N[currentLang];
+    document.getElementById('resultCount').textContent = visible + ' ' + (visible === 1 ? dict.result_singular : dict.result_plural);
     document.getElementById('noResults').classList.toggle('show', visible === 0);
 
     const totalActive = Object.values(activeFilters).reduce((sum, set) => sum + set.size, 0);
     const badge = document.getElementById('activeBadge');
-    badge.textContent = totalActive + (totalActive === 1 ? ' ativo' : ' ativos');
+    badge.textContent = totalActive + ' ' + (totalActive === 1 ? dict.active_singular : dict.active_plural);
     badge.classList.toggle('show', totalActive > 0);
   }
 
@@ -539,7 +828,19 @@
     filtersSection.classList.toggle('collapsed');
   });
 
-  applyFilters();
+  (function initLang(){
+    let initial = 'pt';
+    let saved;
+    try{ saved = localStorage.getItem('mesaDevPortfolioLang'); }catch(e){}
+    if(saved && I18N[saved]){
+      initial = saved;
+    } else {
+      const nav = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if(nav.startsWith('es')) initial = 'es';
+      else if(!nav.startsWith('pt')) initial = 'en';
+    }
+    applyLang(initial);
+  })();
 </script>
 
 </body>
