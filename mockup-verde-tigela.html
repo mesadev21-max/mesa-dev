@@ -3,93 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verde Tigela</title>
+<title>RAIZ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Work+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,800;9..144,900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --pink:#ff6f81; --mint:#3fae8f; --sun:#ffd166; --cream:#fffaf2; --ink:#1f2b26; }
+  :root{
+    --coral:#ff6f5e; --gold:#cfa15e; --sage:#7fae8c; --sage-light:#a8cdb2;
+    --ink:#121210; --ink2:#1a1917; --cream:#f6f0e4; --cream-dim:rgba(246,240,228,0.68);
+    --border:rgba(246,240,228,0.14); --card2:#1e1c19; --fg-muted:rgba(246,240,228,0.55);
+    --display:'Fraunces',serif; --ui:'Work Sans',sans-serif; --mono:'Space Mono',monospace;
+  }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{background:var(--cream); color:var(--ink); font-family:'Work Sans',sans-serif; line-height:1.55;}
-  h1,h2,h3{font-family:'Fraunces',serif; font-weight:800; letter-spacing:-0.02em;}
+  body{background:var(--ink); color:var(--cream); font-family:var(--ui); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--display); font-weight:800; letter-spacing:-0.02em;}
   a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1040px; margin:0 auto; padding:0 26px;}
-  .eyebrow{font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase;}
-  .btn{display:inline-block; background:var(--mint); color:#fff; padding:15px 30px; border-radius:30px; font-weight:700; font-size:14px;}
-  .btn:hover{background:#2f8a70;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 26px;}
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase;}
+  .btn{display:inline-block; background:var(--coral); color:var(--ink); padding:15px 32px; border-radius:2px; font-weight:700; font-size:13px; letter-spacing:0.03em; transition:background .2s ease, transform .2s ease;}
+  .btn:hover{background:var(--sage-light); transform:translateY(-2px);}
 
-  header{padding:22px 0;}
+  /* ===== HEADER ===== */
+  header{padding:26px 0; border-bottom:1px solid var(--border);}
   header .wrap{display:flex; justify-content:space-between; align-items:center;}
-  .logo{font-size:21px; color:var(--mint);}
-  nav a{margin-left:22px; font-weight:600; font-size:14px;}
+  .logo{font-family:var(--display); font-weight:900; font-size:22px; letter-spacing:0.04em; text-transform:uppercase;}
+  nav a{margin-left:28px; font-weight:600; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; opacity:0.8; transition:opacity .2s;}
+  nav a:hover{opacity:1;}
   @media(max-width:600px){ nav{display:none;} }
 
-  .hero{padding:70px 0 90px; text-align:center; position:relative; overflow:hidden;}
-  .blob{position:absolute; border-radius:50%; opacity:0.35; filter:blur(6px);}
-  .blob.b1{width:220px; height:220px; background:var(--pink); top:-60px; left:-60px;}
-  .blob.b2{width:180px; height:180px; background:var(--sun); bottom:-40px; right:-40px;}
+  /* ===== HERO ===== */
+  .hero{padding:100px 0 90px; text-align:center; position:relative; overflow:hidden;}
+  .hero::before{content:''; position:absolute; inset:-20% -10% auto -10%; height:70%;
+    background:radial-gradient(ellipse at 50% 0%, rgba(127,174,140,0.18), transparent 60%); pointer-events:none;}
   .hero .wrap{position:relative; z-index:1;}
-  .hero .eyebrow{color:var(--pink);}
-  .hero h1{font-size:clamp(38px,7vw,72px); line-height:0.98; margin:18px 0 20px;}
-  .hero p{max-width:420px; margin:0 auto 30px; opacity:0.7; font-weight:400;}
+  .hero .eyebrow{color:var(--sage-light);}
+  .hero h1{font-size:clamp(42px,7.6vw,84px); line-height:0.96; margin:20px 0 26px; text-transform:uppercase;}
+  .hero h1 em{font-style:italic; font-weight:500; text-transform:none; color:var(--gold);}
+  .hero p{max-width:440px; margin:0 auto 20px; opacity:0.68; font-weight:400; font-size:15px;}
 
-  .menu{padding:70px 0;}
-  .menu h2{text-align:center; font-size:32px; margin-bottom:44px; color:var(--mint);}
-  .bowl-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  @media(max-width:760px){ .bowl-grid{grid-template-columns:1fr 1fr;} }
-  @media(max-width:480px){ .bowl-grid{grid-template-columns:1fr;} }
-  .bowl{background:#fff; border-radius:20px; padding:22px; box-shadow:0 10px 24px rgba(31,43,38,0.08);}
-  .bowl .disc{width:100%; aspect-ratio:1; border-radius:50%; margin-bottom:14px;}
-  .bowl h3{font-size:16.5px; margin-bottom:6px;}
-  .bowl p{font-size:12.5px; opacity:0.6; margin-bottom:12px;}
-  .bowl .price{font-family:'Space Mono',monospace; font-weight:700; color:var(--mint);}
+  /* efeito 17 · palavras que se alternam */
+  .js-troca{font-family:var(--display); font-weight:600; font-style:italic; font-size:22px; color:var(--cream); display:flex; align-items:center; gap:9px; flex-wrap:wrap; justify-content:center; margin:0 0 38px;}
+  .js-troca .janela{position:relative; height:1.3em; overflow:hidden; display:inline-block; vertical-align:bottom; min-width:120px; text-align:left;}
+  .js-troca .janela .fita span{display:block; color:var(--coral);}
 
-  .promise{background:var(--ink); color:var(--cream); padding:70px 0; text-align:center;}
-  .promise-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:34px;}
+  /* ===== MENU / TIGELAS ===== */
+  .menu{padding:86px 0 40px;}
+  .menu .section-head{text-align:center; margin-bottom:14px;}
+  .menu h2{font-size:34px; text-transform:uppercase;}
+  .menu .lede{text-align:center; color:var(--fg-muted); font-size:13.5px; max-width:46ch; margin:10px auto 40px;}
+
+  /* efeito 21 · filtro */
+  .js-filtro .botoes{display:flex; gap:10px; justify-content:center; margin-bottom:46px; flex-wrap:wrap;}
+  .js-filtro .botoes button{
+    font:600 11.5px var(--mono); text-transform:uppercase; letter-spacing:0.06em; cursor:pointer; color:var(--fg-muted);
+    border:1px solid var(--border); background:transparent; border-radius:30px; padding:9px 20px;
+    transition:all .2s;
+  }
+  .js-filtro .botoes button.on{background:var(--cream); color:var(--ink); border-color:var(--cream);}
+  .js-filtro .itens{display:flex; flex-direction:column;}
+  .bowl-row{
+    display:grid; grid-template-columns:64px 1fr auto; align-items:center; gap:20px;
+    padding:22px 4px; border-bottom:1px solid var(--border); will-change:transform,opacity;
+  }
+  .bowl-row.fora{display:none;}
+  .bowl-row .thumb{width:64px; height:64px; border-radius:50%; overflow:hidden; border:1px solid var(--border); flex-shrink:0;}
+  .bowl-row .thumb img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.85);}
+  .bowl-row .info h3{font-size:17px; text-transform:uppercase; letter-spacing:0.01em; margin-bottom:4px; font-weight:700;}
+  .bowl-row .info p{font-size:12.5px; color:var(--fg-muted); font-family:var(--ui);}
+  .bowl-row .price{font-family:var(--mono); font-weight:700; color:var(--gold); font-size:15px; white-space:nowrap;}
+  @media(max-width:560px){
+    .bowl-row{grid-template-columns:48px 1fr auto; gap:14px; padding:16px 2px;}
+    .bowl-row .thumb{width:48px; height:48px;}
+    .bowl-row .info h3{font-size:14.5px;}
+  }
+
+  /* ===== ESCOLHA SUA MESA (luz que segue o mouse) ===== */
+  .mesas{padding:80px 0; border-top:1px solid var(--border);}
+  .mesas .section-head{text-align:center; margin-bottom:44px;}
+  .mesas h2{font-size:30px; text-transform:uppercase;}
+  .mesas .lede{text-align:center; color:var(--fg-muted); font-size:13.5px; max-width:44ch; margin:10px auto 0;}
+  .mesa-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:44px;}
+  @media(max-width:760px){ .mesa-grid{grid-template-columns:1fr 1fr;} }
+
+  .js-luz{
+    position:relative; border-radius:14px; overflow:hidden;
+    border:1px solid var(--border); background:var(--card2);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    padding:34px 16px; cursor:default; text-align:center; transition:border-color .25s ease;
+  }
+  .js-luz:hover{border-color:rgba(207,161,94,0.5);}
+  .js-luz::before{
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .3s;
+    background:radial-gradient(220px circle at var(--x,50%) var(--y,50%),rgba(207,161,94,0.22),transparent 70%);
+  }
+  .js-luz:hover::before{opacity:1;}
+  .js-luz svg{width:30px; height:30px; color:var(--gold); position:relative; z-index:1;}
+  .js-luz h4{font-family:var(--display); font-size:15px; text-transform:uppercase; letter-spacing:0.02em; position:relative; z-index:1;}
+  .js-luz p{font-size:11.5px; color:var(--fg-muted); position:relative; z-index:1;}
+
+  /* ===== PROMISE ===== */
+  .promise{background:var(--ink2); padding:80px 0; text-align:center; border-top:1px solid var(--border); position:relative; overflow:hidden;}
+  .promise::before{content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at 50% 100%, rgba(255,111,94,0.10), transparent 60%); pointer-events:none;}
+  .promise .wrap{position:relative; z-index:1;}
+  .promise-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:38px; text-align:left;}
   @media(max-width:700px){ .promise-grid{grid-template-columns:1fr;} }
-  .promise-grid h4{font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; color:var(--sun); margin-bottom:8px;}
-  .promise-grid p{font-size:13px; opacity:0.75;}
+  .promise-grid > div{border-top:1px solid var(--border); padding-top:18px;}
+  .promise-grid h4{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); margin-bottom:10px;}
+  .promise-grid p{font-size:13.5px; color:var(--fg-muted);}
 
-  footer{padding:32px 0; text-align:center; font-family:'Space Mono',monospace; font-size:11.5px; opacity:0.55;}
+  footer{padding:34px 0; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:0.02em; opacity:0.5;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="logo">Verde Tigela</div>
-    <nav><a href="#menu">Tigelas</a><a href="#sobre">Sobre</a></nav>
+    <div class="logo">Raiz</div>
+    <nav><a href="#menu">Tigelas</a><a href="#mesas">Mesas</a><a href="#sobre">Sobre</a></nav>
   </div>
 </header>
 
 <section class="hero">
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
   <div class="wrap">
     <span class="eyebrow">Comida de verdade, rápida de verdade</span>
-    <h1>Tigela boa,<br>sem enrolação.</h1>
-    <p>Bowls montados na hora, ingredientes frescos, e nada de fritura escondida no meio.</p>
+    <h1>Tigela boa,<br>sem <em>enrolação</em>.</h1>
+
+    <div class="js-troca">
+      <span>Feita sem</span>
+      <span class="janela"><span class="fita">
+        <span>pressa</span><span>fritura</span><span>enrolação</span><span>pressa</span>
+      </span></span>
+    </div>
+
+    <p>Bowls montados na hora, ingredientes frescos, e nada escondido no meio do prato.</p>
     <a href="#menu" class="btn">Ver as tigelas</a>
   </div>
 </section>
 
 <section class="menu" id="menu">
   <div class="wrap">
-    <h2>As tigelas</h2>
-    <div class="bowl-grid">
-      <div class="bowl"><div class="disc" style="background:linear-gradient(150deg,var(--pink),var(--sun));"></div><h3>Tigela do Sol</h3><p>Quinoa, manga, grão-de-bico, tahine</p><div class="price">€ 8,90</div></div>
-      <div class="bowl"><div class="disc" style="background:linear-gradient(150deg,var(--mint),#a8e6c9);"></div><h3>Tigela Verde</h3><p>Espinafre, abacate, edamame, gergelim</p><div class="price">€ 8,50</div></div>
-      <div class="bowl"><div class="disc" style="background:linear-gradient(150deg,var(--sun),var(--pink));"></div><h3>Tigela Proteica</h3><p>Frango grelhado, batata-doce, brócolis</p><div class="price">€ 9,90</div></div>
-      <div class="bowl"><div class="disc" style="background:linear-gradient(150deg,#a8e6c9,var(--mint));"></div><h3>Tigela do Mar</h3><p>Salmão, arroz negro, pepino, wasabi</p><div class="price">€ 11,50</div></div>
-      <div class="bowl"><div class="disc" style="background:linear-gradient(150deg,var(--pink),#ffb4bd);"></div><h3>Tigela Doce</h3><p>Açaí, banana, granola, morango</p><div class="price">€ 7,00</div></div>
-      <div class="bowl"><div class="disc" style="background:linear-gradient(150deg,#ffd166,#ffb4bd);"></div><h3>Monte a Sua</h3><p>Escolha base, proteína e 3 coberturas</p><div class="price">€ 9,00</div></div>
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--sage-light);">O cardápio</span>
+      <h2>As tigelas</h2>
+      <p class="lede">Seis combinações fixas — ou você monta a sua, do jeito que quiser.</p>
+    </div>
+
+    <div class="js-filtro">
+      <div class="botoes">
+        <button class="on" data-tipo="tudo">Tudo</button>
+        <button data-tipo="salgada">Salgadas</button>
+        <button data-tipo="doce">Doces</button>
+        <button data-tipo="monte">Monte a sua</button>
+      </div>
+      <div class="itens">
+        <div class="bowl-row" data-tipo="salgada">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1505576633757-0ac1084af824?auto=format&fit=crop&w=200&q=70" alt=""></div>
+          <div class="info"><h3>Tigela do Sol</h3><p>Quinoa, manga, grão-de-bico, tahine</p></div>
+          <div class="price">€ 8,90</div>
+        </div>
+        <div class="bowl-row" data-tipo="salgada">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1599020792689-9fde458e7e17?auto=format&fit=crop&w=200&q=70" alt=""></div>
+          <div class="info"><h3>Tigela Verde</h3><p>Espinafre, abacate, edamame, gergelim</p></div>
+          <div class="price">€ 8,50</div>
+        </div>
+        <div class="bowl-row" data-tipo="salgada">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1589442305595-62647c1514f9?auto=format&fit=crop&w=200&q=70" alt=""></div>
+          <div class="info"><h3>Tigela Proteica</h3><p>Frango grelhado, batata-doce, brócolis</p></div>
+          <div class="price">€ 9,90</div>
+        </div>
+        <div class="bowl-row" data-tipo="salgada">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1633862472152-e3873eb1b3ff?auto=format&fit=crop&w=200&q=70" alt=""></div>
+          <div class="info"><h3>Tigela do Mar</h3><p>Salmão, arroz negro, pepino, wasabi</p></div>
+          <div class="price">€ 11,50</div>
+        </div>
+        <div class="bowl-row" data-tipo="doce">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1627308594190-a057cd4bfac8?auto=format&fit=crop&w=200&q=70" alt=""></div>
+          <div class="info"><h3>Tigela Doce</h3><p>Açaí, banana, granola, morango</p></div>
+          <div class="price">€ 7,00</div>
+        </div>
+        <div class="bowl-row" data-tipo="monte">
+          <div class="thumb"><img src="https://images.unsplash.com/photo-1542354255-839e272e3408?auto=format&fit=crop&w=200&q=70" alt=""></div>
+          <div class="info"><h3>Monte a Sua</h3><p>Escolha base, proteína e 3 coberturas</p></div>
+          <div class="price">€ 9,00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mesas" id="mesas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--sage-light);">Onde comer</span>
+      <h2>Escolha sua mesa</h2>
+      <p class="lede">Passe o mouse pra ver — cada formato pensado pra um jeito diferente de comer bem.</p>
+    </div>
+    <div class="mesa-grid">
+      <div class="js-luz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16M4 10l1.5 9h13L20 10M4 10l1-4h14l1 4"/></svg>
+        <h4>Balcão</h4>
+        <p>Rápido, sozinho ou de passagem</p>
+      </div>
+      <div class="js-luz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        <h4>Mesa ao ar livre</h4>
+        <p>Sol, sombra e sem pressa</p>
+      </div>
+      <div class="js-luz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a2 2 0 012-2h6a2 2 0 012 2v2"/></svg>
+        <h4>Mesa reservada</h4>
+        <p>Pra grupo, com hora marcada</p>
+      </div>
+      <div class="js-luz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2l1.5 5h9L18 2M4 7h16l-1.5 13a2 2 0 01-2 2H7.5a2 2 0 01-2-2L4 7z"/></svg>
+        <h4>Para levar</h4>
+        <p>Embalagem que aguenta o caminho</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="promise" id="sobre">
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--sun);">O que a gente promete</span>
-    <h2 style="color:var(--cream);">Sem letrinha miúda</h2>
+    <span class="eyebrow" style="color:var(--gold);">O que a gente promete</span>
+    <h2 style="color:var(--cream); font-size:30px; text-transform:uppercase;">Sem letrinha miúda</h2>
     <div class="promise-grid">
       <div><h4>Pronto em 5 min</h4><p>Pra levar ou pra comer na hora, sem fila longa.</p></div>
       <div><h4>Ingrediente visível</h4><p>Você vê tudo sendo montado no balcão.</p></div>
@@ -98,7 +235,79 @@
   </div>
 </section>
 
-<footer>Verde Tigela — Príncipe Real, Lisboa · Seg–Sáb 11h–21h</footer>
+<footer>Raiz — Príncipe Real, Lisboa · Seg–Sáb 11h–21h</footer>
+
+<script>
+  var FX = {};
+
+  // 17 · palavras que se alternam
+  FX.j17 = function(card){
+    var janela = card.querySelector('.janela');
+    if(!janela) return function(){};
+    var fita = janela.querySelector('.fita');
+    var itens = fita.children.length;
+    var i = 0, id;
+    function trocar(){
+      i++;
+      fita.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1)';
+      fita.style.transform = 'translateY(' + (-i * 100 / itens) + '%)';
+      if(i === itens - 1){
+        setTimeout(function(){
+          fita.style.transition = 'none';
+          fita.style.transform = 'translateY(0)';
+          i = 0;
+        }, 520);
+      }
+    }
+    id = setInterval(trocar, 1800);
+    return function(){ clearInterval(id); };
+  };
+
+  // 21 · galeria com filtro
+  FX.j21 = function(card){
+    var area = card.querySelector('.js-filtro');
+    if(!area) return;
+    var itens = [].slice.call(area.querySelectorAll('.bowl-row'));
+    area.querySelectorAll('.botoes button').forEach(function(b){
+      b.addEventListener('click', function(){
+        area.querySelectorAll('.botoes button').forEach(function(o){ o.classList.remove('on'); });
+        b.classList.add('on');
+        var alvo = b.dataset.tipo;
+        var antes = itens.map(function(i){ return i.getBoundingClientRect(); });
+        itens.forEach(function(i){
+          i.classList.toggle('fora', alvo !== 'tudo' && i.dataset.tipo !== alvo);
+        });
+        itens.forEach(function(i, n){
+          if(i.classList.contains('fora')) return;
+          var depois = i.getBoundingClientRect();
+          var dx = antes[n].left - depois.left, dy = antes[n].top - depois.top;
+          if(!dx && !dy) return;
+          i.style.transition = 'none';
+          i.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+          requestAnimationFrame(function(){
+            i.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1)';
+            i.style.transform = '';
+          });
+        });
+      });
+    });
+  };
+
+  // 12 · luz que segue o mouse
+  FX.j12 = function(card){
+    card.querySelectorAll('.js-luz').forEach(function(el){
+      el.addEventListener('mousemove', function(ev){
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--x', (ev.clientX - r.left) + 'px');
+        el.style.setProperty('--y', (ev.clientY - r.top) + 'px');
+      });
+    });
+  };
+
+  FX.j17(document);
+  FX.j21(document);
+  FX.j12(document);
+</script>
 
 </body>
 </html>
