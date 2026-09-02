@@ -138,7 +138,11 @@
   .dif-wrap{display:grid; grid-template-columns:1fr 300px 1fr; gap:0 44px; align-items:center;}
   @media(max-width:860px){ .dif-wrap{grid-template-columns:1fr;} }
   .dif-col{display:flex; flex-direction:column; gap:34px;}
+  .dif-item .icone{width:30px; height:30px; margin-bottom:12px; color:var(--brick);}
   .dif-item h4{font-size:15.5px; margin-bottom:6px;}
+  .como-step h3{display:flex; align-items:center; gap:8px;}
+  .como-step .icone{width:17px; height:17px; color:var(--gold-light); opacity:0.8;}
+  .info-grid .icone{width:24px; height:24px; margin:0 auto 10px; color:rgba(255,255,255,0.85);}
   .dif-item p{font-size:13.5px; opacity:0.65; max-width:30ch;}
   .dif-center{aspect-ratio:1/1; border-radius:50%; overflow:hidden; background:linear-gradient(155deg, #4a3221 0%, #26170e 100%); margin:0 auto;}
   .dif-center .prato-art{padding:20%;}
@@ -230,23 +234,25 @@
       <div class="como-steps">
         <div class="como-step">
           <span class="como-num">1</span>
-          <div><h3>Escolha o dia</h3><p>Reserve por WhatsApp ou telefone — respondemos rápido, sem robô.</p></div>
+          <div><h3>Escolha o dia <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></h3><p>Reserve por WhatsApp ou telefone — respondemos rápido, sem robô.</p></div>
         </div>
         <div class="como-step">
           <span class="como-num">2</span>
-          <div><h3>Chegue com fome</h3><p>Mesa posta, pão na hora e o prato do dia sempre fresco.</p></div>
+          <div><h3>Chegue com fome <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3v7a2 2 0 0 0 2 2v9M7 3v9M9 3v9"/><path d="M17 3c-2 1-2 5-2 7 0 1.5 1 2 2 2v9"/></svg></h3><p>Mesa posta, pão na hora e o prato do dia sempre fresco.</p></div>
         </div>
         <div class="como-step">
           <span class="como-num">3</span>
-          <div><h3>Fique à vontade</h3><p>Sem pressa pra levantar da mesa — aqui a conversa também faz parte da receita.</p></div>
+          <div><h3>Fique à vontade <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12c0-4.5 3.6-8 8-8s8 3.5 8 8c0 4-3.3 7-7.5 7.6L9 22v-3.4C6 17.5 4 15 4 12z"/></svg></h3><p>Sem pressa pra levantar da mesa — aqui a conversa também faz parte da receita.</p></div>
         </div>
       </div>
     </div>
     <div class="como-photo">
       <svg class="prato-art" viewBox="0 0 200 200" fill="none">
-        <rect x="30" y="40" width="140" height="120" rx="4" stroke="#e0b563" stroke-width="1.2" opacity="0.5"/>
-        <path d="M50 100h100M50 120h70" stroke="#e0b563" stroke-width="1" opacity="0.4"/>
-        <circle cx="100" cy="72" r="14" stroke="#e0b563" stroke-width="1.2" opacity="0.6"/>
+        <ellipse cx="100" cy="120" rx="46" ry="14" stroke="#e0b563" stroke-width="1.2" opacity="0.6"/>
+        <ellipse cx="100" cy="118" rx="30" ry="9" stroke="#e0b563" stroke-width="1" opacity="0.4"/>
+        <path d="M52 90v40M48 90v14a4 4 0 0 0 4 4M56 90v14a4 4 0 0 1-4 4" stroke="#e0b563" stroke-width="1" opacity="0.55"/>
+        <path d="M148 90c-6 0-9 6-9 12s3 8 9 8v20" stroke="#e0b563" stroke-width="1" opacity="0.55"/>
+        <path d="M100 80v-18M92 68c0-6 3-10 8-10s8 4 8 10" stroke="#e0b563" stroke-width="1" opacity="0.4"/>
       </svg>
     </div>
   </div>
@@ -317,19 +323,30 @@
     </div>
     <div class="dif-wrap">
       <div class="dif-col">
-        <div class="dif-item"><h4>Receitas de família</h4><p>Nada saiu de livro de chef — tudo veio da cozinha da avó Fernanda.</p></div>
-        <div class="dif-item"><h4>Ingredientes frescos</h4><p>Peixe e marisco comprados no mercado, todos os dias, sem estoque parado.</p></div>
+        <div class="dif-item">
+          <svg class="icone" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 15 16 6l10 9"/><path d="M9 13v13h14V13"/><path d="M13 26v-8h6v8"/></svg>
+          <h4>Receitas de família</h4><p>Nada saiu de livro de chef — tudo veio da cozinha da avó Fernanda.</p></div>
+        <div class="dif-item">
+          <svg class="icone" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 14h18l-2.5 12h-13z"/><path d="M7 14c0-5 4-8 9-8s9 3 9 8"/><path d="M12 18v4M16 18v4M20 18v4"/></svg>
+          <h4>Ingredientes frescos</h4><p>Peixe e marisco comprados no mercado, todos os dias, sem estoque parado.</p></div>
       </div>
       <div class="dif-center">
         <svg class="prato-art" viewBox="0 0 200 200" fill="none">
-          <circle cx="100" cy="100" r="80" stroke="#e0b563" stroke-width="1.2" opacity="0.5"/>
-          <circle cx="100" cy="100" r="55" stroke="#e0b563" stroke-width="1.2" opacity="0.35"/>
-          <path d="M70 100c10 20 20 28 30 28s20-8 30-28" stroke="#e0b563" stroke-width="1.3" opacity="0.8"/>
+          <path d="M55 100 100 62l45 38" stroke="#e0b563" stroke-width="1.3" opacity="0.85"/>
+          <path d="M68 92v52h64V92" stroke="#e0b563" stroke-width="1.2" opacity="0.7"/>
+          <path d="M88 144v-28h24v28" stroke="#e0b563" stroke-width="1.2" opacity="0.7"/>
+          <circle cx="100" cy="130" r="2" fill="#e0b563" opacity="0.7"/>
+          <path d="M112 68v-14h10v20" stroke="#e0b563" stroke-width="1" opacity="0.5"/>
+          <circle cx="100" cy="105" r="72" stroke="#e0b563" stroke-width="1" opacity="0.25"/>
         </svg>
       </div>
       <div class="dif-col">
-        <div class="dif-item"><h4>Sem pressa, sem fila</h4><p>Reservamos sua mesa pra você comer no seu tempo, não no nosso.</p></div>
-        <div class="dif-item"><h4>Vinho da casa</h4><p>Tinto e verde escolhidos a dedo, sem carta de vinho gigante pra decifrar.</p></div>
+        <div class="dif-item">
+          <svg class="icone" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="16" cy="17" r="10"/><path d="M16 11v6l4 3"/><path d="M12 4h8"/></svg>
+          <h4>Sem pressa, sem fila</h4><p>Reservamos sua mesa pra você comer no seu tempo, não no nosso.</p></div>
+        <div class="dif-item">
+          <svg class="icone" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 6h8l-1 8a3 3 0 0 1-3 3 3 3 0 0 1-3-3z"/><path d="M16 17v9M11 26h10"/></svg>
+          <h4>Vinho da casa</h4><p>Tinto e verde escolhidos a dedo, sem carta de vinho gigante pra decifrar.</p></div>
       </div>
     </div>
   </div>
@@ -342,9 +359,9 @@
       <h2>Onde e quando</h2>
     </div>
     <div class="info-grid">
-      <div><h4>Endereço</h4><p>Rua das Portas de Santo Antão 34, Lisboa</p></div>
-      <div><h4>Horário</h4><p>Terça a domingo<br>12h–15h · 19h–23h</p></div>
-      <div><h4>Reservas</h4><p>+351 91 234 5678<br>(WhatsApp)</p></div>
+      <div><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><h4>Endereço</h4><p>Rua das Portas de Santo Antão 34, Lisboa</p></div>
+      <div><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><h4>Horário</h4><p>Terça a domingo<br>12h–15h · 19h–23h</p></div>
+      <div><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2C10.5 20 4 13.5 4 5a2 2 0 0 1 2-2z"/></svg><h4>Reservas</h4><p>+351 91 234 5678<br>(WhatsApp)</p></div>
     </div>
   </div>
 </section>
@@ -442,17 +459,6 @@ FX.j22 = function(container){
   });
 };
 FX.j22(document.getElementById('destaqueGrid'));
-
-/* ── PAINEL DE DIAGNÓSTICO TEMPORÁRIO ────────────────────
-   Só pra confirmar que o JS está rodando no seu ambiente.
-   Remova este bloco (e a div #diag no HTML, se adicionar)
-   depois que confirmarmos que está tudo funcionando. */
-(function(){
-  var caixa = document.createElement('div');
-  caixa.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:999;background:#111;color:#0f0;font:11px monospace;padding:10px 14px;border-radius:6px;max-width:260px;line-height:1.5;opacity:0.92;';
-  caixa.innerHTML = 'DIAGNÓSTICO — JS rodou até o fim ✔';
-  document.body.appendChild(caixa);
-})();
 
 </script>
 

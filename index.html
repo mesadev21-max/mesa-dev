@@ -105,10 +105,19 @@
   .comp-card:hover h3, .comp-card:hover p{filter:blur(3px);}
   .comp-ribbon{
     position:absolute; top:16px; right:-34px; width:140px; text-align:center;
-    transform:rotate(45deg); background:var(--gold); color:var(--black);
+    background:var(--gold); color:var(--black);
     font-family:'Space Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:0.06em;
     text-transform:uppercase; padding:5px 0; box-shadow:0 2px 6px rgba(0,0,0,0.3);
+    opacity:0; transform:translate(240px, -170px) rotate(45deg) scale(0.5);
+    transition:transform .75s cubic-bezier(.34,1.56,.64,1), opacity .45s ease;
   }
+  .comp-ribbon.in{ opacity:1; transform:translate(0,0) rotate(45deg) scale(1); }
+  @media(prefers-reduced-motion:reduce){ .comp-ribbon{ opacity:1; transform:rotate(45deg); transition:none; } }
+
+  /* palavras subindo uma a uma — título "Quem está do outro lado da tela" */
+  .word-rise{ display:inline-block; opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
+  .word-rise.in{ opacity:1; transform:translateY(0); }
+  @media(prefers-reduced-motion:reduce){ .word-rise{ opacity:1; transform:none; } }
   .comp-note{margin-top:30px; font-size:13px; color:var(--cream-2); opacity:0.6; max-width:64ch;}
   ::selection{background:var(--gold-light); color:var(--black);}
   h1,h2,h3{font-family:'Fraunces', serif; font-weight:700; letter-spacing:-0.01em;}
@@ -157,14 +166,36 @@
     position:relative; display:flex; gap:18px; align-items:flex-start;
     background:rgba(251,248,242,0.03); border:1px solid var(--line-dark);
     border-left:3px solid var(--gold); border-radius:6px; padding:20px 24px;
+    opacity:0; transition:opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
   }
+  .pain-card:nth-child(odd){ transform:translateX(64px); }
+  .pain-card:nth-child(even){ transform:translateX(-64px); }
+  .pain-card.in{ opacity:1; transform:translateX(0); }
   .pain-quote{
     flex-shrink:0; font-family:'Fraunces',serif; font-weight:700; font-size:26px; line-height:1;
     color:var(--gold); border:1px solid rgba(201,162,39,0.4); border-radius:6px;
     width:34px; height:34px; display:flex; align-items:center; justify-content:center;
   }
+  .pain-card.in .pain-quote{ animation:float 4s ease-in-out infinite; }
+  @media(prefers-reduced-motion:reduce){
+    .pain-card{ opacity:1; transform:none; transition:none; }
+    .pain-card.in .pain-quote{ animation:none; }
+  }
   .pain-card p{color:var(--cream); font-size:15px; opacity:0.92; margin:0; padding-top:4px;}
   @media(max-width:640px){ .pain-card{padding:16px 18px; gap:14px;} }
+
+  /* ===== "A sua preocupação acabou" — tela cheia, letras embaralhando ===== */
+  .worry-section{
+    height:100vh; min-height:480px; background:var(--black); color:var(--cream);
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:0 24px;
+  }
+  .worry-inner{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .js-scramble{
+    font-family:'Fraunces',serif; font-weight:700; letter-spacing:0.01em;
+    line-height:1.08; white-space:pre-wrap;
+  }
+  .worry-line1{ font-size:clamp(22px,4.6vw,44px); color:rgba(251,248,242,0.7); }
+  .worry-line2{ font-size:clamp(46px,11vw,120px); color:var(--gold-light); text-shadow:0 0 30px rgba(228,197,99,0.35); }
 
   .btn{
     display:inline-block; font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
@@ -1202,6 +1233,13 @@
         <p data-i18n="pain_q4">Já pensei em fazer um site, mas nunca sobra tempo — o restaurante toma tudo.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="worry-section" id="worrySection">
+  <div class="worry-inner">
+    <span class="js-scramble worry-line1" data-texto="A SUA PREOCUPAÇÃO">A SUA PREOCUPAÇÃO</span>
+    <span class="js-scramble worry-line2" data-texto="ACABOU">ACABOU</span>
   </div>
 </section>
 
@@ -2814,6 +2852,79 @@ document.querySelectorAll('.compare-section').forEach((bloco)=>{
     });
   }, { threshold:0.25 }).observe(bloco);
 });
+
+/* ===================== Aspas da seção "Isso já aconteceu com você" — alternado, um a um ===================== */
+document.querySelectorAll('.pain-card').forEach((card)=>{
+  new IntersectionObserver((itens, obs)=>{
+    itens.forEach((it)=>{
+      if(!it.isIntersecting) return;
+      it.target.classList.add('in');
+      obs.unobserve(it.target);
+    });
+  }, { threshold:0.3 }).observe(card);
+});
+
+/* ===================== "Em breve" — faixas jogadas até a posição ===================== */
+document.querySelectorAll('.comp-section').forEach((section)=>{
+  const ribbons = Array.prototype.slice.call(section.querySelectorAll('.comp-ribbon'));
+  new IntersectionObserver((itens, obs)=>{
+    itens.forEach((it)=>{
+      if(!it.isIntersecting) return;
+      ribbons.forEach((r, i)=> setTimeout(()=> r.classList.add('in'), 380 + i * 160));
+      obs.unobserve(it.target);
+    });
+  }, { threshold:0.25 }).observe(section);
+});
+
+/* ===================== "Quem está do outro lado da tela" — palavras sobem uma a uma ===================== */
+(function(){
+  const tituloSobre = document.querySelector('#sobre h3[data-i18n="sobre_title"]');
+  if(!tituloSobre) return;
+  const palavras = tituloSobre.textContent.split(' ').filter(Boolean);
+  tituloSobre.innerHTML = palavras.map((p)=> '<span class="word-rise">' + p + '</span>').join(' ');
+  const spans = Array.prototype.slice.call(tituloSobre.querySelectorAll('.word-rise'));
+  spans.forEach((s, i)=> s.style.transitionDelay = (i * 70) + 'ms');
+  new IntersectionObserver((itens, obs)=>{
+    itens.forEach((it)=>{
+      if(!it.isIntersecting) return;
+      spans.forEach((s)=> s.classList.add('in'));
+      obs.unobserve(it.target);
+    });
+  }, { threshold:0.5 }).observe(tituloSobre);
+})();
+
+/* ===================== "A sua preocupação ACABOU" — letras embaralhando tipo painel de aeroporto ===================== */
+(function(){
+  const sopa = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&@*';
+  function scramble(el){
+    if(el.dataset.scrambled === '1') return;
+    el.dataset.scrambled = '1';
+    const final = el.dataset.texto || el.textContent;
+    let quadro = 0, id;
+    function girar(){
+      let saida = '';
+      const travadas = Math.floor(quadro / 3);
+      for(let i = 0; i < final.length; i++){
+        saida += i < travadas ? final[i] : (final[i] === ' ' ? ' ' : sopa[(Math.random() * sopa.length) | 0]);
+      }
+      el.textContent = saida;
+      quadro++;
+      if(travadas <= final.length) id = requestAnimationFrame(girar);
+    }
+    girar();
+  }
+  const worrySection = document.getElementById('worrySection');
+  if(worrySection){
+    const linhas = worrySection.querySelectorAll('.js-scramble');
+    new IntersectionObserver((itens, obs)=>{
+      itens.forEach((it)=>{
+        if(!it.isIntersecting) return;
+        linhas.forEach((el, i)=> setTimeout(()=> scramble(el), i * 350));
+        obs.unobserve(it.target);
+      });
+    }, { threshold:0.4 }).observe(worrySection);
+  }
+})();
 
 /* ===================== PROMO BAR (>50% scroll) ===================== */
 const promoBar = document.getElementById('promoBar');
