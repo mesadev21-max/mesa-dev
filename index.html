@@ -353,17 +353,17 @@
   .hero-bar{ position:relative; flex:1; height:100%; overflow:hidden; will-change:transform; }
   /* camada que flutua de verdade — sobe e desce visivelmente, sem conflitar
      com o transform que o JS do scroll aplica no .hero-bar (elemento de fora) */
-  .hero-bar-fluid{ position:absolute; inset:-14% -8% -14% -8%; animation:heroBob 6.5s ease-in-out infinite; }
+  .hero-bar-fluid{ position:absolute; inset:-20% -8% -20% -8%; animation:heroBob 5.5s ease-in-out infinite; }
   .hero-bar:nth-child(1) .hero-bar-fluid{ animation-delay:0s; }
-  .hero-bar:nth-child(2) .hero-bar-fluid{ animation-delay:-1.1s; }
-  .hero-bar:nth-child(3) .hero-bar-fluid{ animation-delay:-2.3s; }
-  .hero-bar:nth-child(4) .hero-bar-fluid{ animation-delay:-3.4s; }
-  .hero-bar:nth-child(5) .hero-bar-fluid{ animation-delay:-4.6s; }
-  .hero-bar:nth-child(6) .hero-bar-fluid{ animation-delay:-5.8s; }
+  .hero-bar:nth-child(2) .hero-bar-fluid{ animation-delay:-0.9s; }
+  .hero-bar:nth-child(3) .hero-bar-fluid{ animation-delay:-1.8s; }
+  .hero-bar:nth-child(4) .hero-bar-fluid{ animation-delay:-2.7s; }
+  .hero-bar:nth-child(5) .hero-bar-fluid{ animation-delay:-3.6s; }
+  .hero-bar:nth-child(6) .hero-bar-fluid{ animation-delay:-4.5s; }
   @keyframes heroBob{
-    0%{ transform:translateY(-16px); }
-    50%{ transform:translateY(16px); }
-    100%{ transform:translateY(-16px); }
+    0%{ transform:translateY(-32px); }
+    50%{ transform:translateY(32px); }
+    100%{ transform:translateY(-32px); }
   }
   @media(prefers-reduced-motion:reduce){ .hero-bar-fluid{ animation:none; } }
 
@@ -391,6 +391,29 @@
     background:linear-gradient(180deg, rgba(11,11,9,0.18) 0%, rgba(122,90,14,0.42) 55%, rgba(201,162,39,0.68) 100%);
     mix-blend-mode:multiply;
   }
+  /* faixa de sombra que desliza em sentido oposto ao da foto — cria uma sensação
+     de profundidade/luz-e-sombra bem mais fácil de perceber do que só o vaivém sutil */
+  .hero-bar-shadow{
+    position:absolute; inset:-45% -10%; pointer-events:none;
+    background:linear-gradient(180deg,
+      transparent 0%, transparent 18%,
+      rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.62) 58%,
+      transparent 82%, transparent 100%);
+    mix-blend-mode:multiply;
+    animation:heroShadowSweep 5.5s ease-in-out infinite;
+  }
+  .hero-bar:nth-child(1) .hero-bar-shadow{ animation-delay:0s; }
+  .hero-bar:nth-child(2) .hero-bar-shadow{ animation-delay:-0.9s; }
+  .hero-bar:nth-child(3) .hero-bar-shadow{ animation-delay:-1.8s; }
+  .hero-bar:nth-child(4) .hero-bar-shadow{ animation-delay:-2.7s; }
+  .hero-bar:nth-child(5) .hero-bar-shadow{ animation-delay:-3.6s; }
+  .hero-bar:nth-child(6) .hero-bar-shadow{ animation-delay:-4.5s; }
+  @keyframes heroShadowSweep{
+    0%{ transform:translateY(46px); }
+    50%{ transform:translateY(-46px); }
+    100%{ transform:translateY(46px); }
+  }
+  @media(prefers-reduced-motion:reduce){ .hero-bar-shadow{ animation:none; opacity:0; } }
   .hero-bar + .hero-bar{ border-left:1px solid rgba(11,11,9,0.4); }
 
   .hero-overlay{
@@ -1198,12 +1221,12 @@
 <section class="hero-scroll" id="inicio">
   <div class="hero-sticky">
     <div class="hero-bars-row" id="heroBarsRow">
-      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div></div>
-      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div></div>
-      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div></div>
-      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div></div>
-      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div></div>
-      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div></div>
+      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div><div class="hero-bar-shadow"></div></div>
+      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div><div class="hero-bar-shadow"></div></div>
+      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div><div class="hero-bar-shadow"></div></div>
+      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div><div class="hero-bar-shadow"></div></div>
+      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div><div class="hero-bar-shadow"></div></div>
+      <div class="hero-bar"><div class="hero-bar-fluid"><div class="hero-bar-photo"></div><div class="hero-bar-tint"></div></div><div class="hero-bar-shadow"></div></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-glow" aria-hidden="true"><span class="blob blob-1"></span><span class="blob blob-2"></span></div>
@@ -1215,7 +1238,7 @@
         <h1><span data-i18n="hero_h1a">O seu restaurante fica</span> <em data-i18n="hero_h1em">lotado</em><br><span data-i18n="hero_h1b">às sextas. O site também devia estar cheio de gente.</span></h1>
       </div>
       <div class="wrap hero-bottom">
-        <p data-i18n="hero_p">Faço sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.</p>
+        <p data-i18n="hero_p">Fazemos sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.</p>
         <div class="hero-cta">
           <a href="#peca" class="btn" data-i18n="hero_cta1">Peça o seu site</a>
           <a href="portfolio.html" class="btn btn-ghost" data-i18n="hero_cta2">Ver exemplos</a>
@@ -1783,7 +1806,7 @@ const I18N = {
     sub_diagnostico:'Diagnóstico grátis', sub_site:'Site personalizado', sub_manutencao:'Manutenção',
     hero_eyebrow:'Estúdio de sites — restaurantes da Europa',
     hero_h1a:'O seu restaurante fica', hero_h1em:'lotado', hero_h1b:'às sextas. O site também devia estar cheio de gente.',
-    hero_p:'Faço sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.',
+    hero_p:'Fazemos sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.',
     hero_cta1:'Peça o seu site', hero_cta2:'Ver exemplos',
     stat1_b:'5 dias úteis', stat1_t:'prazo médio até o protótipo', stat2_t:'atendimento nos três mercados',
     stat3_b:'Sem enrolação', stat3_t:'orçamento claro, sem mensalidade escondida',
@@ -1866,7 +1889,7 @@ const I18N = {
     sub_diagnostico:'Diagnóstico grátis', sub_site:'Site personalizado', sub_manutencao:'Manutenção',
     hero_eyebrow:'Estúdio de sites — restaurantes da Europa',
     hero_h1a:'O seu restaurante fica', hero_h1em:'lotado', hero_h1b:'às sextas. O site também devia estar cheio de gente.',
-    hero_p:'Faço sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.',
+    hero_p:'Fazemos sites simples, rápidos e feitos à mão para restaurantes por toda a Europa.',
     hero_cta1:'Peça o seu site', hero_cta2:'Ver exemplos',
     stat1_b:'5 dias úteis', stat1_t:'prazo médio até o protótipo', stat2_t:'atendimento nos três mercados',
     stat3_b:'Sem enrolação', stat3_t:'orçamento claro, sem mensalidade escondida',
@@ -1949,7 +1972,7 @@ const I18N = {
     sub_diagnostico:'Diagnóstico gratis', sub_site:'Web personalizada', sub_manutencao:'Mantenimiento',
     hero_eyebrow:'Estudio de webs — restaurantes de Europa',
     hero_h1a:'Su restaurante está', hero_h1em:'lleno', hero_h1b:'los viernes. La web también debería estarlo.',
-    hero_p:'Creo webs simples, rápidas y hechas a mano para restaurantes en toda Europa.',
+    hero_p:'Creamos webs simples, rápidas y hechas a mano para restaurantes en toda Europa.',
     hero_cta1:'Pide tu web', hero_cta2:'Ver ejemplos',
     stat1_b:'5 días hábiles', stat1_t:'plazo medio hasta el prototipo', stat2_t:'atención en los tres mercados',
     stat3_b:'Sin rodeos', stat3_t:'presupuesto claro, sin cuota mensual oculta',
@@ -2032,7 +2055,7 @@ const I18N = {
     sub_diagnostico:'Free audit', sub_site:'Custom website', sub_manutencao:'Maintenance',
     hero_eyebrow:'Website studio — restaurants across Europe',
     hero_h1a:'Your restaurant is', hero_h1em:'packed', hero_h1b:'on Fridays. Your website should be too.',
-    hero_p:'I build simple, fast, hand-made websites for restaurants across Europe.',
+    hero_p:'We build simple, fast, hand-made websites for restaurants across Europe.',
     hero_cta1:'Order your site', hero_cta2:'See examples',
     stat1_b:'5 working days', stat1_t:'average time to first prototype', stat2_t:'support across all three markets',
     stat3_b:'No nonsense', stat3_t:'clear pricing, no hidden monthly fee',
@@ -2116,7 +2139,7 @@ const I18N = {
     sub_diagnostico:'Free audit', sub_site:'Custom website', sub_manutencao:'Maintenance',
     hero_eyebrow:'Website studio — restaurants across Europe',
     hero_h1a:'Your restaurant is', hero_h1em:'packed', hero_h1b:'on Fridays. Your website should be too.',
-    hero_p:'I build simple, fast, hand-made websites for restaurants across Europe.',
+    hero_p:'We build simple, fast, hand-made websites for restaurants across Europe.',
     hero_cta1:'Order your site', hero_cta2:'See examples',
     stat1_b:'5 working days', stat1_t:'average time to first prototype', stat2_t:'support across all three markets',
     stat3_b:'No nonsense', stat3_t:'clear pricing, no hidden monthly fee',
@@ -2200,7 +2223,7 @@ const I18N = {
     sub_diagnostico:'Kostenlose Analyse', sub_site:'Individuelle Website', sub_manutencao:'Wartung',
     hero_eyebrow:'Website-Studio — Restaurants in ganz Europa',
     hero_h1a:'Ihr Restaurant ist freitags', hero_h1em:'voll', hero_h1b:'. Ihre Website sollte es auch sein.',
-    hero_p:'Ich baue einfache, schnelle, handgemachte Websites für Restaurants in ganz Europa.',
+    hero_p:'Wir bauen einfache, schnelle, handgemachte Websites für Restaurants in ganz Europa.',
     hero_cta1:'Website anfragen', hero_cta2:'Beispiele ansehen',
     stat1_b:'5 Werktage', stat1_t:'durchschnittliche Zeit bis zum Prototyp', stat2_t:'Betreuung in allen drei Märkten',
     stat3_b:'Ohne Umschweife', stat3_t:'klare Preise, keine versteckte Monatsgebühr',
@@ -2283,7 +2306,7 @@ const I18N = {
     sub_diagnostico:'Analisi gratuita', sub_site:'Sito personalizzato', sub_manutencao:'Manutenzione',
     hero_eyebrow:'Studio di siti web — ristoranti in tutta Europa',
     hero_h1a:'Il tuo ristorante il venerdì è', hero_h1em:'pieno', hero_h1b:'. Anche il tuo sito dovrebbe esserlo.',
-    hero_p:'Creo siti semplici, veloci e fatti a mano per ristoranti in tutta Europa.',
+    hero_p:'Creiamo siti semplici, veloci e fatti a mano per ristoranti in tutta Europa.',
     hero_cta1:'Richiedi il tuo sito', hero_cta2:'Vedi esempi',
     stat1_b:'5 giorni lavorativi', stat1_t:'tempo medio per il primo prototipo', stat2_t:'assistenza in tutti e tre i mercati',
     stat3_b:'Senza fronzoli', stat3_t:'prezzi chiari, nessun canone mensile nascosto',
@@ -2366,7 +2389,7 @@ const I18N = {
     sub_diagnostico:'Gratis granskning', sub_site:'Skräddarsydd webbplats', sub_manutencao:'Underhåll',
     hero_eyebrow:'Webbstudio — restauranger i hela Europa',
     hero_h1a:'Din restaurang är fullsatt', hero_h1em:'på fredagar', hero_h1b:'. Din webbplats borde vara det också.',
-    hero_p:'Jag bygger enkla, snabba, handgjorda webbplatser för restauranger i hela Europa.',
+    hero_p:'Vi bygger enkla, snabba, handgjorda webbplatser för restauranger i hela Europa.',
     hero_cta1:'Beställ din webbplats', hero_cta2:'Se exempel',
     stat1_b:'5 arbetsdagar', stat1_t:'genomsnittlig tid till första prototyp', stat2_t:'support på alla tre marknader',
     stat3_b:'Inget krångel', stat3_t:'tydliga priser, ingen dold månadsavgift',
@@ -2449,7 +2472,7 @@ const I18N = {
     sub_diagnostico:'تقييم مجاني', sub_site:'موقع مخصص', sub_manutencao:'الصيانة',
     hero_eyebrow:'استوديو مواقع — للمطاعم في أوروبا',
     hero_h1a:'مطعمك يكون', hero_h1em:'ممتلئًا', hero_h1b:'أيام الجمعة. موقعك يجب أن يكون كذلك أيضًا.',
-    hero_p:'أُنشئ مواقع بسيطة وسريعة ومصنوعة يدويًا للمطاعم في جميع أنحاء أوروبا.',
+    hero_p:'نُنشئ مواقع بسيطة وسريعة ومصنوعة يدويًا للمطاعم في جميع أنحاء أوروبا.',
     hero_cta1:'اطلب موقعك', hero_cta2:'شاهد الأمثلة',
     stat1_b:'5 أيام عمل', stat1_t:'متوسط الوقت للنموذج الأول', stat2_t:'دعم في الأسواق الثلاثة',
     stat3_b:'بدون تعقيد', stat3_t:'أسعار واضحة، بدون رسوم شهرية خفية',
@@ -2625,7 +2648,7 @@ const popupConfirm = document.getElementById('popupConfirm');
 function openPopup(){ popupOverlay.classList.add('show'); }
 function closePopup(){ popupOverlay.classList.remove('show'); }
 
-setTimeout(openPopup, 1800);
+setTimeout(openPopup, 5000);
 popupClose.addEventListener('click', closePopup);
 popupSkip.addEventListener('click', closePopup);
 popupOverlay.addEventListener('click', (e)=>{ if(e.target === popupOverlay) closePopup(); });

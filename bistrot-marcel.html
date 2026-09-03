@@ -41,16 +41,22 @@
   .btn.outline{background:transparent;border:1.3px solid var(--paper);color:var(--paper) !important;}
   .btn.outline:hover{background:var(--paper);color:var(--ink) !important;}
 
-  /* hero */
-  .hero{padding:78px 0 0;}
-  .hero .grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:52px;align-items:start;padding-bottom:60px;}
+  /* hero: foto cheia com degradê — sem cartão flutuante ao lado do texto,
+     pra não repetir o padrão que já aparece demais no portfólio */
+  .hero{position:relative; min-height:78vh; display:flex; align-items:flex-end; overflow:hidden; padding:0;}
+  .hero-photo{position:absolute; inset:0; background-size:cover; background-position:center 35%;
+    background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bistro_on_Main.jpg?width=1600');}
+  .hero-scrim{position:absolute; inset:0; background:linear-gradient(0deg, var(--ink) 8%, rgba(23,21,18,0.75) 42%, rgba(23,21,18,0.25) 68%, rgba(23,21,18,0.1) 100%);}
+  .hero .wrap{position:relative; z-index:1; padding-bottom:64px;}
   .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--brass-light);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;}
-  .hero h1{font-size:clamp(38px,5vw,58px);line-height:1.08;max-width:12ch;}
+  .hero h1{font-size:clamp(38px,5vw,58px);line-height:1.08;max-width:14ch;}
   .hero h1 .accent{font-style:italic;color:var(--brass-light);}
-  .hero p.lede{margin-top:20px;font-size:17px;max-width:42ch;color:var(--paper-dim);}
+  .hero p.lede{margin-top:20px;font-size:17px;max-width:46ch;color:var(--paper-dim);}
   .hero-ctas{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;}
 
-  /* ardoise — chalkboard, real bistro convention, signature element */
+  /* ardoise — agora em seção própria, não mais espremida ao lado do hero */
+  .ardoise-section{padding:64px 0 20px;}
+  .ardoise-wrap{max-width:480px; margin:0 auto;}
   .ardoise{
     background:#14211A;
     border:6px solid #3B2E1C;
@@ -83,10 +89,11 @@
   /* story */
   .story{background:var(--panel);}
   .story .grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
-  .story .art{aspect-ratio:4/5;border-radius:3px;background:linear-gradient(160deg,#3B2E1C 0%,#171512 100%);position:relative;overflow:hidden;border:1px solid var(--line);}
-  .story .art .ring{position:absolute;border:1px solid rgba(211,178,102,0.22);border-radius:50%;}
-  .story .art .r1{width:66%;aspect-ratio:1;top:12%;left:18%;}
-  .story .art .r2{width:36%;aspect-ratio:1;bottom:14%;right:12%;border-color:rgba(92,26,43,0.4);}
+  .js-faixas{position:relative;}
+  .js-faixas .alto{height:820px;}
+  .js-faixas .fixo{position:sticky; top:110px; height:440px; display:flex; align-items:center; justify-content:center;}
+  .js-faixas .quadro{display:flex; gap:3px; width:100%; max-width:380px; aspect-ratio:4/5; border-radius:3px; overflow:hidden; border:1px solid var(--line); box-shadow:0 30px 60px -24px rgba(0,0,0,0.55);}
+  .js-faixas .tira{flex:1; background-repeat:no-repeat; will-change:transform,opacity;}
   .story h2{font-size:clamp(26px,3.2vw,36px);margin-bottom:18px;}
   .story p{color:var(--paper-dim);max-width:48ch;font-size:15.5px;}
   .timeline{margin-top:28px;}
@@ -94,6 +101,14 @@
   .t-row:last-child{border-bottom:1px solid var(--line);}
   .t-row .y{font-family:'Space Mono',monospace;color:var(--brass-light);font-size:14px;padding-top:2px;}
   .t-row .x{font-size:14.5px;color:var(--paper-dim);}
+
+  /* gráfico de linha — clientes atendidos por semana desde a abertura */
+  .growth{margin-top:32px; padding-top:24px; border-top:1px solid var(--line);}
+  .growth .g-label{font-family:'Space Mono',monospace; font-size:11px; color:var(--paper-dim); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;}
+  .js-linha{width:100%; max-width:340px;}
+  .js-linha .grade line{stroke:rgba(237,230,218,0.08);}
+  .js-linha .traco{fill:none; stroke:var(--brass-light); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;}
+  .js-linha .ponto{fill:var(--wine); stroke:var(--brass-light); stroke-width:1.2; opacity:0;}
 
   /* visit */
   .visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
@@ -116,10 +131,11 @@
   .socials a:hover{color:var(--brass-light);}
 
   @media(max-width:900px){
-    .hero .grid{grid-template-columns:1fr;}
     .ardoise{transform:none;}
     .menu-cols{grid-template-columns:1fr;}
     .story .grid{grid-template-columns:1fr;}
+    .js-faixas .alto{height:520px;}
+    .js-faixas .fixo{position:relative; top:0; height:auto; padding:20px 0;}
     .visit .grid{grid-template-columns:1fr;}
     nav{display:none;}
   }
@@ -148,16 +164,21 @@
 </header>
 
 <section class="hero">
-  <div class="wrap grid">
-    <div>
-      <div class="eyebrow">Ouvert du mardi au dimanche</div>
-      <h1>Ce que dit <span class="accent">l'ardoise</span>, on le sert le soir même</h1>
-      <p class="lede">Pas de carte figée. Marcel fait son marché à six heures, et le menu du jour dépend de ce qu'il a trouvé de meilleur.</p>
-      <div class="hero-ctas">
-        <a href="#visite" class="btn">Voir l'adresse</a>
-        <a href="#carte" class="btn outline">Voir la carte</a>
-      </div>
+  <div class="hero-photo"></div>
+  <div class="hero-scrim"></div>
+  <div class="wrap">
+    <div class="eyebrow">Ouvert du mardi au dimanche</div>
+    <h1>Ce que dit <span class="accent">l'ardoise</span>, on le sert le soir même</h1>
+    <p class="lede">Pas de carte figée. Marcel fait son marché à six heures, et le menu du jour dépend de ce qu'il a trouvé de meilleur.</p>
+    <div class="hero-ctas">
+      <a href="#visite" class="btn">Voir l'adresse</a>
+      <a href="#carte" class="btn outline">Voir la carte</a>
     </div>
+  </div>
+</section>
+
+<section class="ardoise-section">
+  <div class="wrap ardoise-wrap">
     <div class="ardoise" id="ardoise">
       <h3>L'ardoise du jour</h3>
       <div class="ardoise-item"><span>Terrine de campagne, cornichons</span><span>9€</span></div>
@@ -195,9 +216,12 @@
 
 <section class="section story" id="histoire">
   <div class="wrap grid">
-    <div class="art">
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
+    <div class="js-faixas">
+      <div class="alto">
+        <div class="fixo">
+          <div class="quadro" id="quadroHistoria"></div>
+        </div>
+      </div>
     </div>
     <div>
       <span class="tag" style="display:block;margin-bottom:10px;">Notre histoire</span>
@@ -207,6 +231,22 @@
         <div class="t-row"><div class="y">1962</div><div class="x">Marcel ouvre le bistrot, quatre tables et un zinc</div></div>
         <div class="t-row"><div class="y">1989</div><div class="x">Sa fille reprend la cuisine, garde chaque recette</div></div>
         <div class="t-row"><div class="y">2018</div><div class="x">Le petit-fils reprend la maison, rien ne change</div></div>
+      </div>
+      <div class="growth">
+        <div class="g-label">Couverts servis par semaine</div>
+        <svg class="js-linha" viewBox="0 0 300 100">
+          <defs><linearGradient id="gradLinha" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#D3B266" stop-opacity=".18"/>
+            <stop offset="100%" stop-color="#D3B266" stop-opacity="0"/>
+          </linearGradient></defs>
+          <g class="grade">
+            <line x1="0" y1="25" x2="300" y2="25"/>
+            <line x1="0" y1="50" x2="300" y2="50"/>
+            <line x1="0" y1="75" x2="300" y2="75"/>
+          </g>
+          <path class="traco"></path>
+          <g class="pontos"></g>
+        </svg>
       </div>
     </div>
   </div>
@@ -241,6 +281,110 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function limitar(v,min,max){ return Math.max(min, Math.min(max, v)); }
+
+  function progressoNaTela(el){
+    var r = el.getBoundingClientRect();
+    var alt = window.innerHeight || 800;
+    return limitar((alt - r.top) / (alt + r.height), 0, 1);
+  }
+
+  // helper que faltava na referência colada: dispara "passo(progresso)"
+  // a cada scroll/resize, com progresso de 0 a 1 conforme o elemento
+  // atravessa a tela — é o que faz a animação acompanhar a rolagem.
+  function aoRolar(el, passo){
+    function tick(){ passo(progressoNaTela(el)); }
+    window.addEventListener('scroll', tick, {passive:true});
+    window.addEventListener('resize', tick);
+    tick();
+    return function(){
+      window.removeEventListener('scroll', tick);
+      window.removeEventListener('resize', tick);
+    };
+  }
+
+  /* ===== 06 · Faixas que se montam =====
+     A foto chega dividida em tiras que deslizam em direções alternadas
+     até se encaixarem, conforme a seção entra na tela rolando. */
+  (function(){
+    var quadro = document.getElementById('quadroHistoria');
+    if(!quadro) return;
+    var foto = "https://commons.wikimedia.org/wiki/Special:FilePath/Bottle_and_glass_of_red_wine.jpg?width=700";
+    var N = 6;
+    for(var i=0;i<N;i++){
+      var tira = document.createElement('div');
+      tira.className = 'tira';
+      tira.style.backgroundImage = "url('" + foto + "')";
+      tira.style.backgroundSize = (N*100) + "% 100%";
+      tira.style.backgroundPosition = (i*100/(N-1)) + "% center";
+      quadro.appendChild(tira);
+    }
+    var tiras = [].slice.call(quadro.querySelectorAll('.tira'));
+    var alto = quadro.closest('.alto');
+    aoRolar(alto, function(p){
+      tiras.forEach(function(t, i){
+        var atraso = i * 0.06;
+        var f = limitar((p - atraso) / (1 - atraso), 0, 1);
+        var suave = 1 - Math.pow(1 - f, 3);
+        var sentido = i % 2 ? 1 : -1;
+        t.style.transform = 'translateY(' + (sentido * (1 - suave) * 110) + '%)';
+        t.style.opacity = .25 + suave * .75;
+      });
+    });
+  })();
+
+  /* ===== 27 · Gráfico de linha =====
+     O caminho é calculado a partir dos números, se desenha, e os
+     pontos aparecem depois que a linha chega neles. */
+  (function(){
+    var svg = document.querySelector('.js-linha');
+    if(!svg) return;
+    var dados = [40, 58, 52, 74, 68, 91, 85, 112];
+    var traco = svg.querySelector('.traco');
+    var grupo = svg.querySelector('.pontos');
+    var L = 300, A = 100, pad = 10;
+    var maior = Math.max.apply(null, dados);
+    var pts = dados.map(function(v,i){
+      return [pad + i*(L-pad*2)/(dados.length-1), A - pad - (v/maior)*(A-pad*2)];
+    });
+    traco.setAttribute('d', pts.map(function(p,i){
+      return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+    }).join(' '));
+
+    function desenhar(){
+      var comprimento = traco.getTotalLength();
+      traco.style.strokeDasharray = comprimento;
+      traco.style.strokeDashoffset = comprimento;
+      requestAnimationFrame(function(){
+        traco.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.65,0,.35,1)';
+        traco.style.strokeDashoffset = 0;
+      });
+      grupo.innerHTML = '';
+      pts.forEach(function(p,i){
+        var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]); c.setAttribute('r', 3.2);
+        c.setAttribute('class','ponto');
+        grupo.appendChild(c);
+        setTimeout(function(){
+          c.style.transition = 'opacity .3s'; c.style.opacity = 1;
+        }, 200 + i * (1600/dados.length));
+      });
+    }
+
+    // só desenha quando a seção entra na tela, e só uma vez
+    var jaDesenhou = false;
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting && !jaDesenhou){
+        jaDesenhou = true;
+        desenhar();
+        obs.disconnect();
+      }
+    }, {threshold:0.3});
+    obs.observe(svg);
+  })();
+</script>
 
 </body>
 </html>
