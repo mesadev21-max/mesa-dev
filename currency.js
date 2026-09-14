@@ -1,6 +1,6 @@
 // Mesa.dev — geolocalização por IP: moeda (mesmo valor, símbolo diferente) + idioma padrão
 (function(){
-  const PRICES = { p1: 600, p2: 1000, p3: 2500 }; // Aperitivo, Prato Principal, Banquete
+  const PRICES = { p1: 600, p2: 999.90, p3: 2500 }; // Aperitivo, Prato Principal, Banquete
 
   // moeda por país — sem conversão, só troca o símbolo. Países fora da lista usam EUR.
   const COUNTRY_CURRENCY = { GB: 'gbp' };
