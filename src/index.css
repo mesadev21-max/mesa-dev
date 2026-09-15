@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  /* Surfaces */
+  --color-ivory: #faf6f0;
+  --color-cream: #f3ece2;
+  --color-espresso: #0e0c0a;
+  --color-espresso-2: #171310;
+  --color-ink: #1a1512;
+  --color-ink-soft: #55483f;
+  --color-muted: #8c7c70;
+
+  /* Warm brand */
+  --color-saffron-100: #fdf1dc;
+  --color-saffron-200: #f9dfb2;
+  --color-saffron-300: #f3c67a;
+  --color-saffron-400: #e9a94a;
+  --color-saffron-500: #d98924;
+  --color-saffron-600: #b56a15;
+
+  --color-terra-300: #e79a78;
+  --color-terra-400: #d4714a;
+  --color-terra-500: #b8552f;
+
+  --color-olive-300: #b7c39a;
+  --color-olive-500: #6e7f52;
+  --color-olive-700: #46512f;
+
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-float-slow: float 14s ease-in-out infinite;
+  --animate-drift: drift 24s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 3.4s linear infinite;
+  --animate-spin-slow: spin 30s linear infinite;
+  --animate-pulse-ring: pulse-ring 3.2s ease-out infinite;
+  --animate-marquee: marquee 44s linear infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-typing: typing 4.5s steps(24) infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -5%, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-4%, 4%, 0) scale(0.94);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -140% 0;
+  }
+  100% {
+    background-position: 240% 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.75;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-saffron-300);
+    color: var(--color-espresso);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-saffron-500);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 0, "WONK" 1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .text-gradient {
+    background: linear-gradient(100deg, #f3c67a 0%, #e9a94a 38%, #d4714a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-dark {
+    background: linear-gradient(100deg, #b56a15 0%, #d4714a 55%, #6e7f52 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: color-mix(in srgb, white 66%, transparent);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid color-mix(in srgb, white 75%, transparent);
+  }
+
+  .glass-dark {
+    background: color-mix(in srgb, #0e0c0a 58%, transparent);
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    border: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .shadow-lift {
+    box-shadow:
+      0 1px 2px rgb(14 12 10 / 0.05),
+      0 14px 30px -14px rgb(14 12 10 / 0.18),
+      0 44px 90px -45px rgb(180 106 21 / 0.35);
+  }
+
+  .shadow-soft {
+    box-shadow:
+      0 1px 2px rgb(14 12 10 / 0.04),
+      0 10px 26px -16px rgb(14 12 10 / 0.22);
+  }
+
+  .shadow-screen {
+    box-shadow:
+      0 2px 6px rgb(14 12 10 / 0.08),
+      0 30px 60px -25px rgb(14 12 10 / 0.45),
+      0 70px 120px -60px rgb(14 12 10 / 0.5);
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    filter: blur(5px);
+    transition:
+      opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.95s ease;
+    will-change: opacity, transform;
+  }
+
+  .reveal-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
